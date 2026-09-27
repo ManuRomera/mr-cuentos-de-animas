@@ -115,6 +115,15 @@ export class GameplayService {
     });
   }
 
+  /**
+   * Lista del escenario de la que sale la escena. Un Percance se lo lleva un personaje secundario,
+   * salvo que el escenario traiga percances propios: nunca se mezclan las dos listas.
+   */
+  static choiceList(scenario, kind) {
+    if (kind === CARD_KINDS.INCIDENT && scenario?.system.incidents?.some(e => e.title || e.text)) return "incidents";
+    return R.KIND_LIST[kind];
+  }
+
   /** Entradas del escenario para el tipo de carta en curso, marcando las ya usadas. */
   static choices(state = StateService.get()) {
     const scenario = StateService.scenario(), kind = state.event?.kind;
@@ -123,8 +132,7 @@ export class GameplayService {
     const from = list => (scenario.system[list] ?? []).map((e, index) => ({
       list, index, title: e.title ?? e.name ?? "", text: e.text ?? e.description ?? "", used: (used[list] ?? []).includes(index)
     })).filter(e => e.title || e.text);
-    if (kind === CARD_KINDS.INCIDENT) return [...from("incidents"), ...from("characters")];
-    return from(R.KIND_LIST[kind]);
+    return from(this.choiceList(scenario, kind));
   }
 
   /**

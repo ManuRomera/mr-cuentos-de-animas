@@ -1,6 +1,7 @@
 import { ASSETS, MODES, RULES, TEMPLATES } from "../constants.mjs";
 import { ProtagonistModel } from "../models.mjs";
 import { validSplit } from "../rules.mjs";
+import { generateProtagonist } from "../generator.mjs";
 import { ContentService } from "../services/content.mjs";
 import { GameplayService } from "../services/gameplay.mjs";
 import { StateService } from "../services/state.mjs";
@@ -8,12 +9,20 @@ import { SystemApp, t } from "./base.mjs";
 import { openApp } from "./registry.mjs";
 
 /** Crear un protagonista listo para jugar: cuatro rasgos vacíos, reparto 5/5 y visible para todos. */
-export async function createProtagonist(name = t("CdA.Actor.DefaultName")) {
+export async function createProtagonist(name = t("CdA.Actor.DefaultName"), system = ProtagonistModel.seed()) {
   return Actor.implementation.create({
-    name, type: "protagonist", img: ASSETS.portrait, system: ProtagonistModel.seed(),
+    name, type: "protagonist", img: ASSETS.portrait, system,
     ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
     prototypeToken: { actorLink: true, name, disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY }
   });
+}
+
+/** Protagonista completo al azar, ya dentro de las reglas de creación. */
+export async function randomProtagonist() {
+  const { name, system } = generateProtagonist();
+  const actor = await createProtagonist(name, system);
+  if (actor) ui.notifications.info(game.i18n.format("CdA.Create.Generated", { name }));
+  return actor;
 }
 
 /** Nuevo relato: escenario, protagonista, modo y reparto de recursos en una sola vista. */
@@ -23,7 +32,7 @@ export class StartApp extends SystemApp {
     id: "cda-start", classes: ["cda-start-app"],
     window: { title: "CdA.Session.New", icon: "fa-solid fa-book" },
     position: { width: 1060, height: 620 },
-    actions: { scenario: StartApp.#pickScenario, mode: StartApp.#pickMode, start: StartApp.#start }
+    actions: { scenario: StartApp.#pickScenario, mode: StartApp.#pickMode, start: StartApp.#start, random: StartApp.#random }
   };
   static PARTS = { body: { template: `${TEMPLATES}/apps/start.hbs`, scrollable: [".cda-start-scenarios"] } };
 
@@ -66,7 +75,13 @@ export class StartApp extends SystemApp {
       this.element.querySelector("[data-out=spirit]").textContent = range.value;
       this.element.querySelector("[data-out=determination]").textContent = RULES.resourceTotal - Number(range.value);
     });
-    this.element.querySelector("select[name=actor]")?.addEventListener("change", e => { this.selected.actor = e.target.value; });
+    // Al elegir un protagonista ya hecho, el reparto parte del suyo (si es válido).
+    this.element.querySelector("select[name=actor]")?.addEventListener("change", e => {
+      this.selected.actor = e.target.value;
+      const s = fromUuidSync(e.target.value)?.system;
+      if (s && validSplit(s.spirit.max, s.determination.max)) this.selected.spirit = s.spirit.max;
+      this.render();
+    });
   }
 
   static #pickScenario(event, target) {
@@ -77,6 +92,14 @@ export class StartApp extends SystemApp {
     this.render();
   }
   static #pickMode(event, target) { this.selected.mode = target.dataset.mode; this.render(); }
+  /** Crea un protagonista al azar, lo elige y adopta su reparto. */
+  static async #random() {
+    const actor = await randomProtagonist();
+    if (!actor) return;
+    this.selected.actor = actor.uuid;
+    this.selected.spirit = actor.system.spirit.max;
+    this.render();
+  }
 
   static async #start() {
     const scenario = fromUuidSync(this.selected.scenario);

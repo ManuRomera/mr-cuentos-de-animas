@@ -23,7 +23,9 @@ export class StateService {
     return next;
   }
 
+  /** Estado limpio. Se borra antes: setFlag fusiona y dejaría vivas, p. ej., las entradas «ya usadas» del relato anterior. */
   static async reset(patch = {}) {
+    await this.eventDeck()?.unsetFlag(SYSTEM_ID, FLAGS.STATE);
     return this.patch({ ...foundry.utils.deepClone(DEFAULT_STATE), ...patch });
   }
 

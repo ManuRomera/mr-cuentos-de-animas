@@ -210,7 +210,7 @@
       "BondName": "Person",
       "BondText": "What binds you, what parts you",
       "NoBonds": "No one yet.",
-      "SplitNote": "Maximum Spirit and Resolve do not add up to 10: fine if the scenario asks for it."
+      "SplitNote": "This split breaks the rules: 10 points between both, at least 3 in each. Fix it with the arrows."
     },
     "Diary": {
       "Kicker": "Story diary",
@@ -550,7 +550,7 @@
       "spirit": {
         "Title": "Spirit",
         "Short": "Your balance. Lost when failing an obstacle or facing a Grey Lady.",
-        "Long": "The cold stones are Spirit. When one goes out, the story grows colder. If all go out, the story heads straight to its darkest epilogue."
+        "Long": "The cold stones are Spirit. When one goes out, the story grows colder. Running out of Spirit does not end the story: play goes on, but the epilogue will be the one the table gives for 0."
       },
       "determination": {
         "Title": "Resolve",
@@ -647,7 +647,7 @@
       },
       "split": {
         "Title": "Split",
-        "Short": "Ten points between Spirit and Resolve, at least 3 each. A scenario may change it."
+        "Short": "Ten points between Spirit and Determination, at least 3 and at most 7 in each. It is set when the protagonist is created; once the story is running it cannot change."
       },
       "traits": {
         "Title": "Traits",
@@ -676,6 +676,14 @@
       "collection": {
         "Title": "Included collection",
         "Short": "Scenarios bundled with the system. Add them to your world to play or edit them."
+      },
+      "random": {
+        "Title": "Random protagonist",
+        "Short": "Fills the whole dossier with a random combination that follows the rules. Each field's dice rerolls only that field."
+      },
+      "creation": {
+        "Title": "Creating the protagonist",
+        "Short": "What the book asks for: name, profession, place of origin, physical description, short background, four traits or objects and the 10-point split."
       }
     },
     "Skin": {
@@ -687,6 +695,7 @@
       "environment": "Which obstacle does the environment raise?",
       "character": "Which obstacle does a character raise?",
       "incident": "Which supporting character suffers the mishap?",
+      "ownIncident": "What mishap happens?",
       "Waiting": "Choose the scene from the scenario's list…",
       "Used": "already used",
       "Empty": "The scenario has no entries for this card: write the scene.",
@@ -735,6 +744,24 @@
         "incidents": "Own mishaps (optional; otherwise a character is chosen).",
         "guardianNotes": "Notes only for whoever runs the game.",
         "source": "Origin: { collection, license, url }."
+      }
+    },
+    "Create": {
+      "Random": "Random protagonist",
+      "RandomConfirm": "Name, profession, origin, description, background, traits and split will be replaced with random ones. Continue?",
+      "Reroll": "Reroll",
+      "MoreSpirit": "One more point of Spirit",
+      "MoreDetermination": "One more point of Determination",
+      "Generated": "Protagonist generated: {name}",
+      "Missing": {
+        "Title": "Still needed to play:",
+        "name": "name",
+        "profession": "profession",
+        "origin": "place of origin",
+        "description": "physical description",
+        "backstory": "short background",
+        "traits": "four traits or objects",
+        "split": "a valid Spirit/Determination split"
       }
     }
   }

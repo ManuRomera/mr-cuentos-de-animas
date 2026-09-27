@@ -2,7 +2,7 @@
   "id": "mr-cuentos-de-animas",
   "title": "MR · Cuentos de Ánimas",
   "description": "Sistema no oficial para Foundry VTT inspirado en Cuentos de Ánimas: relatos de horror rural y folclore con la Mesa de Ánimas, cartas físicas, Espíritu y Determinación, Damas Grises, diario, verdades y recuerdos, y un modo íntimo 1 + 1. No redistribuye texto, cartas ni ilustraciones del juego original.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13.351",

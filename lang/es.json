@@ -210,7 +210,7 @@
       "BondName": "Persona",
       "BondText": "Qué os une, qué os separa",
       "NoBonds": "Nadie todavía.",
-      "SplitNote": "Espíritu y Determinación máximos no suman 10: vale si el escenario lo pide."
+      "SplitNote": "Este reparto no cumple las reglas: 10 puntos entre los dos, mínimo 3 en cada uno. Corrígelo con las flechas."
     },
     "Diary": {
       "Kicker": "Diario del relato",
@@ -550,7 +550,7 @@
       "spirit": {
         "Title": "Espíritu",
         "Short": "Tu equilibrio. Se pierde al fallar un obstáculo o ante una Dama Gris.",
-        "Long": "Las piedras frías son el Espíritu. Cuando una se apaga, el relato se enfría. Si se apagan todas, el relato va directo a su epílogo más oscuro."
+        "Long": "Las piedras frías son el Espíritu. Cuando una se apaga, el relato se enfría. Quedarse sin Espíritu no termina el relato: se sigue jugando, pero el epílogo será el que marque la tabla para 0."
       },
       "determination": {
         "Title": "Determinación",
@@ -647,7 +647,7 @@
       },
       "split": {
         "Title": "Reparto",
-        "Short": "Diez puntos entre Espíritu y Determinación, mínimo 3 en cada uno. Un escenario puede cambiarlo."
+        "Short": "Diez puntos entre Espíritu y Determinación, mínimo 3 y máximo 7 en cada uno. Se fija al crear el protagonista; con el relato en marcha ya no se cambia."
       },
       "traits": {
         "Title": "Rasgos",
@@ -676,6 +676,14 @@
       "collection": {
         "Title": "Colección incluida",
         "Short": "Escenarios que acompañan al sistema. Añádelos a tu mundo para jugarlos o editarlos."
+      },
+      "random": {
+        "Title": "Protagonista al azar",
+        "Short": "Rellena todo el expediente con una combinación al azar que cumple las reglas. Los dados de cada campo vuelven a tirar solo ese campo."
+      },
+      "creation": {
+        "Title": "Creación del protagonista",
+        "Short": "Lo que pide el libro: nombre, profesión, lugar de origen, descripción física, breve historial, cuatro rasgos u objetos y el reparto de 10 puntos."
       }
     },
     "Skin": {
@@ -687,6 +695,7 @@
       "environment": "¿Qué obstáculo presenta el entorno?",
       "character": "¿Qué obstáculo presenta un personaje?",
       "incident": "¿Qué personaje secundario sufre el percance?",
+      "ownIncident": "¿Qué percance ocurre?",
       "Waiting": "Elige la escena en la lista del escenario…",
       "Used": "ya usada",
       "Empty": "El escenario no tiene entradas para esta carta: escribe la escena.",
@@ -735,6 +744,24 @@
         "incidents": "Percances propios (opcional; si no, se elige un personaje).",
         "guardianNotes": "Notas solo para quien dirige.",
         "source": "Procedencia: { collection, license, url }."
+      }
+    },
+    "Create": {
+      "Random": "Protagonista al azar",
+      "RandomConfirm": "Se sustituirán el nombre, la profesión, el origen, la descripción, el historial, los rasgos y el reparto por otros al azar. ¿Seguir?",
+      "Reroll": "Otra tirada",
+      "MoreSpirit": "Un punto más de Espíritu",
+      "MoreDetermination": "Un punto más de Determinación",
+      "Generated": "Protagonista generado: {name}",
+      "Missing": {
+        "Title": "Para jugar falta:",
+        "name": "nombre",
+        "profession": "profesión",
+        "origin": "lugar de origen",
+        "description": "descripción física",
+        "backstory": "breve historial",
+        "traits": "cuatro rasgos u objetos",
+        "split": "un reparto válido de Espíritu y Determinación"
       }
     }
   }

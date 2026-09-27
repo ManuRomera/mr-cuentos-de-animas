@@ -83,7 +83,7 @@ export class TableApp extends SystemApp {
       card: cardView(current, { customBack: scenario?.system.customBack }),
       choosing: event && !event.choice ? {
         label: game.i18n.localize(`CdA.Kind.${event.kind}`), value: event.value,
-        prompt: game.i18n.localize(PROMPTS[event.kind] ?? "CdA.Choose.clue"),
+        prompt: game.i18n.localize(Game.choiceList(scenario, event.kind) === "incidents" ? "CdA.Choose.ownIncident" : PROMPTS[event.kind] ?? "CdA.Choose.clue"),
         entries: Game.choices(state)
       } : null,
       obstacle: obstacle ? {

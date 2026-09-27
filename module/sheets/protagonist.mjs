@@ -3,6 +3,8 @@ import { openApp } from "../apps/registry.mjs";
 import { resource } from "../apps/view.mjs";
 import { MEMORY_ICONS, TRUTH_ICONS } from "../apps/archive.mjs";
 import { StateService } from "../services/state.mjs";
+import { creationProblems, generateProtagonist, ROLL } from "../generator.mjs";
+import { validSplit } from "../rules.mjs";
 import { BaseActorSheet } from "./base.mjs";
 
 /**
@@ -16,7 +18,7 @@ export class ProtagonistSheet extends BaseActorSheet {
     position: { width: 1120, height: 800 },
     window: { icon: "fa-solid fa-id-card" },
     actions: {
-      pip: ProtagonistSheet.#pip, add: ProtagonistSheet.#add, remove: ProtagonistSheet.#remove,
+      pip: ProtagonistSheet.#pip, split: ProtagonistSheet.#split, roll: ProtagonistSheet.#roll, randomize: ProtagonistSheet.#randomize, add: ProtagonistSheet.#add, remove: ProtagonistSheet.#remove,
       open: ProtagonistSheet.#open, table: () => openApp("table")
     }
   };
@@ -32,8 +34,12 @@ export class ProtagonistSheet extends BaseActorSheet {
     return {
       ...context, actor, system: s, gm, editable: this.isEditable, assets: ASSETS,
       spirit: resource(actor, "spirit"), determination: resource(actor, "determination"),
-      splitOk: s.spirit.max + s.determination.max === RULES.resourceTotal,
+      splitOk: validSplit(s.spirit.max, s.determination.max),
       total: RULES.resourceTotal,
+      // El reparto se fija al crear: con el relato en marcha ya no se toca.
+      canSplit: this.isEditable && StateService.get().protagonistUuid !== actor.uuid,
+      splitMin: s.spirit.max <= RULES.resourceMin, splitMax: s.spirit.max >= RULES.resourceMax,
+      missing: creationProblems(actor).map(k => game.i18n.localize(`CdA.Create.Missing.${k}`)),
       traits: traits.slice(0, 4).map((x, i) => ({ ...x, i, n: i + 1 })),
       objects: s.objects.map((x, i) => ({ ...x, i })),
       bonds: s.bonds.map((x, i) => ({ ...x, i })),
@@ -50,6 +56,39 @@ export class ProtagonistSheet extends BaseActorSheet {
     const key = target.dataset.resource, n = Number(target.dataset.n);
     const value = this.document.system[key].value;
     await this.document.update({ [`system.${key}.value`]: value === n ? n - 1 : n });
+  }
+  /** Mueve un punto entre Espíritu y Determinación sin salir nunca del reparto del libro (10, mínimo 3). */
+  static async #split(event, target) {
+    const spirit = Math.clamp(this.document.system.spirit.max + Number(target.dataset.delta), RULES.resourceMin, RULES.resourceMax);
+    const determination = RULES.resourceTotal - spirit;
+    await this.document.update({ "system.spirit": { value: spirit, max: spirit }, "system.determination": { value: determination, max: determination } });
+  }
+  /** Vuelve a tirar un solo campo. */
+  static async #roll(event, target) {
+    const field = target.dataset.field, s = this.document.system;
+    if (field === "name") {
+      const name = ROLL.name(Math.random);
+      return this.document.update({ name, "prototypeToken.name": name });
+    }
+    if (field === "trait") {
+      const traits = [...s.traits];
+      while (traits.length < 4) traits.push({ label: "", text: "" });
+      traits[Number(target.dataset.index)] = ROLL.trait(Math.random);
+      return this.document.update({ "system.traits": traits });
+    }
+    const value = field === "profession" ? ROLL.profession(Math.random, this.document.name) : ROLL[field]?.(Math.random);
+    if (value !== undefined) await this.document.update({ [`system.${field}`]: value });
+  }
+  /** Protagonista completo al azar; pide confirmación si ya había algo escrito. */
+  static async #randomize() {
+    const s = this.document.system;
+    const written = [s.profession, s.origin, s.description, s.backstory, ...s.traits.map(x => x.label + x.text)].some(v => v?.trim());
+    if (written && !(await foundry.applications.api.DialogV2.confirm({
+      window: { title: "CdA.Create.Random" }, content: `<p>${game.i18n.localize("CdA.Create.RandomConfirm")}</p>`
+    }))) return;
+    const { name, system } = generateProtagonist();
+    if (StateService.get().protagonistUuid === this.document.uuid) { delete system.spirit; delete system.determination; }
+    await this.document.update({ name, system, "prototypeToken.name": name });
   }
   static async #add(event, target) {
     const list = target.dataset.list;

@@ -1,7 +1,7 @@
 import { SYSTEM_ID, TEMPLATES } from "../constants.mjs";
 import { SystemApp } from "./base.mjs";
 import { openApp } from "./registry.mjs";
-import { createProtagonist } from "./start.mjs";
+import { createProtagonist, randomProtagonist } from "./start.mjs";
 
 /** Aviso pequeño de primer inicio para el Guardián. Nunca a pantalla completa. */
 export class WelcomeApp extends SystemApp {
@@ -22,6 +22,7 @@ export class WelcomeApp extends SystemApp {
   static async #go(event, target) {
     const app = target.dataset.app;
     if (app === "protagonist") (await createProtagonist())?.sheet.render(true);
+    else if (app === "random") (await randomProtagonist())?.sheet.render(true);
     else openApp(app);
     this.close();
   }

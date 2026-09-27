@@ -983,3 +983,23 @@
   .mr-cda .cda-mode-grid { grid-template-columns: 1fr 1fr; }
   .mr-cda .cda-entries { grid-template-columns: 1fr; }
 }
+
+/* Creación tutorizada y generador */
+.mr-cda .cda-rollable { display: flex; align-items: center; gap: .2rem; min-width: 0; }
+.mr-cda .cda-rollable > input { flex: 1; min-width: 0; }
+.mr-cda button.cda-dice { flex: 0 0 auto; width: 1.7em; height: 1.7em; min-height: 0; padding: 0; display: inline-grid; place-items: center; border: 0; background: transparent; color: #a07a45; opacity: .45; font-size: .85em; cursor: pointer; transition: opacity .15s, transform .15s; }
+.mr-cda button.cda-dice:hover, .mr-cda button.cda-dice:focus-visible { opacity: 1; transform: rotate(-12deg); }
+.mr-cda .cda-trait button.cda-dice { position: absolute; right: .25rem; top: .25rem; }
+.mr-cda .cda-section-title button.cda-dice { font-size: .7em; vertical-align: middle; }
+.mr-cda button.cda-random { align-self: flex-start; display: inline-flex; align-items: center; gap: .4em; margin-top: .3rem; padding: .25em .7em; min-height: 0; font-size: .85em; border-radius: 999px; border: 1px solid rgba(110, 80, 40, .35); background: rgba(255, 252, 244, .5); color: #5b3d1c; cursor: pointer; }
+.mr-cda button.cda-random:hover { background: rgba(255, 244, 220, .9); }
+.mr-cda .cda-split-mini { display: flex; align-items: center; justify-content: center; gap: .4rem; font-family: var(--cda-sans); font-size: .8em; color: var(--cda-muted); }
+.mr-cda .cda-split-mini b.frost { color: #bcd3e6; } .mr-cda .cda-split-mini b.ember { color: #e9a55c; }
+.mr-cda .cda-split-mini .cda-icon-btn { color: var(--cda-text); }
+.mr-cda .cda-split-mini .cda-icon-btn:disabled { opacity: .25; }
+.mr-cda .cda-create-missing { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; margin: 0; padding: .4rem 1.1rem; font-size: .85em; color: #6b3a1f; background: rgba(233, 192, 124, .22); border-bottom: 1px solid rgba(110, 80, 40, .2); }
+.mr-cda .cda-create-missing span { padding: .05em .55em; border-radius: 999px; background: rgba(255, 252, 244, .7); border: 1px dashed rgba(110, 80, 40, .35); }
+.mr-cda .cda-identity-grid label > span.cda-rollable { display: flex; position: relative; letter-spacing: normal; text-transform: none; font-size: 1em; }
+.mr-cda .cda-identity-grid .cda-rollable > input { padding-right: 1.8em; }
+.mr-cda .cda-identity-grid .cda-rollable > button.cda-dice { position: absolute; right: .15rem; top: 50%; translate: 0 -50%; }
+.mr-cda .cda-identity-grid .cda-rollable > button.cda-dice:hover { transform: none; rotate: -12deg; }

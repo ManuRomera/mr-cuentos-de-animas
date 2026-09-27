@@ -35,6 +35,7 @@ Crea un mundo con **MR · Cuentos de Ánimas**. Al entrar como Guardián aparece
 | **Cartas** | El mazo del libro sobre documentos *Cards* de Foundry: 4 Pistas, 4 Percances, Obstáculos de Entorno y de Personaje 4‑7 y 3 Damas Grises, en montones de 6, 6 y 4. Dos estilos: **Fotográfico** o **Clásico** (las cartas originales). |
 | **Escenas** | Al revelar una carta se elige la escena en la lista del escenario (o se escribe otra) y queda escrita en una hoja bajo la carta. Las pistas halladas quedan a la vista, fuera del descarte. |
 | **El relato a la vista** | La Sinopsis, las pistas y la tensión revelada quedan en una columna de la Mesa para releerlas en cualquier momento. |
+| **Protagonistas** | Expediente con todo lo que pide el libro y una lista de lo que falta. El reparto de Espíritu y Determinación nunca se sale de las reglas. **Protagonista al azar** con miles de combinaciones y un dado por campo. |
 | **Resolución** | Dificultad de la carta +1 por Dama, carta numérica y resultado en la propia mesa, sincronizado. Una Determinación por obstáculo: +2 antes de revelar, o +1 / repetir después. |
 | **Damas Grises** | Tres umbrales de tensión: cada una pide su precio, endurece los obstáculos y enfría la mesa (niebla, sombra, desaturación). La tercera abre el epílogo. |
 | **Mazo automático** | Tres bloques con una Dama en cada uno: *distribución clásica* o *Damas impredecibles*. El Guardián ve cuántas cartas quedan por bloque y si la Dama sigue dentro, nunca qué carta viene. |

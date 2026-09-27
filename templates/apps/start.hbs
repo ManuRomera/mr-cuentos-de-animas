@@ -38,6 +38,7 @@
           {{#each protagonists}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}
         </select>
         <input type="text" name="newName" placeholder="{{localize 'CdA.Session.NewName'}}" aria-label="{{localize 'CdA.Session.NewName'}}">
+        <button type="button" class="cda-random" data-action="random" data-help="random"><i class="fa-solid fa-dice-d20" aria-hidden="true"></i>{{localize "CdA.Create.Random"}}</button>
       </div>
       <div class="cda-start-block cda-split" data-help="split">
         <span class="cda-kicker">4 · {{localize "CdA.Session.Split"}}</span>

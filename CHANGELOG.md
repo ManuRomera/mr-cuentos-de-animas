@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.0 · 2026-09-27
+
+### Creación de protagonistas
+- **Reparto tutorizado**: en el expediente ya no se escriben los máximos a mano. Unas flechas mueven un punto entre Espíritu y Determinación sin salir nunca de las reglas (10 en total, entre 3 y 7 en cada uno). Con el relato en marcha el reparto queda fijo. Si un protagonista antiguo tiene un reparto imposible, se avisa y se corrige con un clic.
+- **Lista de lo que falta**: mientras el protagonista no está completo, el expediente enseña qué pide el libro y aún no tiene (profesión, origen, descripción física, historial, cuatro rasgos u objetos, reparto).
+- **Protagonista al azar**: un botón en el expediente, en *Nuevo relato* y en el aviso de bienvenida crea un protagonista completo y válido: 120 nombres, 77 apellidos, 60 profesiones con sus objetos, 50 procedencias, miles de descripciones e historiales, 45 rasgos, 40 recuerdos y 40 epítetos. Cada campo tiene su dado para volver a tirar solo ese.
+- En *Nuevo relato*, al elegir un protagonista ya hecho el reparto parte del suyo.
+
+### Correcciones
+- El **Percance** ya no mezcla listas: si el escenario trae percances propios se elige el percance; si no, el personaje secundario que lo sufre, con la pregunta adecuada en cada caso.
+- Al empezar un relato nuevo, las escenas del anterior ya no aparecen como «ya usadas».
+- «Abrir la Mesa al entrar» fallaba (`trap returned falsish for property 'top'`) cuando la ventana recordada estaba pegada al borde superior o izquierdo.
+- La ayuda del Espíritu decía que quedarse a 0 terminaba el relato; no es así.
+
 ## 1.3.0 · 2026-09-27
 
 ### Arte final

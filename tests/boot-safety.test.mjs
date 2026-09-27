@@ -137,3 +137,9 @@ test("los estilos de botón no tocan los controles de cabecera de Foundry (sus i
     }
   }
 });
+
+test("nadie escribe en el Proxy position de ApplicationV2 (un 0 lanza TypeError)", () => {
+  for (const file of code) {
+    assert.doesNotMatch(read(file), /Object\.assign\(this\.position|this\.position\.\w+\s*=[^=]/, `${file} escribe en this.position`);
+  }
+});

@@ -72,10 +72,17 @@ export function WithMemory(Base) {
       if (saved.tabs) Object.assign(this.tabGroups, saved.tabs);
     }
 
-    /** Al reabrir una ventana ya construida (singletons), revalidar contra el viewport actual. */
-    async _preFirstRender(context, options) {
-      await super._preFirstRender?.(context, options);
-      Object.assign(this.position, fitToViewport(numeric(this.position), viewport(), this.constructor.SIZE_LIMITS));
+    /**
+     * Al (re)abrir una ventana, revalidar su geometría contra el viewport actual.
+     * Se pasa por las opciones de render: el `position` de ApplicationV2 es un Proxy cuyo
+     * `set` devuelve el valor asignado, y asignar un 0 (p. ej. `top: 0`) lanza un TypeError.
+     */
+    _configureRenderOptions(options) {
+      if (options.isFirstRender) {
+        const fitted = fitToViewport(numeric(this.position), viewport(), this.constructor.SIZE_LIMITS);
+        options.position = { ...fitted, ...(options.position ?? {}) };
+      }
+      super._configureRenderOptions(options);
     }
 
     _onPosition(position) {

@@ -6,28 +6,40 @@
       <figcaption>{{localize "CdA.Actor.Kicker"}}</figcaption>
     </figure>
     <div class="cda-identity">
-      <input class="cda-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'CdA.Actor.Name'}}" aria-label="{{localize 'CdA.Actor.Name'}}">
+      <div class="cda-rollable"><input class="cda-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'CdA.Actor.Name'}}" aria-label="{{localize 'CdA.Actor.Name'}}">{{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="name" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</div>
       <div class="cda-identity-grid">
-        <label><span>{{localize "CdA.Actor.Profession"}}</span><input type="text" name="system.profession" value="{{system.profession}}"></label>
-        <label><span>{{localize "CdA.Actor.Origin"}}</span><input type="text" name="system.origin" value="{{system.origin}}"></label>
-        <label><span>{{localize "CdA.Actor.Age"}}</span><input type="text" name="system.age" value="{{system.age}}"></label>
+        <label><span>{{localize "CdA.Actor.Profession"}}</span><span class="cda-rollable"><input type="text" name="system.profession" value="{{system.profession}}">{{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="profession" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</span></label>
+        <label><span>{{localize "CdA.Actor.Origin"}}</span><span class="cda-rollable"><input type="text" name="system.origin" value="{{system.origin}}">{{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="origin" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</span></label>
+        <label><span>{{localize "CdA.Actor.Age"}}</span><span class="cda-rollable"><input type="text" name="system.age" value="{{system.age}}">{{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="age" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</span></label>
       </div>
-      <input class="cda-epithet" type="text" name="system.epithet" value="{{system.epithet}}" placeholder="{{localize 'CdA.Actor.Epithet'}}" aria-label="{{localize 'CdA.Actor.Epithet'}}">
+      <div class="cda-rollable"><input class="cda-epithet" type="text" name="system.epithet" value="{{system.epithet}}" placeholder="{{localize 'CdA.Actor.Epithet'}}" aria-label="{{localize 'CdA.Actor.Epithet'}}">{{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="epithet" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</div>
+      {{#if editable}}<button type="button" class="cda-random" data-action="randomize" data-help="random"><i class="fa-solid fa-dice-d20" aria-hidden="true"></i>{{localize "CdA.Create.Random"}}</button>{{/if}}
     </div>
     <div class="cda-dossier-resources">
       <div class="cda-res frost" data-help="spirit">
         <span class="cda-res-label">{{localize "CdA.Resource.spirit"}}</span>
         <div class="cda-res-pips">{{#each spirit.items}}<button type="button" class="cda-pip {{#unless on}}spent{{/unless}}" data-action="pip" data-resource="spirit" data-n="{{n}}" aria-label="{{localize 'CdA.Resource.spirit'}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}><img src="{{#if on}}{{@root.assets.spirit.on}}{{else}}{{@root.assets.spirit.off}}{{/if}}" alt=""></button>{{/each}}</div>
-        <span class="cda-res-num"><input type="number" name="system.spirit.value" value="{{system.spirit.value}}" min="0" max="{{system.spirit.max}}" aria-label="{{localize 'CdA.Resource.spirit'}}"> / <input type="number" name="system.spirit.max" value="{{system.spirit.max}}" min="1" max="12" aria-label="{{localize 'CdA.Resource.Max'}}"></span>
+        <span class="cda-res-num"><input type="number" name="system.spirit.value" value="{{system.spirit.value}}" min="0" max="{{system.spirit.max}}" aria-label="{{localize 'CdA.Resource.spirit'}}"> / {{system.spirit.max}}</span>
       </div>
       <div class="cda-res ember" data-help="determination">
         <span class="cda-res-label">{{localize "CdA.Resource.determination"}}</span>
         <div class="cda-res-pips">{{#each determination.items}}<button type="button" class="cda-pip {{#unless on}}spent{{/unless}}" data-action="pip" data-resource="determination" data-n="{{n}}" aria-label="{{localize 'CdA.Resource.determination'}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}><img src="{{#if on}}{{@root.assets.determination.on}}{{else}}{{@root.assets.determination.off}}{{/if}}" alt=""></button>{{/each}}</div>
-        <span class="cda-res-num"><input type="number" name="system.determination.value" value="{{system.determination.value}}" min="0" max="{{system.determination.max}}" aria-label="{{localize 'CdA.Resource.determination'}}"> / <input type="number" name="system.determination.max" value="{{system.determination.max}}" min="1" max="12" aria-label="{{localize 'CdA.Resource.Max'}}"></span>
+        <span class="cda-res-num"><input type="number" name="system.determination.value" value="{{system.determination.value}}" min="0" max="{{system.determination.max}}" aria-label="{{localize 'CdA.Resource.determination'}}"> / {{system.determination.max}}</span>
       </div>
+      {{#if canSplit}}
+      <div class="cda-split-mini" data-help="split">
+        <button type="button" class="cda-icon-btn" data-action="split" data-delta="-1" {{#if splitMin}}disabled{{/if}} aria-label="{{localize 'CdA.Create.MoreDetermination'}}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+        <span>{{localize "CdA.Session.Split"}} <b class="frost">{{system.spirit.max}}</b> · <b class="ember">{{system.determination.max}}</b></span>
+        <button type="button" class="cda-icon-btn" data-action="split" data-delta="1" {{#if splitMax}}disabled{{/if}} aria-label="{{localize 'CdA.Create.MoreSpirit'}}"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      {{/if}}
       {{#unless splitOk}}<p class="cda-warning" data-help="split"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>{{localize "CdA.Actor.SplitNote"}}</p>{{/unless}}
     </div>
   </header>
+
+  {{#if missing.length}}{{#unless inStory}}
+  <p class="cda-create-missing" data-help="creation"><i class="fa-solid fa-list-check" aria-hidden="true"></i><b>{{localize "CdA.Create.Missing.Title"}}</b> {{#each missing}}<span>{{this}}</span>{{/each}}</p>
+  {{/unless}}{{/if}}
 
   <div class="cda-dossier-body">
     {{!-- Quién es --}}
@@ -37,14 +49,15 @@
         {{#each traits}}
         <div class="cda-trait">
           <span class="cda-trait-n" aria-hidden="true">{{n}}</span>
+          {{#if @root.editable}}<button type="button" class="cda-dice" data-action="roll" data-field="trait" data-index="{{i}}" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}
           <input type="text" name="system.traits.{{i}}.label" value="{{label}}" placeholder="{{localize 'CdA.Actor.TraitName'}}" aria-label="{{localize 'CdA.Actor.TraitName'}} {{n}}">
           <textarea name="system.traits.{{i}}.text" rows="2" placeholder="{{localize 'CdA.Actor.TraitText'}}" aria-label="{{localize 'CdA.Actor.TraitText'}} {{n}}">{{text}}</textarea>
         </div>
         {{/each}}
       </div>
-      <h3 class="cda-section-title">{{localize "CdA.Actor.Description"}}</h3>
+      <h3 class="cda-section-title">{{localize "CdA.Actor.Description"}} {{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="description" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</h3>
       <textarea class="cda-prose" name="system.description" rows="4" aria-label="{{localize 'CdA.Actor.Description'}}">{{system.description}}</textarea>
-      <h3 class="cda-section-title">{{localize "CdA.Actor.History"}}</h3>
+      <h3 class="cda-section-title">{{localize "CdA.Actor.History"}} {{#if editable}}<button type="button" class="cda-dice" data-action="roll" data-field="backstory" data-tooltip="{{localize 'CdA.Create.Reroll'}}" aria-label="{{localize 'CdA.Create.Reroll'}}"><i class="fa-solid fa-dice" aria-hidden="true"></i></button>{{/if}}</h3>
       <textarea class="cda-prose" name="system.backstory" rows="6" aria-label="{{localize 'CdA.Actor.History'}}">{{system.backstory}}</textarea>
     </section>
 
