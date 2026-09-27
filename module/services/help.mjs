@@ -11,7 +11,7 @@ import { get } from "../settings.mjs";
 const DELAY = 1200;
 
 export class RichHelp {
-  static #tip = null; static #timer = null; static #target = null; static #controller = null;
+  static #tip = null; static #timer = null; static #target = null; static #controller = null; static #watch = null;
 
   static init() {
     this.#controller?.abort();
@@ -90,10 +90,13 @@ export class RichHelp {
       close.addEventListener("click", () => this.hide());
       close.focus();
     }
+    // Si la ventana se repinta bajo el ratón, el elemento desaparece sin «pointerout»: la nota no debe quedarse.
+    else this.#watch = setInterval(() => { if (!target.isConnected || !target.matches(":hover")) this.hide(); }, 400);
   }
 
   static hide() {
     clearTimeout(this.#timer);
+    clearInterval(this.#watch);
     this.#tip?.remove();
     this.#tip = null;
   }

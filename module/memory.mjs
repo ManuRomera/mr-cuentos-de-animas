@@ -99,6 +99,11 @@ export function WithMemory(Base) {
 
     /** ¿Está abierta esta sección plegable? */
     sectionOpen(id, fallback = true) { return this._mrMemory.sections[id] ?? fallback; }
+    /** Recordar una sección abierta o cerrada sin <details> (paneles propios). */
+    setSection(id, open) {
+      this._mrMemory.sections[id] = open;
+      writeMemory(this._mrMemory.id, { sections: this._mrMemory.sections });
+    }
 
     async _onRender(context, options) {
       await super._onRender(context, options);

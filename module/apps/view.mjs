@@ -1,4 +1,4 @@
-import { ASSETS, CARD_KINDS } from "../constants.mjs";
+import { ASSETS, CARD_KINDS, SYSTEM_ID } from "../constants.mjs";
 import { DeckService } from "../services/decks.mjs";
 
 /** Datos de presentación compartidos por la Mesa, el Guardián y la carta ampliada. */
@@ -9,34 +9,56 @@ export const KIND_ICONS = {
 const ROMAN = ["", "I", "II", "III"];
 export const roman = n => ROMAN[n] ?? String(n);
 
-export function cardView(card, { gm = game.user.isGM } = {}) {
+/** Estilo de cartas de este usuario: "mr" (fotográfico) o "classic" (cartas oficiales del libro). */
+export const classicSkin = () => game.settings.get(SYSTEM_ID, "cardSkin") === "classic";
+
+/** Cara de una carta de evento según el estilo elegido. En las Damas, `value` es su número (1‑3). */
+export function eventArt(kind, value, classic = classicSkin()) {
+  if (!classic) return kind === CARD_KINDS.GRAY ? ASSETS.gray[Math.clamp((value || 1) - 1, 0, 2)] : ASSETS.kinds[kind] ?? ASSETS.cardBack;
+  const c = ASSETS.classic;
+  if (kind === CARD_KINDS.ENVIRONMENT || kind === CARD_KINDS.CHARACTER) return c[kind](Math.clamp(value || 4, 4, 7));
+  return c[kind] ?? c.back;
+}
+export const backArt = (custom, classic = classicSkin()) => custom || (classic ? ASSETS.classic.back : ASSETS.cardBack);
+export const numberArt = (value, classic = classicSkin()) => classic ? ASSETS.classic.number(Math.clamp(value || 1, 1, 10)) : ASSETS.numberArt;
+export const numberBackArt = (classic = classicSkin()) => classic ? ASSETS.classic.numberBack : ASSETS.numberBack;
+export const tokenArt = (resource, on, classic = classicSkin()) => classic ? ASSETS.classic[resource] : ASSETS[resource][on ? "on" : "off"];
+
+/**
+ * Vista de una carta de evento. `scene` es lo que el relato ha puesto encima: la entrada
+ * elegida del escenario o, en una Dama Gris, su texto de la Tabla de Tensión.
+ */
+export function cardView(card, { scene = null, customBack = "" } = {}) {
   if (!card) return null;
   const meta = DeckService.meta(card);
-  const face = card.faces?.[card.face ?? 0] ?? card.faces?.[0];
+  scene ??= meta.scene ?? null;
   const kind = meta.kind ?? CARD_KINDS.CLUE;
+  const classic = classicSkin();
+  const value = kind === CARD_KINDS.GRAY ? meta.grayIndex : meta.value;
   return {
-    id: card.id, kind, icon: KIND_ICONS[kind],
+    id: card.id, kind, classic, icon: KIND_ICONS[kind],
     kindLabel: game.i18n.localize(`CdA.Kind.${kind}`),
-    title: meta.title || face?.name || card.name,
-    text: meta.text ?? face?.text ?? "",
-    img: face?.img || ASSETS.kinds[kind] || ASSETS.cardBack,
-    back: card.back?.img || ASSETS.cardBack,
-    difficulty: meta.difficulty || 0,
+    value: kind === CARD_KINDS.GRAY ? 0 : meta.value || 0,
     gray: kind === CARD_KINDS.GRAY ? roman(meta.grayIndex) : "",
-    guardian: gm ? meta.guardian ?? "" : ""
+    img: eventArt(kind, value, classic),
+    back: backArt(customBack, classic),
+    scene: scene?.title || scene?.text ? { title: scene.title ?? "", text: scene.text ?? "" } : null,
+    title: card.name
   };
 }
 
 export const resource = (actor, key) => {
   const r = actor?.system[key];
   if (!r) return { value: 0, max: 0, items: [] };
-  return { value: r.value, max: r.max, low: r.value <= 1, items: Array.from({ length: r.max }, (_, i) => ({ n: i + 1, on: i < r.value })) };
+  return {
+    value: r.value, max: r.max, low: r.value <= 1,
+    items: Array.from({ length: r.max }, (_, i) => ({ n: i + 1, on: i < r.value, img: tokenArt(key, i < r.value) }))
+  };
 };
 
 /** Opciones de una lista para <select>, ya traducidas. */
 export const choices = (keys, prefix, selected) =>
   keys.map(value => ({ value, label: game.i18n.localize(`${prefix}.${value || "none"}`), selected: value === selected }));
-
 
 /**
  * `url(...)` para variables CSS en línea. Una ruta relativa dentro de una variable se

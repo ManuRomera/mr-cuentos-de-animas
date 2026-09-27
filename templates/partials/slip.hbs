@@ -1,0 +1,6 @@
+{{!-- Hoja de escena: lo que el relato ha puesto sobre la carta. --}}
+<div class="cda-slip kind-{{card.kind}} {{#unless card.scene}}empty{{/unless}}">
+  <span class="cda-kicker"><i class="{{card.icon}}" aria-hidden="true"></i>{{card.kindLabel}}{{#if card.value}} · {{localize "CdA.Game.Difficulty"}} {{card.value}}{{/if}}{{#if card.gray}} {{card.gray}}{{/if}}</span>
+  {{#if card.scene}}<h3>{{card.scene.title}}</h3>{{#if card.scene.text}}<p>{{card.scene.text}}</p>{{/if}}
+  {{else}}<p class="cda-muted">{{localize "CdA.Choose.Waiting"}}</p>{{/if}}
+</div>

@@ -1,5 +1,5 @@
 import { ASSETS, CARD_KINDS, DEFAULT_STATE, FLAGS, SYSTEM_ID } from "../constants.mjs";
-import { blockSummary, orderDeck, shuffle } from "../rules.mjs";
+import { blockSummary, eventCards, orderDeck, shuffle } from "../rules.mjs";
 import { StateService } from "./state.mjs";
 
 /**
@@ -15,12 +15,6 @@ const ROLES = {
 const QUIET = { chatNotification: false };
 const cardsClass = () => globalThis.Cards?.implementation ?? globalThis.Cards;
 const bySort = (a, b) => a.sort - b.sort;
-
-/** Entradas del escenario → datos de carta. */
-const SCENARIO_LISTS = [
-  ["clues", CARD_KINDS.CLUE], ["environmentObstacles", CARD_KINDS.ENVIRONMENT],
-  ["characterObstacles", CARD_KINDS.CHARACTER], ["incidents", CARD_KINDS.INCIDENT]
-];
 
 export class DeckService {
   static stack(role) { return game.cards?.find(c => c.getFlag(SYSTEM_ID, FLAGS.ROLE) === role) ?? null; }
@@ -78,31 +72,32 @@ export class DeckService {
   /*  Mazo de Ánimas                            */
   /* ------------------------------------------ */
 
-  static cardData(entry, kind, back = ASSETS.cardBack) {
-    const title = entry.title || game.i18n.localize(`CdA.Kind.${kind}`);
+  /** Carta de Evento genérica, como las del libro: tipo y, en los obstáculos, dificultad impresa (4‑7). */
+  static cardData(kind, value = 0, back = ASSETS.cardBack) {
+    const label = game.i18n.localize(`CdA.Kind.${kind}`);
+    const name = value ? `${label} · ${value}` : label;
     return {
-      name: title, type: "base", faces: [{ name: title, img: entry.image || ASSETS.kinds[kind], text: entry.text ?? "" }],
+      name, type: "base", value: value || null, faces: [{ name, img: ASSETS.kinds[kind] ?? ASSETS.cardBack, text: "" }],
       back: { img: back }, face: null,
-      flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind, title, text: entry.text ?? "", difficulty: Number(entry.difficulty) || 0, image: entry.image ?? "", guardian: entry.guardian ?? "" } } }
+      flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind, value: Number(value) || 0 } } }
     };
   }
 
-  static grayData(scenario, index, back) {
-    const entry = scenario.system.tension[index - 1] ?? {};
-    const title = entry.title || `${game.i18n.localize("CdA.Kind.gray")} ${index}`;
+  static grayData(index, back = ASSETS.cardBack) {
+    const name = `${game.i18n.localize("CdA.Kind.gray")} ${["I", "II", "III"][index - 1]}`;
     return {
-      name: title, type: "base", faces: [{ name: title, img: ASSETS.gray[index - 1], text: entry.text ?? "" }],
-      back: { img: back }, face: null,
-      flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind: CARD_KINDS.GRAY, grayIndex: index, title, text: entry.text ?? "", guardian: entry.guardian ?? "" } } }
+      name, type: "base", faces: [{ name, img: ASSETS.gray[index - 1], text: "" }], back: { img: back }, face: null,
+      flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind: CARD_KINDS.GRAY, grayIndex: index } } }
     };
   }
 
-  static async buildEventDeck(scenario, variant = "fixed") {
+  /** Prepara el Mazo de Ánimas: 6, 6 y 4 cartas, cada montón sobre su Dama Gris. */
+  static async buildEventDeck(scenario, { variant = "fixed", size = "full" } = {}) {
     const deck = this.stack("event"), pile = this.stack("eventReveal");
     if (!deck || !pile) throw new Error("Mazos no inicializados.");
-    const back = scenario.system.customBack || ASSETS.cardBack;
-    const normal = SCENARIO_LISTS.flatMap(([list, kind]) => (scenario.system[list] ?? []).map(e => this.cardData(e, kind, back)));
-    const grays = [1, 2, 3].map(i => this.grayData(scenario, i, back));
+    const back = scenario?.system.customBack || ASSETS.cardBack;
+    const normal = eventCards(size).map(c => this.cardData(c.kind, c.value, back));
+    const grays = [1, 2, 3].map(i => this.grayData(i, back));
     const ordered = orderDeck(normal, grays, variant).map(({ block, ...card }, i) => {
       card.sort = (i + 1) * 10;
       card.flags[SYSTEM_ID][FLAGS.CARD].block = block;

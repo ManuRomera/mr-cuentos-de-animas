@@ -4,6 +4,17 @@ Todo el arte debe parecer sacado **de la misma caja**: una caja de relatos encon
 
 El arte actual es **provisional** (generado por código, sin fotos ni IA). Cada imagen definitiva sustituye a la provisional con el mismo nombre; no hay que tocar código.
 
+### Qué cubre cada estilo de cartas
+
+El sistema tiene dos estilos, que cada usuario elige en *Configurar ajustes → Estilo de las cartas*:
+
+- **Clásico**: usa las cartas originales del libro (reverso, Pista, Percance, Obstáculos 4‑7, Dama Gris, numéricas y contadores E/D). Ya están incluidas; no necesitan nada.
+- **Fotográfico**: el estilo propio de MR · Cuentos de Ánimas. **Para este estilo son las imágenes de esta lista.**
+
+La mesa, la portada, el logo, las portadas de escenario y el retrato se usan en los dos estilos.
+
+> Las cartas del juego son **genéricas**: la escena concreta la elige cada mesa en las listas del escenario y aparece escrita en una hoja bajo la carta. Por eso basta con **una imagen por tipo de carta** (no hace falta una por dificultad ni por escenario).
+
 ---
 
 ## 1. Cómo entregar las imágenes
@@ -55,14 +66,14 @@ cropped subject, tilted horizon, modern objects, smartphone, plastic
 | Clave | Destino | Tamaño mínimo | Qué es |
 |---|---|---|---|
 | `table` | `assets/table/table.webp` | 1920×1080 (16:9) | Fondo de la Mesa de Ánimas |
-| `back` | `assets/cards/back.webp` | 900×1200 (3:4) | Reverso de las cartas del relato |
-| `clue` | `assets/cards/clue.webp` | 900×1200 (3:4) | Arte por defecto de **Pista** |
-| `environment` | `assets/cards/environment.webp` | 900×1200 (3:4) | Arte por defecto de **Obstáculo de entorno** |
-| `character` | `assets/cards/character.webp` | 900×1200 (3:4) | Arte por defecto de **Obstáculo de personaje** |
-| `incident` | `assets/cards/incident.webp` | 900×1200 (3:4) | Arte por defecto de **Percance** |
-| `gray-1` | `assets/cards/gray-1.webp` | 900×1200 (3:4) | Primera Dama Gris |
-| `gray-2` | `assets/cards/gray-2.webp` | 900×1200 (3:4) | Segunda Dama Gris |
-| `gray-3` | `assets/cards/gray-3.webp` | 900×1200 (3:4) | Tercera Dama Gris |
+| `back` | `assets/cards/back.webp` | 900×1275 (proporción de las cartas del libro) | Reverso de las cartas del relato |
+| `clue` | `assets/cards/clue.webp` | 900×1275 (proporción de las cartas del libro) | Arte por defecto de **Pista** |
+| `environment` | `assets/cards/environment.webp` | 900×1275 (proporción de las cartas del libro) | Arte por defecto de **Obstáculo de entorno** |
+| `character` | `assets/cards/character.webp` | 900×1275 (proporción de las cartas del libro) | Arte por defecto de **Obstáculo de personaje** |
+| `incident` | `assets/cards/incident.webp` | 900×1275 (proporción de las cartas del libro) | Arte por defecto de **Percance** |
+| `gray-1` | `assets/cards/gray-1.webp` | 900×1275 (proporción de las cartas del libro) | Primera Dama Gris |
+| `gray-2` | `assets/cards/gray-2.webp` | 900×1275 (proporción de las cartas del libro) | Segunda Dama Gris |
+| `gray-3` | `assets/cards/gray-3.webp` | 900×1275 (proporción de las cartas del libro) | Tercera Dama Gris |
 | `spirit-on` | `assets/counters/spirit-on.webp` | 512×512, **PNG transparente** | Piedra de Espíritu viva |
 | `spirit-off` | `assets/counters/spirit-off.webp` | 512×512, **PNG transparente** | Piedra de Espíritu apagada |
 | `determination-on` | `assets/counters/determination-on.webp` | 512×512, **PNG transparente** | Ámbar de Determinación encendido |
@@ -75,10 +86,10 @@ cropped subject, tilted horizon, modern objects, smartphone, plastic
 | `cover` | `assets/branding/cover.webp` | 1920×1080 (16:9) | Portada del sistema en Foundry y en GitHub |
 | `logo` | `assets/branding/logo.webp` | 512×512 (1:1) | Miniatura del sistema en la lista de Foundry |
 | `scene` | `assets/table/scene.webp` | 1920×1080 (16:9) | Escena de bienvenida del mundo |
-| `number-back` | `assets/cards/number-back.webp` | 900×1200 (3:4) | Reverso de las cartas numéricas |
-| `number-art` | `assets/cards/number-art.webp` | 600×800 (3:4) | Fondo de las cartas numéricas (el número lo pone el sistema) |
-| `voice` | `assets/scenarios/la-voz-que-dejaste-atras.webp` | 900×1200 (3:4) | Portada de *La voz que dejaste atrás* |
-| `house` | `assets/scenarios/la-casa-que-respira.webp` | 900×1200 (3:4) | Portada de *La casa que respira* |
+| `number-back` | `assets/cards/number-back.webp` | 900×1275 (proporción de las cartas del libro) | Reverso de las cartas numéricas |
+| `number-art` | `assets/cards/number-art.webp` | 600×850 | Fondo de las cartas numéricas (el número lo pone el sistema) |
+| `voice` | `assets/scenarios/la-voz-que-dejaste-atras.webp` | 900×1275 (proporción de las cartas del libro) | Portada de *La voz que dejaste atrás* |
+| `house` | `assets/scenarios/la-casa-que-respira.webp` | 900×1275 (proporción de las cartas del libro) | Portada de *La casa que respira* |
 | `portrait` | `assets/branding/portrait.webp` | 512×640 (4:5) | Retrato por defecto de un protagonista nuevo |
 
 ### Opcionales · handouts de *La voz que dejaste atrás*

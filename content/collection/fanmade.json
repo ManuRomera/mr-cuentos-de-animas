@@ -1,0 +1,1519 @@
+{
+ "format": "mr-cuentos-de-animas/scenario",
+ "version": 2,
+ "collection": {
+  "id": "fanmade",
+  "title": "Escenarios fanmade",
+  "collection": "Escenarios fanmade · El Refugio de Ryhope",
+  "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+  "url": "https://www.elrefugioeditorial.com"
+ },
+ "scenarios": [
+  {
+   "id": "fanmade/la-jauria-infernal",
+   "name": "La jauría infernal",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Año 1678. Eres un respetado doctor y has adquirido una propiedad en las afueras de Dromgreagh, cerca de Baltinglass, en el condado de Wicklow, Irlanda. Decides invitar a dos amigos para que te acompañen a ver esos terrenos. La propiedad no tiene casa así que, mientras estéis en la zona, os alojaréis en una posada en Dromgreagh. Aunque conocías esa campiña de joven, no habías regresado en treinta años. La compra de ese terreno ha sido un impulso, tal vez como nostalgia, recordando tus días de infancia. Aunque siempre te extrañó que tus padres se marcharan de allí y no volvieran a mencionar el lugar.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Richard Uniack",
+     "description": "Amigo y militar en la reserva. Es bastante callado, pero siempre hace comentarios interesantes en sus observaciones."
+    },
+    {
+     "name": "Laughlin Moore",
+     "description": "Otro amigo. Hijo segundo de un lord inglés del parlamento, es dicharachero y le encanta apuntarse a cualquier aventura."
+    },
+    {
+     "name": "Mr. Smith",
+     "description": "Posadero servicial y atento. Ha trabajado en esta posada desde que tiene uso de razón. Tiene un semblante que parece esculpido en roca."
+    },
+    {
+     "name": "John Galway",
+     "description": "Lleva en la posada algunos días. No es del pueblo pero está allí porque dice que le encanta la zona."
+    },
+    {
+     "name": "Magda",
+     "description": "Nada más llegar al pueblo se ha presentado como la hechicera local a tu servicio y al de la comunidad."
+    }
+   ],
+   "clues": [
+    "Hay tres piedras blancas que sobresalen del terreno que has comprado.",
+    "La gente del pueblo cuando te ve, se lleva la palma de la mano al pecho.",
+    "Por las noches hay unos aleteos por fuera de la ventana, pero cuando miras, no hay nada.",
+    "La gente se acerca al posadero y le suplica cosas que no consigues escuchar.",
+    "Recuerdas cosas del pueblo, como callejones o casas que ya no están.",
+    "Tu pelo se vuelve blanco.",
+    "Ves un grupo de venados, corzos o muflones a lo lejos. Ellos también te miran a ti.",
+    "Te notas con un calor abrasador en el cuerpo (y hace un frío que pela)."
+   ],
+   "environmentObstacles": [
+    "Las temperaturas han bajado de forma abrupta.",
+    "Un jabalí golpea repetidamente la puerta de la posada.",
+    "Una tormenta os impide salir de la posada.",
+    "El viento te empuja fuera del camino.",
+    "Se levanta una niebla repentinamente.",
+    "Anochece antes de tiempo.",
+    "Las velas se apagan abruptamente.",
+    "El fuego de la chimenea salta y casi te quema la ropa."
+   ],
+   "characterObstacles": [
+    "Alguien no te deja hablar.",
+    "Alguien se mofa de tus recuerdos.",
+    "Alguien te da un golpe.",
+    "Alguien te roba algo.",
+    "Alguien te lleva a una cueva y te desorienta.",
+    "Alguien te golpea con una piedras extrañas.",
+    "Alguien te emborracha.",
+    "Alguien habla muy mal de tus padres."
+   ],
+   "tension": [
+    "Cuando estás inspeccionando el terreno, te rodean diferentes animales salvajes: ciervos rojos, jabalíes, caballos salvajes... con los ojos rojos y espuma en la boca. Cuando parece que van a atacar, huyen en desbandada.",
+    "Te despiertas en el campo, desnudo, con las manos ensangrentadas y un ciervo muerto a tu lado. Vuelves al pueblo como puedes y los que se cruzan contigo no parecen reparar mucho en cómo vas o en la sangre seca que impregna tu cuerpo.",
+    "En la madrugada, una gran jauría de perros con cazadores montados a caballo se plantan en la puerta de la posada. Un ser, de aspecto feérico, grita tu nombre y los habitantes del pueblo se postran de rodillas, expectantes ante tu salida a la calle."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Huyes de la posada por una ventana trasera. Corres, corres y corres, hasta dejar atrás Dromgreagh. No sabes qué les ha pasado a tus amigos, pero no piensas volver para averiguarlo. Pasan los años y todas las noches escuchas el relinchar de los caballos y los ladridos de la jauría a lo lejos."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Sales de la posada e intentas entender qué está pasando. Los cazadores gritan de alborozo. Te muestran las cabezas cortadas de tus amigos y no puedes soportarlo. Huyes de allí, pero ellos van a caballo. Te dan caza y te matan como a un animal salvaje. Cuelgan tu cabeza junto a la de tus amigos en la grupa de algún caballo de los cazadores."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Sales por la puerta y todos los cazadores lanzan vítores de alborozo. El que gritó tu nombre se acerca a ti y te coloca una corona de flores. Tu cuerpo se transforma y muestra tu verdadero ser: eres Fionn Mc Cumhaill y liderarás la Jauría Infernal como habías hecho hasta que te perdiste."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/whitewood",
+   "name": "Whitewood",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Tu hermana, Nun Barlow, lleva casi dos semanas sin dar señales de vida. Se fue a un pueblo de Nueva Inglaterra llamado Whitewood. Estaba muy interesada en todo lo relacionado con la brujería y el folclore de esa parte de EEUU. La única dirección que tienes es la del hotel donde estaba hospedada: La Posada del Cuervo. Has llamado allí y dicen que no saben nada desde hace un par de semanas. La policía se ha presentado en el pueblo y han hecho sus investigaciones, pero no han podido averiguar qué ha ocurrido con ella ni dónde se encuentra. Decides presentarte en el pueblo el día antes o pocos días antes del 15 de febrero.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "La señora Newless",
+     "description": "La dueña de la posada. Servicial y atenta. Aunque tiene algo ominoso en su forma de mirar."
+    },
+    {
+     "name": "Lottie",
+     "description": "La sirvienta de la posada. Muda, y al parecer, con una discapacidad intelectual. Siempre tiene cara de miedo."
+    },
+    {
+     "name": "Reverendo Russell",
+     "description": "El anciano párroco. Ciego y además se ha quedado sin feligreses. Suele gritar cosas en la iglesia, como que el pueblo está maldito."
+    },
+    {
+     "name": "Patricia Russell",
+     "description": "Nieta del reverendo Russell. Regenta una librería con material de muy alta calidad para los interesados en temas de brujería."
+    },
+    {
+     "name": "Un extraño",
+     "description": "Aparece y desaparece sin previo aviso. Le parece muy divertido todo lo que le cuenta el personaje sobre lo que va descubriendo en el pueblo. Nadie allí parece conocerlo ni verlo."
+    }
+   ],
+   "clues": [
+    "En la librería hay un tomo antiguo que habla sobre la historia del pueblo.",
+    "Hay una trampilla en el suelo de la habitación de la posada.",
+    "En la posada hay un cartel que dice que allí se quemó una bruja el 3 de marzo de 1692.",
+    "Las gentes del lugar se paran a mirar a los forasteros de forma incómoda.",
+    "La iglesia del pueblo se encuentra en muy mal estado.",
+    "Suenan cánticos a través de la trampilla del suelo de la habitación.",
+    "Por la noche se ve a gente encapuchada deambulando por el cementerio.",
+    "Encuentras un pajarillo muerto en un cajón y una rama de madreselva."
+   ],
+   "environmentObstacles": [
+    "La trampilla no se puede abrir.",
+    "Hay una niebla ominosa.",
+    "Es muy difícil salir del pueblo.",
+    "A veces las puertas no se pueden abrir.",
+    "La gente del pueblo no habla con forasteros.",
+    "El coche no arranca.",
+    "El teléfono no funciona.",
+    "La iglesia está en ruinas y es peligroso entrar en ella."
+   ],
+   "characterObstacles": [
+    "Alguien te trata como si estuvieras loco.",
+    "Alguien te mira de forma aterrada.",
+    "Alguien aparece muerto en las catacumbas.",
+    "Alguien no quiere hablar.",
+    "Alguien es más de lo que parece.",
+    "Alguien te impide el paso a la iglesia.",
+    "Alguien te dice que te vayas del pueblo.",
+    "Alguien te miente descaradamente."
+   ],
+   "tension": [
+    "Encuentras un libro que relata como una bruja maldijo, desde la hoguera, a este pueblo. Hacía sacrificios de doncellas, tanto en la víspera de la Fiesta de la Candelaria (1 de febrero), como en el Sabat de las Brujas (15 de febrero), siempre en la hora 13. A la joven sacrificada, le sustraían algún objeto valioso, le ponían un pajarillo muerto y una rama de madreselva.",
+    "Las catacumbas de la posada son un auténtico laberinto. Encuentras el brazalete de Nun, y en lo más profundo un altar de sacrificios con manchas de sangre.",
+    "El anciano párroco revela que la señora Newless es la bruja que ardió en 1692. Solo hay una manera de detenerla: la sombra de la cruz sobre los brujos durante el sacrificio. Esto terminará con la maldición, haciendo que los brujos ardan en llamas."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "En el cementerio se han reunido todos los brujos del pueblo y, a la luz de la luna, consigues hacer que la sombra de una cruz del cementerio caiga sobre los encapuchados y uno a uno ardan con el fuego del infierno. La muchacha (¿la nieta del párroco?), que estaba a punto de ser sacrificada, te está profundamente agradecida y se enamora de ti."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Varios encapuchados intentan atraparte pero consigues huir del pueblo, mientras escuchas el desgarrador alarido de la joven víctima sacrificada en el cementerio. La bruja consigue maldecirte y te quedas amnésico, impidiéndo que puedas advertir a nadie más sobre los peligros de este pueblo."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Los brujos consiguen atraparte y te obligan a ver el sacrificio completo. Con esta visión quedas maldito y bajo su poder. Te permiten salir al mundo exterior dos veces al año para seducir a jóvenes y entragarlas para los sacrificios."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/the-haunting",
+   "name": "The Haunting",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "supernatural",
+    "psychological"
+   ],
+   "synopsis": "Te llamas Eleanor. Recorres el campo durante largo trecho. Finalmente, ves la reja de entrada de la mansión. Mr. Dudley, el guarda, te abre y es bastante osco contigo. Al parecer eres la primera en llegar a Hill House. Recorres el camino hasta llegar frente al pórtico de entrada. La casa es bastante extraña y te da la sensación de que te observa. La mansión es enorme. Mrs. Dudley, el ama de llaves, es tan hosca como su marido y reitera, una y otra vez, que ni ella ni su marido se quedan allí tras la puesta del sol. Esperas al resto de los invitados en la habitación que Mrs. Dudley te ha preparado. Al parecer vas a ser parte de un experimento del Dr. Markway, que está intrigado por lo sobrenatural y tiene la esperanza de probar su existencia en esta lugar.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Dr. John Markway",
+     "description": "Conoce la historia de las trágicas muertes de la casa y quiere investigarla con ayuda de personas «sensibles» a lo sobrenatural."
+    },
+    {
+     "name": "Theodora",
+     "description": "Una joven con algunos poderes en relación a la percepción extrasensorial."
+    },
+    {
+     "name": "Luke Sanderson",
+     "description": "El heredero de la mansión. Un playboy que se especializó en la univesidad en preparar cócteles. No terminó la carrera."
+    },
+    {
+     "name": "Mr. Dudley",
+     "description": "El guarda de la casa. Es osco y seco. No le gustan los de la gran ciudad. No entra en la casa de día y se va con su mujer por la tarde."
+    },
+    {
+     "name": "Mrs. Dudley",
+     "description": "El ama de llaves. Dice constantemente que si ocurre algo, nadie del pueblo vendrá a ayudarles. Se va siempre al atardecer."
+    }
+   ],
+   "clues": [
+    "Todas las puertas se encuentran descentradas. Por eso se cierran solas.",
+    "Ninguna habitación tiene las esquinas a 90º.",
+    "Durante una cena, el salero se cae y se esparce la sal sobre la mesa.",
+    "Ruido como de pasos ensordecedores por la noche.",
+    "Golpes en las paredes y las puertas, que despiertan a los personajes.",
+    "Susurros y voces por los pasillos vacíos.",
+    "A veces las habitaciones se vuelven extremadamente frías.",
+    "Aparecen en un armario diferentes objetos para cuidar a enfermos."
+   ],
+   "environmentObstacles": [
+    "Aparece un ¿perro? dentro de la casa.",
+    "La escalera metálica de la biblioteca se mueve mucho.",
+    "Por la noche, algunas puertas no se abren.",
+    "Las puertas se «abomban» de forma antinatural.",
+    "Una escultura se cae.",
+    "Una barandilla cede.",
+    "Un humo se expande por la mansión.",
+    "Las sábanas salen ardiendo."
+   ],
+   "characterObstacles": [
+    "Alguien intenta sobrepasarse contigo.",
+    "Alguien te llama loca.",
+    "Alguien intenta echarte de la casa.",
+    "Alguien se ríe de ti.",
+    "Alguien te tira a la cama.",
+    "Alguien te obliga a beber alcohol.",
+    "Alguien es brusco contigo.",
+    "Alguien te pega una torta."
+   ],
+   "tension": [
+    "Una mañana, aparece pintado sobre una de las paredes el siguiente texto: «Ayúdame, Eleanor. Vuelve a casa».",
+    "Aparece un grupo escultórico en el jardín, que recuerda a los antiguos dueños de la casa. Una de las figuras se parece a ti.",
+    "Encuentras una habitación (que hasta ahora aparecía cerrada y sin poder abrirla) que es idéntica a la habitación donde cuidabas a tu madre."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Sin duda alguna, la casa quiere que te quedes, pero tú yo no eres la misma. Pides permiso para abandonar Hill House y cuando estás a punto de salir de la finca, una persona se cruza y das un volantazo. Mueres en el acto."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Al ver la habitación te das cuenta de las verdaderas intenciones de la casa. Vas a la biblioteca y empizas a subir la escalera de caracol metálica. Pero esta cede y acabas aplastada debajo de la misma."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Sabes qué es lo que quiere la casa. Uno a uno vas acabando con todos tus compañeros. Tras ese baño de sangre, subes las escaleras de la biblioteca y te ahorcas desde lo más alto."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/el-horla",
+   "name": "El Horla",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "psychological",
+    "supernatural"
+   ],
+   "synopsis": "Adoras la casa donde has crecido. Desde sus ventanas ves el Sena cubierto de barcos, en el tramo entre Ruán y El Havre que corre detrás del camino, a lo largo del jardín. A eso de las once pasó frente a la ventana un largo convoy de navíos arrastrados por un remolcador grande, que jadeaba de fatiga lanzando por su chimenea un humo espeso. Después, pasaron dos goletas inglesas, cuyas rojas banderas flameaban sobre el fondo del cielo, y un soberbio bergantín brasileño, blanco y admirablemente limpio y reluciente. Saludaste su paso sin saber por qué, pues sentiste placer al contemplarlo. Ese mismo día llegó tu prima con su marido. Cuando despiertas al día siguiente, tienes fiebre y estás muy cansado.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Anna Marie",
+     "description": "(apellido del protagonista), tu prima. Ha decidido pasar unos días con su marido, en tu casa."
+    },
+    {
+     "name": "Jean-Luc Baptiste",
+     "description": "Marido de tu prima."
+    },
+    {
+     "name": "Jean Dupont",
+     "description": "Tu cochero. De total confianza y casi un amigo más que un empleado."
+    },
+    {
+     "name": "El doctor Moureaix",
+     "description": "El médico de la familia. Ha estado cuidando de ti desde que eras pequeño."
+    },
+    {
+     "name": "Diferentes criados",
+     "description": "Doncellas, jardineros, etc."
+    }
+   ],
+   "clues": [
+    "La fiebre no remite.",
+    "A veces parece que hay alguien más en la habitación.",
+    "El periódico dice que en Sao Paulo hay una epidemia como de la Edad Media.",
+    "No puedes dormir por las noches a causa de las pesadillas.",
+    "Por las noches «algo» se bebe tu agua y tu leche. No tocan ni frutas, ni pan, ni carne.",
+    "Falta comida de los lugares más insospechados.",
+    "La ropa de los criados aparece hecha trizas.",
+    "Las sombras no muestran las formas originales."
+   ],
+   "environmentObstacles": [
+    "Por la noche los vasos se rompen solos.",
+    "Los cristales de las ventanas saltan en pedazos.",
+    "Las puertas se abren solas por la noche.",
+    "El río Sena se desborda y entra agua en la casa.",
+    "Los caballos de las cuadras se escapan.",
+    "Algunas estatuas de la mansión se caen.",
+    "La fuente del patio explota.",
+    "Te cortas con un cuchillo en la cama."
+   ],
+   "characterObstacles": [
+    "Alguien te escupe.",
+    "Alguien te deja caer por las escaleras.",
+    "Alguien te noquea en los jardines de afuera.",
+    "Alguien intenta asfixiarte por la noche.",
+    "Alguien te empuja por una ventana.",
+    "Alguien rompe un/a cuadro/vajilla.",
+    "Alguien te tira al suelo.",
+    "Alguien se pelea contigo."
+   ],
+   "tension": [
+    "En el periódico aparece la noticia de que un bergantín brasileño llegó cerca del Havre con todos sus ocupantes muertos, en muy extrañas circunstancias. Las autoridades lo remolcaron pero no saben qué ha pasado con la tripulación.",
+    "La noche anterior alguien del servicio dejó caer un paquete de harina sobre el suelo. Esta mañana pueden verse pisadas, mezcla de un ser humano y un animal.",
+    "«Algo» invisible saltó del bergantín brasileño, hasta tu mansión. Por las noches te quita el alma poco a poco. No queda mucho para que mueras consumido por ese ser."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "El horla cae en la trampa que habías pensado. Lo encierras en un cajón. Llamas a unos peones para hacer un gran agujero en el sótano. Una vez colocada allí, llenas el cajón de cemento mientras un grito que no es humano sale del agujero. No sabes cuánto tiempo servirá para contener a ese ser."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "El horla te está consumiendo y volviendo loco. No queda otra que suicidarte. Y es lo haces."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "En un delirio esquizofrénico, comienzas a matar a todos los de la casa, empezando por tu prima y su marido. Finalmente el cochero consigue reducirte y pasas el resto de tu vida en una institución mental."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/horizonte-final",
+   "name": "Horizonte final",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "scifi",
+    "supernatural"
+   ],
+   "synopsis": "En el año 2047 se capta desde la Tierra una señal de la nave espacial Horizonte Final, desaparecida sin dejar rastro más allá de Neptuno en 2040. Su pérdida había sido considerada el peor desastre espacial de la historia. La nave ha reaparecido de nuevo en la órbita de Neptuno y se envía a la nave de rescate Lewis & Clark para investigar el incidente. Cuando la Lewis & Clark alcanza la órbita de Neptuno, el doctor Weir informa al equipo de rescate de que la Horizonte Final era un prototipo construido para probar en secreto un salto experimental. La nave estaba equipada con un motor gravitatorio, inventado por él mismo, que crea un agujero negro artificial cuya intensa gravedad curva el espacio a su alrededor, plegándolo, y haciendo que dos puntos muy distantes entre sí queden conectados por una especie de puerta. Hay que investigar qué ocurrió.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "William Weir",
+     "description": "El diseñador de la nave Horizonte Final."
+    },
+    {
+     "name": "Teniente Comandante D.J.",
+     "description": "Oficial médico de la Lewis y Clark."
+    },
+    {
+     "name": "Teniente Cooper",
+     "description": "Técnico de rescate del Lewis & Clark."
+    },
+    {
+     "name": "Teniente Smith",
+     "description": "Piloto del Lewis & Clark."
+    },
+    {
+     "name": "Teniente Peters",
+     "description": "Técnico médico de la Lewis y Clark."
+    }
+   ],
+   "clues": [
+    "Se capta una grabación en la que se oyen gritos y llantos confusos.",
+    "Hay una grabación donde el capitán del Horizonte Final, John Kilpack, repite la frase «Liberadme».",
+    "No hay ningún rastro de vida en la Horizonte Final.",
+    "Aparece un cadáver congelado que flota sobre el puente de la Horizonte Final, sin ojos.",
+    "El motor se transforma, en ocasiones, en un espejo negro líquido.",
+    "Aparecen los restos de los tripulantes mutilados y parcialmente devorados.",
+    "Los archivos de la nave están borrados.",
+    "Las puertas se abren y se cierran de forma aleatoria."
+   ],
+   "environmentObstacles": [
+    "El motor succiona a alguien.",
+    "Una onda de choque daña a la Lewis y Clark.",
+    "La Lewis y Clark se rompe.",
+    "Una exclusa se abre.",
+    "Una descarga de energía impacta en alguien.",
+    "Las luces se apagan.",
+    "Falta el aire.",
+    "Deja de haber gravedad."
+   ],
+   "characterObstacles": [
+    "Alguien muere.",
+    "Alguien intenta suicidarse.",
+    "Alguien ve a su hijo muerto.",
+    "Alguien ve a su esposa muerta.",
+    "Alguien destruye los ordenadores de a bordo.",
+    "Alguien sabotea la reserva de agua.",
+    "Alguien intenta destruir el motor.",
+    "Alguien destruye las comunicaciones."
+   ],
+   "tension": [
+    "Los miembros del equipo encuentran un video de los archivos del Horizonte Final, que muestra a la tripulación original cuando activa el motor. Al salir del viaje, los tripulantes enloquecen, poseídos por un frenesí de torturas, mutilaciones y canibalismo. El capitán de la nave, que se ha arrancado sus propios ojos, deja un mensaje en latín que dice (cuando se logra escuchar completo) «liberate tute ex inferis» (salvaos del infierno).",
+    "Alguien, poseído por una entidad que procede del núcleo de la nave, te amenaza con un arma, diciendo que la nave «está viva» y que no permitirá que nadie se marche.",
+    "Se logró abrir una entrada en el espacio-tiempo, pero en el proceso la nave superó los límites del universo conocido y entró en otra dimensión de caos puro, de mal puro. La tripulación enloqueció mientras que la nave misma cobró vida y se volvió una entidad maligna y poderosa. El motor del núcleo se activa comenzando una cuenta atrás de diez minutos, tras la cual la nave volverá a la dimensión del caos."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Los tripulantes que seguís con vida, conseguís separar el motor del resto de la nave. El motor se activa y desaparece, dejándoos sin propulsión, pero vivos. Igual si os criogenizáis, algún día puedan rescataros. O tal vez no."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Cuando la cuenta atrás está a punto de expirar, ves a un familiar que te llama del compartimiento del motor. Sabes que es una ilusión pero no puedes dejar de ir. En cuanto entras, el motor se separa del resto de la nave y entras en un agujero de gusano. Llegas a una dimensión de dolor y torturas hasta el final del universo."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "La nave termina la cuenta atrás y se dirige a la dimensión del caos, donde la tripulación que queda viva se lanzará a un frenesí de torturas, mutilaciones y canibalismo, hasta el fin del universo."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/el-coche-nuevo",
+   "name": "El coche nuevo",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural"
+   ],
+   "synopsis": "Te has comprado un coche nuevo y quieres probarlo por autopista para saber hasta dónde puedes correr. Tu mujer no está muy conforme, pero dice que mientras no vayas con ella o con vuestro hijo, no le importa (y, sobre todo, que si te ponen una multa lo vas a pagar tú de tus caprichos de comprar juegos de rol). El coche es de una compañía china y la verdad es que hay muy pocos modelos como el tuyo. El vehículo no es muy llamativo, pero el acabado nunca te ha importado mucho. A ti lo que te gusta es la velocidad, no el aspecto del mismo. Esta tarde vas a empezar a darle caña al coche para ir del trabajo a casa y viceversa.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Ana López",
+     "description": "Tu novia del instituto y de la que, increíblemente, aún sigues enamorado. Si tú eres la pasión, ella es la razón."
+    },
+    {
+     "name": "Julio",
+     "description": "Tu hijo de 17 años. Se pasa la vida metiendo palabras en inglés en las frases. Está enganchado al WhatsApp, Tinder, Grinder, Twitter, Instragram, etc."
+    },
+    {
+     "name": "Mario Cobo",
+     "description": "Tu mejor amigo. Se pasa de vez en cuando por tu casa para echar una partidita... de lo que sea. Le gusta el rol, los juegos de mesa y todo lo que tenga que ver con lo lúdico."
+    },
+    {
+     "name": "Isabel Sánchez",
+     "description": "La cartera. Le gusta hablar con algunos de tu familia cuando estáis en casa. Os cae muy bien a toda la familia y a Mario."
+    },
+    {
+     "name": "Manuel Ortiz",
+     "description": "Tu jefe en la empresa de sistemas informáticos. Muy serio, pero muy justo. Nunca te ha levantado la voz ni se ha peleado contigo, y eso que algunas veces lo merecías."
+    }
+   ],
+   "clues": [
+    "Paulatinamente empiezas a llegar más temprano a casa y al trabajo.",
+    "Tus compañeros de trabajo te preguntan si has ido a Turquía, porque se te ve más pelo.",
+    "Te ves más joven cada día que pasa. Las canas y arrugas te están desapareciendo.",
+    "Te está saliendo acné en la cara.",
+    "Cuando vas en el coche parece como si el sol se hinchara en el cielo.",
+    "Cuando aceleras el coche parece que lo hiciera sin límite.",
+    "Vuelves a tener el apetito sexual de hace años.",
+    "Apenas recuerdas la última vez que repostaste el coche."
+   ],
+   "environmentObstacles": [
+    "Últimamente parece que anochece antes de tiempo.",
+    "Se oyen unos ruidos extrañísimos en el aparcamiento.",
+    "Los neumáticos se pinchan con mucha frecuencia.",
+    "Se va la luz de la casa.",
+    "Cada día hace más frío dentro del coche.",
+    "La puerta del coche te da calambrazos.",
+    "La luna trasera siempre se empaña.",
+    "La puerta del coche es muy difícil de abrir."
+   ],
+   "characterObstacles": [
+    "Alguien te rompe los retrovisores.",
+    "Alguien te tira de los pelos.",
+    "Alguien te mira como si no te reconociera.",
+    "Alguien te tira una llave inglesa.",
+    "Alguien te habla de forma incomprensible.",
+    "Alguien choca contigo porque no te ve.",
+    "Alguien intenta quemarte el coche.",
+    "Alguien se asusta al verte."
+   ],
+   "tension": [
+    "Cuando llegas a casa te das cuenta de que has atropellado algo y está pegado en la carrocería. Buscas un palo para quitarlo y cuando lo desincrustas te das cuenta de que no sabes qué tipo de animal es, a pesar de que no está muy aplastado.",
+    "Llegas a casa después de trabajar y te cruzas contigo mismo, que vas al trabajo por la mañana de ese mismo día. Tu «yo» no te ve, pero tú lo has visto claramente. Tienes todo el día libre para estar en casa porque has llegado cuando deberías estar en el trabajo.",
+    "En el salpicadero del coche comienzan a aparecer extraños signos de color rojo brillante que no has visto en tu vida, pero que te dan escalofríos. Dentro del coche aparece un olor dulzón. Te mojas los pies con algún tipo de líquido nauseabundo que está junto a los pedales."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Parece que una fuerza sobrenatural guía a tu familia en dirección al coche. Los apartas, te montas en el coche y arrancas. El coche y tú seguiréis en carretera hasta que te haya absorbido toda tu fuerza vital."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Parece que una fuerza sobrenatural guía a tu familia en dirección al coche. Consigues apartar a tu hijo, pero tu mujer logra montarse. El coche no parará hasta que os haya absorbido toda vuestra fuerza vital a ambos."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Te encuentras dentro del coche con tu familia. Tu cara se ve reflejada en las lunas del coche, junto a caras de gente que no conoces. El coche no parará hasta que os haya absorbido toda vuestra fuerza vital."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/la-autopsia-de-jane-doe",
+   "name": "La autopsia de Jane Doe",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Eres el ayudante del forense (que es tu padre) de una pequeña ciudad. Cuando tu novia va a recogerte, después de un día agotador haciendo autopsias, aparece el sheriff de la ciudad con un cadáver. Os dice que tenéis que hacer una autopsia más, porque al día siguiente la prensa se le va a echar encima. Tu pareja decide quedarse hasta que termines el trabajo y tu padre y tú os ponéis manos a la obra, con los ojos del sheriff y de tu novia escrutando todo lo que hacéis. Quieres terminar antes de que la tormenta descargue sobre la casa. Enciendes la cámara de vídeo y comienzas el trabajo con tu padre. Nota: Cada turno de esta partida es un cuarto de hora de la autopsia.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Tommy",
+     "description": "(apellido del protagonista), tu padre, es el forense de la ciudad. Un hombre mayor que ha hecho muchas autopsias. Nada raro cree poder ver en una."
+    },
+    {
+     "name": "Emma Cole",
+     "description": "Tu novia. Ha estado en algunas autopsias. No le da miedo lo que haces, aunque tampoco le parece agradable."
+    },
+    {
+     "name": "Sheriff Sheldon Burke",
+     "description": "Un agente de la ley muy respetado y que siempre hace lo mejor por su localidad."
+    }
+   ],
+   "clues": [
+    "Los ojos de la chica están en blanco, indicando que lleva mucho muerta.",
+    "No hay lividez ni rigor mortis, indicando que lleva poco muerta.",
+    "Las muñecas y los tobillos los tiene rotos, indicando que ha estado atada.",
+    "Tiene cieno bajo las uñas. No hay cieno en muchos kilómetros a la redonda.",
+    "No tiene lengua, como si alguien se la hubiera cortado. No la ha mordido ella misma.",
+    "La cintura es muy estrecha, como si hubiera llevado corsé toda su vida.",
+    "Al sacar el corazón, ves que tiene muchísimas cicatrices.",
+    "Los pulmones están muy negros: eso no lo ha provocado el tabaco."
+   ],
+   "environmentObstacles": [
+    "La radio se enciende sola.",
+    "La tormenta tira un árbol fuera de la casa.",
+    "Las luces se van.",
+    "Los teléfonos no funcionan.",
+    "La incineradora provoca un pequeño incendio.",
+    "Unas vísceras caen de un tarro sin motivo aparente.",
+    "La puerta de la casa está atrancada.",
+    "Te cortas con un hueso de la difunta."
+   ],
+   "characterObstacles": [
+    "Alguien te ataca con un bisturí.",
+    "Alguien te grita.",
+    "Alguien te ataca con un hacha.",
+    "Alguien te encierra en el W.C.",
+    "Alguien te empuja.",
+    "Alguien te lanza un bote de formol.",
+    "Alguien tira la cámara de vídeo.",
+    "Alguien te placa y caéis al suelo."
+   ],
+   "tension": [
+    "Tu padre dice que ha visto algo así antes, pero que fue cuando era muy joven. Aunque siempre creyó que era una alucinación o un mal recuerdo. Su mentor dijo que era «una bruja».",
+    "No podéis salir de la casa. Los otros muertos que teníais en el depósito han desaparecido. A veces pueden verse con el reflejo de los cristales, pero cuando miras, ya no están ahí. El sheriff se pega un tiro y se mata.",
+    "Creyendo que tu novia es uno de los muertos, la matas con un hacha. Tu padre le suplica a la bruja que lo tome a él antes que a ti. Se rompe las muñecas y los tobillos y le suplica que lo mates, diciéndote que cuando lo hagas, huyas de la casa. Haces lo que te pide."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Intentas abrir la puerta pero sigue atrancada. Al girarte ves a tu padre muerto, tras de ti, con los ojos en blanco. Trastabilleas hacia atrás con tan mala suerte que te golpeas la cabeza y mueres. La bruja vuelve a estar intacta cuando llega la policía al día siguiente."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Consigues abrir la puerta y huyes por el bosque. Por el rabillo del ojo crees ver a tu novia y tu padre que te persiguen. Cuando acabas con ellos descubres la verdad: son dos excursionistas. Te das cuenta de que te estás volviendo loco. Te tiras al río y allí la bruja te sumerge hasta que mueres ahogado."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Consigues abrir la puerta y en la parte de afuera la policía te detiene. Se te acusa de matar al sheriff, a tu padre y a tu novia. Te encierran en un manicomio donde ves todas las noches los cuerpos del sheriff, tu padre y tu novia, mientras la bruja flota sobre tu cabeza. Los gritos nocturnos le hielan la sangre a todo el pabellón."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/regreso-a-comala",
+   "name": "Regreso a Comala",
+   "author": "Juan Fernando Martín «Dr. Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "supernatural",
+    "psychological"
+   ],
+   "synopsis": "Le prometes a tu madre, en su lecho de muerte, que volverás al pueblo donde nació, Comala (un lugar hermoso y lleno de vida, según ella), para reclamar a tu padre lo que en su momento, por derecho propio, no os dio ni a ti ni a ella. Sin embargo, tras enterrar a su madre, no tienes ninguna intención de viajar hasta allí. Todo cambia cuando empiezas a tener sueños y pesadillas muy vivídas sobre el pueblo, incluso estando despierto. Al final decides que es mejor ir a cumplir la promesa hecha a tu madre, a ver si de esa manera, dejas atrás esos sueños y pesadillas.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Pedro Páramo",
+     "description": "Tu padre. Un hombre malvado y violento. Ama a Susana San Juan, desde joven; para estar a su lado tuvo que matar al padre."
+    },
+    {
+     "name": "Susana San Juan",
+     "description": "Una mujer de extraordinaria belleza y alma pura. Desgraciadamente, también está desequilibrada, ya que su padre abusó de ella sexualmente. Siempre dice incoherencias."
+    },
+    {
+     "name": "Padre Rentería",
+     "description": "Sacerdote de la localidad. Está siempre de mal humor y no tiene pelos en la lengua, capaz de decir cuatro frescas al más pintado. No parece que le haga feliz su oficio de sacerdote."
+    },
+    {
+     "name": "Mujeres de Comala",
+     "description": "Siempre están en grupos de varias, en la puerta de alguna casa. Son muy observadoras y susurran entre ellas."
+    },
+    {
+     "name": "Hombres de Comala",
+     "description": "Siempre están en grupos en la plaza del pueblo. Suelen fumar y apenas hablan."
+    }
+   ],
+   "clues": [
+    "El pueblo está bastante abandonado. En contraposición a como se lo describía su madre.",
+    "Hay un perro muerto en medio de la calle y no hay presencia de pájaros.",
+    "En las casas no hay camas.",
+    "Siempre es de noche y no hay luna ni estrellas.",
+    "A pesar de la oscuridad, el protagonista puede ver muy bien.",
+    "Hay banquetes en las mesas de todas las casas en las que entra.",
+    "El agua es negra, pero perfectamente potable.",
+    "Todo el mundo lleva arena en los bolsillos y hormigas en la ropa."
+   ],
+   "environmentObstacles": [
+    "No se puede salir del pueblo.",
+    "La arena se mete en los pulmones.",
+    "Una casa se derrumba.",
+    "Un escorpión pica al protagonista.",
+    "Las calles se llenan de barro sin que haya llovido.",
+    "Se levanta una gran ventolera.",
+    "Se abre, de forma abrupta, un socabón enorme en la calle."
+   ],
+   "characterObstacles": [
+    "Alguien te tapa la boca para que no hables durante un rato.",
+    "Alguien te grita en la cara.",
+    "Alguien te tira tierra en la cabeza.",
+    "Alguien no deja de hablarte aunque tú no quieres.",
+    "Alguien te pega un puñetazo.",
+    "Alguien te tira piedras.",
+    "Alguien te empuja para que te caigas."
+   ],
+   "tension": [
+    "El padre Rentería confiesa su gran pesar en el corazón, por no haber sido consciente, hasta hoy: de su trato injusto con los pobres, a los que ha ignorado, y de su benevolencia con los ricos, a quienes ha perdonado todo tipo de crímenes y pecados.",
+    "Las gentes del pueblo recriminan al sacerdote que no les hubiera absuelto de sus pecados cuando se confesaban con él. Qué van a hacer ahora si él no se quiere hacer cargo de las almas de sus feligreses.",
+    "Toda la gente del pueblo está muerta desde hace mucho. Pedro Páramo los mató a todos y después se suicidó. Los pecados de los lugareños no fueron perdonados nunca por el cura, que también murió asesinado por Pedro."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Consigues salir del pueblo: todos allí estaban muertos. Al llegar a la civilización, las personas huyen aterrorizadas de ti: tienes el pelo blanco y tus dientes sobresalen por fuera de los labios. Tu aspecto será el de un ser cadavérico hasta que mueras."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Notas cómo la vida se te escapa del cuerpo, pero lo aceptas como algo natural. Has llegado a tu lugar. Tu madre sale de una de las casas y, cogiéndote de la mano, te dice: «Por fin seremos una gran familia feliz, además siempre habrá comida en este pueblo»."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Consigues escapar del pueblo sin saber muy bien cómo lo has hecho. Vuelves a estar en el lecho de muerte de tu madre, prometiéndole que vas a ir a Comala a arreglar los asuntos familiares que ella quiere que lleves a cabo."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/el-cuadro-de-la-mansion-a-la-luz-de-la-luna",
+   "name": "El cuadro de la mansión a la luz de la luna",
+   "author": "Rolerodelamancha",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Nos encontramos a principios del siglo XX. Eres una persona bastante acomodada que ha decidido darse un capricho y adornar la casa de campo en la que va a pasar el verano, junto al servicio, para escapar de la gran ciudad. Planeas dedicarte, entre otras ocupaciones, a la pesca, dar buenos paseos y recuperar tu afición por los pinceles. Entre todas las adquisiciones compradas en una casa de subastas, destaca un cuadro en particular, que representa una mansión próxima a tu residencia veraniega y que esta cerrada desde hace veinte años. El lienzo muestra el edificio, con varias luces del interior encendidas, en una noche de luna llena. Sin dudarlo, la has comprado y ahora preside la biblioteca de la casa. Pero ha resultado más fascinante de lo que creías en un principio, tu primera visita se se ha percatado de una figura cubierta con una especie de sábana que parece vigilar la casa y tú no has podido dejar de advertir que hay menos luces encendidas en la casa...",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Señorita Amelia Stilton",
+     "description": "Una muchacha que hace de recadera de suministros de la mansión, conectándola con el pueblo cercano. De carácter jovial, siempre parece tener una sonrisa en la cara y está dispuesta a una buena conversación sobre las cosas del pueblo pasadas y presentes. Cuando puede se queda hablando con su prima, la cocinera de la mansión."
+    },
+    {
+     "name": "Rose Ryan",
+     "description": "Cocinera de la mansión y prima de Amelia, esta oronda muchacha hace también los trabajos de criada. Es una persona muy trabajadora y suele hablar mucho de las Escrituras, a veces sin demasiado sentido con lo que está sucediendo o el tema de la conversación. Siente una especial inquietud por el cuadro."
+    },
+    {
+     "name": "Cliff O’Brian",
+     "description": "Tu mayordomo, un hombre de una altura considerable y de pocas palabras. Lo aprecias bastante por ser alguien resolutivo que no pone excusas ante nada (es más, disfruta mucho de los trabajos manuales, como los arreglos de la casa y el jardín). Aun siendo bastante refinado, a veces saca su vena irlandesa y maldice en su idioma natal cuando alguna tarea le sale mal."
+    },
+    {
+     "name": "La criatura del cuadro",
+     "description": "Este engendro flaco que apenas puede pasar como una excusa de ser humano, está cubierto por una mortaja que deja ver sus angulosos huesos, ronda la finca desde la llegada del cuadro. Siempre mascullando algo entre dientes de forma ominosa. Su cuerpo parece ser más del otro mundo que de este, ya que puede traspasar objetos sólidos."
+    }
+   ],
+   "clues": [
+    "La ropa de un bebé carcomida por las polillas.",
+    "Entre los papeles del escritorio hay un acta judicial de hace 25 años.",
+    "El crepitar de unos pasos en el pasillo.",
+    "El llanto fantasmal de un bebé.",
+    "Dos personajes tienen una conversación reveladora del pasado."
+   ],
+   "environmentObstacles": [
+    "Un pasillo se alarga hasta el infinito.",
+    "Las puertas de una habitación están cerradas a cal y canto.",
+    "Hay un líquido extraño en el suelo que te hace resbalar en un momento delicado.",
+    "Un animal salvaje te ataca inesperadamente.",
+    "Tu casa refleja detalles de la casa del cuadro confundiéndote."
+   ],
+   "characterObstacles": [
+    "Un personaje intenta ahogarte con sus manos.",
+    "Un personaje se interpone en tu camino.",
+    "Un personaje pierde el control.",
+    "Un personaje llora desconsoladamente.",
+    "Un personaje oculta algo importante."
+   ],
+   "tension": [
+    "El cuadro muestra a la criatura entrando en la casa cuando las luces de esta se apagan por completo.",
+    "La criatura habla al personaje conminándole que le dé lo que es suyo. Cuando se le pregunta sonríe sombríamente. A su vez, el cuadro muestra que una de las ventanas superiores se ha abierto y la criatura se descuelga portando un pequeño bulto.",
+    "Tras observar que el cuadro muestra cómo la criatura ha sacado un bebé de la casa, se descubre una sala secreta en la biblioteca, en el interior se pueden ver los signos de un antiguo ritual a medias y el esqueleto de un bebé."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Te encuentras frente al horror. Por fortuna una chispa de algo que llevabas para iluminar, salta sobre el legajo sin firmar que arde rápidamente en un fuego antinatural. La criatura chilla de forma horrenda. Te desvaneces, despertando a la mañana siguiente con suficiente ánimo para dar las órdenes pertinentes para enterrar el cadáver del bebé y dar fin a esta truculenta historia."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Huyes horrorizado del lugar sin mirar atrás, oyendo las risas maníacas de la criatura. Vuelves a tu casa de Londres y necesitas de medicamentos para dormir y apenas puedes concentrarte. Los meses pasan en vanos intentos de vender la hacienda y la voz que te conmina por las noches a cumplir lo prometido."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "La criatura obliga al personaje a sellar con su sangre el trato que había realizado el anterior dueño de la casa para traerle la desgracia a su vecino. Al terminar el ritual se cumple la última parte del hechizo. Al abrir tus ojos solo ves una casa iluminada por una luna llena. Ahora te encuentras dentro del cuadro, realizando una y otra vez el rapto del bebé."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/la-trampilla",
+   "name": "La trampilla",
+   "author": "Rolerodelamancha",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural"
+   ],
+   "synopsis": "Vives en un barrio residencial en los años 50 en una pequeña ciudad de California. Es uno de esos sitios de casas iguales, jardines con porche y vecinos agradables que van a la suya, excepto para invitaros a una barbacoa. Tu pareja y tú vivís con vuestro niño pequeño, que es la alegría tanto de la casa como del vecindario. Todo es perfecto y os gustaría que los días de este verano se sucedieran sin grandes noticias (lo que siempre es una buena noticia). Pero hace una semana has encontrado algo extraño en la casa. Una trampilla hacia un hipotético desván que jurarías que no estaba allí. Su mera presencia te provoca una sensación muy desagradable y como no tienes necesidad alguna de utilizar un desván, acabas por olvidarla. Hasta que un día escuchas un ruido de ratones que parece proceder de allí, pero no te atreves a subir.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "John o Samantha",
+     "description": "Tu pareja es una persona amable y comprensiva, por desgracia en su trabajo está en un momento especialmente tenso y no tiene tanto tiempo como antes, e incluso se ha vuelto ligeramente irritable."
+    },
+    {
+     "name": "Timmy",
+     "description": "Es la luz de los ojos de la pareja, es un niño rubio que no para quieto. Al ser pequeño no se aleja de casa y siempre aparece en el momento más inesperado. Se le puede ver jugando con su juguete favorito, un peluche de un elefante o corriendo por la casa (a pesar de vuestras riñas)."
+    },
+    {
+     "name": "Bill Murray",
+     "description": "Es el vecino del lado izquierdo, un antiguo bombero de complexión fuerte que dedica su tiempo al cuidado de su barco y de un jardín del que se siente muy orgulloso. Su voz es bastante estruendosa y su risa es reconocible desde el otro lado del barrio, aun así la gente lo aprecia por lo considerado y manitas que es."
+    },
+    {
+     "name": "Cliff O’Brian",
+     "description": "Tu mayordomo, un hombre de una altura considerable y de pocas palabras. Lo aprecias bastante por ser alguien resolutivo que no pone excusas ante nada (es más, disfruta mucho de los trabajos manuales, como los arreglos de la casa y el jardín). Aun siendo bastante refinado, a veces saca su vena irlandesa y maldice en su idioma natal cuando alguna tarea le sale mal."
+    },
+    {
+     "name": "Gertrudis o Tomás Muñoz",
+     "description": "De ascendencia hispana, es la/el confidente de tu pareja, conocida del trabajo. Suele ir de vez en cuando a casa para hablar con ella/él. Es achaparrada con una mirada sagaz en el rostro, a pesar de su amabilidad (siempre le dices en broma que parece estar preparando algo). La verdad es que os hace reír tanto a tu pareja como a ti."
+    }
+   ],
+   "clues": [
+    "Los perros de la zona ladran exageradamente al pasar junto a la casa.",
+    "Ves un alarmante éxodo de alimañas hacia tu casa.",
+    "Una paloma se posa sobre el tejado para luego desaparecer.",
+    "Un poderoso olor a almizcle flota por toda la casa.",
+    "Hay veces que no puedes ver la trampilla, pero al girarte está allí."
+   ],
+   "environmentObstacles": [
+    "Algo en el pasillo te hace tropezar en un mal momento.",
+    "La puerta de la trampilla está abierta invitadoramente.",
+    "Sufres un accidente hogareño provocado por un ruido intenso.",
+    "La escalera a la segunda planta de la casa se rompe al paso del personaje.",
+    "Los ruidos del techo te aturden por su volumen."
+   ],
+   "characterObstacles": [
+    "Un personaje discute contigo acaloradamente.",
+    "Un personaje no te deja salir de la casa.",
+    "Un personaje se comporta de forma inquietante.",
+    "Un personaje llora desconsoladamente.",
+    "Un personaje oculta un detalle importante."
+   ],
+   "tension": [
+    "Lo que antes parecían pequeños ruidos en el techo, a ratos son tan fuertes que jurarías que son varias personas paseándose.",
+    "Uno de los personajes secundarios desaparece tras la trampilla que se cierra de golpe. Ahora cualquier personaje que entre en ella sufrirá el mismo destino.",
+    "Han desaparecido todos los habitantes de la casa, tu vecino y tu amigo. Al ir a hacía la trampilla esta se abre a tu paso esperando tu entrada."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Lo que sea que te espera en la oscuridad no creía que tuvieses suficiente ánimo para ir preparado para un enfrentamiento. El dolor que infliges a la criatura hace que los desaparecidos se desprendan de las paredes. Como si hubiesen estado en una especie de estómago gigante, sus ropas están desechas y sufren quemaduras, pero están vivos. Como puedes, arrastras sus cuerpos fuera, hacia el pasillo. Cuando terminas vuelves tu rostro hacia la trampilla buscando terminar lo que empezaste, pero ha desaparecido, como si nunca hubiese estado allí."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Solo puedes ver por un momento el interior, lo que descubres te abruma y algo se rompe en ti, sales corriendo al exterior aullando de horror. Nadie te puede calmar y ahora vives entre las paredes acolchadas de un sanatorio mental. De vez en cuando algún detective de la policía te pregunta donde están tus familiares. Tú solo respondes: «En la trampilla... más allá de la trampilla...»."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Como hipnotizado subes por las escaleras desplegadas hacia la oscuridad del desván, detrás de ti se cierra la trampilla. Tras seis meses, una nueva familia se muda a la casa, viven durante unos años bastante felices, hasta que la mujer descubre una trampilla en el segundo piso y unos ruiditos provenientes de ella. No se atreve a subir, siente un extraño miedo."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/la-cena-del-fin-del-mundo",
+   "name": "La cena del fin del mundo",
+   "author": "Rolerodelamancha",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "scifi",
+    "psychological"
+   ],
+   "synopsis": "Es el año 21xx, en un futuro menos sobrio de lo que esperábamos. Eres uno de los afortunados concursantes que ha ganado una cena en la mansión del Dr. Red. ¿Quién es este hombre? El inventor de la bebida de moda, Blue Tiphon, cuyo sabor inmejorable la ha convertido en la bebida más popular del momento. A la cena con el inventor solo acudirán gentes pertenecientes a lo más selecto de la sociedad. Tu presencia es producto de un boleto premiado en una botella, pero también un capricho del doctor. Acudes a la cena entre la curiosidad y el respeto de estar rodeado de la gente importante de la ciudad y el extravagante círculo de amigos del Dr Red. ¿Pero por qué nadie se ha percatado ni hace mención del pequeño hombrecillo que observa todo detrás de una inquietante máscara acompañado de un gran maletín? ¿Y qué es ese olor tan peculiar que parece llenar el ambiente de la mansión? Nota: Cada turno de esta partida consiste en un cuarto de hora de la cena. Este cuento funciona mejor con un horror entre surrealista, onírico e inevitable, donde personajes amorales ven las desgracias y crímenes de los demás sin mover un dedo por ello.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Dr. Red",
+     "description": "Este vivaracho anciano que recuerda a un Papá Noel algo achispado (y que es imagen de la marca) siempre parece tener una sonrisa en la boca y una palabra amable para cada momento. Como anfitrión de la fiesta pulula por todos lados para obsequiar a los invitados."
+    },
+    {
+     "name": "El médico",
+     "description": "Un hombrecillo que apenas se mueve de su silla, mirando a todo el mundo a través de su máscara (que recuerda a la utilizada por los médicos de la peste). Nunca dice su nombre y solo comenta que su profesión es la de médico. Siempre observa su reloj de bolsillo y hace anotaciones en una sobada libreta, como si esperase algo."
+    },
+    {
+     "name": "Barbara Green",
+     "description": "Una mujer de gran belleza y unos ojos amarillos que provocan cierta desazón. Amante actual del anfitrión, parece jugar a la seducción con todos los invitados, especialmente con el protagonista. Su atención, como si de un gato se tratase, se reparte de un invitado a otro, proponiéndoles pequeñas travesuras ante los ojos divertidos del Dr. Red. Su vaso siempre está lleno de un líquido rojo, espeso y caliente."
+    },
+    {
+     "name": "Mrs Halloway",
+     "description": "Una anciana sirvienta del doctor, vestida a la forma tradicional de hace dos siglos, que observa todo con aire de institutriz. Trata a los invitados como a niños atolondrados, especialmente al Dr. Red, al cual afea cualquier conducta infantil, cosa que al anfitrión parece aceptar sin rechistar ante las risas de todos. En general, aguanta los comentarios groseros estoicamente y maneja con puño de hierro al torrente de criados encargados del servicio de la cena."
+    },
+    {
+     "name": "Invitados",
+     "description": "Un variopinto grupo de personas, muy distintas unas de otros, aunque hay algo en lo que se parecen: un comportamiento disoluto y las formas vacías con las que parecen actuar entre ellos."
+    }
+   ],
+   "clues": [
+    "Varios invitados hablan del mismo tema, al mismo tiempo y con los mismos términos.",
+    "El médico deja ver el interior de su maletín; hay un pesado martillo.",
+    "El Dr. Red empieza a llorar inconsolable diciendo que todo esto no sirve para nada.",
+    "Una invitada se despide de la mesa con cara enferma ocultando su mano,",
+    "Alguien empieza a comer de forma grotesca para luego, confundido, mantener un comportamiento normal."
+   ],
+   "environmentObstacles": [
+    "Te pierdes en los pasillos de la casa.",
+    "Todos te observan, indicando que comas algo horroroso y demencial.",
+    "El humo del tabaco que se fuma en la mesa te ahoga.",
+    "Sufres un accidente en el baño.",
+    "La comida del plato es muy orgánica (se mueve)."
+   ],
+   "characterObstacles": [
+    "Un personaje te ataca físicamente.",
+    "Un personaje empieza a llorar sin motivo aparente.",
+    "Un personaje te encierra en algún lugar.",
+    "Un personaje empieza a conversar sobre temas realmente horribles.",
+    "Un personaje pretende que hagas algo especialmente grotesco para diversión de los invitados."
+   ],
+   "tension": [
+    "Uno de los invitados cae al suelo con espuma saliéndole de la boca. El médico y Mrs Halloway se lo llevan con presteza tras una puerta de la que, desde entonces, se escuchan terribles sonidos, sin que los invitados se sientan aludidos.",
+    "El Dr. Red hace un discurso sobre la posibilidad de elevación de la humanidad a algo que ningún desastre podría eliminar. Justo al terminar la perorata, una cucaracha vuela hasta la mesa y, señalándola, comenta: «Como esto». La mesa se ríe, pero el parece decirlo completamente en serio.",
+    "La cena ha terminado y la música suena, todos los invitados van a bailar un vals, excepto los personajes principales que solo los observan, al poco tiempo los bailarines van trasformándose en algo más parecido a una cucaracha del tamaño de un balón. El Dr Red grita: «¡Otro fracaso, otro fracaso! ¿Alguna vez conseguiré que mi suero, el Blue Tiphon mejorado funcione?»."
+   ],
+   "epilogues": [
+    {
+     "label": "Si queda uno o más contadores de Espíritu",
+     "min": 1,
+     "max": 99,
+     "text": "Abandonas la mansión aullando de horror mientras escuchas tras de ti el sonido de la quitina reventada por un mazo. Los meses pasan y tu cuerpo no parece sufrir ningún cambio. La bebida Blue Tiphon sigue en la cresta de la ola y se ha confirmado una nueva fórmula mejorada."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Tu cuerpo se va trasformando rápidamente en algo similar al resto de los invitados. Tu voz se torna desagradable e intentas pedir ayuda mientras corroteas sin sentido por el suelo, lleno de seres como tú. El médico cierra su reloj y saca su mazo, al parecer está especialmente formado en eutanasias. En tanto un grupo de clones sale por la puerta para ocultar al mundo lo que ha pasado en la fiesta, hasta que se vuelva a probar la fórmula."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/los-habitantes-de-la-isla-middle",
+   "name": "Los habitantes de la isla Middle",
+   "author": "Rolerodelamancha",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Estamos a principios del siglo XX. Perteneces a la clase pudiente y tus empresas están bien gestionadas. Tu buen amigo Richard Ford te ha pedido que le acompañes en un viaje en su barco, el Cormorán Rojo. Su prometida ha desaparecido en alta mar y antes de darla por perdida, quiero comprobar si existe alguna posibilidad de que siga con vida. Tras varios días de travesía, Richard parecía afrontar con pesadumbre que no volvería a tener noticias de su amada, pero unas jornadas después encontráis una pequeña isla, conocida como Middle, por su lago interior de agua marina. Como un rayo de luz para la atormentada alma de Richard, observais que el Celeste, el barco de la prometida de Richard, está allí, en buen estado, aunque completamente abandonado.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Richard Ford",
+     "description": "Un buen amigo desde el colegio, con el que has vivido muchas experiencias. Siempre ha sido una persona animosa, pero cabal. La desaparición de Elisa, su prometida, le ha sumido en una depresión que el encuentro del Celeste ha tornado en ansiedad y exaltación, ante la posibilidad de que siga viva."
+    },
+    {
+     "name": "Capitán Blake",
+     "description": "Un honrado hombre de mar, ha sido empleado y amigo fiel del padre de Richard. A Richard (al que a veces llama «pequeño») lo ha visto crecer, por lo que le da manga ancha, incluso en esta búsqueda que él considera dirigida al fracaso. El encuentro del Celeste no ha mejorado su opinión respecto a ello."
+    },
+    {
+     "name": "Dr. Ligotti",
+     "description": "Un excéntrico italiano que os acompaña. Según parece, ha pagado una buena suma de dinero al capitán, pues está muy interesado en esta ruta en particular. Pasa el día haciendo bocetos de la vida en el barco y, particularmente, de los peces que el capitán pesca. Se da por hecho que es una especie de biólogo, pero su hermetismo le hace ser algo inquietante."
+    },
+    {
+     "name": "Bobby",
+     "description": "El grumete, un jovencito de mirada inteligente y lengua descarada. Está siendo, junto al protagonista, uno de los pocos asideros del ánimo de Richard. Pese a su apariencia aniñada, manos delicadas y voz algo aguda para su edad, es un buen marinero."
+    }
+   ],
+   "clues": [
+    "Algo del tamaño de un humano, emerge y se sumerge a toda prisa en el agua.",
+    "Una voz femenina es traída por el viento.",
+    "Extrañas pisadas se encuentran en la orilla.",
+    "Alguien se lanza al agua desde el Celeste, y no pertenece al Cormorán.",
+    "Parecen verse rostros en la superficie del lago salado."
+   ],
+   "environmentObstacles": [
+    "Unas nieblas se levantan repentinamente.",
+    "Algo intenta arrastrarte a las aguas.",
+    "Un paso en falso provoca un accidente.",
+    "Una estructura del barco ha sido dañada.",
+    "Una bestia aterrada te ataca con desesperación."
+   ],
+   "characterObstacles": [
+    "Un personaje descubre un secreto embarazoso.",
+    "Un personaje discute contigo acaloradamente.",
+    "Un personaje pretende huir sin mirar atrás.",
+    "Un personaje te deja en una situación tensa con otro personaje.",
+    "Un personaje enloquece perdiendo la compostura."
+   ],
+   "tension": [
+    "En el interior del Celeste se producen ligeros cambios, como la actualización del calendario de la habitación de la prometida de Richard.",
+    "La niebla se cierne en el lago, espectrales figuras se pueden ver nadando en el agua, mientras de vez en cuando se escucha una hipnótica voz.",
+    "Decenas de criaturas suben al interior del Celeste, sus voces hipnóticas hacen que muchos tripulantes intenten subir a bordo."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Aguantas las voces espectrales y tienes suficiente ánimo para disparar un rifle que guarda el capitán. El canto pasa a un griterío horrendo cuando otros marineros libres de su influjo emulan tu comportamiento, pronto una descarga de muerte cae sobre las criaturas. La pelea dura poco y pronto huyen despavoridas. Al llegar a alta mar, solo hay una baja, Richard ha seguido a su amada incluso en su nueva forma."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "El capitán saca fuerzas de flaqueza y consigue abandonar el lugar con pocas pérdidas. Eso sí, lo ultimo que puedes ver de tu amigo Richard es el abrazo que da a su prometida antes de que la niebla los esconda de la vista. Siempre recordarás el grito de horror y dolor final de él."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Eres arrastrado junto a los demás. Las criaturas alternan su apariencia horrorosa con otra angelical. Ni cuando empiezan a devorarte con fruicción reaccionas. Pronto otra figura se une al coro, con tu misma voz para servir de señuelo a otros ilusos como tú."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/pacto-nocturno",
+   "name": "Pacto nocturno",
+   "author": "Sergi Sánchez",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural"
+   ],
+   "synopsis": "Representáis a un chico y una chica, sois dos hermanos que, junto a vuestro amigo Alfredo, habéis ganado una consola de videojuegos en la tómbola de la fiesta de fin de curso. Habíais comprado el boleto ganador a medias y ahora tocaba decidir quién se quedaría con el premio. Como no sois capaces de poneros de acuerdo, Alfredo propone una idea, un pacto que tiene un punto de riesgo y aventura; pasar la noche completa en el antiguo parque de atracciones del monte Hillpoint. Los rumores dicen que está encantado. Quedasteis los tres en la entrada a las doce y dejasteis claro que quien fuese capaz de pasar la noche sin salir sería el vencedor; los vencedores en vuestro caso, pues habéis decidido compartir el premio. Pero en la puerta de entrada solo estáis vosotros dos, pasan veinte minutos de las doce y Alfredo aún no ha aparecido; pensáis que seguramente se ha echado atrás. Aun así, decidís que ya que estáis allí es buena idea seguir con el pacto y sentiros realmente merecedores del premio. Estáis determinados a ver el amanecer en uno de los columpios de Hillpoint.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Henry Lafayette",
+     "description": "Un vagabundo ciego que habla en francés y que vive en el parque de atracciones junto a su perro guía. Se desplaza con la ayuda de un bastón y luce un negro parche en su ojo izquierdo."
+    },
+    {
+     "name": "Sofía Daura",
+     "description": "Una viejita muy entrañable que por las noches lleva las sobras de la cena a los gatitos del parque de atracciones. Aprovecha también para recoger con su carrito objetos del parque que le sean de utilidad."
+    },
+    {
+     "name": "Niña misteriosa",
+     "description": "De tez blanquecina y con el pelo recogido en dos coletas. Viste un uniforme escolar muy antiguo, que parece de principios del siglo anterior. Aparece de la nada, os observa y sale corriendo para volver a desaparecer."
+    }
+   ],
+   "clues": [
+    "Un autómata que no para de repetir: «Vigilad a quien lleve escoba».",
+    "Encontráis tirado en el suelo un zapato de Alfredo.",
+    "Unas risas de niños se escuchan en la lejanía.",
+    "Una hilera de manzanas de caramelo recién hechas.",
+    "Un gato negro os observa atentamente.",
+    "En la pared surge una sombra con sombrero y escoba."
+   ],
+   "environmentObstacles": [
+    "La oscuridad os angustia y desorienta.",
+    "Unos cuervos acechan cerca de vosotros.",
+    "Perros abandonados os bloquean el camino.",
+    "Una puerta que se cierra de golpe.",
+    "Una ráfaga de viento eleva un remolino de hojas."
+   ],
+   "characterObstacles": [
+    "Un personaje te amenaza.",
+    "Un personaje entra en pánico e intenta arrastrarte con él.",
+    "Un personaje te hace correr tanto que crees que vas a quedarte sin aliento.",
+    "Un personaje te hace entrar en el laberinto de espejos para desorientarte.",
+    "Un personaje parece querer asustarte y te entrega el cuerpo de un pájaro muerto."
+   ],
+   "tension": [
+    "Camináis entre atracciones hace tiempo olvidadas, rodeados por un inquietante silencio que os eriza la piel. La luna llena ilumina vuestros rostros. Parece que ninguno de los dos seréis capaces de pasar la noche entera en el parque de Hillpoint. Habláis entre vosotros y os animáis por momentos. Queréis creer que los miedos son solo invenciones de vuestra mente.",
+    "Unos ojos nerviosos os escudriñan. Vuestro cuerpo no para de temblar. Escucháis lo que parece el batir de varios corazones desbocados. Quizás son ciertos los rumores de que el parque está encantado, quizá sí que está lleno de fantasmas de niños y niñas perdidos. Queréis salir huyendo pero no queréis quedar como unos pardillos. Seguís adelante con el miedo metido en el cuerpo.",
+    "Creéis que el amanecer está cerca. Un sudor frío os recorre el cuerpo. La atracción del Túnel de la Bruja se pone en marcha. Uno de vosotros dice: «Vamos, el amanecer está cerca. Esta debe ser la prueba final». Os sentáis en uno de los vagones y comprobáis que en el suelo está la camiseta de Alfredo desgarrada. De repente notáis unos golpes en vuestro hombro, os giráis espantados pero no veis a nadie. Un grito sale de vuestras gargantas. El tren se pone en marcha y en el túnel resuena una carcajada maléfica y terrorífica."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "La silueta de una bruja se acerca lentamente hacia vosotros en medio de la oscuridad del túnel. Observáis la escena paralizados por el miedo. Una mano desliza la máscara y veis el rostro de Alfredo sonriendo. Menuda broma de mal gusto os ha gastado. Será... Se dirige a vosotros y os dice que habéis superado la prueba, los primeros rayos de sol aparecen más allá del túnel. Habéis ganado, un pacto es un pacto."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "La silueta de una bruja se acerca lentamente hacia vosotros en medio de la oscuridad del túnel. Observáis la escena paralizados por el miedo. Cuando está frente a vosotros sacáis vuestro valor y le dais un fuerte empujón y echáis a correr. Cerca de la salida un vigilante os detiene. Al escucharos no puede dejar de sonreír con vuestras explicaciones sobre brujas y fantasmas. Os tranquila y decide acompañaros a casa. A la mañana siguiente, Alfredo os cuenta con una sonrisa malévola que él era la bruja disfrazada y que habéis perdido la apuesta por abandonar el parque antes que él. Un pacto es un pacto."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "La silueta de una bruja se acerca lentamente hacia vosotros en medio de la oscuridad del túnel. Observáis la escena paralizados por el miedo y gritáis de terror. Entráis en shock y os desmayáis. A la mañana siguiente despertáis en la cama de un hospital, aún temblando por los últimos recuerdos. Las manos de vuestros padres os calman y dan calidez, os sujetáis a ellas con fuerza, deseando que no llegue la noche y con ella las pesadillas de la bruja. Ahora mismo, sois incapaces de discernir la frontera entre lo que es un sueño y lo que es real."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/horror-espacial",
+   "name": "Horror espacial",
+   "author": "Antonio Jesús López",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "scifi",
+    "supernatural"
+   ],
+   "synopsis": "Acabas de terminar un curso avanzado como Estibador Espacial en la Tierra. Has conseguido un contrato para embarcarte en la nave Akbé, que hace el trayecto entre el Sistema Solar y las colonias de Alfa Centauri, para recoger el Crixel, la nueva fuente de energía combustible de la última generación de motores de propulsión sublumínica. El viaje se hace en animación suspendida y la deuda temporal es ínfima. Al llegar, los seis tripulantes colaboráis en la carga junto con los colonos. El capitán te cuenta que parecen más cansados y ariscos de lo normal, e incluso enfermos, pero no le das importancia. Una vez colocado todo el cargamento en las bodegas, volvéis a los tanques de criogenia y activáis el sistema automático para entrar en éxtasis... La alarma de alteración grave de la crioestasis te despierta... El tanque de uno de tus compañeros está roto, y no se encuentra en el interior, el resto de la tripulación está despertando, tan asombrada como tú.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Nands",
+     "description": "Mecánico de la nave, experto en reparaciones. Lleva diez años encargándose de que la Akbé funcione correctamente. Conoce cada pasillo, cada engranaje y está todo en su cabeza."
+    },
+    {
+     "name": "Milo",
+     "description": "Soldado de la nave, gestiona y controla el armamento. Tiene la única llave del armario donde se encuentran y es el único preparado militarmente. Asignado a la nave desde hace tres años por la empresa EstelarComercio."
+    },
+    {
+     "name": "Lisus",
+     "description": "Piloto de la nave, conoce las principales rutas de navegación astronómica y es un experto en las operaciones de acercamiento a planetas así como de embarque y desembarque. Lleva en la nave diez años, entró junto a Nands, y son grandes amigos."
+    },
+    {
+     "name": "Anthos",
+     "description": "Capitán de la nave. Compró la Akbé y la puso a punto con la ayuda de Nands y Lisus, en los que confía plenamente. Consiguió un contrato con la empresa EstelarComercio, e intenta optimizar sus viajes para sacarle el máximo rendimiento."
+    },
+    {
+     "name": "Ente alienígena",
+     "description": "Ha tomado el cuerpo de Munda, el estibador desaparecido, que ha alterado su aspecto desarrollando una piel dura y escamosa y sus extremidades se han transformado en largas cuchillas cortantes."
+    }
+   ],
+   "clues": [
+    "Los contenedores de gas Crixel están en peligro de explotar. Han sido rotos con lo que parecen cuchillas.",
+    "Hay agujeros en los conductos de ventilación, por ellos cabe un humano.",
+    "Hay un reguero de sangre que conduce hacia la zona de motores de la nave.",
+    "En uno de los contenedores hay una gran colonia de moho oscuro.",
+    "Hay un rastro de moho oscuro que llega hasta el tanque de criogenia roto.",
+    "Aparecen trozos de piel humana y pelo."
+   ],
+   "environmentObstacles": [
+    "Las puertas de una sección de la nave están bloqueadas.",
+    "Se inicia un incendio en la enfermería.",
+    "Una sección de la nave se despresuriza.",
+    "Saltan todas las alarmas con un ruido ensordezedor.",
+    "Se rompen varios conductos de vapor que llenan los pasillos."
+   ],
+   "characterObstacles": [
+    "Un personaje es atacado por el tripulante desaparecido.",
+    "Un personaje abandona la nave en la única cápsula de salvamento.",
+    "Un personaje piensa que has sido tú el que ha matado al tripulante desaparecido.",
+    "Un personaje desaparece.",
+    "Un personaje quiere coger las armas que se guardan en el armario para quedárselas."
+   ],
+   "tension": [
+    "Munda aparece ante ti con el cuello quebrado hacia un lado, y las articulaciones en disposiciones imposibles. La locura está en sus ojos. Cuando te ve, sale corriendo y desaparece.",
+    "El nivel de oxígeno de la nave está bajando, saltan las alarmas. Desde los altavoces se escucha a Munda, que habla como si fuera un ente extraterrestre al que han extraído de su entorno, y está enfadado.",
+    "Una gran masa viscosa, en la que se distinguen extremidades de la tripulación desaparecida, avanza hacia ti lentamente, ocupando todo el espacio del corredor."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Conseguís contener al ente y lanzarlo al espacio con una baliza de peligro, para que ninguna nave se acerque nunca más a ella."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Decidís destruir la nave para que no quede nada del ente extraterrestre. Os sacrificáis para evitar un mal mayor."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Toda la tripulación es devorada por la masa viscosa, que tiene conciencia propia. Toma el control de la nave y pone rumbo a la colonia más cercana de humanos. Tiene vuestros recuerdos y va a destruir a toda la humanidad."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/atrapados-en-el-hielo",
+   "name": "Atrapados en el hielo",
+   "author": "Dani Yimbo",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Diciembre de 1819. Eres el segundo de a bordo del navío español San Telmo. Lleváis meses atrapados en la isla de Livingstone, en la Antártida, después de que vuestro barco perdiese de vista al resto de la escuadra en su intento de doblar el cabo de Hornos. El capitán y casi todos los tripulantes han muerto en esta tierra inhóspita. Hace pocos días, uno de tus hombres encontró los restos de un extraño barco de donde obtuvo objetos valiosos. Desde entonces la tripulación asegura que hay alguien que os vigila más allá de las luces del campamento.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Emilio Vázquez Rompemuelas",
+     "description": "El contramaestre. Es el siguiente en el escalafón. Te lleva siempre la contraria. Cuenta con el apoyo de la tripulación. Lees la rebelión en sus ojos enfermizos."
+    },
+    {
+     "name": "Antonio Cardona",
+     "description": "El cirujano. Es tu persona de confianza. Está haciendo lo imposible por curar a los enfermos, pero está frustrado. Guarda una reserva de láudano como un tesoro, porque es un adicto."
+    },
+    {
+     "name": "Sargento Hoyos",
+     "description": "Está al frente de la soldadesca. Lo soluciona todo con la violencia. Es el encargado de buscar algo de caza. Casi siempre regresa con las manos vacías, pero tiene buen aspecto."
+    },
+    {
+     "name": "María Expósito",
+     "description": "La mujer del capitán. Viajaba hasta Valparaíso. Casi todos los hombres la respetan, pero siempre va armada con una pistola. Estudia las cartas náuticas buscando una salida."
+    },
+    {
+     "name": "La tripulación",
+     "description": "Hombres desnutridos, enfermos y desesperados. Diezmados, son una quinta parte de los que zarparon de Cádiz. El frío está acabando con ellos. Es difícil liderarlos. Tienen miedo."
+    }
+   ],
+   "clues": [
+    "Un viejo medallón con una runa.",
+    "Dos cuervos sobrevuelan el campamento. No deberían de estar aquí.",
+    "Restos de un barco, con un máscaron con forma de dragón.",
+    "Huellas de enormes pies descalzos en la nieve.",
+    "Un hacha enterrada en el suelo. Asoma su mango.",
+    "Un guerrero vestido con armadura de pieles aparece congelado.",
+    "Voces en la oscuridad en un idioma del norte de Europa.",
+    "Un círculo de túmulos y piedras rúnicas."
+   ],
+   "environmentObstacles": [
+    "Se acaban las provisiones.",
+    "La niebla lo cubre todo.",
+    "Se hunde el último bote.",
+    "La temperatura baja aún más.",
+    "No hay madera para el fuego.",
+    "Pingüinos blancos enormes.",
+    "La pólvora está inservible.",
+    "El hielo se quiebra,"
+   ],
+   "characterObstacles": [
+    "Un personaje quiere el mando.",
+    "Un personaje te ataca.",
+    "Un personaje te roba la comida.",
+    "Un personaje te reta en público.",
+    "Un personaje te retiene.",
+    "Un personaje te utiliza.",
+    "Un personaje te acorrala.",
+    "Un personaje te seduce."
+   ],
+   "tension": [
+    "Uno de tus hombres ha desaparecido durante la noche y solo se han oído sus gritos. Al amanecer es descubierto desmembrado y con heridas de arma blanca pesada en su cuerpo.",
+    "La tripulación ha visto figuras gigantes surgir de la oscuridad y arrastrar a varios hombres más allá de la niebla. Iban armados con grandes hachas y escudos redondos. Hablaban un extraño idioma. Lo único que entiendes es la palabra Jul.",
+    "Los gigantes de la noche os rodean. Son espectros enfundados en lo que en un tiempo fueron cuerpos humanos. Murieron por el frío, y buscan un último combate para ganarse el paraíso. No pararán hasta conseguirlo."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu o más",
+     "min": 2,
+     "max": 99,
+     "text": "Tras sobrevivir de forma milagrosa al ataque de los gigantes, reparáis un bote y os hacéis a la mar. Días después sois encontrados por un barco portugués. Nadie cree tu historia, pero al menos puedes contarla por tu propia voz."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Escapas como puedes. Atrás queda la matanza. Eres el único superviviente de la tripulación del San Telmo. Pasarás el resto de los días pensando en tus errores y vigilando las sombras que rodean tu refugio en el hielo. Encontrarán tus restos un siglo después."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "La huida es imposible. Un gigante te atrapa. Te lanza una espada para que te defiendas, pero estás cansado y enfermo, no eres rival para él. Acaba contigo para ganarse el paraíso. Te sumes en las sombras. Quizás puedas descansar."
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "fanmade/el-pozo",
+   "name": "El pozo",
+   "author": "Santiago Eximeno",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "supernatural",
+    "psychological"
+   ],
+   "synopsis": "Actualidad. Tras tu divorcio, pasan unos meses hasta que logras asentar de nuevo tu vida. Decides aceptar la invitación de tus amigos más queridos para pasar un fin de semana en la casa rural que han construido a las afueras de Castillejo de Robledo, un pequeño pueblo de Soria. Viajas allí en compañía de tu hija de siete años. Los padres tenéis la custodia compartida, pero esta semana está contigo, lo que te hace muy feliz. Tras un par de horas en coche llegas a una bonita casa de piedra, antigua, con un pequeño terreno propio. En la puerta de la casa te esperan tus amigos con María, su hija. —Mira, un pozo —dice tu hija nada más bajar del coche. Y es cierto, junto a la casa hay un viejo pozo, con un aspecto tradicional tan adorable que no puedes evitar sonreír. Nota: Cuando definas tu personaje, define también el personaje de tu hija. Ella debe formar parte de la narración, considérala también un personaje protagonista. Para definir a tu hija céntrate en las características: Nombre, Breve Historial y Cuatro rasgos y/o objetos que la definan. Los valores de Determinación y Espíritu solo son relevantes para tu personaje, tu hija es relevante para la narración.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Santi y María Jesús",
+     "description": "Son tus amigos desde hace muchos años, compañeros de estudios y de muchos de tus mejores momentos hasta que la vida os llevó por caminos separados. Ellos decidieron hace siete años dejar su trabajo y montar una casa rural."
+    },
+    {
+     "name": "María",
+     "description": "La hija de tus amigos. Siete años, es una niña silenciosa, algo huraña, pero se muestra cariñosa con tu hija en cuanto la ve."
+    },
+    {
+     "name": "Amparo",
+     "description": "Una mujer mayor, casi anciana, que cuida de la casa y ayuda en las tareas del día a día. Sonríe y os abraza cuando llegáis. Parece una más de la familia."
+    }
+   ],
+   "clues": [
+    "Ruidos de chapoteos en el interior del pozo.",
+    "Una risa histriónica de mujer.",
+    "Un hombre del pueblo pasa frente a la casa y se santigua.",
+    "Tu hija, de pie junto al pozo.",
+    "El llanto persistente de un niño.",
+    "Una foto antigua de una familia —madre, padre, una niña— junto al pozo."
+   ],
+   "environmentObstacles": [
+    "Llueve de forma persistente.",
+    "Las ventanas que dan desde la casa al pozo no se abren.",
+    "Resbalas al caminar junto al pozo.",
+    "El coche en el que viniste no arranca.",
+    "Las luces de la casa se apagan durante unos minutos.",
+    "El camino que conduce al pueblo es impracticable."
+   ],
+   "characterObstacles": [
+    "Un personaje no te permite salir de la casa.",
+    "Un personaje te empuja hacia el pozo.",
+    "Un personaje completamente empapado te abraza.",
+    "Un personaje discute contigo.",
+    "Un personaje se burla de tu hija."
+   ],
+   "tension": [
+    "Alguien del pueblo te habla de una tragedia ocurrida hace años en esa casa. Una de las hijas de los antiguos dueños murió en un accidente, cayó al pozo.",
+    "Tu hija desaparece.",
+    "Es de noche. Descubres a Amparo arrastrando el cuerpo de tu hija hacia el pozo. Allí esperan Santi y María Jesús."
+   ],
+   "epilogues": [
+    {
+     "label": "Si queda más de un contador de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Te enfrentas a ellos. Santi y María Jesús te gritan que es necesario que tu hija sea entregada al pozo, que deben alimentar lo que allí vive, que su propia hija yace ya en el fondo. Amparo te habla de su propia hermana, que fue sacrificada por sus padres. Te dicen que si te llevas a tu hija, lo que vive en el pozo despertará. Luchas con ellos, te llevas a tu hija. Mientras escapas con ella en el coche oyes un aullido gutural, el despertar de algo enorme que surge de las profundidades del pozo. No miras atrás."
+    },
+    {
+     "label": "Si queda un contador",
+     "min": 1,
+     "max": 1,
+     "text": "Arrojan a tu hija al interior del pozo. Enloqueces, gritas. Es necesario, te dicen. Debemos aplacar a la criatura que yace en el pozo. No puedes, no quieres escucharlos. Corres, huyes de allí a pie, te pierdes en la noche."
+    },
+    {
+     "label": "Si no queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "Tratas de detenerlos, pero no lo logras. Lanzan a tu hija al pozo. Gritas, luchas contra ellos. Te piden que lo entiendas, que comprendas que el sacrificio era necesario, pero no escuchas, no puedes. Te lanzas al interior del pozo en busca de tu hija. Tus huesos se rompen en la caída, pero descubres al ser que allí dormita, al ser que yace en el fondo del pozo. Mueres justo después de descubrir los cuerpos de tu hija y María y sentir el aliento del ser sobre tu rostro. Todos los escenarios que incluye este documento han sido creados por sus autores desinteresadamente. Les agradecemos su confianza en Cuentos de ánimas y estamos seguros de que todos los fans del juego disfrutarán de esta buena cantidad de escenarios. La primera edición de Cuentos de ánimas fue publicada en noviembre de 2019. El juego original lleva por título English Eerie, obra de Scott Malthouse. La traducción del juego al español es de Óscar López de Ahumada. © Scott Malthouse, 2017 © Trollish Delver Games , 2017 © El Refugio de Ryhope, 2019 Puedes hacerte con un ejemplar en tu tienda habitual o en la web de la editorial www.elrefugioeditorial.com"
+    }
+   ],
+   "source": {
+    "collection": "Escenarios fanmade · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  }
+ ]
+}

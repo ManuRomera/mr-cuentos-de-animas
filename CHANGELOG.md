@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.2.0 · 2026-09-27
+
+### Reglas, ahora fieles al libro
+- **Mazo de Cartas de Evento genérico**, como el del libro: 4 Pistas, 4 Percances de Personaje, 4 Obstáculos de Entorno y 4 de Personaje con su dificultad impresa (4‑7), y 3 Damas Grises.
+- **Preparación**: montones de 6, 6 y 4 cartas, cada uno sobre su Dama; variante de Damas impredecibles; partidas cortas quitando una o dos cartas de cada tipo.
+- **Elegir la escena**: al revelar una carta, la Mesa muestra la lista del escenario (pistas, obstáculos de entorno o de personaje, o el personaje que sufre el percance) y se elige una o se escribe otra. Las usadas quedan marcadas.
+- **Una sola Determinación por obstáculo**: +2 antes de revelar, o después +1 o repetir (esto último con dos Damas en juego).
+- El Espíritu a 0 **no** corta el relato: solo la tercera Dama lleva al epílogo. Si no quedan contadores, la Dama no cobra precio.
+- **Tabla de Espíritu‑Epílogo** por rangos, como en los escenarios del libro («dos o más», «uno», «ninguno»…).
+- La Hoguera: la Mesa indica qué jugador narra cada escena.
+
+### Mesa de Ánimas
+- **El relato siempre a la vista**: columna derecha con la **Sinopsis** para releer, las **Pistas halladas** (fuera del descarte, ampliables) y la **Tensión** revelada. Se puede plegar.
+- La escena elegida aparece en una **hoja de papel bajo la carta** y queda escrita en la carta (también en el descarte y al ampliarla).
+- **Estilo «Clásico»**: las cartas oficiales del libro (reverso, eventos, numéricas y contadores E/D), nítidas y con su color original. Cada usuario elige su estilo en Configurar ajustes.
+
+### Escenarios
+- **Colección incluida: 34 escenarios** de distribución libre (Folclore Rol Jam 2022, Escenarios fanmade, Cuento de Navidad, Desvelos del pasado, Grabación en vivo y Cima), con su autoría y procedencia. En la Biblioteca, pestaña *Colección incluida* → *Añadir y jugar*.
+- **Importador documentado**: ventana *Cómo importar* con la especificación exacta, plantilla descargable y un **prompt listo para pegar en una IA**. Importa uno o muchos escenarios por archivo y explica, escenario a escenario, qué falta en los que no pasan. Guía completa en `docs/IMPORTAR.md`.
+- Editor: tabla de epílogo por filas; procedencia y licencia; las listas ya no llevan dificultad (la trae la carta).
+
+### Arreglos
+- Los iconos de los botones de cabecera (cerrar, minimizar…) de las ventanas del sistema no se veían: el estilo de botones pisaba la fuente de iconos de Foundry. Con prueba automática para que no vuelva.
+- La nota de ayuda ya no se queda flotando si el elemento se repinta bajo el ratón.
+
+### Arte
+- `docs/ARTE.md` actualizado: qué imágenes necesita el estilo fotográfico y la proporción real de las cartas (900×1275).
+
 ## 1.1.0 · 2026-09-27
 
 **Arreglo crítico: pantalla negra.** Desde la 1.0.1 el módulo principal importaba `supportsV2`, que no existía en `compat.mjs`. El navegador rechazaba el sistema entero al cargarlo: sin modelos, fichas, mazos ni escena, el mundo quedaba en negro. Ahora una prueba compara cada import con los exports reales para que no vuelva a pasar.

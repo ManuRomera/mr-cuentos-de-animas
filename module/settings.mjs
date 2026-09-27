@@ -27,6 +27,15 @@ export function registerSettings() {
     name: "CdA.Settings.OpenOnStart", hint: "CdA.Settings.OpenOnStartHint",
     scope: "client", config: true, type: Boolean, default: false
   });
+  game.settings.register(SYSTEM_ID, "cardSkin", {
+    name: "CdA.Settings.CardSkin", hint: "CdA.Settings.CardSkinHint", scope: "client", config: true, type: String,
+    choices: { mr: "CdA.Skin.mr", classic: "CdA.Skin.classic" }, default: "mr",
+    onChange: () => Hooks.callAll("mrCdaSkin")
+  });
+  game.settings.register(SYSTEM_ID, "deckSize", {
+    name: "CdA.Settings.DeckSize", hint: "CdA.Settings.DeckSizeHint", scope: "world", config: true, type: String,
+    choices: { full: "CdA.Deck.Size.full", short: "CdA.Deck.Size.short", shorter: "CdA.Deck.Size.shorter" }, default: "full"
+  });
   game.settings.register(SYSTEM_ID, "grayVariant", {
     name: "CdA.Settings.GrayVariant", hint: "CdA.Settings.GrayVariantHint", scope: "world", config: true, type: String,
     choices: { fixed: "CdA.Deck.Fixed", "random-third": "CdA.Deck.RandomThird" }, default: "fixed"

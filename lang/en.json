@@ -1,19 +1,47 @@
 {
   "TYPES": {
-    "Actor": { "protagonist": "Protagonist" },
-    "Item": { "scenario": "Scenario" }
+    "Actor": {
+      "protagonist": "Protagonist"
+    },
+    "Item": {
+      "scenario": "Scenario"
+    }
   },
   "CdA": {
     "App": {
-      "Table": "Table of Souls", "Library": "Story Library", "Guardian": "Guardian", "Diary": "Diary",
-      "Truths": "Truths", "Memories": "Memories", "Archive": "Truths & Memories", "Safety": "Safety"
+      "Table": "Table of Souls",
+      "Library": "Story Library",
+      "Guardian": "Guardian",
+      "Diary": "Diary",
+      "Truths": "Truths",
+      "Memories": "Memories",
+      "Archive": "Truths & Memories",
+      "Safety": "Safety"
     },
-    "Sheet": { "Protagonist": "MR · Protagonist", "Scenario": "MR · Scenario" },
-    "Controls": { "Protagonist": "Protagonist", "Scenario": "Scenario in play", "NewProtagonist": "Protagonist" },
-    "Keys": { "Table": "Open the Table of Souls", "TableHint": "Opens or brings the Table of Souls to front." },
+    "Sheet": {
+      "Protagonist": "MR · Protagonist",
+      "Scenario": "MR · Scenario"
+    },
+    "Controls": {
+      "Protagonist": "Protagonist",
+      "Scenario": "Scenario in play",
+      "NewProtagonist": "Protagonist"
+    },
+    "Keys": {
+      "Table": "Open the Table of Souls",
+      "TableHint": "Opens or brings the Table of Souls to front."
+    },
     "Common": {
-      "Close": "Close", "Cancel": "Cancel", "Add": "Add", "Delete": "Delete", "Title": "Title", "Text": "Text",
-      "Notes": "Notes", "Up": "Move up", "Down": "Move down", "Browse": "Choose file"
+      "Close": "Close",
+      "Cancel": "Cancel",
+      "Add": "Add",
+      "Delete": "Delete",
+      "Title": "Title",
+      "Text": "Text",
+      "Notes": "Notes",
+      "Up": "Move up",
+      "Down": "Move down",
+      "Browse": "Choose file"
     },
     "Error": {
       "Phase": "Cuentos de Ánimas: the “{phase}” step could not finish. Foundry keeps working; open Settings → Diagnostics.",
@@ -25,218 +53,689 @@
       "GrayVariant": "Deck preparation",
       "GrayVariantHint": "Classic: each Grey Lady closes her third. Unpredictable: each Grey Lady is shuffled within her third.",
       "AutoDiary": "Automatic diary",
-      "AutoDiaryHint": "Writes every card, result, truth and epilogue into the protagonist's diary."
+      "AutoDiaryHint": "Writes every card, result, truth and epilogue into the protagonist's diary.",
+      "CardSkin": "Card style",
+      "CardSkinHint": "Just for you. Photographic: MR · Cuentos de Ánimas art. Classic: the book's original cards.",
+      "DeckSize": "Story length",
+      "DeckSizeHint": "The book suggests removing one or two cards of each type for shorter stories. The three Ladies always stay."
     },
-    "Phase": { "idle": "No story", "playing": "In play", "epilogue": "Towards the epilogue", "finished": "Story closed" },
+    "Phase": {
+      "idle": "No story",
+      "playing": "In play",
+      "epilogue": "Towards the epilogue",
+      "finished": "Story closed"
+    },
     "Mode": {
-      "guardian": "Alone with the Guardian", "guardianHint": "One protagonist and one Guardian. Questions, truths and memories.",
-      "bonfire": "The Bonfire", "bonfireHint": "Traditional table: several voices around the fire.",
-      "diary": "The Diary", "diaryHint": "Solo play, writing the story scene by scene.",
-      "free": "Free tale", "freeHint": "The cards as a story engine, no fixed scenario."
+      "guardian": "Alone with the Guardian",
+      "guardianHint": "One protagonist and one Guardian. Questions, truths and memories.",
+      "bonfire": "The Bonfire",
+      "bonfireHint": "Traditional table: several voices around the fire.",
+      "diary": "The Diary",
+      "diaryHint": "Solo play, writing the story scene by scene.",
+      "free": "Free tale",
+      "freeHint": "The cards as a story engine, no fixed scenario."
     },
     "Kind": {
-      "clue": "Clue", "environment": "Environment obstacle", "character": "Character obstacle",
-      "incident": "Mishap", "gray": "Grey Lady", "number": "Number card"
+      "clue": "Clue",
+      "environment": "Environment obstacle",
+      "character": "Character obstacle",
+      "incident": "Mishap",
+      "gray": "Grey Lady",
+      "number": "Number card"
     },
-    "Resource": { "spirit": "Spirit", "determination": "Resolve", "Max": "Maximum" },
+    "Resource": {
+      "spirit": "Spirit",
+      "determination": "Resolve",
+      "Max": "Maximum"
+    },
     "Deck": {
-      "Event": "CdA · Deck of Souls", "EventDiscard": "CdA · Revealed cards", "Number": "CdA · Number cards", "NumberDiscard": "CdA · Revealed numbers",
-      "Fixed": "Classic layout", "RandomThird": "Unpredictable Ladies",
-      "Variant": { "world": "Use the world setting", "fixed": "Classic layout", "random-third": "Unpredictable Ladies" }
+      "Event": "CdA · Deck of Souls",
+      "EventDiscard": "CdA · Revealed cards",
+      "Number": "CdA · Number cards",
+      "NumberDiscard": "CdA · Revealed numbers",
+      "Fixed": "Classic layout",
+      "RandomThird": "Unpredictable Ladies",
+      "Variant": {
+        "world": "Use the world setting",
+        "fixed": "Classic layout",
+        "random-third": "Unpredictable Ladies"
+      },
+      "Size": {
+        "full": "Full · 16 cards + 3 Ladies",
+        "short": "Short · 12 cards + 3 Ladies",
+        "shorter": "Very short · 8 cards + 3 Ladies"
+      }
     },
     "Table": {
-      "Silent": "The table is silent", "Waiting": "Waiting for a story", "Tools": "Tools",
-      "Draw": "Draw", "Deck": "Deck", "Discard": "Discard", "Revealed": "revealed", "Zoom": "Enlarge card",
+      "Silent": "The table is silent",
+      "Waiting": "Waiting for a story",
+      "Tools": "Tools",
+      "Draw": "Draw",
+      "Deck": "Deck",
+      "Discard": "Discard",
+      "Revealed": "revealed",
+      "Zoom": "Enlarge card",
       "NextScene": "The next scene waits face down.",
       "EmptyHook": "Choose a scenario, a protagonist and light the first candle.",
       "FootIdle": "Press “New story” or open the Library to pick a scenario.",
-      "New": "New story", "Change": "Another story", "End": "Close the story",
+      "New": "New story",
+      "Change": "Another story",
+      "End": "Close the story",
       "EndConfirm": "The story closes and the table falls silent. The protagonist's diary and truths are kept.",
-      "ScenarioSheet": "Scenario"
+      "ScenarioSheet": "Scenario",
+      "Narrator": "Narrating",
+      "Library": "Library",
+      "Story": "The story",
+      "Synopsis": "Synopsis",
+      "Clues": "Clues found",
+      "NoClues": "No clues yet.",
+      "Tension": "Tension revealed",
+      "NarrateThenDraw": "Narrate the scene. Then draw the next card."
     },
     "Game": {
-      "NoStory": "No story is running.", "PendingObstacle": "Resolve the obstacle on the table first.",
-      "PendingGray": "The Grey Lady still waits for her price.", "StoryClosing": "The story is heading to its epilogue.",
-      "EmptyDeck": "The Deck of Souls is empty.", "NoObstacle": "There is no obstacle to resolve.",
-      "NoProtagonist": "This story has no protagonist.", "NoDetermination": "No Resolve left.",
-      "Difficulty": "Difficulty", "DifficultyShort": "Diff.", "Card": "Card", "Total": "Total",
-      "Spend": "Spend Resolve", "Reveal": "Reveal card", "Push": "Push", "Reroll": "Reveal again", "Accept": "Accept failure",
-      "Success": "Overcome", "Failure": "Failed", "FailureSpirit": "Failed · you lose Spirit",
+      "NoStory": "No story is running.",
+      "PendingObstacle": "Resolve the obstacle on the table first.",
+      "PendingGray": "The Grey Lady still waits for her price.",
+      "StoryClosing": "The story is heading to its epilogue.",
+      "EmptyDeck": "The Deck of Souls is empty.",
+      "NoObstacle": "There is no obstacle to resolve.",
+      "NoProtagonist": "This story has no protagonist.",
+      "NoDetermination": "No Resolve left.",
+      "Difficulty": "Difficulty",
+      "DifficultyShort": "Diff.",
+      "Card": "Card",
+      "Total": "Total",
+      "Spend": "Spend Resolve",
+      "Reveal": "Reveal card",
+      "Push": "Push",
+      "Reroll": "Reveal again",
+      "Accept": "Accept failure",
+      "Success": "Overcome",
+      "Failure": "Failed",
+      "FailureSpirit": "Failed · you lose Spirit",
       "ResultDetail": "Card {value} + {bonus} against difficulty {difficulty}.",
-      "GrayCrosses": "Something crosses the room. Pay her price: spend Resolve or lose Spirit.",
-      "SpendDetermination": "Spend Resolve", "LoseSpirit": "Lose Spirit",
-      "Epilogue": "Epilogue", "EpilogueReady": "The third Lady has come. The story asks for its ending.", "OpenEpilogue": "Open the epilogue"
+      "GrayCrosses": "Tension rises. Pay her price: spend a Resolve counter or lose a Spirit one. From now on, +1 to obstacle difficulty.",
+      "SpendDetermination": "Spend Resolve",
+      "LoseSpirit": "Lose Spirit",
+      "Epilogue": "Epilogue",
+      "EpilogueReady": "The third Lady has come. The story asks for its ending.",
+      "OpenEpilogue": "Open the epilogue",
+      "PendingChoice": "First choose the scene for the revealed card.",
+      "OnePerObstacle": "Only one Resolve counter can be spent per obstacle.",
+      "NoPrice": "Carry on (no counters left)"
     },
     "Epilogue": {
-      "high": "Spirit whole", "highHint": "The protagonist keeps 2 or more Spirit.",
-      "low": "Spirit frail", "lowHint": "1 Spirit left.",
-      "zero": "Spirit extinguished", "zeroHint": "Spirit reached 0."
+      "high": "Spirit whole",
+      "highHint": "The protagonist keeps 2 or more Spirit.",
+      "low": "Spirit frail",
+      "lowHint": "1 Spirit left.",
+      "zero": "Spirit extinguished",
+      "zeroHint": "Spirit reached 0."
     },
     "Session": {
-      "New": "New story", "Scenario": "Scenario", "Mode": "Play mode", "Protagonist": "Protagonist",
-      "NewProtagonist": "— Create a new one —", "NewName": "Name (if new)", "Split": "Resources",
+      "New": "New story",
+      "Scenario": "Scenario",
+      "Mode": "Play mode",
+      "Protagonist": "Protagonist",
+      "NewProtagonist": "— Create a new one —",
+      "NewName": "Name (if new)",
+      "Split": "Resources",
       "SplitHint": "Ten points between Spirit and Resolve, at least three in each.",
-      "Start": "Light the first candle", "Recommended": "Recommended by the scenario",
+      "Start": "Light the first candle",
+      "Recommended": "Recommended by the scenario",
       "Replaces": "A story is running: starting another rebuilds the deck.",
-      "GMOnly": "Only the Guardian can start a story.", "PickScenario": "Pick a scenario.",
+      "GMOnly": "Only the Guardian can start a story.",
+      "PickScenario": "Pick a scenario.",
       "BadSplit": "The split must add up to 10, with at least 3 in each resource."
     },
     "Actor": {
-      "Kicker": "Case file", "DefaultName": "Protagonist", "Name": "Name", "Profession": "Occupation", "Origin": "From", "Age": "Age",
-      "Epithet": "A line that describes them…", "Traits": "Four traits", "TraitName": "Trait", "TraitText": "What it means, when it weighs…",
-      "Description": "Description", "History": "Background", "Objects": "Important objects", "ObjectName": "Object", "ObjectText": "Why they carry it",
-      "Significant": "Significant object", "NoObjects": "Nothing yet.", "Bonds": "Bonds", "BondName": "Person",
-      "BondText": "What binds you, what parts you", "NoBonds": "No one yet.",
+      "Kicker": "Case file",
+      "DefaultName": "Protagonist",
+      "Name": "Name",
+      "Profession": "Occupation",
+      "Origin": "From",
+      "Age": "Age",
+      "Epithet": "A line that describes them…",
+      "Traits": "Four traits",
+      "TraitName": "Trait",
+      "TraitText": "What it means, when it weighs…",
+      "Description": "Description",
+      "History": "Background",
+      "Objects": "Important objects",
+      "ObjectName": "Object",
+      "ObjectText": "Why they carry it",
+      "Significant": "Significant object",
+      "NoObjects": "Nothing yet.",
+      "Bonds": "Bonds",
+      "BondName": "Person",
+      "BondText": "What binds you, what parts you",
+      "NoBonds": "No one yet.",
       "SplitNote": "Maximum Spirit and Resolve do not add up to 10: fine if the scenario asks for it."
     },
     "Diary": {
-      "Kicker": "Story diary", "NoActor": "No protagonist", "Book": "Diary", "Chronicle": "Chronicle",
-      "Entry": "Scene", "NewEntry": "Note", "Add": "Write", "Placeholder": "Write what happened, what you felt, what you did not say…",
+      "Kicker": "Story diary",
+      "NoActor": "No protagonist",
+      "Book": "Diary",
+      "Chronicle": "Chronicle",
+      "Entry": "Scene",
+      "NewEntry": "Note",
+      "Add": "Write",
+      "Placeholder": "Write what happened, what you felt, what you did not say…",
       "Empty": "The diary is blank. Every card drawn will leave a mark here.",
-      "NoHistory": "The chronicle starts with the first card.", "ExportHistory": "Export chronicle (JSON)"
+      "NoHistory": "The chronicle starts with the first card.",
+      "ExportHistory": "Export chronicle (JSON)"
     },
     "History": {
-      "start": "Begins", "end": "Story closed", "card": "Card", "obstacle": "Obstacle", "gray": "Grey Lady",
-      "epilogue": "Epilogue", "phase": "Phase", "truth": "Truth", "truth-status": "Truth changes", "memory": "Memory",
-      "adjust": "Adjustment", "gm": "Guardian", "scene": "Scene", "note": "Note", "clue": "Clue shown"
+      "start": "Begins",
+      "end": "Story closed",
+      "card": "Card",
+      "obstacle": "Obstacle",
+      "gray": "Grey Lady",
+      "epilogue": "Epilogue",
+      "phase": "Phase",
+      "truth": "Truth",
+      "truth-status": "Truth changes",
+      "memory": "Memory",
+      "adjust": "Adjustment",
+      "gm": "Guardian",
+      "scene": "Scene",
+      "note": "Note",
+      "clue": "Clue shown",
+      "gray-price": "Lady's price"
     },
-    "Archive": { "Kicker": "What was said and what is remembered" },
+    "Archive": {
+      "Kicker": "What was said and what is remembered"
+    },
     "Truth": {
-      "Statement": "Statement", "Placeholder": "“I never spoke to my brother again after that night.”",
-      "Register": "Record", "Established": "Truth established", "StatusLabel": "Status", "Category": "Category", "Origin": "Origin",
-      "Hidden": "Hidden from the player", "HiddenShort": "Hidden", "Note": "Guardian note", "Filter": "Filter truths",
-      "Empty": "No truths recorded yet.", "Trail": "Status changes", "Prepared": "Scenario's prepared truths",
-      "By": { "player": "Stated by the player", "guardian": "Set by the Guardian" },
+      "Statement": "Statement",
+      "Placeholder": "“I never spoke to my brother again after that night.”",
+      "Register": "Record",
+      "Established": "Truth established",
+      "StatusLabel": "Status",
+      "Category": "Category",
+      "Origin": "Origin",
+      "Hidden": "Hidden from the player",
+      "HiddenShort": "Hidden",
+      "Note": "Guardian note",
+      "Filter": "Filter truths",
+      "Empty": "No truths recorded yet.",
+      "Trail": "Status changes",
+      "Prepared": "Scenario's prepared truths",
+      "By": {
+        "player": "Stated by the player",
+        "guardian": "Set by the Guardian"
+      },
       "Status": {
-        "all": "All", "established": "Established", "doubtful": "Doubtful", "contradicted": "Contradicted",
-        "reinterpreted": "Reinterpreted", "pending": "Pending revelation", "resolved": "Resolved"
+        "all": "All",
+        "established": "Established",
+        "doubtful": "Doubtful",
+        "contradicted": "Contradicted",
+        "reinterpreted": "Reinterpreted",
+        "pending": "Pending revelation",
+        "resolved": "Resolved"
       }
     },
     "Memory": {
-      "Kicker": "Memory", "KindLabel": "Type", "Known": "Known to the player", "Launch": "Ask one of the scenario's questions",
-      "Add": "Add memory", "Placeholder": "Do you remember it, or would you rather not?", "Empty": "No memories yet.",
-      "Kind": { "memory": "Memory", "question": "Question", "locked": "Locked", "confirmed": "Confirmed", "contradicted": "Contradictory" }
+      "Kicker": "Memory",
+      "KindLabel": "Type",
+      "Known": "Known to the player",
+      "Launch": "Ask one of the scenario's questions",
+      "Add": "Add memory",
+      "Placeholder": "Do you remember it, or would you rather not?",
+      "Empty": "No memories yet.",
+      "Kind": {
+        "memory": "Memory",
+        "question": "Question",
+        "locked": "Locked",
+        "confirmed": "Confirmed",
+        "contradicted": "Contradictory"
+      }
     },
     "Link": {
-      "Label": "Linked to", "What": "To what?", "none": "No link", "scene": "Scene", "object": "Object", "clue": "Clue",
-      "character": "Character", "truth": "Truth", "card": "Card", "epilogue": "Epilogue"
+      "Label": "Linked to",
+      "What": "To what?",
+      "none": "No link",
+      "scene": "Scene",
+      "object": "Object",
+      "clue": "Clue",
+      "character": "Character",
+      "truth": "Truth",
+      "card": "Card",
+      "epilogue": "Epilogue"
     },
     "Guardian": {
-      "Idle": "No story is running.", "Scene": "Scene", "PrevScene": "Previous scene", "NextScene": "Next scene",
-      "Ambient": "Ambience", "Deck": "Deck", "GrayInside": "Lady inside", "Show": "Show everyone", "Discard": "Discard",
-      "Gray": "Bring a Lady forward", "GrayNext": "The next card will be a Grey Lady.", "NoGrayLeft": "No Ladies left in the deck.",
-      "Reshuffle": "Reshuffle blocks", "Reshuffled": "Each block has been reshuffled.", "Rebuild": "Rebuild deck",
+      "Idle": "No story is running.",
+      "Scene": "Scene",
+      "PrevScene": "Previous scene",
+      "NextScene": "Next scene",
+      "Ambient": "Ambience",
+      "Deck": "Deck",
+      "GrayInside": "Lady inside",
+      "Show": "Show everyone",
+      "Discard": "Discard",
+      "Gray": "Bring a Lady forward",
+      "GrayNext": "The next card will be a Grey Lady.",
+      "NoGrayLeft": "No Ladies left in the deck.",
+      "Reshuffle": "Reshuffle blocks",
+      "Reshuffled": "Each block has been reshuffled.",
+      "Rebuild": "Rebuild deck",
       "RebuildConfirm": "The whole deck is prepared again and the Ladies start over. The protagonist's resources do not change.",
-      "Insert": "Insert card", "InsertFrom": "Scenario card", "InsertCustom": "…or write a new card",
-      "InsertKind": "Type", "Where": "Where", "WhereNext": "Next", "WhereBlock": "In this block", "WhereBottom": "At the bottom",
-      "InsertDo": "Insert", "Inserted": "“{name}” is in the deck.", "Max": "max", "RaiseMax": "Raise the maximum",
-      "Record": "Record", "TruthPending": "Hidden: pending revelation", "Launch": "Ask", "Note": "Note",
-      "NotePlaceholder": "Private note for the chronicle…", "ToEpilogue": "Go to the epilogue"
+      "Insert": "Insert card",
+      "InsertFrom": "Scenario card",
+      "InsertCustom": "…or write a new card",
+      "InsertKind": "Type",
+      "Where": "Where",
+      "WhereNext": "Next",
+      "WhereBlock": "In this block",
+      "WhereBottom": "At the bottom",
+      "InsertDo": "Insert",
+      "Inserted": "“{name}” is in the deck.",
+      "Max": "max",
+      "RaiseMax": "Raise the maximum",
+      "Record": "Record",
+      "TruthPending": "Hidden: pending revelation",
+      "Launch": "Ask",
+      "Note": "Note",
+      "NotePlaceholder": "Private note for the chronicle…",
+      "ToEpilogue": "Go to the epilogue"
     },
     "Scenario": {
-      "Kicker": "Scenario", "Active": "in play", "Hook": "Hook: one line that grips",
+      "Kicker": "Scenario",
+      "Active": "in play",
+      "Hook": "Hook: one line that grips",
       "Tab": {
-        "play": "In play", "presentation": "Overview", "characters": "Characters", "clues": "Clues", "obstacles": "Obstacles",
-        "incidents": "Mishaps", "tension": "Tension", "grays": "Grey Ladies", "epilogues": "Epilogues", "memories": "Memories",
-        "truths": "Truths", "art": "Art", "sound": "Sound", "config": "Settings"
+        "play": "In play",
+        "presentation": "Overview",
+        "characters": "Characters",
+        "clues": "Clues",
+        "obstacles": "Obstacles",
+        "incidents": "Mishaps",
+        "tension": "Tension",
+        "grays": "Grey Ladies",
+        "epilogues": "Epilogues",
+        "memories": "Memories",
+        "truths": "Truths",
+        "art": "Art",
+        "sound": "Sound",
+        "config": "Settings"
       },
-      "Author": "Author", "Duration": "Length", "Players": "Players", "Tone": "Tone (comma separated)",
-      "ContentNotes": "Content notes", "Modes": "Modes", "Tags": "Tags", "Synopsis": "Synopsis", "Introduction": "Introduction",
-      "Cover": "Cover", "CustomBack": "Custom card back", "Handouts": "Handouts", "ShowHandout": "Show handout",
-      "EmptyList": "Nothing yet.", "TensionHint": "The story's scenes in rising order of tension. The Guardian walks them from their tool.",
+      "Author": "Author",
+      "Duration": "Length",
+      "Players": "Players",
+      "Tone": "Tone (comma separated)",
+      "ContentNotes": "Content notes",
+      "Modes": "Modes",
+      "Tags": "Tags",
+      "Synopsis": "Synopsis",
+      "Introduction": "Introduction",
+      "Cover": "Cover",
+      "CustomBack": "Custom card back",
+      "Handouts": "Handouts",
+      "ShowHandout": "Show handout",
+      "EmptyList": "Nothing yet.",
+      "TensionHint": "The story's scenes in rising order of tension. The Guardian walks them from their tool.",
       "TruthsHint": "Statements the story will test, and what contradicts them. Only the Guardian sees the contradiction.",
       "SoundHint": "A synthesized ambience for each moment, or the path to your own audio file.",
-      "Sound": { "intro": "Introduction", "play": "During the story", "gray": "After a Grey Lady", "epilogue": "Epilogue" },
-      "DeckVariant": "Deck preparation", "RecommendedSpirit": "Recommended Spirit", "RecommendedDetermination": "Recommended Resolve",
-      "CardCount": "Cards in the deck", "GuardianNotes": "Guardian notes", "NotActive": "This scenario is not in play.", "Imported": "Imported scenario"
+      "Sound": {
+        "intro": "Introduction",
+        "play": "During the story",
+        "gray": "After a Grey Lady",
+        "epilogue": "Epilogue"
+      },
+      "DeckVariant": "Deck preparation",
+      "RecommendedSpirit": "Recommended Spirit",
+      "RecommendedDetermination": "Recommended Resolve",
+      "CardCount": "Cards in the deck",
+      "GuardianNotes": "Guardian notes",
+      "NotActive": "This scenario is not in play.",
+      "Imported": "Imported scenario",
+      "EpilogueHint": "Spirit‑Epilogue table: the first row whose range (min–max) includes the final Spirit is used.",
+      "Source": "Source",
+      "License": "Licence or permission"
     },
     "Field": {
-      "title": "Title", "text": "Text", "difficulty": "Difficulty", "image": "Image", "guardian": "For the Guardian",
-      "name": "Name", "description": "Description", "secret": "Secret", "handout": "Handout", "prompt": "Question",
-      "followUp": "Follow-up", "kind": "Type", "link.type": "Linked to", "link.label": "To what?", "contradiction": "What contradicts it",
-      "reveal": "When it is revealed"
+      "title": "Title",
+      "text": "Text",
+      "difficulty": "Difficulty",
+      "image": "Image",
+      "guardian": "For the Guardian",
+      "name": "Name",
+      "description": "Description",
+      "secret": "Secret",
+      "handout": "Handout",
+      "prompt": "Question",
+      "followUp": "Follow-up",
+      "kind": "Type",
+      "link.type": "Linked to",
+      "link.label": "To what?",
+      "contradiction": "What contradicts it",
+      "reveal": "When it is revealed",
+      "label": "Condition",
+      "min": "Min. Spirit",
+      "max": "Max. Spirit"
     },
     "Tag": {
-      "rural": "Rural horror", "supernatural": "Supernatural", "psychological": "Psychological", "folklore": "Folklore",
-      "mystery": "Mystery", "scifi": "Science fiction", "urban": "Urban"
+      "rural": "Rural horror",
+      "supernatural": "Supernatural",
+      "psychological": "Psychological",
+      "folklore": "Folklore",
+      "mystery": "Mystery",
+      "scifi": "Science fiction",
+      "urban": "Urban"
     },
     "Library": {
-      "Kicker": "Stories for one night", "Filters": "Filters", "All": "All", "Play": "Play", "Edit": "Edit", "Read": "Read",
-      "More": "More actions", "Duplicate": "Duplicate", "MakeVariant": "Make a variant", "Export": "Export", "Import": "Import",
-      "Delete": "Delete", "DeleteConfirm": "Delete “{name}”? This cannot be undone.", "Variant": "Variant",
-      "NewScenario": "New scenario", "Imported": "Imported scenario", "ImportedOk": "“{name}” was added to the library.",
-      "ImportFailed": "Could not import: {error}", "CopyName": "{name} (copy)", "VariantName": "{name} · variant",
-      "Empty": "No scenarios match those filters."
+      "Kicker": "Stories for one night",
+      "Filters": "Filters",
+      "All": "All",
+      "Play": "Play",
+      "Edit": "Edit",
+      "Read": "Read",
+      "More": "More actions",
+      "Duplicate": "Duplicate",
+      "MakeVariant": "Make a variant",
+      "Export": "Export",
+      "Import": "Import",
+      "Delete": "Delete",
+      "DeleteConfirm": "Delete “{name}”? This cannot be undone.",
+      "Variant": "Variant",
+      "NewScenario": "New scenario",
+      "Imported": "Imported scenario",
+      "ImportedOk": "“{name}” was added to the library.",
+      "ImportFailed": "Could not import: {error}",
+      "CopyName": "{name} (copy)",
+      "VariantName": "{name} · variant",
+      "Empty": "No scenarios match those filters.",
+      "World": "In your world",
+      "Collection": "Included collection",
+      "HowImport": "How to import",
+      "AddPlay": "Add and play",
+      "Add": "Add to world",
+      "ImportedMany": "Imported: {n} scenarios.",
+      "ImportProblems": "Scenarios not imported",
+      "ImportProblemsText": "{n} scenarios have problems and were not imported. The rest were:"
     },
     "Import": {
-      "NotJSON": "the file is not valid JSON.", "NotScenario": "the file does not contain a scenario.",
-      "NoSystem": "the scenario data is missing.", "TooBig": "the file is too large."
+      "NotJSON": "the file is not valid JSON.",
+      "NotScenario": "the file does not contain a scenario.",
+      "NoSystem": "the scenario data is missing.",
+      "TooBig": "the file is too large.",
+      "TooMany": "too many scenarios in one file (max. 200)."
     },
     "Ambient": {
-      "none": "Silence", "fire": "Bonfire", "rain": "Rain", "wind": "Wind", "house": "Old house", "forest": "Forest",
-      "coast": "Coast", "storm": "Storm", "tape": "Magnetic tape", "silence": "Uncanny silence"
+      "none": "Silence",
+      "fire": "Bonfire",
+      "rain": "Rain",
+      "wind": "Wind",
+      "house": "Old house",
+      "forest": "Forest",
+      "coast": "Coast",
+      "storm": "Storm",
+      "tape": "Magnetic tape",
+      "silence": "Uncanny silence"
     },
     "Safety": {
       "Intro": "Anyone can use these at any time, without explaining why.",
-      "Pause": "Pause", "PauseHint": "We stop for a moment.", "PauseText": "Someone asked for a pause. We breathe and carry on when we are ready.",
-      "Veil": "Veil", "VeilHint": "Fade to black: it happens, but is not described.", "VeilText": "This part happens off screen. The story continues afterwards.",
-      "X": "X-Card", "XHint": "This leaves the story. No questions.", "XText": "Someone touched the X-Card. We take back the last thing and go another way.",
-      "Continue": "Carry on", "Anonymous": "The signal never says who used it."
+      "Pause": "Pause",
+      "PauseHint": "We stop for a moment.",
+      "PauseText": "Someone asked for a pause. We breathe and carry on when we are ready.",
+      "Veil": "Veil",
+      "VeilHint": "Fade to black: it happens, but is not described.",
+      "VeilText": "This part happens off screen. The story continues afterwards.",
+      "X": "X-Card",
+      "XHint": "This leaves the story. No questions.",
+      "XText": "Someone touched the X-Card. We take back the last thing and go another way.",
+      "Continue": "Carry on",
+      "Anonymous": "The signal never says who used it."
     },
     "Access": {
-      "Title": "Reading & accessibility", "Open": "Open", "Intro": "Settings just for you: size, contrast, motion and sound.",
-      "textScale": "Text size", "sfxVolume": "Effects volume", "ambientVolume": "Ambience volume",
-      "readingMode": "Clean reading", "readingModeHint": "Plain backgrounds and light text on dark.",
-      "highContrast": "High contrast", "highContrastHint": "Stronger borders and text.",
-      "plainFont": "Simple typeface", "plainFontHint": "Sans-serif, easier at small sizes.",
-      "wideSpacing": "Wider spacing", "wideSpacingHint": "More room between lines and letters.",
-      "largeButtons": "Large buttons", "largeButtonsHint": "Easier targets to press.",
-      "reducedMotion": "Reduce motion", "reducedMotionHint": "No card flips or travel.",
-      "reducedEffects": "Reduce effects", "reducedEffectsHint": "No fog, motes or flicker.",
-      "richHelp": "Contextual help", "richHelpHint": "Notes when you rest on an element; right-click for more.",
-      "soundFx": "Sound", "soundFxHint": "Synthesized ambience and effects.",
-      "InkLabel": "Reading ink", "Ink": { "soft": "Warm grey", "cream": "Cream", "pearl": "Pearl", "amber": "Amber", "mint": "Mint" },
-      "Reset": "Reset", "Forget": "Re-place windows", "Forgotten": "Windows will return to their default position when opened."
+      "Title": "Reading & accessibility",
+      "Open": "Open",
+      "Intro": "Settings just for you: size, contrast, motion and sound.",
+      "textScale": "Text size",
+      "sfxVolume": "Effects volume",
+      "ambientVolume": "Ambience volume",
+      "readingMode": "Clean reading",
+      "readingModeHint": "Plain backgrounds and light text on dark.",
+      "highContrast": "High contrast",
+      "highContrastHint": "Stronger borders and text.",
+      "plainFont": "Simple typeface",
+      "plainFontHint": "Sans-serif, easier at small sizes.",
+      "wideSpacing": "Wider spacing",
+      "wideSpacingHint": "More room between lines and letters.",
+      "largeButtons": "Large buttons",
+      "largeButtonsHint": "Easier targets to press.",
+      "reducedMotion": "Reduce motion",
+      "reducedMotionHint": "No card flips or travel.",
+      "reducedEffects": "Reduce effects",
+      "reducedEffectsHint": "No fog, motes or flicker.",
+      "richHelp": "Contextual help",
+      "richHelpHint": "Notes when you rest on an element; right-click for more.",
+      "soundFx": "Sound",
+      "soundFxHint": "Synthesized ambience and effects.",
+      "InkLabel": "Reading ink",
+      "Ink": {
+        "soft": "Warm grey",
+        "cream": "Cream",
+        "pearl": "Pearl",
+        "amber": "Amber",
+        "mint": "Mint"
+      },
+      "Reset": "Reset",
+      "Forget": "Re-place windows",
+      "Forgotten": "Windows will return to their default position when opened."
     },
     "Diagnostic": {
-      "Title": "Diagnostics", "Open": "Open diagnostics", "Hint": "System status, ready to copy and send if something fails.",
-      "AllGood": "All good.", "Problems": "Something needs a look.", "Missing": "Missing", "Copy": "Copy", "Copied": "Diagnostics copied.",
+      "Title": "Diagnostics",
+      "Open": "Open diagnostics",
+      "Hint": "System status, ready to copy and send if something fails.",
+      "AllGood": "All good.",
+      "Problems": "Something needs a look.",
+      "Missing": "Missing",
+      "Copy": "Copy",
+      "Copied": "Diagnostics copied.",
       "Refresh": "Refresh"
     },
     "Welcome": {
-      "Title": "MR · Cuentos de Ánimas", "Ready": "Everything is ready.",
+      "Title": "MR · Cuentos de Ánimas",
+      "Ready": "Everything is ready.",
       "Body": "The Table of Souls never opens by itself: find it in the left toolbar (moon), in the directories, or with Shift+M.",
-      "Table": "Open the Table", "New": "New story", "Protagonist": "Create protagonist", "Library": "Library", "Hide": "Don't show again"
+      "Table": "Open the Table",
+      "New": "New story",
+      "Protagonist": "Create protagonist",
+      "Library": "Library",
+      "Hide": "Don't show again"
     },
     "Help": {
       "RightClick": "Right-click to learn more",
-      "spirit": { "Title": "Spirit", "Short": "Your balance. Lost when failing an obstacle or facing a Grey Lady.", "Long": "The cold stones are Spirit. When one goes out, the story grows colder. If all go out, the story heads straight to its darkest epilogue." },
-      "determination": { "Title": "Resolve", "Short": "Your will. Spend it to tilt an obstacle your way.", "Long": "Before revealing the number card it adds +2; afterwards, +1 if that is enough. From the second Grey Lady it also lets you reveal again. Each spent ember goes out in the tray." },
-      "deck": { "Title": "Deck of Souls", "Short": "Each card opens a scene: clue, obstacle, mishap or Grey Lady.", "Long": "The deck has three blocks with one Grey Lady in each. The player never sees what comes; the Guardian only sees how many cards remain in each block." },
-      "gray": { "Title": "Grey Ladies", "Short": "Three thresholds of tension. Each hardens the story; the third opens the epilogue.", "Long": "When she appears she asks for her price (Resolve or Spirit) and raises obstacle difficulty by 1." },
-      "number": { "Title": "Number card", "Short": "1 to 10. Match or beat the difficulty to overcome the obstacle.", "Long": "What adds up: the card, +2 if you spent Resolve before revealing, and +1 if you push afterwards." },
-      "spend": { "Title": "Spend before revealing", "Short": "One Resolve: +2 to the card you are about to reveal." },
-      "push": { "Title": "Push", "Short": "Only if you are 1 short: one Resolve turns it into a success." },
-      "reroll": { "Title": "Reveal again", "Short": "From the second Lady: one Resolve to reveal another card." },
-      "discard": { "Title": "Discard", "Short": "Cards already played. The top one is the card before the current one." },
-      "card-clue": { "Title": "Clue", "Short": "A discovery. Not resolved: narrated." },
-      "card-environment": { "Title": "Environment obstacle", "Short": "The physical world turns hostile. Has a difficulty." },
-      "card-character": { "Title": "Character obstacle", "Short": "A human conflict. Has a difficulty." },
-      "card-incident": { "Title": "Mishap", "Short": "Something changes, breaks or is lost. No test." },
-      "card-gray": { "Title": "Grey Lady", "Short": "Tension takes a step. She asks for her price." },
-      "diary": { "Title": "Diary", "Short": "Scenes are noted by themselves; you write what the protagonist felt." },
-      "history": { "Title": "Chronicle", "Short": "A structured record of everything that happened, to rebuild the session." },
-      "truths": { "Title": "Truths", "Short": "What the protagonist claims. The story may cast doubt on it.", "Long": "Established, doubtful, contradicted, reinterpreted, pending revelation or resolved. It is not about catching the player out: it is about finding which story they were telling themselves." },
-      "memories": { "Title": "Memories", "Short": "Questions and answers about the past. They can be locked or contradict each other." },
-      "guardian": { "Title": "Guardian", "Short": "Compact game control: deck, scene, resources and record." },
-      "library": { "Title": "Library", "Short": "Scenarios to play, edit, duplicate or import." },
-      "safety": { "Title": "Safety", "Short": "Pause, Veil and X-Card. Anonymous and immediate." },
-      "access": { "Title": "Accessibility", "Short": "Text size, contrast, motion and sound." },
-      "blocks": { "Title": "Deck blocks", "Short": "Cards left in each third and whether its Lady is still inside. Never which card." },
-      "split": { "Title": "Split", "Short": "Ten points between Spirit and Resolve, at least 3 each. A scenario may change it." },
-      "traits": { "Title": "Traits", "Short": "Four words or phrases that define the protagonist and spark ideas." },
-      "objects": { "Title": "Objects", "Short": "What they carry. Starred ones matter to the story." },
-      "bonds": { "Title": "Bonds", "Short": "People who matter: who, what binds you, what parts you." }
+      "spirit": {
+        "Title": "Spirit",
+        "Short": "Your balance. Lost when failing an obstacle or facing a Grey Lady.",
+        "Long": "The cold stones are Spirit. When one goes out, the story grows colder. If all go out, the story heads straight to its darkest epilogue."
+      },
+      "determination": {
+        "Title": "Resolve",
+        "Short": "Your will. Spend it to tilt an obstacle your way.",
+        "Long": "Before revealing the number card it adds +2; afterwards, +1 if that is enough. From the second Grey Lady it also lets you reveal again. Each spent ember goes out in the tray."
+      },
+      "deck": {
+        "Title": "Deck of Souls",
+        "Short": "Each card opens a scene: clue, obstacle, mishap or Grey Lady.",
+        "Long": "The deck has three blocks with one Grey Lady in each. The player never sees what comes; the Guardian only sees how many cards remain in each block."
+      },
+      "gray": {
+        "Title": "Grey Ladies",
+        "Short": "Three thresholds of tension. Each hardens the story; the third opens the epilogue.",
+        "Long": "When she appears she asks for her price (Resolve or Spirit) and raises obstacle difficulty by 1."
+      },
+      "number": {
+        "Title": "Number card",
+        "Short": "1 to 10. Match or beat the difficulty to overcome the obstacle.",
+        "Long": "What adds up: the card, +2 if you spent Resolve before revealing, and +1 if you push afterwards."
+      },
+      "spend": {
+        "Title": "Spend before revealing",
+        "Short": "One Resolve: +2 to the card you are about to reveal."
+      },
+      "push": {
+        "Title": "Push",
+        "Short": "Only if you are 1 short: one Resolve turns it into a success."
+      },
+      "reroll": {
+        "Title": "Reveal again",
+        "Short": "From the second Lady: one Resolve to reveal another card."
+      },
+      "discard": {
+        "Title": "Discard",
+        "Short": "Cards already played. The top one is the card before the current one."
+      },
+      "card-clue": {
+        "Title": "Clue",
+        "Short": "A discovery. Not resolved: narrated."
+      },
+      "card-environment": {
+        "Title": "Environment obstacle",
+        "Short": "The physical world turns hostile. Has a difficulty."
+      },
+      "card-character": {
+        "Title": "Character obstacle",
+        "Short": "A human conflict. Has a difficulty."
+      },
+      "card-incident": {
+        "Title": "Mishap",
+        "Short": "Something changes, breaks or is lost. No test."
+      },
+      "card-gray": {
+        "Title": "Grey Lady",
+        "Short": "Tension takes a step. She asks for her price."
+      },
+      "diary": {
+        "Title": "Diary",
+        "Short": "Scenes are noted by themselves; you write what the protagonist felt."
+      },
+      "history": {
+        "Title": "Chronicle",
+        "Short": "A structured record of everything that happened, to rebuild the session."
+      },
+      "truths": {
+        "Title": "Truths",
+        "Short": "What the protagonist claims. The story may cast doubt on it.",
+        "Long": "Established, doubtful, contradicted, reinterpreted, pending revelation or resolved. It is not about catching the player out: it is about finding which story they were telling themselves."
+      },
+      "memories": {
+        "Title": "Memories",
+        "Short": "Questions and answers about the past. They can be locked or contradict each other."
+      },
+      "guardian": {
+        "Title": "Guardian",
+        "Short": "Compact game control: deck, scene, resources and record."
+      },
+      "library": {
+        "Title": "Library",
+        "Short": "Scenarios to play, edit, duplicate or import."
+      },
+      "safety": {
+        "Title": "Safety",
+        "Short": "Pause, Veil and X-Card. Anonymous and immediate."
+      },
+      "access": {
+        "Title": "Accessibility",
+        "Short": "Text size, contrast, motion and sound."
+      },
+      "blocks": {
+        "Title": "Deck blocks",
+        "Short": "Cards left in each third and whether its Lady is still inside. Never which card."
+      },
+      "split": {
+        "Title": "Split",
+        "Short": "Ten points between Spirit and Resolve, at least 3 each. A scenario may change it."
+      },
+      "traits": {
+        "Title": "Traits",
+        "Short": "Four words or phrases that define the protagonist and spark ideas."
+      },
+      "objects": {
+        "Title": "Objects",
+        "Short": "What they carry. Starred ones matter to the story."
+      },
+      "bonds": {
+        "Title": "Bonds",
+        "Short": "People who matter: who, what binds you, what parts you."
+      },
+      "story": {
+        "Title": "The story",
+        "Short": "Synopsis, clues found and tension revealed, always at hand to re-read. It can be folded."
+      },
+      "synopsis": {
+        "Title": "Synopsis",
+        "Short": "The scenario's opening narration. Read at the start and kept here to re-read."
+      },
+      "clues": {
+        "Title": "Clues found",
+        "Short": "Every chosen Clue stays here, outside the discard pile. Click one to enlarge it."
+      },
+      "collection": {
+        "Title": "Included collection",
+        "Short": "Scenarios bundled with the system. Add them to your world to play or edit them."
+      }
+    },
+    "Skin": {
+      "mr": "Photographic",
+      "classic": "Classic (book cards)"
+    },
+    "Choose": {
+      "clue": "Which clue does the protagonist find?",
+      "environment": "Which obstacle does the environment raise?",
+      "character": "Which obstacle does a character raise?",
+      "incident": "Which supporting character suffers the mishap?",
+      "Waiting": "Choose the scene from the scenario's list…",
+      "Used": "already used",
+      "Empty": "The scenario has no entries for this card: write the scene.",
+      "Custom": "…or write your own scene",
+      "Use": "Use this scene"
+    },
+    "ImportHelp": {
+      "Title": "How to import scenarios",
+      "Intro": "The Library imports scenarios from a JSON file. Write it by hand with the template, or ask an AI with the prompt below and paste the scenario text.",
+      "FileTitle": "The file",
+      "File1": "JSON in UTF‑8 with a .json extension. It can live in any folder on your computer.",
+      "File2": "Pick it from Library → Import. No need to copy it into Foundry's folders.",
+      "File3": "One file can hold one or many scenarios, inside the «scenarios» list.",
+      "File4": "Everything is plain text: separate paragraphs with a blank line (\\n\\n). No HTML needed.",
+      "FieldsTitle": "Fields",
+      "Key": "Key",
+      "What": "What it holds",
+      "Required": "required",
+      "Values": "Allowed values —",
+      "TemplateTitle": "Template",
+      "PromptTitle": "Prompt to generate it with an AI",
+      "PromptIntro": "Copy this into your AI and paste the scenario after it (from the PDF or your own). Save the answer as a .json file and import it.",
+      "ErrorsTitle": "If something fails",
+      "Errors": "Every scenario is checked before touching the world. Valid ones are imported; for the rest you will see exactly what is missing. A malformed JSON is not imported and changes nothing.",
+      "Download": "Download template",
+      "CopyPrompt": "Copy prompt",
+      "Copied": "Prompt copied.",
+      "Prompt": "Convert the «Cuentos de ánimas» scenario pasted at the end into a JSON file for the MR · Cuentos de Ánimas system for Foundry VTT.\n\nAnswer ONLY with the JSON, no explanations or code fences.\n\nUse exactly this structure and these field names:\n{template}\n\nRules:\n- Keep «format» and «version» as they are.\n- Copy the scenario's texts without summarising. Separate «synopsis» paragraphs with \\n\\n.\n- «synopsis»: the synopsis or introduction read aloud at the start.\n- «characters»: supporting characters, each with «name» and «description».\n- «clues», «environmentObstacles» and «characterObstacles»: one sentence per entry. No difficulty: the card provides it.\n- «incidents»: usually empty; mishaps befall a supporting character.\n- «tension»: exactly three texts, first, second and third Grey Lady.\n- «epilogues»: one entry per row of the Spirit‑Epilogue table, in the same order, with «label» (the condition as written), «min» and «max» (Spirit counters it covers; 99 = no limit) and «text». There must be a row with min 0.\n- «modes»: choose among {modes}.\n- «tags»: choose among {tags}.\n- If the scenario has an author's note not meant for players, put it in «guardianNotes».\n- Fill «author» and «source» with authorship and origin.\n\nScenario:\n",
+      "Field": {
+        "name": "Scenario title.",
+        "synopsis": "Opening narration read at the start; stays visible on the Table.",
+        "characters": "Supporting characters: { name, description }.",
+        "clues": "Clues: one sentence per entry.",
+        "environmentObstacles": "Environment obstacles: one sentence per entry.",
+        "characterObstacles": "Character obstacles: one sentence per entry.",
+        "tension": "Tension table: three texts, one per Grey Lady.",
+        "epilogues": "Spirit‑Epilogue table: { label, min, max, text }; the first row including the final Spirit is used.",
+        "author": "Authorship.",
+        "duration": "Approximate length.",
+        "players": "Number of players.",
+        "modes": "Recommended modes.",
+        "tags": "Tags for the Library filters.",
+        "tone": "Free tone words.",
+        "contentNotes": "Content notes.",
+        "hook": "Hook line for the Library.",
+        "incidents": "Own mishaps (optional; otherwise a character is chosen).",
+        "guardianNotes": "Notes only for whoever runs the game.",
+        "source": "Origin: { collection, license, url }."
+      }
     }
   }
 }

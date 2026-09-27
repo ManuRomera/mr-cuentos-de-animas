@@ -1,4 +1,5 @@
-import { FLAGS, SOCKET, SYSTEM_ID } from "../constants.mjs";
+import { CARD_KINDS, FLAGS, SOCKET, SYSTEM_ID } from "../constants.mjs";
+import { epilogueRow } from "../rules.mjs";
 import { CardOverlay } from "../apps/card-overlay.mjs";
 import { refreshApps } from "../apps/registry.mjs";
 import { cardView } from "../apps/view.mjs";
@@ -27,6 +28,7 @@ export class Presenter {
     for (const hook of ["createCard", "deleteCard", "updateCard"]) Hooks.on(hook, card => { if (card.parent?.getFlag(SYSTEM_ID, FLAGS.ROLE)) this.#refresh(); });
     Hooks.on("updateActor", actor => { if (actor.type === "protagonist") { this.#onResources(actor); this.#refresh(); } });
     Hooks.on("updateItem", item => { if (item.type === "scenario") this.#refresh(); });
+    Hooks.on("mrCdaSkin", () => this.#refresh());
     game.socket.on(SOCKET, data => this.#onSocket(data));
     SoundService.setAmbient(this.#seen.ambient);
   }
@@ -34,10 +36,14 @@ export class Presenter {
   static #onState(state) {
     const before = this.#seen ?? {};
     this.#seen = state;
-    if (state.currentCardId && state.currentCardId !== before.currentCardId) {
-      SoundService.flip();
-      const tableOpen = foundry.applications.instances.get("cda-table")?.rendered;
-      if (!tableOpen) CardOverlay.show(cardView(DeckService.current()), { flip: true });
+    const tableOpen = foundry.applications.instances.get("cda-table")?.rendered;
+    const newCard = state.currentCardId && state.currentCardId !== before.currentCardId;
+    if (newCard) SoundService.flip();
+    // Sin la Mesa abierta: la Dama se ve al salir; las demás cartas, cuando ya tienen su escena.
+    const chosen = state.event?.choice && !(before.event?.choice && before.event.cardId === state.event.cardId);
+    const card = DeckService.current();
+    if (!tableOpen && card && ((newCard && DeckService.meta(card).kind === CARD_KINDS.GRAY) || chosen)) {
+      CardOverlay.show(cardView(card, { customBack: StateService.scenario()?.system.customBack }), { flip: true });
     }
     if (state.grayLadies > (before.grayLadies ?? 0)) SoundService.gray(state.grayLadies);
     const o = state.obstacle, p = before.obstacle;
@@ -45,9 +51,9 @@ export class Presenter {
     if (o?.outcome && o.outcome !== p?.outcome) o.outcome === "success" ? SoundService.success() : SoundService.failure();
     if (state.ambient !== before.ambient) SoundService.setAmbient(state.ambient);
     if (state.phase === "finished" && before.phase !== "finished") {
-      const scenario = StateService.scenario();
-      const key = StateService.history().findLast(e => e.type === "epilogue")?.result;
-      if (scenario && key) CardOverlay.epilogue(scenario, { key, text: scenario.system.epilogues[key] });
+      const scenario = StateService.scenario(), actor = StateService.protagonist();
+      const row = epilogueRow(scenario?.system.epilogueTable ?? [], actor?.system.spirit.value ?? 0);
+      if (scenario && row) CardOverlay.epilogue(scenario, row, state.tension[2] ?? "");
     }
   }
 
@@ -66,6 +72,7 @@ export class Presenter {
   static #onSocket(data) {
     if (data?.type === "memory") CardOverlay.memory(data.memory);
     if (data?.type === "card") CardOverlay.show(data.card);
+    if (data?.type === "clue") CardOverlay.memory({ title: data.clue.title, prompt: data.clue.text, followUp: "", kicker: game.i18n.localize("CdA.Kind.clue") });
   }
 
   static broadcast(data) {

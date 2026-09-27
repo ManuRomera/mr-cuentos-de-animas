@@ -1,0 +1,1364 @@
+{
+ "format": "mr-cuentos-de-animas/scenario",
+ "version": 2,
+ "collection": {
+  "id": "folclore-rol-jam-2022",
+  "title": "Folclore Rol Jam 2022",
+  "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+  "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+  "url": "https://www.elrefugioeditorial.com"
+ },
+ "scenarios": [
+  {
+   "id": "folclore-rol-jam-2022/el-hombre-del-saco",
+   "name": "El hombre del saco",
+   "author": "Pablo López García",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "mystery"
+   ],
+   "synopsis": "Estas en 1910, en la provincia de Almería. Un amigo te ha invitado a un pequeño pueblo llamado Gádor, donde se celebran las fiestas de su patrona. Al llegar, descubres que el hijo pequeño de tu amigo, Bernardo, ha desaparecido. Para ayudar a tu amigo, decides investigar y encontrar a Bernardo antes de que sea demasiado tarde.",
+   "guardianNotes": "Este escenario es una adaptación para Cuentos de ánimas de la historia del crimen de Gádor, que dio origen a la famosa leyenda del hombre del saco. Los hechos ocurrieron en un pueblo de Almería en 1910. Usa como base una adaptación de dicha historia al rol que hice ya hace tiempo y que se puede encontrar en: https://yopablo.itch.io/elhombredelsaco. Descubrí no hace mucho la historia y me impactó el hecho de que, una leyenda tan extendida como la del hombre del saco, tuviese una base real y que además hubiese ocurrido en Andalucía (yo soy de Granada).",
+   "characters": [
+    {
+     "name": "Francisco Leona",
+     "description": "Un barbero de 72 años de edad en Gádor. Es conocido por practicar el curanderismo y otras artes oscuras."
+    },
+    {
+     "name": "Agustina la Curandera",
+     "description": "Vive en el Cortijo de la Luna, en Gádor, y es la curandera del pueblo. La conoce todo el mundo y es a quien acuden cuando enferman."
+    },
+    {
+     "name": "Julio el Loco",
+     "description": "Hijo de Agustina la Curandera. Se pasa el día detrás de Francisco Leona, ayudándola en las tareas que le manda. Se comporta casi siempre de forma rara."
+    },
+    {
+     "name": "Francisco el Moruno",
+     "description": "Campesino que vive a las afueras del pueblo. Lleva varios meses enfermo de tuberculosis pulmonar (tísico) y está desesperado."
+    },
+    {
+     "name": "Antonio Leona",
+     "description": "Ejerce de boticario en Gádor. Es también el juez de paz del pueblo. Es sobrino de Francisco Leona."
+    }
+   ],
+   "clues": [
+    "Un zurrón con unas cenizas extrañas en su interior.",
+    "Unos gritos apagados que se escuchan a lo lejos",
+    "Un mensaje escrito en sangre.",
+    "Una figura oscura que se esconde detrás de unos arbustos y desaparece cuando te acercas.",
+    "Estando paralizado empiezas a emitir voces ininteligibles por tu boca."
+   ],
+   "environmentObstacles": [
+    "La oscuridad y la niebla dificultan la visibilidad.",
+    "Un río crecido te impide continuar.",
+    "Un grupo de perros salvajes te ataca en el camino.",
+    "Una ráfaga de viento apaga tus velas.",
+    "Una puerta está atrancada desde dentro."
+   ],
+   "characterObstacles": [
+    "Un personaje te ataca con una escopeta de caza.",
+    "Un personaje te hipnotiza y trata de escapar.",
+    "Un personaje te advierte de que no sigas buscando.",
+    "Un personaje desconfía de ti y se niega a ayudarte.",
+    "Un personaje trata de inculparte."
+   ],
+   "tension": [
+    "Descubres una carta donde alguien se responsabiliza de la tarea de encontrar al niño adecuado.",
+    "Encuentras un libro de brujería abierto por una página que muestra un grabado de un niño dolorido sobre una mesa, con una pequeña raja en su costado derramando sangre.",
+    "Descubres un vaso de cristal junto a un gran charco de sangre y un cuchillo."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Después de toda la noche buscando por los alrededores de Gádor, encuentras una pequeña cueva al pie de un barranco. En su interior, encuentras al pequeño Bernardo, asustado y con algunas heridas leves. Lo acompañas al pueblo para llevarlo con su familia."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Después de toda la noche buscando por los alrededores de Gádor, encuentras una pequeña cueva al pie de un barranco. En su interior, encuentras al pequeño Bernardo gravemente herido. Corres con él en brazos hacia el pueblo, rezando para que no sea demasiado tarde."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Después de toda la noche buscando por los alrededores de Gádor, encuentras una pequeña cueva al pie de un barranco. En su interior, encuentras al pequeño Bernardo sin vida, dentro de un saco. Vuelves al pueblo destrozado por un día que no olvidarás jamás."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/el-silbon",
+   "name": "El silbón",
+   "author": "Vanessa Boggio",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Es el año 1877, te han invitado a la boda de tu prima en el poblado de Guanarito, en el estado Portuguesa. La celebración es en un caserío rural, repleto de ganado, café, cacao y hermosos ríos. Tu profesión es periodista, eres un hombre de mundo que se cree muy inteligente y capaz de conquistar a cualquier muchacha, más aun, si esta es una joven de pueblo que sueña con cosas mejores. Tú madre es quien proviene de Guanarito y tú nunca has visitado la casa montonera (familiar) de tus abuelos. Por esta razón el viaje para ti es más una divertimento que un compromiso familiar. ¿Y por qué negarte a asistir? Si te van a dar alojamiento y comida gratis.",
+   "guardianNotes": "El silbón es un espectro del folclore venezolano, aunque también forma parte del acerbo cultural de los llanos colombianos. La leyenda es propia de la región de Guanarito, estado Portuguesa. Una localidad netamente agrícola que, aun hoy en día, vive del ganado y la siembra, sobre todo porque ha sido bendecida con varias fuentes fluviales. El cuento del silbón surgió a mediados del siglo XIX, pero actualmente existen muchas versiones del mismo cuento. La más popular es la que habla de un joven que descubre a su padre abusando de su esposa y en un arrebato de furia comete parricidio, siendo posteriormente maldecido por su abuelo a vagar por el mundo llevando un saco con los huesos de su progenitor. Elegí esta leyenda porque el silbón es como el coco venezolano, todos hemos escuchado esta leyenda de niños y hasta en ocasiones colgamos cruces de palma bendita en las puertas de nuestros cuartos para que el espectro no entre. También está la creencia de que es malo silbar de noche, porque te puede salir el silbón.",
+   "characters": [
+    {
+     "name": "Rosarito Ortiz",
+     "description": "Es tu prima la que se va a casar, pero la muchacha no ha asumido seriamente el compromiso, así que sigue coqueteando con cuanto hombre se tropieza."
+    },
+    {
+     "name": "Pastora Blanco",
+     "description": "La madrina de la boda. Una joven de alta cuna o, lo que es lo mismo, hija de un gran cacao (dueño de una hacienda cacaotera). La joven es supersticiosa y fiel devota a la Divina Pastora, a la que debe su nombre."
+    },
+    {
+     "name": "Atanasio Ortiz",
+     "description": "El padre de la novia, es decir, tu tío materno. Quien tiene muy mal temperamento y es totalmente veguero (dícese de la persona del llano o zona rural, que no conoce costumbres citadinas), suele hablar por medio de refranes o dichos."
+    },
+    {
+     "name": "Casildo Jiménez",
+     "description": "El novio. Un muchacho demasiado inocente que no se da cuenta de que su futura mujer no le respeta. Le encanta hacer amigos y siempre dice la verdad, así sea un comentario impertinente."
+    },
+    {
+     "name": "Gualberto Seijas",
+     "description": "El capataz de la finca de tu tío. Es un borracho empedernido, le encantan las apuestas y meterse en cuanta pelea de gallos haya por los alrededores. También se la pasa con un cuatro bajo el brazo, para animar las fiestas."
+    }
+   ],
+   "clues": [
+    "Alguien comenta que la otra noche un borracho vio una sombra muy alta y alargada, de un hombre con sombrero.",
+    "Cuando las campanas de la iglesia dan la media noche, los perros del pueblo empiezan a ladrar y gruñir con rabia.",
+    "Escuchas un silbido (do, re, mi, fa, sol, la, si) cerca de tu oreja, pero al voltear no hay nadie.",
+    "Encuentran, hecha jirones y llena de sangre, la camisa del mujeriego del pueblo, pero nadie lo vuelve a ver.",
+    "Comienzas a soñar con una figura muy alta y flaca, que lleva a rastras un enorme saco de huesos.",
+    "Un borracho llega gritando a los cuatro vientos que acaba de ver al mismísimo satanás cerca de la quebrada.",
+    "Encuentran un fosa recién abierta en el cementerio del pueblo y no tiene lápida.",
+    "Se escucha una risa macabra traída por el viento."
+   ],
+   "environmentObstacles": [
+    "Una oscuridad sobrenatural te impide ver.",
+    "Los perros te gruñen sin motivos aparentes.",
+    "Vas caminando y de repente te pierdes.",
+    "Los caballos se agitan en tu presencia.",
+    "El atardecer toma un color rojizo como la sangre.",
+    "Un hedor a alcohol viaja por el aire."
+   ],
+   "characterObstacles": [
+    "Una mujer se obsesiona contigo.",
+    "Una persona te tiene miedo y te evita a toda costa.",
+    "Una persona aparece con amnesia y rasguñada.",
+    "Alguien te advierte que debes irte.",
+    "Alguien se encierra en la sacristía y no quiere salir.",
+    "Un personaje te amenaza con un machete."
+   ],
+   "tension": [
+    "Escuchas a un grupo de campesinos, decirle medio en broma a un muchacho joven, que si sigue de mujeriego va recibir la visita del silbón.",
+    "Percibes en medio de la noche la sombra de un hombre muy alto, que lleva un sombrero de copa sobre su cabeza, pero sus brazos y piernas parecieran demasiado largos para su cuerpo.",
+    "Empiezas a escuchar en la lejanía un silbido (do, re, mi, fa, sol, la, si) pero, tras dar unos pocos pasos, tropiezas de frente con un hombre de piel putrefacta, ojos totalmente blancos y sonrisa macabra que se ensancha apenas te ve."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Apenas miras el rostro de la muerte, te das media vuelta y empiezas a correr sin mirar atrás, saltas un alambrado de púas, mientras percibes los pasos y la risas de tu perseguidor. Pero repentinamente estas rodeados por un grupo de perros que te ladran, gruñen y uno de ellos hasta te muerde. Sin embargo, el silbón ha desaparecido para siempre."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "El silbón logra darte un manotazo antes de que puedas reaccionar. Sus largas uñas te desgarran el pecho y tú sientes que el aire, así como la vida, se escapa de ti. Decides arrodillarte a rezarle a un Dios que hace tiempo habías abandonado y parece no querer protegerte, porque tu mente se llena de horribles escenas donde eres desmembrado en vida. Al día siguiente, te encuentran balbuceando locuras a la orilla del camino, sigues respirando pero no estás vivo."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Quedas petrificado por el miedo, cuando logras vislumbrar tu muerte en las blancas orbes del silbón. Sin previo aviso, sientes como dos poderosas manos desgarran tus entrañas, mientras la criatura silva como si trabajara en la faena del día. Antes de sucumbir a la muerte lo ves saborear tus tripas, mientras abre un enorme saco lleno de huesos."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/puable-guanche",
+   "name": "Puable Guanche",
+   "author": "Joshua Lucifer",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Año 1494, isla de Tenerife. Alonso Fernández de Lugo lleva varios meses lidiando con el pueblo aborigen de la magnífica isla volcánica. Algunos de los grupos disidentes tratan de crear pactos con los castellanos, en pos de mitigar la furia sangrienta de los demonios plateados. Tú eres Fernando Enríquez, la mano derecha de Alonso, y has jurado llegar a un acuerdo con los «guanches» de una zona del norte de la isla. Algunos de los hombres con más experiencia en esta empresa han tratado con los aborígenes, dando lugar a todo tipo de conflictos. Este pueblo concreto, «menceyato» como dicen ellos, parece que quiere establecer una tregua. Pero el fracaso no es una opción, pues está en juego tu honor. Contigo y varios hombres más está una hermosa joven que hace de nexo, con visible dificultad, mediando y traduciendo entre ambas partes. El camino desde la playa hasta el menceyato no será fácil, debido a lo escarpado de la orografía. También has escuchado entre los hombres que los aborígenes poseen poderes extraños relacionados con la muerte.",
+   "guardianNotes": "En el pasado, Tenerife fue una de las siete islas a las que emigraron varios grupos de personas de origen bereber. Canarias fue, por cercanía o necesidad, el destino que eligieron, sin saber a ciencia cierta si lograrían salir adelante. Hoy en día sigue siendo el epicentro del turismo en España y no se habla tanto de los orígenes de ese pueblo tan misterioso a la par que breve. ¿Por qué emigraron? ¿Qué los llevó hasta las islas? El porqué siempre me ha parecido la verdadera incógnita, más que el cómo. Me he tomado la licencia, dentro del escaso esoterismo y algunas prácticas funerarias del pueblo guanche, para crear una historia alternativa a la ya tan manida «Conquista de Canarias». Tenerife tiene una orografía bastante especial, muchos rincones y parajes que nadie logra imaginar con exactitud, pero que todos temen al caer la noche. Hay muchas historias de santería, rituales y espíritus ancestrales. Y ya va siendo hora de que le dé mi toque personal al asunto, en una época donde lo místico y lo desconocido se juntan a mi placer.",
+   "characters": [
+    {
+     "name": "Guacimara",
+     "description": "Una aborigen convertida al cristianismo. Muy bella, de piel morena y ojos verdes, hace de traductora e intermediaria. Te parece que la envuelve cierto aire de misterio."
+    },
+    {
+     "name": "Alberto Arrimadas",
+     "description": "Rival venido a menos que trata de ganarse tu puesto, o más bien espera pacientemente a que des un paso en falso para echarte a los leones."
+    },
+    {
+     "name": "Tomás Francisco de Iriarte",
+     "description": "Uno de tus subordinados. Es grande, fuerte y le mueve la codicia. A veces, también se da a la bebida y a sendos accesos de ira."
+    },
+    {
+     "name": "Filomeno López",
+     "description": "Trabaja como tu porteador, es menudo y poco hablador. Le falta un ojo y nunca te ha revelado el porqué. Cada vez que habla deja claro lo supersticioso y siniestro que es."
+    },
+    {
+     "name": "Soldados castellanos",
+     "description": "Una decena de soldados entrenados para la batalla, cuya lealtad en tierras extrañas puede ser mudable y frágil. En general, obedecen la cadena de mando, aunque el miedo puede hacer estragos en sus voluntades. Crédulos e indecorosos. El único trato cercano que tienes con ellos es darles órdenes."
+    }
+   ],
+   "clues": [
+    "Durante la noche se escuchan siseos extraños que solo tú pareces oír.",
+    "Encontráis el cráneo de una cabra pintado de negro.",
+    "Durante la noche escuchas unas voces en el interior de tu cabeza, pidiendo que te vayas.",
+    "Un brillo púrpura parece emanar de una de las cuevas cercanas.",
+    "De vez en cuando escuchas el sonido de algo arrastrándose a tu espalda.",
+    "Encuentras una espada rota y oxidada entre unas rocas cercanas.",
+    "Una sombra negra os vigila desde la distancia.",
+    "A veces Guacimara parece ausentarse inexplicablemente."
+   ],
+   "environmentObstacles": [
+    "Una lluvia torrencial os obliga a refugiaros en una cueva.",
+    "El sonido del viento aullando se confunde con el gemido de una persona.",
+    "El terreno se vuelve demasiado escarpado, casi inaccesible.",
+    "La sed se convierte en un problema debido al calor.",
+    "Las provisiones se han acabado antes de tiempo.",
+    "Una cueva parece llamaros por vuestros nombres, esperando que os acerquéis.",
+    "A algunos soldados les salen unas ampollas purulentas por todo el cuerpo.",
+    "Una extraña planta estalla, escupiendo semillas punzantes y venenosas."
+   ],
+   "characterObstacles": [
+    "Un personaje amenaza con matar a otro si no le da algo a cambio.",
+    "Un personaje se emborracha y entorpece al resto.",
+    "Un personaje lucha contra otro hasta que ambos terminan heridos.",
+    "Un personaje termina ciego por la savia de una extraña planta.",
+    "Un personaje no deja de sugerir comportamientos caníbales, en caso de quedarse sin suministros.",
+    "Un personaje le corta un dedo a otro.",
+    "Un personaje no para de rezar en voz alta, en una lengua desconocida para el resto.",
+    "Un personaje escupe a otro y acaba peleando con un tercero."
+   ],
+   "tension": [
+    "Por fin habéis terminado de subir las escarpadas laderas de la playa, pero aún queda un largo camino por delante. Justo a unos metros, encontráis un túmulo con varios restos momificados fuera de las tumbas, en posiciones grotescas. Guacimara mira con verdadero terror los cuerpos exhumados y balbucea palabras en una lengua desconocida para ti. Tras un momento de infinito silencio, os insta a seguir el camino con vehemencia. Varias personas de la comitiva se persignan al pasar junto a las momias.",
+    "Llegáis al poblado aborigen, formado íntegramente por cuevas que sirven de vivienda. La gente os mira con rechazo sin apartar la mirada. El patriarca del lugar, tras hablar con Guacimara, parece cambiar el gesto y sus ademanes y palabras suenan más amables. Guacimara os comunica que quieren que os quedéis unos días antes de llegar a alguna clase de acuerdo. No sientes que haya otra alternativa posible, al ver sus amenazantes báculos y cuchillos de piedra, y aceptáis su oferta. Una mujer anciana con un cráneo de cabra sobre la cabeza sonríe maliciosamente, desapareciendo ante vuestros ojos.",
+    "Varios de los hombres de la comitiva han desaparecido o muerto a manos de extrañas criaturas humanoides. Corréis por vuestras vidas antes de caer y quedar atrapados en una cueva cercana. No tardáis en daros cuenta de que algo no va bien en la gruta y varios esqueletos y cadáveres, animados por algún poder oscuro, se alzan a vuestro alrededor. Tras unos minutos interminables, el terror termina por quebrar la voluntad de tus hombres mientras te defiendes como puedes, luchando por tu vida. Un brillo púrpura ilumina las paredes en la oscuridad."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Te arrodillas en el suelo esperando una muerte segura e imploras con toda tu fe una segunda oportunidad. Cierras los ojos y al abrirlos, ves que te encuentras de nuevo en el pueblo guanche. Tus hombres están bien y los miras con extrañeza, ellos te devuelven la mirada. Guacimara te mira con complicidad y sonríe. Terminas por prometerle al patriarca algún tipo de inmunidad, que harás todo lo posible, que nadie vendrá. Ya no te importa tu cargo, tu misión ha cambiado. Al salir del poblado le propones matrimonio a Guacimara y esta asiente en silencio."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Imploras la ayuda divina mientras te abres paso a golpe de espada entre los cadáveres. Guacimara aparece ante ti con un cráneo de cabra en la cabeza y te toca fugazmente la mano derecha. Observas, bajo el tenue brillo púrpura de las paredes, una sombra negra reptando por tu brazo. Alzas la vista, apareces solo en un rincón de la playa y, lleno de regocijo, oteas el barco. Intentas explicarles a todos lo que ha pasado, pero no puedes hablar y terminan por atarte y encerrarte en la bodega. A los pocos días de zarpar, la tripulación empieza a quejarse de cierto malestar. Una mancha negra se extiende por sus cuerpos."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Una risa cavernosa suena en tu cabeza y una garra púrpura sale de la pared, asiendo tu alma para arrastrarla dentro del muro. Quedas encerrado para siempre en la oscuridad de la cueva, esperando a que nuevas víctimas caigan en esta trampa demoníaca. No estás solo, sois muchos los que esperáis con ansia la venida de los demonios plateados para encerrarlos y convertirlos en hermanos, purgando sus almas y pecados. Hay veces que Guacimara, bajo una nueva forma, trae más almas pútridas a este tenebroso rincón del mundo. Y cada vez sois más..."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/el-lago-entre-cipreses",
+   "name": "El lago entre cipreses",
+   "author": "Óscar López de Ahumada",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Una vez al año, durante unos días, el lago de Almerique envuelve la zona de una niebla densa. Su antigua población de álamos blancos y negros, fresnos, adelfas, tarajes y majuelos, fue eliminada y sustituida por cipreses durante los años 50. Hoy no figura ni un vago recuerdo de ninguna de esas especies y solo crece salvajemente una especie de lentisco de resina urticante. Eres una joven estudiante de ciencias ambientales que vuelve a casa, aprovechando las vacaciones de invierno, para elaborar un estudio botánico de la zona. El silencioso pueblo te trae recuerdos de una infancia que solo pareces recordar cuando estás aquí. Sin embargo, el lago aparece en tus recuerdos y en tus sueños de manera recurrente, un lugar que visitabas a menudo con tu familia. En el día siguiente a tu llegada, todo el pueblo sale a las calles a contemplar el fenómeno que los acompañará estas fechas; una densa niebla almacigada de olor acre. Cada vecino que te cruzas te recibe con una sonrisa ligeramente espeluznante.",
+   "guardianNotes": "El lago de Almerique está situado en Córdoba, en plena Vega del Guadalquivir, y está a menos de dos horas a pie de varios pueblos cercanos. Es un lugar que veía desde el coche cada vez que iba a mi pueblo de pequeño. En medio de campos de cultivo, los árboles que lo rodeaban daban aspecto de centinelas guardando el paso a un lugar importante. En el pueblo había historias sobre el lago, casi siempre sobre cosas que flotaban en él, cosas que aparecían cuando bajaba el nivel o luces que se veían desde la carretera de noche, nada concreto. He utilizado la localización como punto de partida para una historia que, si bien no guarda muchas similitudes con los rumores que oí de pequeño, mantiene la sensación de lugar especial y espeluznante.",
+   "characters": [
+    {
+     "name": "José",
+     "description": "Tu padre, jardinero en el pueblo, amable y paciente, pero algo distante y distraído. Sientes que algo va mal, como si tu presencia en el pueblo le pusiese nervioso. Duerme en el salón, junto a la puerta, para evitar que tu hermana deambule fuera de casa."
+    },
+    {
+     "name": "Ana",
+     "description": "Tu hermana, reservada y enigmática, con un vínculo extraño con el lago. Tiene pesadillas recurrentes y a veces ha aparecido a orillas del lago en plena noche."
+    },
+    {
+     "name": "Tomás",
+     "description": "Chico del pueblo, divertido y astuto, pero con tendencia a meterse en problemas y a buscar emociones peligrosas. Es el único amigo de tu hermana."
+    },
+    {
+     "name": "Marco",
+     "description": "Campesino del pueblo que sufre una rara deformidad en uno de los brazos, conoce bien los terrenos y es experto en flora y fauna."
+    },
+    {
+     "name": "Vecinos del pueblo",
+     "description": "Siempre parecen contentos de verte y tu llegada ha sido fruto de rumores y conversaciones, pero llevas tanto tiempo fuera que no acabas de acostumbrarte a la forma de actuar de algunos vecinos. A veces los encuentras en la niebla, parados en mitad del campo. A veces en grupo, a veces solos."
+    }
+   ],
+   "clues": [
+    "Restos de cimientos de piedra inexplicablemente antiguos.",
+    "Una fotografía de tu familia, cuando tu madre aún vivía. Recuerdas que se ahogó en el lago.",
+    "Las brújulas señalan al lago y el GPS del teléfono marca direcciones, distancias y recorridos absurdos.",
+    "Una melodía que reconoces suena en la niebla. Es un cántico con los tonos de la cajita de música de tu cuna.",
+    "Marcas y hendiduras en el suelo formando símbolos gigantescos.",
+    "Gruñidos terribles de un animal desconocido. Por su sonido, debe ser enorme.",
+    "Todas las plantas están orientadas hacia el lago, en lugar de hacia el sol.",
+    "Oyes a vecinos mencionar a alguien que está «a punto de cruzar» y que «apenas queda tiempo»."
+   ],
+   "environmentObstacles": [
+    "Los animales se muestran ferales y violentos.",
+    "Te rozas repetidamente con ramas de ese extraño tipo de lentisco y su resina te quema la piel.",
+    "Tienes alucinaciones o pesadillas sobre llenarte los pulmones de agua.",
+    "Una voz hipnótica te llama hacia el lago. Hacia el fondo del lago.",
+    "La niebla se vuelve tan densa que te desorientas por completo.",
+    "Una zona que estaba seca hace unos minutos está ahora completamente anegada y fangosa.",
+    "Gritos desgarradores en mitad de la noche.",
+    "El agua del pueblo adquiere un tono amarillento y terroso. Todos la beben. Tienes mucha sed."
+   ],
+   "characterObstacles": [
+    "Un personaje te prohíbe expresamente acercarte al lago.",
+    "Un personaje aparece empapado y con la mirada perdida. Te agarra el cuello, intentando ahogarte.",
+    "Un personaje intenta drogarte o envenenarte con alguna comida o bebida casera.",
+    "Un personaje trata de desviar tu atención sobre algo que te preocupa con mentiras y distracciones.",
+    "Figuras en la niebla te acechan o te persiguen, intentando darte caza.",
+    "Alguien te increpa diciendo conocer tu secreto. No sabes de qué habla, pero te aterra la idea de saberlo.",
+    "Un personaje te arrincona a solas con la intención de amenazarte para que te marches del pueblo.",
+    "Un personaje intenta arrastrarte al fondo del lago o al fondo de la bañera."
+   ],
+   "tension": [
+    "Una cabaña abandonada rodeada de álamos aparece entre la niebla, mientras caminas. Su estructura es de madera recia, pero sus extraños cimientos de piedra, que la elevan unos metros desde el suelo, sugieren un origen inexplicablemente antiguo. Desde la cabaña se tiene, incluso a través de la niebla, una vista perfecta del lago. Al anochecer, un extraño fulgor ambarino emana del lago y las lechuzas y chotacabras desgarran el silencio con terribles sonidos.",
+    "Cerca del lago, encuentras entre la niebla a un grupo de personas, entre las que quizá creas reconocer a alguien del pueblo, se han reunido y están entonando cánticos sobre unas marcas en el suelo, de las que brota agua que cubre rápidamente la zona. Ahora desde el agua, alguien repara en tu presencia. Otro cántico comienza y del agua, resplandeciente con luz ambarina, emerge un animal enorme que se lanza en tu dirección. La niebla es demasiado densa como para reconocer el tipo de animal, pero, dada su silueta y tamaño, no se parece a nada que hayas visto en tu vida.",
+    "La niebla se disipa. Una columna de luz se alza desde el lago hasta el cielo nocturno. A través de la luz ambarina se vislumbra el otro lado del lago, donde se alza una ciudad imponente de edificios imposibles y cielos dorados. En la orilla, una figuras entonan un cántico en torno a un disco de piedra con símbolos. A medida que cantan, una figura de terrible presencia se acerca más y más a la grieta, a punto de atravesarla. Un personaje (familiar si es posible) se desvela como una de las figuras al quitarse la capucha. «No tendrías que haber vuelto. Ahora debes ayudarnos a paliar su sed». Su índice señala a la criatura."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Logras cerrar el portal y mantener a raya a esta presencia maligna, al menos por ahora. Sin embargo, descubrir que tu familia estaba sirviendo a los propósitos de esta fuerza oscura ha hecho que te sientas traicionada y destrozada y abandonas el pueblo. Te será difícil reconstruir tu vida sabiendo que existen fuerzas que van más allá de la comprensión de la ciencia."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Logras cerrar el portal, pero a costa de sacrificar tu propia vida. Has salvado al mundo de esta presencia maligna y parece que el influjo de poder que ejercía el lago sobre el pueblo ha desaparecido. Tu espíritu queda anclado al lago, donde a veces, en las noches neblinosas, recibes la visita de Ana."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Te ves incapaz de interrumpir la apertura del portal y la gargantuesta criatura entra en tu mundo, drenando el lago y tu mente. Tu familia y parte del pueblo quedan poseídos por esta fuerza oscura y te obligan a unirte a ellos en su misión de servidumbre al otro lado del velo. Vivirás para siempre en la extraña ciudad más allá del lago, al otro lado del velo rasgado que se abre una vez al año."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/el-tientapanzas",
+   "name": "El Tientapanzas",
+   "author": "Juan Fernando Martín Ramírez «Doctor Alban»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "folklore",
+    "psychological"
+   ],
+   "synopsis": "Tú y tus dos mejores amigos, pensáis en pasar las fiestas navideñas en la ciudad monumental de Écija. Ellos son primos y buenos amigos desde pequeños. Quieren pasar estas fechas con su familia, y tú no tienes familia. Diego y Santiago son ambos de la ciudad, mientras que tú nunca has estado en el lugar. Todo comienza el día 20 de diciembre, esperando pasar la Nochebuena y la Navidad en Écija. En estos cuatro días anteriores a la celebración, quieres hacer turismo por la ciudad: el museo, diferentes iglesias, etc. Has leído cosas por internet y te parece que lo vas a pasar muy bien allí, porque siempre has sido más de cultura que de comer y emborracharte en estas fiestas. Los días pasarán y la 3ª Dama Gris se revelará la madrugada del día 24 de diciembre.",
+   "guardianNotes": "Mis padres son de Écija y siendo yo un bebé la familia se trasladó a Dos Hermanas. Cuando chico, yo siempre escuchaba el mito de «El Tientapanzas» en mi casa y lo veía con miedo (la noche de Nochebuena) y con naturalidad. Esa naturalidad se me quebró cuando, al comentarlo una vez en el colegio, mis compañeros me miraron extrañados y sin saber de qué demonios estaba yo hablando. Con los años supe que era una tradición autóctona de Écija, traída hasta esta parte de Andalucía por repobladores gallegos, aunque en aquellos lares se llama el «Apalpador». Esta tradición ha cambiado respecto a su fuente gallega, de tal manera que en Écija, el Tientapanzas es un hombre que visita a los niños mientras están dormidos para ver si comieron suficientemente en Nochebuena, tocándoles la panza. El premio era la frase que decía al tocar la barriga: «Así todo el año». De tal manera que, si habías comido mucho, sería un año que no tendrías problema de hambre; en caso contrario, pasarías hambre. Eso hacía que, en la cena de Nochebuena, mis padres me obligaran a comer más de la cuenta, cosa que me producía pesadillas... Que es muy posible que fuera una consecuencia prevista en esta tradición. A día de hoy, el Tientapanzas sale por la localidad de Écija.",
+   "characters": [
+    {
+     "name": "Diego",
+     "description": "Tu amigo desde hace años. Es muy cordial y dicharachero."
+    },
+    {
+     "name": "Santiago",
+     "description": "Tu amigo desde hace años. Es muy reservado, pero va con Diego y contigo a todas partes."
+    },
+    {
+     "name": "Patrocinio",
+     "description": "Abuela de Diego y Santiago. Suya es la casa donde vais a quedaros en estas fechas. A veces se le va la cabeza."
+    },
+    {
+     "name": "Diego y Juana",
+     "description": "Padres de Diego. Muy amigables pero tienen los ojos tristes."
+    },
+    {
+     "name": "Valle y Antonio",
+     "description": "Padre de Santiago. Muy callados y con muy poca iniciativa para casi cualquier cosa."
+    }
+   ],
+   "clues": [
+    "Hay un libro en la biblioteca del Palacio de Benamejí titulado El Tientapanzas.",
+    "Al hablar con cualquiera de la ciudad «siempre» dicen que esperan que te guste comer.",
+    "Los niños se paran y te tocan la barriga.",
+    "La gente compra comida como si fuera a venir un apocalipsis nuclear.",
+    "En los bares se escucha la frase: «No comas mucho, haz hambre para Nochebuena».",
+    "La familia de Diego y Santiago preguntan por tu familia.",
+    "El 26 de diciembre es la fecha de celebración de «El Tientapanzas».",
+    "Hay unos disfraces de cabezudos en la casa de Patrocinio."
+   ],
+   "environmentObstacles": [
+    "La cama no te deja dormir bien.",
+    "Una teja cae sobre tu cabeza.",
+    "Un perro te ataca al verte.",
+    "Te cae un diluvio cuando vas por la calle.",
+    "El móvil no funciona.",
+    "No encuentras tus zapatos.",
+    "La temperatura baja de forma brusca.",
+    "La niebla impide la visión en las calles."
+   ],
+   "characterObstacles": [
+    "Alguien te da caramelos para que te los comas.",
+    "Alguien discute contigo acaloradamente.",
+    "Alguien no quiere hablarte.",
+    "Alguien te emborracha.",
+    "Alguien te roba algo.",
+    "Alguien te dice que te vayas de la ciudad.",
+    "Alguien te miente descaradamente.",
+    "Alguien llora desconsoladamente al mirarte."
+   ],
+   "tension": [
+    "Aparece en tu mesita de noche un libro llamada El Tientapanzas (del museo). En él dice que hay una tradición en Écija de que la noche del 24 de diciembre, a los niños de la localidad se les aparece un ser llamado así y que si han comido lo suficiente les dice tocándoles con la mano: «Así todo el año».",
+    "Oyes una conversación entre los familiares sobre lo afortunados que son Diego y Santiago. Este año serán los cabezudos, gracias a la «ofrenda» que van a dar. Hacía mucho tiempo que nadie en la familia tenía ese honor.",
+    "La cena del 24 es opípara. Te obligan a comer como nunca habías comido en tu vida. Diego y Santiago dicen que sería muy descortés no comer todo lo que te ofrecen. Esa noche vas a tener una pesadilla por la digestión pesada."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores o más de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Consigues vomitar en el cuarto de baño antes de que revientes con todo lo que has comido. En sueños ves a un demonio que te mira y te dice: «Así todo el año». Al despertarte en la mañana de Navidad, todos los de la casa han desaparecido. Las autoridades no se lo explican."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "En sueños ves a un demonio que te mira y te dice: «Así todo el año». Al despertarte en la mañana de Navidad, los de la casa habla pero no los entiendes. Pasas el resto de tu vida en un manicomio a causa de tus pesadillas recurrentes y tu imposibilidad de entender a nadie."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "En sueños ves a un demonio que te mira y te dice: «Así todo el año». Entonces, tu barriga explota dejando a la vista tus entrañas. El demonio, se relame y te devora, aún vivo. Este año, en Écija, la celebración de «El Tientapanzas» va a ser de las mejores."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/la-garrofera",
+   "name": "La garrofera",
+   "author": "Mirella Machaconses López",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Principios del siglo XX. Una comarca costera de Valencia. Llevas años pasando con tu carro cerca de aquella garrofera con el tronco vacío, y escuchando a todos los habitantes del lugar diciéndote que te alejes, que los ladridos que suenan saliendo de ella al caer la noche no son normales, y que el dimoni vendrá a llevarte con él. Tú te ríes cada vez que lo piensas y, poco a poco, te has vuelto más osada. Por circunstancias de la vida, ahora estás trabajando de jornalera en el pueblo durante unos días, preparada para seguir tu camino cuando acabe la temporada, así que igual es el momento de demostrarles a todos que el perro de la garrofera no es tan fiero como todos lo pintan.",
+   "guardianNotes": "Este escenario de Cuentos de ánimas es un homenaje a un árbol muy valenciano: la garrofera. En otros lugares de España recibe el nombre de algarrobo. Un árbol esencial para entender la economía preindustrial mediterránea, ya que da de comer a los animales. Además, es un árbol mítico: l’arbre del Dimoni (el árbol del diablo). Muchos cuentos valencianos ligan este árbol y al Dimoni que aparece en sus cercanías. Árbol de tronco retorcido que aviva la imaginación. Y el único árbol que puede engañar al Dimoni si pactas con él: «Te llevarás mi alma cuando no haya algarrobas en sus ramas», suele decir el labriego intrépido al demonio que viene a por su alma. Y el Demonio acepta, claro, ¿qué más da una estación más para alguien como él? Sin saber, claro está, que la garrofera jamás pierde sus garrofas. Cuando caen las antiguas, ya están las nuevas en sus ramas. Y así, el dimoni jamás podrá atraparte. No obstante, la historia de hoy nos habla de otro de los cuentos en relación con este árbol y su demonio. Un cuento titulado La garrofera del gosset (El algarrobo del perrito). Un perrito, claro está, que va a ser mucho, pero mucho más de lo que parece.",
+   "characters": [
+    {
+     "name": "La tía Viçanteta",
+     "description": "Señora del pueblo muy supersticiosa. Siempre anda husmeando de un lado a otro, esperando su oportunidad para sentar cátedra sobre cualquier asunto mundano o celestial. Lleva un tiempo advirtiéndote de que no te acerques a la garrofera."
+    },
+    {
+     "name": "Donís",
+     "description": "Compañero de trabajo en los campos. Es el que mejor te ha recibido de todo el pueblo, pues parece más abierto a los extranjeros. Las señoras del pueblo dicen que quiere cortejarte."
+    },
+    {
+     "name": "Eulàlia",
+     "description": "(Laia), es la encargada del bar del pueblo. «Mel de romer» o «Reina Mora» son algunos de los calificativos que suelen darle en el pueblo, por su belleza sin igual. No se le conoce, sin embargo, un pretendiente al que corresponda, y su mirada algo triste hay quien dice que guarda un oscuro secreto."
+    },
+    {
+     "name": "Llorenç",
+     "description": "Joven pastor encargado de llevar las cabras de la familia. Cuida mucho de que ninguno de sus animales pasen cerca del árbol, porque sabe que si lo hacen, no vuelven."
+    },
+    {
+     "name": "Melineta",
+     "description": "La mujer del médico, una de las figuras de autoridad. Siempre va muy arreglada y se cree superior a las trabajadoras. Los rumores cuentan que su matrimonio fue un pacto con el diablo (quizá en la garrofera) pues nadie se esperaba ese matrimonio de alguien de tan pocas luces y belleza como ella."
+    }
+   ],
+   "clues": [
+    "Un ladrido potente surge de la garrofera.",
+    "La cabeza de un conejo aparece arrancada frente a una puerta.",
+    "Todas las cruces del pueblo aparecen del revés.",
+    "Un círculo de sal alrededor de la iglesia.",
+    "Una vasija con un agujero en el fondo.",
+    "Olor a azufre.",
+    "Gritos en el camino, aunque no se pueda ver a nadie.",
+    "El lavadero aparece teñido de sangre."
+   ],
+   "environmentObstacles": [
+    "Un perro rabioso salta hacia ti.",
+    "Lluvia torrencial.",
+    "Se derrumba un bancal.",
+    "La niebla cubre el camino. Es imposible ver.",
+    "Los cultivos crecen, intentando atraparte."
+   ],
+   "characterObstacles": [
+    "Desaparece uno de los personajes.",
+    "Un personaje llora desconsoladamente.",
+    "Un personaje te roba algo importante.",
+    "Un personaje intenta secuestrarte.",
+    "Un personaje sufre un accidente.",
+    "Un personaje intenta ofrecer tu alma al Dimoni."
+   ],
+   "tension": [
+    "Un perro negro gigante aparece, y ataca a unos viandantes que andan cerca de la garrofera.",
+    "Melineta aparece muerta, colgada de la garrofera, los bichos salen de ella como si llevase muerta semenas. Una nota en su cuerpo dice «Els pactes es compleixen» («los pactos se cumplen»)",
+    "No puedes evitarlo, y tienes que ir hasta la garrofera a las 3 de la madrugada. El perro negro gigante aparece delante tuya, convirtiéndose en un demonio que quiere tentarte hasta que pierdas tu alma."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Consigues engañar al Dimoni para salvar tu alma (describe cómo) y, no contenta con ello, consigues una gran fortuna que estaba escondida en el tronco de la garrofera. Eres más lista que el Dimoni, y siempre te jactarás de ello. Hasta que te vuelva a pillar, claro."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Consigues engañar al Dimoni para salvar tu alma (describe cómo) y sales relativamente ilesa del trance, aunque jamás olvidarás su rostro, que se te aparecerá cada vez que quieras pecar."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "El Dimoni se lleva tu alma. No se ha tragado tus mentiras y sabe que le has querido engañar. Más sabe el diablo por viejo, que por diablo. Así que te coge, y ves como poco a poco tu vida se apaga, y empiezas a olvidar quién fuiste y a qué te dedicabas. Ahora eres una carcasa vacía que el Dimoni puede usar a su voluntad."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/pena-molexa",
+   "name": "Pena molexa",
+   "author": "Roi Otero Alonso",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "mystery"
+   ],
+   "synopsis": "Año 1877. Te acabas de mudar desde Santiago a Narón para ocupar el cargo de médico. Sin blanca y repudiado por tus padres, debido a tu conducta durante tu época de estudiante de medicina, te has visto obligado a poner tierra de por medio desplazándote hacia la costa, donde nadie te conoce. Desde que ha llegado, no puedes evitar sentirte vigilado. Y no es únicamente debido a las miradas inquisidoras de los oriundos de Narón. Es una sensación difícil de explicar, que sumada a los sonidos de pasos nocturnos en la buhardilla y los objetos que desaparecen o cambian de posición, está comenzando a quebrar tus nervios. Aun así tu objetivo es claro: cambiar tu desdichada fortuna. A veces, los lugares más recónditos son los que albergan los mayores tesoros. Pero otras, solo guardan infortunios.",
+   "guardianNotes": "Este escenario se inspira en las leyendas de las «Mouras» gallegas. La primera vez que oí hablar de ellas fue cuando de niño cayó en mis manos un libro de leyendas de «Mouras e Trasnos» del que, desgraciadamente, no consigo recordar el título. Estas mouras eran bellas mujeres de origen feérico y ligadas a dólmenes y castros, generalmente custodias de tesoros y secretos que ofrecen pactos a los viajeros que se las encuentran. Obviamente, no son historias que suelan acabar bien, y muchas veces se tratan de pactos envenenados. El término de mouro y moura hace referencia al origen de estas criaturas. Podría provenir de la raíz prerrománica «mor», que significa piedra. Aunque no se descarta que haga referencia a un prefijo latino que significa muerte. Mientras que los Mouros son gigantes de tez oscura, a los que se le atribuye la construcción de monumentos megalíticos, las Mouras son bellas mujeres de piel nívea y largos cabellos dorados, que se peinan con peines de oro (Mitos y leyendas, s.f.). No queda claro si son de la misma especie o quizás algún tipo de hadas apresadas por estos gigantes prerromanos. Aunque son numerosas las leyendas según la zona (me atrevo a suponer que cada una como explicación del origen a sus monumentos), este escenario se inspira en el de la moura de Pena Molexa, pero tomándose una gran cantidad de licencias, como la introducción de los trasnos (una especie de duendes, a veces descritos de forma similar a los trasgos). Según la leyenda, cada año en la mañana de San Juan, en esa hora en la que la luna no se ha ido y el sol va queriendo salir, una hermosa mujer se le aparece a un joven que el destino ha querido llevar a Pena Molexa. Le da a escoger la más hermosa entre diversas joyas. Si el joven la elige a ella, será liberada de su encierro en la roca. Si no, la historia se repetirá otro año más (Verdú, 2021). Pero eso queda ya para la partida... Referencias: Pena Molexa. (2021, May 31). En Wikipedia. https://gl.wikipedia.org/wiki/ Pena_Molexa Torres, J. (22 de febrero de 2008). MOUROS, FADAS, TRASNOS Y TARDOS. https://www.celtiberia.net/es/biblioteca/?id=3066&cadena=Javier%20Torres\n\nVerdú, P. (27 de febrero de 2021). Un viaje real a través de una Galicia llena de monstruos y otros seres mágicos. https://www.lavanguardia.com/ocio/ viajes/20210227/6259677/leyendas-provincia-lugo.html",
+   "characters": [
+    {
+     "name": "Padre Ángel",
+     "description": "Jesuíta destinado a Narón, muy versado en la historia local. Amante de la gastronomía y los vinos y licores."
+    },
+    {
+     "name": "Hortensia Alonso",
+     "description": "Curandera y partera. Ha ayudado a venir al mundo a más generaciones de las que le gustaría admitir. Conoce al pueblo como si de su propia madre se tratase."
+    },
+    {
+     "name": "Carmiña Sotelo",
+     "description": "No ocupa ningún lugar oficial de importancia en Narón, pero hay quien opina que sus reportes son más interesantes y fiables que cualquier medio de prensa escrita. No hay rumor que se le escape."
+    },
+    {
+     "name": "Amadeo Coya",
+     "description": "Barbero del pueblo. Los hombres se confiesan ante su navaja, como si del confesionario de la iglesia se tratase."
+    },
+    {
+     "name": "Leonor Otero",
+     "description": "Hermosa muchacha, la menor de tres hermanas (Saladina y María las otras dos). Se queda prendada del doctor desde el primer instante en el que lo ve."
+    }
+   ],
+   "clues": [
+    "Viejas historias que se susurran en el pueblo de desapariciones de jóvenes en San Juan.",
+    "Unas monedas romanas que aparecen en tu maletín, en el lugar en el que debería estar el estetoscopio.",
+    "Un peine de oro bajo tu almohada al despertar.",
+    "Pasos que te siguen en la oscuridad desde que llegaste al pueblo, pero que paran cuando te giras para verlos.",
+    "Una página arrancada de un incunable con un grabado de un dolmen sobresaliendo de entre tu Vademécum.",
+    "Una extraña invitación en tu buzón para celebrar la Noche de San Juan."
+   ],
+   "environmentObstacles": [
+    "Se oyen risas malévolas a tus espaldas.",
+    "Todo tu dinero desaparece.",
+    "La bruma hace que te pierdas.",
+    "Te envían una reclamación de una deuda.",
+    "Un canto hipnótico te atrae irremediablemente."
+   ],
+   "characterObstacles": [
+    "Un personaje te golpea.",
+    "Un personaje te amenaza para que te vayas.",
+    "Un personaje te acusa de algo.",
+    "Un personaje intenta hacer que te pierdas.",
+    "Un personaje te engaña."
+   ],
+   "tension": [
+    "Se cree que próximo al pueblo existe un gran tesoro enterrado, que los primeros habitantes escondieron antes de su conquista ante los romanos. Se comenta que está maldito.",
+    "Descubres un gran número de jóvenes desaparecidos a lo largo de los años, todos durante la Noche de San Juan. Desaparecen sin dejar rastro, impidiendo una investigación por parte de la guardia civil. Ante la incertidumbre se ha optado por ignorarlo.",
+    "Otra vez esos pasos a tu espalda. Te giras para enfrentar a tu perseguidor (o perseguidores). Antes de que puedas reaccionar, un fuerte golpe te deja inconsciente."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Te despiertas por la mañana. La cabeza te da vueltas y sientes un sabor ácido en tu boca, completamente reseca. Eres incapaz de recordar lo que ha pasado la noche anterior. Todo a tu alrededor parece indicar que ha habido una gran fiesta. Y a tu lado, ¡una bolsa repleta de joyas! No estás seguro de que ha pasado, pero estás convencido de haber conseguido cambiar tu sino."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Te despiertas y ante ti, sentada encima de un extraño dolmen, está las más bella muchacha que hayas visto jamás, peinándose su dorada cabellera. A su alrededor, agachadas ante ella, una docena de pequeñas y retorcidas criaturas. Te muestra una serie de exquisitas joyas de incalculable valor. Te insta a que escojas la más hermosa de todas ellas. ¿Qué escoges?"
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Te despiertas y ante ti, sentada encima de un extraño dolmen, está las más bella muchacha que hayas visto jamás, peinándose su dorada cabellera. A su alrededor, agachadas ante ella, una docena de pequeñas y retorcidas criaturas. El tono de la conversación parece de reproche. Escuchas la palabra indigno. Clava su iracunda mirada sobre ti y comienzas a sentir como tus entrañas se retuercen. Te estás convirtiendo en algo diferente, en otra de esas criaturas."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/el-valle-del-silencio",
+   "name": "El valle del silencio",
+   "author": "Alejandro Pacios «Drulax»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Año 895. Hace varios días que partiste desde el monasterio de Ageo, junto al resto de los once monjes benedictinos que el propio hermano Genadio seleccionó para este sagrado empeño. Con el beneplácito del obispado, se os ha encomendado restaurar y habitar el perdido monasterio de San Pedro de Montes, fundado por san Fructuoso en el año 635, sobre la ubicación de un antiguo castro prerromano, y destruido hace más de 150 años durante la ocupación musulmana. Imaginas que no será una tarea fácil y que os esperan meses de duro trabajo siempre impulsado por vuestra fe. Pero a medida que ascendéis lentamente por las frías y desiertas montañas, guiando los animales de carga por caminos impracticables invadidos por la vegetación, empiezas a sentir que de alguna forma no sois del todo bienvenidos aquí. La imagen en madera de san Pedro, que transportáis, os alienta poco en estos momentos, como si aquí perdiera sentido. Finalmente, un poco antes del atardecer y tras cruzar un pequeño río, rodeáis una montaña y veis sobre una ladera vuestro destino. Apenas quedan unas pocas paredes de piedra en pie que son difícilmente visibles por toda la vegetación que ha invadido el lugar.",
+   "guardianNotes": "En esta historia, he intentado crear una leyenda en base a un hecho histórico real que sucedió en el Valle del Oza, en la comarca de El Bierzo (León). Una de las zonas más bellas y agrestes de la región de las montañas de la Tebaida Berciana, que ha inspirado leyendas a lo largo de los siglos. Este suceso histórico tiene que ver con Genadio, un monje anacoreta del siglo IX, que, con ayuda de doce discípulos, llegó a la zona buscando el retiro espiritual y el encargo de restaurar el abandonado monasterio de San Pedro de Montes, destruido 150 años antes durante la ocupación musulmana. En una zona montañosa, aislada y apenas poblada, los monjes posiblemente se enfrentaron a mil y una dificultades en un entorno de naturaleza salvaje, con todavía fuerte influencia pagana y supersticiones.",
+   "characters": [
+    {
+     "name": "El hermano Genadio",
+     "description": "Es el monje que os ha guiado hasta aquí. Os ha contagiado su ilusión por esta nueva vida de retiro. Es carismático y respetado por todos vosotros. Sus conocimiento en teología y filosofía son admirables, pero a veces en sus ojos parece vislumbrarse el estigma de alguien que se asomó al abismo."
+    },
+    {
+     "name": "El hermano Benito",
+     "description": "Es un monje ya veterano, pero fuerte y fornido, que no destaca especialmente por su dedicación a la oración y la meditación ni por, según algún rumor, su respeto al celibato. Aunque rehuye como del maligno hablar de su pasado, su ímpetu y carácter hacen ver que otrora fue un hombre con un pasado violento."
+    },
+    {
+     "name": "El hermano Tomás",
+     "description": "Es un novicio joven, delgado, nervioso y de aspecto enfermizo. Está dotado de una intuición y sensibilidad asombrosa, casi premonitoria. Pero paga su penitencia cuando noche tras noche se le oye gritar desde su celda, atormentado por horribles pesadillas."
+    },
+    {
+     "name": "Suso",
+     "description": "Es vuestro guía y el encargado de los animales de carga, que han portado vuestros enseres hasta aquí. Orihundo del Valle, es gruñón y avaro. Responde a las órdenes de Genadio a regañadientes. Es visible que se siente temeroso e incómodo con este trabajo, y quiere finalizarlo cuanto antes para salir de este lugar."
+    },
+    {
+     "name": "La muchacha del bosque",
+     "description": "Como la habéis bautizado, es una de las pocas personas que habéis visto en vuestros últimos días de viaje. En medio del bosque, inmóvil y de pie sobre una roca junto a un arroyo, os observó curiosa en silencio mientras pasabais, haciendo caso omiso a vuestros saludos y preguntas. Cuando os alejabais y mirasteis atrás, te pareció ver que sus ojos eran extraños, como los de un ave."
+    }
+   ],
+   "clues": [
+    "Un antiguo códice que transporta oculto Genadio.",
+    "Extrañas inscripciones en las paredes del monasterio.",
+    "Procesión de luces que se observan de noche en una ladera próxima.",
+    "Pasadizo subterráneo oculto, obstruido por un derrumbe intencionado.",
+    "Fosa común con restos humanos apilados.",
+    "Se escuchan gritos de agonía de hombres y mujeres.",
+    "Los monjes empiezan a hablar de una voz tenebrosa en la noche que les llama.",
+    "Una cabra negra enorme os mira desde un risco y desaparece."
+   ],
+   "environmentObstacles": [
+    "Entrada la noche, todos los ruidos se detienen creando un silencio inquietante.",
+    "Casi toda la reserva de comida aparece en avanzado estado de descomposición.",
+    "Una violenta tormenta estalla, sobre el ruido de la lluvia parecen oírse cánticos.",
+    "Una pared antigua del monasterio se derrumba hiriendo a alguien y revelando algo oculto.",
+    "Los burros están asustados y reaccionan violentamente al intentar calmarlos.",
+    "Una extraña enfermedad empieza a afectar a la salud y la mente de algunos monjes.",
+    "La vegetación parece moverse y abnegar los senderos que acceden hacia el monasterio.",
+    "Un olor nauseabundo se extiende por el asentamiento impidiendo respirar."
+   ],
+   "characterObstacles": [
+    "Una discusión entre monjes se torna violenta, nadie sabe cómo empezó.",
+    "Un personaje se levanta de noche y desnudo se pierde entre la vegetación.",
+    "Un personaje intenta convencerte para romper el voto y marcharse de ese lugar maldito.",
+    "Un personaje enajenado intenta asesinar a Genadio, dice que es el anticristo.",
+    "Un personaje amanece muerto, pálido y con el pelo blanco.",
+    "Un personaje sabotea las obras y, posteriormente, se quita la vida.",
+    "Un personaje es sorprendido engullendo la comida compulsivamente.",
+    "Un personaje empuja a otro por una precipicio, simulando un accidente."
+   ],
+   "tension": [
+    "Los trabajos retirando la maleza avanzan y se va revelando el esqueleto del antiguo monasterio. Los indicios demuestran que alguien destruyó a conciencia la primera construcción y que algún tipo de estructura antiquísima reposa bajo las ruinas. Genadio ordena centrarse en reconstruir la capilla para albergar la imagen del santo. Un ambiente enrarecido entre los monjes hace que surjan conflictos.",
+    "La reconstrucción de la capilla se vuelve cuesta arriba. La mala suerte se está cebando con el grupo. Accidentes, clima hostil, herramientas y materiales se deterioran, discusiones y peleas. Algunos ven señales divinas en estos obstáculos, otros del maligno. Sube la tensión entre los hermanos. Genadio parece cada vez más absorto y obsesionado en finalizar la obra hasta un punto casi febril. Los sucesos extraños cada vez son más frecuentes.",
+    "Falta poco para completar la obra, pero parece inalcanzable. El ambiente es irrespirable, la comida no llena, el agua no sacia la sed y el descanso no os repara. Los monjes van cayendo en la enajenación y marchitándose. Genadio se ha transformado en un ser autoritario y cruel, obsesionado en acabar la capilla por un oscuro propósito. La última noche decenas de figuras oscuras avanzan desde el bosque hacia la capilla."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Os refugiáis en la capilla mientras el apocalipsis parece desatarse fuera. Temblores, golpes, voces sensuales, risas y alaridos de agonía se suceden sin parar, invitándoos a salir. Los hermanos van sucumbiendo al pánico y la desesperación. Pero tú y unos pocos comprendéis que vuestra voluntad simboliza la oposición a un mal incomprensible y resistís el resto de la noche unidos. Al amanecer todo ha pasado y por primera vez reina la paz."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "El infierno parece desatarse en el lugar. Una espesa niebla con un fulgor verde invade vuestro asentamiento y esas figuras oscuras empiezan a acercarse a los monjes que huyen despavoridos. Echas a correr y te pierdes en la oscuridad de la noche mientras oyes los gritos de agonía y dolor de tus hermanos. Lo último que ves es a Genadio de pie, inmóvil, sujetando algo entre sus manos y con una sonrisa desafiante en la cara. Al amanecer, exhausto tras correr toda la noche, observas una aldea."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Un frío sobrenatural os inmoviliza y vuestra voluntad sucumbe, cayendo de rodillas mientras esas sombras avanzan dentro de una neblina verdosa. Notas como pierdes el control de tu cuerpo y un inmenso dolor. Al igual que tus hermanos, finalmente os acabáis levantando y como almas errantes agarráis vuestras palas y herramientas. Algo bajo el antiguo monasterio os está llamando y vosotros seréis los que lo liberen."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/duendes-en-la-masia-la-cova",
+   "name": "Duendes en la masía La Cova",
+   "author": "Carlos Zornoza",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Tu pareja es un enamorado de la parapsicología y el misterio. Ha insistido en que os coléis en la Masía de la Cova, un caserón agrícola abandonado a las afueras de Manises (Valencia), para pasar allí la noche. Su objetivo es doble: observar el cielo, que en esa zona rural tiene muy poca contaminación lumínica, tratando de encontrar evidencias del fenómeno OVNI y, por otra parte, instalar varios cachivaches a lo largo de la masía y tratar de registrar algún tipo de actividad paranormal. Además, tu pareja se ha traído a un par de amigos que tampoco es que sean la alegría de la huerta. No es la noche más romántica que se te ocurre, desde luego, pero piensas aguantar y demostrarle que respetas sus aficiones y que puede contar contigo para todo. Solo esperas no pasar demasiado frío y que no haya pulgas. ¡Odias esos bichejos!",
+   "guardianNotes": "Los duendes (o donyets) son protagonistas de cientos de pequeñas leyendas a lo largo de toda la geografía española (y, probablemente, mundial). En este caso, vamos a vivir una historia de duendes en un caserón agrícola abandonado de la localidad de Manises (Valencia), donde esos pequeños donyets llevan haciendo trastadas desde hace siglos. Pese a que, en un principio, la historia puede parecer que vaya a tratar sobre apariciones, finalmente, debería descubrirse la verdadera causa de los fenómenos extraños que sufrirán los protagonistas. La aventura está basada en una leyenda popular del pueblo. Esta explicaba la historia de unos humildes campesinos que acabaron abandonando su casa de campo, hartos de las travesuras de un pequeño duendecillo que vivía con ellos. Para ver fotos de la localización, visitar esta web: http://manisesonline.blogspot. com/2012/10/manises-y-su-patrimonio-el-mas-de-la.html También se puede leer la leyenda del Donyet de Manises en: http://franciscogimenodoble.blogspot.com/2008/10/leyendas-maniseras.html",
+   "characters": [
+    {
+     "name": "María/Mario",
+     "description": "Es tu pareja, le quieres, pero te toca aguantar todas sus chorradas. Es una persona inteligente y sabes que haría cualquier cosa por ti."
+    },
+    {
+     "name": "Esther",
+     "description": "Amante del espiritismo, jugadora de rol y rarita por vocación. Suele andar siempre con una libretita, anotando cosas de poco interés para cualquiera que no sea ella o dibujando con bastante gracia."
+    },
+    {
+     "name": "Toni",
+     "description": "Un buen chico, poco hablador. Es, seguramente, la persona que más libros ha leído de entre todas las que conoces. El típico que siempre quieres tener en tu equipo de trivial. Su asma y su sobrepeso hacen que tenga una curiosa manera de respirar y le provocan los ronquidos más fuertes que has escuchado jamás."
+    },
+    {
+     "name": "Salvador",
+     "description": "Policía local de Manises a puntito de la jubilación. Suele hacer la ronda por los caminos de huerta del pueblo. Ha visto cosas que no creerías."
+    },
+    {
+     "name": "Isabel",
+     "description": "Casera de otra de las masías de la zona. Vive sola en el campo desde hace tiempo, rodeada de sus animales. Cuida de las huertas y de la casa, a la espera de que los «señoritos» propietarios se acerquen algún día a hacerse una paella."
+    }
+   ],
+   "clues": [
+    "Luces titilantes en las ventanas del piso superior.",
+    "Se escucha el sonido como de un cascabel en una de las grabaciones.",
+    "Se escuchan risas con extraños ecos.",
+    "Desaparece alguno de los objetos personales de alguien del grupo.",
+    "Uno de los sacos de dormir aparece lleno de serrín y huesecillos de pájaro.",
+    "Se escucha una melodía que viene desde el interior de la casa abandonada.",
+    "Una de las cámaras instaladas se vuelca y desaparece.",
+    "Hay ruidos de pasos sobre las vigas de madera."
+   ],
+   "environmentObstacles": [
+    "Una de las puertas de la masía se cierra sola y queda atrancada.",
+    "Toda la comida desaparece o acaba abierta y esparcida por el suelo.",
+    "Empieza a oler fuertemente a humedad.",
+    "Algunas de las estancias de la masía se llenan de polvo, haciendo difícil respirar.",
+    "El suelo cede bajo tus pies, llevándote a un lugar del que es complicado salir.",
+    "La temperatura baja rápidamente.",
+    "Hay ratas por todas partes y parecen haber perdido el miedo a los humanos.",
+    "La puerta de entrada y salida de la masía se ha complicado por algún motivo."
+   ],
+   "characterObstacles": [
+    "Algo cae desde el tejado y hiere a algún personaje.",
+    "Uno de los personajes sufre un ataque de pánico.",
+    "Uno de los personajes está muy convencido de que acaba de ver un fantasma.",
+    "Alguien reprende con violencia a uno de los personajes.",
+    "Alguien grita desde el exterior.",
+    "Alguien sufre mordeduras en pies y pantorrillas.",
+    "Uno de los personajes está obsesionado con que debe descubrir lo que fuera que ocurrió en esta casa.",
+    "Uno de los personajes aparece desnudo, atado a una columna y muy malherido."
+   ],
+   "tension": [
+    "Una de las estancias de la masía está cerrada a cal y canto, pero a través de un agujero de la puerta de madera se puede ver el interior, que está repleto de objetos bien ordenados. Aperos del campo en buen estado, ropa antigua, plegada y a salvo de las ratas, platos, vasos, sartenes y paellas, limpios y perfectamente ordenados. Todo es viejo, pero es como si alguien lo hubiese guardado allí y siguiese cuidándolo y manteniéndolo en buen estado.",
+    "Desde lo alto de un dintel veis a una extraña criatura. Tiene dos palmos de alto y es similar a un muñeco, pero tiene la cara arrugada con aspecto de anciano. Tiene un gesto fiero, desafiante y no parece nada contento de que los personajes estén allí. Se trata un donyet, un duende de las leyendas valencianas. Lleva en sus manos uno de los instrumentos de grabación del grupo y lo lanza con fuerza hacia quien le ha visto, con la intención de alcanzarle. Luego emite una especie de bufido y huye, trepando con agilidad hacia el tejado.",
+    "Descubrís una especie de cueva bajo la masía. Debe ser, seguramente, «La cova» de la que tomó su nombre y que nadie debe haber visto en siglos, hasta el punto de haberse olvidado totalmente su existencia. El lugar desprende un olor nauseabundo, a humedad y excrementos, y está lleno de huesecillos de animales. Es el hogar de los donyets, quienes no están nada contentos de haber sido descubiertos. Todos portan piedras, palos y pequeños cuchillos afilados en sus manos, y silban y lanzan bufidos amenazadores sin parar."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Sales corriendo de la masía. Esto es demasiado para ti y, como experimento, ha sido más que suficiente. Magullados, conseguís escapar del lugar y regresar a la civilización. Se han perdido todos los instrumentos de grabación, así que las únicas pruebas de lo que ha ocurrido, en la Masía de la Cova de Manises, queda relatado en un par de blogs de internet a los que prácticamente nadie da credibilidad. Tardarás años en conseguir sacar de tus pesadillas a esos pequeños y horribles seres."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Consigues escapar del caserón, pero solo y en muy mal estado. Ves caer a tus compañeros, uno tras otro, bajo el violento ataque de los donyets. Cuando, días más tarde, la Guardia Civil investigue la Masía, no encontrará ningún resto de vuestra presencia allí. Todo el equipo, los sacos de dormir y vuestras pertenencias personales habrán desaparecido. Tampoco habrá nada en el pequeño almacén de objetos antiguos que descubristeis. Tus compañeros aparecerán en la cueva, devorados hasta los huesos. La versión oficial dirá que fueron las ratas, pero a ti te da igual... tu mente se ha quebrado para siempre y vivirás el resto de tu vida pensando que los donyets aún te buscan."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Es el final. Decenas de donyets caen sobre vosotros, cortando, pinchando, golpeando, y sin parar de reír. Sus rostros arrugados y envejecidos parecen disfrutar enormemente con vuestro sufrimiento, sus risas se van tornando cada vez más histéricas con cada muerte. Vuestros cuerpos serán encontrados en el río Turia, a varios kilómetros de la masía, desnudos y, prácticamente, irreconocibles. Se dirá que fuisteis víctimas de algún ajuste de cuentas y jamás se encontrarán ninguna de vuestras pertenencias."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/el-camino-de-vuelta",
+   "name": "El camino de vuelta",
+   "author": "Lucía Castellano Valverde",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Galicia, invierno de 1977. Vuelves a casa sobre la parte trasera del chimpín, tras una ardua tarde de trabajo en el campo. Una nube descarga una fuerte lluvia justo en el tramo en el que los cantos de los pájaros se habían enmudecido hace apenas segundos. El aullido ancestral de un perro hace que se te erice la piel. De pronto, el aire se enardece con un ligero olor a cera que arde y unas itinerantes y parpadeantes luces diminutas aparecen a lo lejos entre la nada, desplazándose en una procesión de aspecto fantasmal, que se mueve lentamente hacia tu dirección. Cruzas la mirada con Xoan y tras observar su atónito y petrificado rostro lo agitas para que vuelva a arrancar el chimpín. No reacciona. Lo agitas de nuevo\n\nmás fuerte y consigues despertarlo de su trance. Pisa el acelerador a fondo y pone rumbo a tu casa. En apenas unos minutos estáis delante del portal. Mañana es día de clase, pero con la intensidad del encuentro y el corazón casi saliéndote por la boca, va a ser difícil conciliar el sueño, además de que hay una pregunta que no se te marcha de la cabeza ¿Qué vecino o vecina morirá esta noche? El sol sale y el gallo canta a un nuevo amanecer.",
+   "guardianNotes": "La Santa Compaña es una de las leyendas más extendidas por Galicia. Se describe siempre como una hilera de figuras encapuchadas, de aspecto fantasmal que portan velas de cera encendidas, aunque no siempre visibles, percibiendo su presencia por el olor a cera. Su función es avisar de una futura defunción. Así pues, su terror no reside solo en el aspecto, sino en que la posibilidad de que la persona que los aviste sea el alma que vienen a reclamar. La Santa Compaña va presidida por una persona viva, la cual porta una cruz y un caldero con agua bendita, y no puede, bajo ningún precepto, volver la cabeza para ver el resto de la comitiva de almas en pena. Caminan susurrando cánticos religiosos, casi siempre un rosario, o cánticos fúnebres mientras tocan una campanilla de pequeño tamaño. A su paso los animales del bosque se quedan en silencio, haciendo que solo se escuchen sus campanas. Los perros avisan de su presencia con aullidos que parecen salidos de sus más antiguos ancestros, los lobos y los gatos erizan sus lomos hacia lo invisibles antes de salir despavoridos. He escogido esta leyenda porque mi propia madre, de vez en cuando, aún me cuenta con la piel erizada, como ella misma vio la hilera de luces y a las encapuchadas figuras ascendiendo por el camino que lleva al crucero que está al lado de mi casa.",
+   "characters": [
+    {
+     "name": "Xoan Valverde",
+     "description": "(51 años), de aspecto delgado y algo cascado por el trabajo. Es el dueño y conductor del chimpín. Posee varios terrenos de cultivo y ganadería en la zona. Si alguien quiere ganarse algunas monedas en un trabajo rápido acude a él."
+    },
+    {
+     "name": "Marina Fernández",
+     "description": "(? años), la madre del personaje. Siempre va muy bien vestida y conjuntada. Maestra bordadora de profesión. Es muy religiosa y ayuda en la iglesia de manera voluntaria, limpiando y bordando los mantos y tapetes para los santos."
+    },
+    {
+     "name": "Don José Andrade",
+     "description": "(72 años), el párroco. Un hombre con una expresión tan rígida como su alzacuellos. Ha llegado recientemente al pueblo. Los feligreses y las feligresas no están muy contentos con él ya que su entrega para con el pueblo deja mucho que desear."
+    },
+    {
+     "name": "Maestra Elvira",
+     "description": "(38 años), siempre con un libro bajo el brazo y una sonrisa en los labios. Querida por todo el alumnado, debido a su manera de enseñar dulce y vocacional. Ávida devoradora de libros. Amante de los rumores junto a una buena taza de vino de la casa."
+    },
+    {
+     "name": "Adolescentes del pueblo",
+     "description": "Compañeros y compañeras de clase o alumnos y alumnas (17 o 18 años), Adela, Antón, Breogán, Carmen, Conchita, Francisco, Lucía y Roi. Cada uno con su propia personalidad. Algunos más canallas que otros, pero todos con una mente despierta y más abierta a creer y ayudar que los adultos."
+    }
+   ],
+   "clues": [
+    "Escuchas el sonido lejano de una campanilla.",
+    "Los gatos de la finca han desaparecido.",
+    "Siempre te acompaña un intenso olor a cera de vela encendida.",
+    "Piedras sobre el tejado de tu casa.",
+    "Las campanas de la iglesia tocan a difunto.",
+    "Encuentras una túnica con capucha que te resulta extrañamente familiar."
+   ],
+   "environmentObstacles": [
+    "Una jauría de perros se vuelve rabiosa a tu paso.",
+    "Una bruma intensa se expande durante la noche.",
+    "El entorno se difumina creando figuras grotescas.",
+    "Un crucero se derrumba y cae hacia ti.",
+    "Apareces en un nuevo lugar sin saber cómo llegaste."
+   ],
+   "characterObstacles": [
+    "Un personaje te ignora completamente.",
+    "Un personaje abraza una fotografía mientras llora.",
+    "Un personaje te niega la entrada a su casa.",
+    "Un personaje sufre un infarto.",
+    "Un personaje se santigua frente a ti y huye."
+   ],
+   "tension": [
+    "Desde que te has cruzado con la procesión de luces se te ha cerrado el estómago. No hay manera de que te baje nada de comida, ni siquiera un poco de agua.",
+    "Un grupo de vecinos está girando el chimpín de Xoan que se encuentra volcado en un terraplén, cerca del camino.",
+    "A través del paisaje, en la lejanía, percibes una difuminada y oscilante luz que se mueve primero de izquierda a derecha y luego de derecha a izquierda. Al contemplarla te ciega durante unos segundos."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Te despiertas con el sonido lejano de una campanilla. Es tu madre llamando a una enfermera tras notar que estás recuperando la conciencia. Después de que el médico comprueba que estás estable te cuentan lo sucedido. Llevas en coma varios días como consecuencia de un aparatoso accidente. Cuando Xoan y tú volvíais de trabajar en el campo volcasteis con el chimpín cayendo ambos por un terraplén. Es un milagro que estéis vivos."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Xoan se acerca a ti. Lleva un caldero lleno de líquido y la cruz de la parroquia. Te ofrece ambos y sin poder resistirte los coges. A su espalda se van revelando unas figuras fantasmales con capuchas y cirios. «Será mejor que te gires y dejes a la Compaña a tus espaldas», te dice Xoan, mientras su rostro se torna cadavérico. A partir de ahora vagarás todas las noches liderando la procesión de almas, pero lo olvidarás todo al amanecer. Mientras tu cuerpo se debilita por falta de descanso, hasta que te llame la muerte o le pases tu cruz a otra persona incauta."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Tus manos se vuelven más translucidas a cada segundo que pasa. Frente a ti se van presentando tus nuevas compañeras de viaje. Un grupo de ánimas encapuchadas portando solo un cirio que emite una ligera luz. Al frente de la Compaña, una persona viva que no conoces lidera la marcha y el resto le seguís hasta llegar a una casa que conoces. A la mañana siguiente la casa de Xoan amanece con piedras sobre su tejado. Elena Morgado"
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/es-mejor-que-no-te-duermas",
+   "name": "Es mejor que no te duermas",
+   "author": "Alexandra Martínez",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "folklore",
+    "psychological",
+    "supernatural"
+   ],
+   "synopsis": "1873. Cataluña. Tras una dura jornada en la fábrica textil, te retiras a descansar un poco, pensando qué puedes hacer en tu poco tiempo libre. ¿Quizás retirarte ya a tu habitación? ¿O ir un rato al bar con el resto de personal de la fábrica? Mientras meditas tu decisión, te cruzas con Josep, un amigo que se aloja en otro barracón. Te comenta que está preocupado, pues Margarida, su hija de 9 años, lleva varias noches con pesadillas y fiebre. Te cuenta que la enfermera de la colonia le ha examinado y que atribuye todo a una mala racha. Tras un intercambio de opiniones e invertir la tarde-noche en la actividad elegida, es hora de dormir. Das las buenas noches a la persona con quien compartes litera y sucumbes a Morfeo. Pero esta noche no es como el resto. Abres los ojos y no sabes dónde te encuentras. No hay nadie más y sientes una gran\n\nopresión en el pecho. Cada vez te cuesta más respirar, a pesar de que solo ves oscuridad. Pero lo que sí sientes con claridad es cómo un aliento impacta en tu cuello aunque, de nuevo, no hay nadie más. Te despiertas en mitad de la noche, dándote cuenta de que no te puedes mover durante unos treinta segundos. Todo tu cuerpo está cubierto de sudor. Tras ese tiempo, parece que empieza a responder. Te levantas, miras como el resto de personas duermen plácidamente y decides acostarte de nuevo. Seguro que esto ha sido un hecho aislado, ¿verdad?",
+   "guardianNotes": "El mito representado en este escenario es la Pesanta, procedente del folclore catalán. Ubicado en Cataluña, La Pesanta suele mostrarse como un perro enorme de tupido pelaje negro y con patas de acero que se aparece por las noches, colocándose encima de las personas que duermen plácidamente para provocarles asfixias y pesadillas horribles. Cuando se despierta (si se despierta), la víctima lo hace sobresaltada y entre sudores, y apenas puede ver una tenue sombra alejándose del lugar. Se dice que, ezgtn algunos casos, la persona afligida aun recobrando la consciencia, puede sufrir parálisis temporal en todo su cuerpo. Descubrí esta criatura folclórica recientemente, pues no la conocía y me pareció muy interesante. En su día esta criatura representaba la parálisis del sueño, y me parece muy interesante la representación tan específica, el que sea un perro con patas de acero. Si que a día de hoy no tiene mucho impacto en la cultura local, pues hay otras más conocidas como Les Dones d’Aigua o la Cucafera, pero sin duda descubrirla me ha hecho apreciarla mucho",
+   "characters": [
+    {
+     "name": "Josep Farnés",
+     "description": "(33 años), un padre comprometido con su trabajo y su hija. De aspecto bastante desaliñado, serio y de pocas palabra, estos días esta bastante agobiado por la salud de su hija. Tienen una tensa relación con Teresa, porque está convencido de que la enfermedad de su hija no es nada trivial."
+    },
+    {
+     "name": "Margarida Farnés",
+     "description": "(9 años), una niña bastante risueña, que lleva algunos días afligida por algo que, de momento, no tiene explicación. Ahora mismo se encuentra en cama, estudiando desde ahí, al menos hasta que averigüen qué le sucede."
+    },
+    {
+     "name": "Teresa Llopis",
+     "description": "(25 años), esta joven es la enfermera de la colonia textil. Es una mujer seria, cansada de sus condiciones de trabajo y de que varias personas acudan a su pequeño despacho para escaquearse del trabajo. Es conocida por ser muy directa y tajante, lo que no rivaliza con ser muy buena en su trabajo."
+    },
+    {
+     "name": "Arsendis Agramunt",
+     "description": "(47 años), antaño sufrió un accidente en la fábrica y desde entonces hace solo algún trabajo sencillo y se tira el día borracho en el bar de la colonia. Siempre habla de que, últimamente, ha visto cosas raras, pero nadie le suele tomar en serio."
+    },
+    {
+     "name": "Sibil·la / Otger Gispert",
+     "description": "(28 años), la persona que comparte litera contigo. Es una persona simpática con quien sueles bromear y siempre esta ahí cuando la has necesitado. Sin embargo, detrás de esa sonrisa a veces logras ver una profunda tristeza, pero no sabes el porqué, pues nunca habláis de sus sentimientos."
+    }
+   ],
+   "clues": [
+    "Encuentras un poco de pelo negro en la tierra.",
+    "El marco de una puerta tiene una rotura por el impacto de algo metálico y contundente.",
+    "Algunas personas de la fábrica han tenido pesadillas.",
+    "Algunas personas aseguran haber oído ruido de acero chocando en la noche.",
+    "Encuentras pisadas de animal que llevan a un bosque cercano.",
+    "El canto de los pájaros cesa de inmediato al caer la noche."
+   ],
+   "environmentObstacles": [
+    "Una botella de alcohol sale volando hacia ti.",
+    "Una niebla densa cubre todo el lugar.",
+    "La puerta de tu habitación está atrancada.",
+    "Un aliento cálido impacta en tu nuca.",
+    "Unos ojos parecen observarte en todo momento.",
+    "Te tropiezas en una zanja que no estaba antes."
+   ],
+   "characterObstacles": [
+    "Un personaje te culpa de sus problemas.",
+    "Un personaje te agrede fruto del nerviosismo.",
+    "Un personaje te exige explicaciones.",
+    "Un personaje intenta suicidarse.",
+    "Un personaje te amenaza con que te marches.",
+    "Un personaje no puede parar de llorar."
+   ],
+   "tension": [
+    "De nuevo tienes una pesadilla. Vuelves a sentir ese peso agobiante que te impide respirar, solo que esta vez es más fuerte. De nuevo te despiertas con un sobresalto, para solo ver una sombra que se aleja.",
+    "Varias personas de la colonia están teniendo noches horribles. La tensión y el agobio general aumenta notablemente en el lugar, mientras todo el mundo tiene esa sensación de que les observan constantemente.",
+    "Pese a la tensión, por puro cansancio, sucumbes al sueño. Y vuelves a tener esa pesadilla, esa enorme opresión en el pecho. Pero esta vez te despiertas y lo ves encima de ti. Ese pelaje negro como la noche, patas de acero, dentadura afilada y ojos penetrantes que te miran."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "A pesar de ese enorme peso paralizándote, ahora que ves al enorme perro e intercambiáis la mirada. El perro te analiza y empieza a recular, bajando de tu cama, para una vez abajo salir corriendo por la puerta. A partir de entonces, tanto tu salud como la de la colonia ha mejorado sustancialmente y todos, incluida Margarida, os encontráis ya bien."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Su mirada se cruza con la tuya. Te está juzgando, no deberías haberlo visto. Ahora mismo podrías ser una amenaza. Con tu cuerpo ya paralizado, sientes como aún aprieta más sus patas de acero, causándote un terrible dolor, aunque no puedes gritar pues tu cuerpo no te responde. La mañana siguiente te encuentras en la cama y, aunque sigues consciente, has perdido la capacidad de habla para siempre."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Su mirada denota que no está dispuesto a dejar las cosas así y acabará con la amenaza de raíz. El acero de sus patas impacta con fuerza en todo tu cuerpo, rompiendo muchos de tus huesos y dañando tus órganos vitales. La mañana siguiente te encuentran sin vida en tu cama, con la cara desencajada, y la colonia seguirá teniendo terribles pesadillas durante mucho mucho tiempo..."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/la-aisha-kandisha",
+   "name": "La Aisha Kandisha",
+   "author": "Dani Vicente",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Ceuta. 1954. Tras toda una vida en Portugal, acabas de llegar a la ciudad y tu propósito es el de saber más sobre tus orígenes, que se remontan al siglo XVII. Has decidido volver al lugar en donde tus antepasados vivieron hasta que, de forma súbita, decidieron volver a su tierra. Tu abuelo te contaba de pequeño que algo ocurrió para que dejaran la ciudad, pero lo único que te importa es pisar las calles en donde hace siglos tu familia prosperó. La antigua casa, que perteneció a los tuyos, es ahora un modesto hotel en donde te has alojado. Ardes en deseos de recorrer sus habitaciones y pasillos por si encuentras algún indicio que recuerde el paso de tu familia.",
+   "guardianNotes": "Tienes en tus manos un escenario para Cuentos de Ánimas dedicado a la versión del «coco» en Ceuta, el monstruo con el que nuestras madres y padres nos asustaban cuando nos portábamos mal. Ceuta es una ciudad española situada en el norte de África, junto a Marruecos, y por su situación geográfica existe una gran influencia de la cultura árabe. Se trata de la Aisha Kandisha, una especie de bruja o súcubo cuyos orígenes se remontan al siglo XVI. Se dice que cuando el ejército portugués conquistó Ceuta, algunos de sus soldados asesinaron a la familia de una joven, la cual fue además vejada aunque dejada con vida. Su venganza fue buscarlos uno a uno y, a través de engaños al seducirlos, los degolló en su propio lecho. Desde entonces, la Aisha Kandisha se ha convertido en uno de los monstruos más populares en el Norte de África y también en Ceuta. De niños, decíamos que si de noche pronunciabas su nombre tres veces, ante un espejo, aparecería ante ti. Se dice que su aspecto es el de una bella joven, pero que en lugar de piernas tiene patas de cabra o camello.",
+   "characters": [
+    {
+     "name": "Reduan Dris",
+     "description": "Es el propietario del hotel. Tiene cerca de 60 años y tiene su propia casa en la segunda planta. Es muy diligente en todo momento. Ha oído hablar de las extrañas historias que rodean al edificio, pero prefiere no hacer mención por temor a que afecte a su negocio."
+    },
+    {
+     "name": "Samia Dris",
+     "description": "Es la hija de Reduan. Aún no ha cumplido los 18 años, pero ayuda a su padre en las tareas de limpieza. Evita tratar directamente con los clientes. Sabe todo lo que pasa en el hotel y conoce bien la leyenda de la Aisha Kandisha."
+    },
+    {
+     "name": "Teniente Moreno",
+     "description": "Es un veterano capitán de la Guerra Civil. Acaba de llegar a Ceuta y espera que le asignen destino, mientras se aloja en el hotel. No le agrada que el propietario sea musulmán, y lo trata con bastante desprecio. Por la noche se emborracha a menudo y lanza miradas furtivas a Samia."
+    },
+    {
+     "name": "Padre Ángel",
+     "description": "Se trata de un sacerdote que sueña con predicar el evangelio en Marruecos. Está pasando unos días en la ciudad, mientras se prepara para su gran viaje. Aunque no lo dirá nunca abiertamente, piensa que todos los que siguen la doctrina del Islam están «profundamente equivocados»."
+    },
+    {
+     "name": "Amigos con ganas de fiesta",
+     "description": "Pedro, Juan y David son un grupo de jóvenes que han viajado hasta Ceuta para disfrutar del fin de semana, lejos de los ojos de sus familias. Ya han pasado la primera noche y han ocasionado algunos destrozos. Reduan Dris está descontento y les ha amenazado con echarlos."
+    }
+   ],
+   "clues": [
+    "La imagen de una joven aparece por la noche en los espejos.",
+    "El hotel está decorado con mosaicos de origen árabe muy antiguos.",
+    "En la pared hay expuesta una antigua pistola con las iniciales de tu apellido grabadas.",
+    "Oyes una voz hablando en una lengua extranjera que suplica por su vida.",
+    "Una entrada en el sótano a los cimientos de una antigua vivienda del siglo XVI.",
+    "Un vecino habla de la muerte de un joven en el hotel hace un par de años.",
+    "Sueñas que paseas por el hotel vestido con un uniforme de tiempos pasados.",
+    "Una palabra escrita con sangre en árabe aparece en una pared: asesinos. Vuelve a desaparecer."
+   ],
+   "environmentObstacles": [
+    "Brota sangre de los grifos al caer el sol.",
+    "Se oye rascar las paredes cuando duermes.",
+    "Pesadillas sobre el saqueo a una vieja ciudad.",
+    "Un susurro dice tu nombre desde la oscuridad.",
+    "Quedas atrapado en un lugar muy estrecho.",
+    "Todos hablan con la misma voz de mujer.",
+    "Te despiertas cubierto de arañazos.",
+    "Sientes que alguien te observa."
+   ],
+   "characterObstacles": [
+    "Alguien intenta ocultarte información.",
+    "Alguien te miente de forma descarada.",
+    "Alguien trata de seducirte.",
+    "Alguien quiere expulsarte del hotel.",
+    "Alguien emplea la violencia.",
+    "Alguien te obliga a emborrracharte.",
+    "Alguien te dice que huyas cuanto antes.",
+    "Alguien te impide que encuentres la salida."
+   ],
+   "tension": [
+    "El hotel está en silencio. Nadie ha vuelto a ver ni a oír nada sobre los escandalosos amigos que pasaron la noche pasada divirtiéndose hasta entrada la madrugada. La puerta de su cuarto está cerrada. Ni siquiera las llaves sirven. Parece que alguien la ha atrancado desde el interior.",
+    "El cuarto que ocupa el sacerdote está destrozado. En las paredes hay varios escritos en latín sobre exorcismos. También hay un dibujo en una hoja de papel de lo que parece ser una mujer y hay algo escrito al pie de la página: «Ella está sometida a un profundo deseo de venganza».",
+    "El grito de una mujer lo inunda todo. Sabes que si permaneces en el hotel acabarás loco para siempre. El sonido de una batalla se oye de fondo, e infinidad de voces se unen en un terrorífico coro de desesperación. La única opción de no perder la cabeza es huir cuanto antes."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Huyes por las calles de Ceuta para alejarte de la pesadilla. Quieres volver a tu país cuanto antes. Duermes al raso, o lo intentas, pero al menos vas a poder contarlo. Llegas por fin a tu casa, abrazas a los tuyos y respiras tranquilo. Es verdad que las largas noches ya van a dejar de ser lo mismo, pero al menos no volverás a ese maldito hotel."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Tratas de buscar la salida del hotel pero no la encuentras. Alguien te sigue. Notas su putrefacta respiración en la nuca. «¿Por qué lo hiciste?», te pregunta en otra lengua que logras entender. Sus pasos sobre el suelo suenan como los de un animal. Todo está perdido, pero al final encuentras la salida. Estás a salvo, al menos físicamente, pero tu mente seguirá atrapada en ese hotel para siempre."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Abres una puerta y estás en una humilde casa árabe. Vistes de uniforme militar, como tus compañeros, y tus manos están manchadas con la sangre de una familia inocente. Solo queda con vida su hija, la cara más preciosa que has visto jamás. Te acercas, pero su rostro se convierte en el de un demonio horrible. Gritas por última vez."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/llantos-de-madera",
+   "name": "Llantos de madera",
+   "author": "Rubén Bárcena González",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "mystery"
+   ],
+   "synopsis": "2022. Se aproxima la Navidad y, como cada año, las ferias ambulantes crecen como setas en todas las localidades. En ellas se venden productos navideños como caganers, tions, figuritas para el pesebre y una larga lista de objetos variopintos, muchos de ellos de producción artesanal y fabricados con materiales que se pueden encontrar por la zona, como por ejemplo musgo o los propios troncos con los que crear los tions. Pero este año algo extraño está pasando en una pequeña ciudad del área metropolitana, están desapareciendo niños. Niños menores de 6 años, para ser exactos. Y todos en unas circunstancias muy parecidas, desaparecen en el bosque, entre la niebla, mientras buscaban junto a sus familias a sus tions. Formáis parte de un grupo de detectives que están investigando los casos. Y habéis captado, por la radio de la policía que ha desaparecido otro niño. Os acercáis a la zona para investigar.",
+   "guardianNotes": "Este escenario para Cuentos de ánimas utiliza una tradición navideña de Catalunya como eje central, el tió de Nadal. En este caso, se entremezcla la tradición de buscar el tió en el bosque, con rituales siniestros y detectives, dándole un tono de suspense y horror al simpático tronco de madera. Ni hechos, ni lugares, ni personajes buscan tener relación alguna con la realidad.",
+   "characters": [
+    {
+     "name": "La señora Nati",
+     "description": "La vecina más cercana al bosque, es una mujer mayor que vive sola y siempre está observando por la ventana. Tiene mucha información de los vecinos de la zona y lleva varias noches llamando a la policía para denunciar ruidos molestos procedentes del bosque."
+    },
+    {
+     "name": "El agente López",
+     "description": "Policía local que patrulla la zona. Acostumbra a desayunar en una cafetería cercana a la entrada del bosque. Lleva varias noches visitando el bosque para dispersar grupos de jóvenes que hacen botellón."
+    },
+    {
+     "name": "Carme y Pere",
+     "description": "Padres del último niño desaparecido. Viven en las inmediaciones del bosque. Ella trabaja de maestra en una localidad vecina, él está en paro. Han denunciado la desaparición a la policía. Carme está atenta al teléfono esperando nuevas noticias. Pere no ha vuelto a casa, sigue buscando al niño por el bosque. No ha parado ni para comer ni para dormir y está en un estado lamentable."
+    },
+    {
+     "name": "Salomé",
+     "description": "Vendedora de pesebres en un mercado navideño. Busca corteza y musgo en el bosque para construir pesebres. También troncos con los que hacer tions. Es muy callada y tiene un acento extraño, pero es de carácter afable."
+    },
+    {
+     "name": "Ushame",
+     "description": "Vagabundo. Lleva varios meses viviendo dentro de un coche aparcado a la entrada del bosque. Es muy amigable con los vecinos y se presta a ayudar en la búsqueda del niño. A veces habla de cosas sin sentido, al no tener un buen dominio del idioma, pero nadie se lo tiene muy en cuenta."
+    }
+   ],
+   "clues": [
+    "Símbolos arcanos dibujados sobre una piedra.",
+    "La ropa del niño desaparecido enterrada bajo unos matorrales, falta su camisa.",
+    "Una niebla densa que aparece de la nada.",
+    "Veis a lo lejos una mujer vestida de campesina.",
+    "No se oyen los ruidos naturales del bosque.",
+    "Alguien os dice haber oído ruidos y cánticos extraños en la noche.",
+    "Veis una columna de humo procedente del bosque",
+    "Encuentras retales de camisas, coinciden con la descripción de las ropas de los niños desaparecidos."
+   ],
+   "environmentObstacles": [
+    "La niebla impide la visión.",
+    "El bosque se hace más denso por momentos.",
+    "Una pista falsa.",
+    "Llantos en el bosque.",
+    "Un tió quemado.",
+    "Un perro abandonado os ataca."
+   ],
+   "characterObstacles": [
+    "Un personaje desaparece en el bosque.",
+    "Un personaje pierde el control.",
+    "Un personaje te culpa de lo sucedido.",
+    "Un personaje te impide ir a algún sitio.",
+    "Un personaje se santigua y se muestra aterrorizado.",
+    "Un personaje huye de ti al verte."
+   ],
+   "tension": [
+    "Encuentran los restos calcinados de varios niños pequeños. Están enterrados bajo una gran roca.",
+    "Se ha visto a Salomé de noche en el bosque, vestida con ropas antiguas y acompañada de más mujeres del mercado ambulante.",
+    "En el puesto del mercado, uno de los tions tiene una manta con el mismo dibujo que la descripción de la camisa del niño desaparecido. Los rasgos de su cara también recuerdan al niño."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos o más contadores de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Descubres los extraños rituales que hacen las brujas del mercado y las detienes. Los niños no volverán pero el crimen no será repetido. Los tions creados son quemados y destruidos."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Las brujas desaparecen al verse descubiertas, el puesto del mercado queda abandonado. Por las noches se pueden oír llantos de niños procedentes de los tions."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "El caso queda cerrado sin ninguna prueba contundente. La noche de Navidad, las alegres familias golpean al tió para hacerle cagar regalos y quedan horrorizadas al escuchar los gritos y llantos que dejan escapar los pequeños troncos decorados."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "folclore-rol-jam-2022/reservito",
+   "name": "Reservito",
+   "author": "Kapithan",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "supernatural"
+   ],
+   "synopsis": "Tú y tus amigos tienen un canal en YouTube dedicado a lo paranormal. Un mito que circula por Internet en estos últimos años es la existencia de una extraña criatura, mezcla de rata y perro, que merodea por la espesura de la Reserva Ecológica de la Costanera Sur. Algunas webs cuentan que los guardaparques encontraron el cuerpo mutilado de un joven, pero nadie ha logrado capturar una imagen. Sin duda, esto es algo que deben investigar, han decidido colarse por la noche a la reserva para encontrar evidencias de la existencia de Reservito y con eso disparar las visitas del canal.",
+   "guardianNotes": "En Buenos Aires, existe una reserva ecológica a la orilla del río de La Plata. Detrás de enormes rascacielos y modernas torres, se extiende un predio de 350 hectáreas repleto de aves, pequeños mamíferos, insectos y una enorme variedad de plantas. Varios caminos se bifurcan en su interior permitiendo recorrerla en su mayoría, aunque existen muchos puntos inaccesibles para los personas que deciden disfrutar de paseos durante el día. La reserva permanece cerrada por la noche por motivos de seguridad. Aclaración: No he puesto nombre a los personajes porque no quiero asociarlos a ningún género. Siéntete libre de ajustarlos a tu gusto.",
+   "characters": [
+    {
+     "name": "La pareja",
+     "description": "Desde hace muchos acompaña al protagonista en sus locuras pero últimamente se está cansando un poco de todo esto. Ya le ha pedido que se detenga en varias oportunidades."
+    },
+    {
+     "name": "El camarógrafo",
+     "description": "Le encanta filmar toda cosa que se cruce y no tiene reparos en meterse en cualquier lado con tal de obtener un gran plano. Ama los vídeos de persecuciones cámara en mano."
+    }
+   ],
+   "clues": [
+    "Descubren unas huellas que parecen de perro.",
+    "Gruñidos entre los matorrales.",
+    "Una sombra se mueve a la luz de la luna.",
+    "Restos de un pequeño coipo destrozado.",
+    "Manchas de sangre.",
+    "Marcas de garras en el tronco de un árbol."
+   ],
+   "environmentObstacles": [
+    "La vegetación es muy densa.",
+    "Zona pantanosa.",
+    "Están completamente desorientados.",
+    "La niebla cubre el lugar.",
+    "Se agota la fuente de iluminación.",
+    "El zumbido y las picaduras de insectos se vuelven insoportables."
+   ],
+   "characterObstacles": [
+    "Uno de tus compañeros intenta que se vayan del lugar.",
+    "Un personaje saca un arma que mantenía oculta.",
+    "Un personaje quiere llamar a la policía.",
+    "Un personaje amenaza con destruir la cámara.",
+    "Un personaje se marcha con algo importante para el grupo.",
+    "Uno de los personajes provoca un incendio."
+   ],
+   "tension": [
+    "Unos ojos rojos los observan desde los matorrales. Desaparecen inmediatamente.",
+    "La criatura se manifiesta. Es una mezcla anfibia de rata y perro, con dientes filosos y rayas en la parte trasera de su cuerpo. No les da tiempo a los personajes a captarlo con la cámara y desaparece.",
+    "Reservito aparece nuevamente de entre los matorrales y se lanza contra los personajes."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan dos contadores o más de Espíritu",
+     "min": 2,
+     "max": 99,
+     "text": "Logras huir de Reservito y obtienes una imagen borrosa que nadie dará por verdadera."
+    },
+    {
+     "label": "Si queda un contador de Espíritu",
+     "min": 1,
+     "max": 1,
+     "text": "Logras huir de Reservito con alguna herida como muestra de la aventura."
+    },
+    {
+     "label": "Si no quedan contadores de Espíritu",
+     "min": 0,
+     "max": 0,
+     "text": "Ninguno de los personajes presentes sobrevive. Nunca encontrarán restos de los cuerpos."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022 · El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  }
+ ]
+}

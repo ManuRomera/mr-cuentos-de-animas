@@ -24,6 +24,7 @@ import { SafetyPanel } from "./module/apps/safety.mjs";
 import { StartApp, createProtagonist } from "./module/apps/start.mjs";
 import { WelcomeApp } from "./module/apps/welcome.mjs";
 import { DiagnosticApp } from "./module/apps/diagnostic.mjs";
+import { ImportHelpApp } from "./module/apps/import-help.mjs";
 import { ContentService } from "./module/services/content.mjs";
 import { DeckService } from "./module/services/decks.mjs";
 import { GameplayService } from "./module/services/gameplay.mjs";
@@ -35,8 +36,8 @@ import { Presenter } from "./module/services/presenter.mjs";
 
 const TEMPLATE_FILES = [
   "apps/table.hbs", "apps/guardian.hbs", "apps/library.hbs", "apps/start.hbs", "apps/diary.hbs", "apps/archive.hbs",
-  "apps/access.hbs", "apps/safety.hbs", "apps/welcome.hbs", "apps/diagnostic.hbs",
-  "sheets/protagonist.hbs", "sheets/scenario.hbs", "partials/card.hbs", "partials/entries.hbs"
+  "apps/access.hbs", "apps/safety.hbs", "apps/welcome.hbs", "apps/diagnostic.hbs", "apps/import-help.hbs",
+  "sheets/protagonist.hbs", "sheets/scenario.hbs", "partials/card.hbs", "partials/slip.hbs", "partials/entries.hbs"
 ].map(p => `${TEMPLATES}/${p}`);
 
 /* -------------------------------------------- */
@@ -70,7 +71,7 @@ Hooks.once("init", () => {
   bootPhase("apps", () => {
     Object.assign(Apps, {
       table: TableApp, library: LibraryApp, guardian: GuardianApp, diary: DiaryApp, access: AccessPanel,
-      safety: SafetyPanel, start: StartApp, diagnostic: DiagnosticApp, welcome: WelcomeApp,
+      safety: SafetyPanel, start: StartApp, diagnostic: DiagnosticApp, welcome: WelcomeApp, importHelp: ImportHelpApp,
       truths: { open: (o = {}) => ArchiveApp.open({ ...o, tab: "truths" }) },
       memories: { open: (o = {}) => ArchiveApp.open({ ...o, tab: "memories" }) },
       protagonist: { open: ({ actor } = {}) => (actor ?? StateService.focus())?.sheet.render(true) },

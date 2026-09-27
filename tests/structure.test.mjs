@@ -147,7 +147,7 @@ test("claves dinámicas: modos, fases, estados, tipos, ambientes, ayudas", () =>
   for (const l of LINK_TYPES) need.push(`CdA.Link.${l || "none"}`);
   for (const t of SCENARIO_TAGS) need.push(`CdA.Tag.${t}`);
   for (const a of ["none", "fire", "rain", "wind", "house", "forest", "coast", "storm", "tape", "silence"]) need.push(`CdA.Ambient.${a}`);
-  for (const e of ["high", "low", "zero"]) need.push(`CdA.Epilogue.${e}`, `CdA.Epilogue.${e}Hint`);
+  for (const k of ["clue", "environment", "character", "incident"]) need.push(`CdA.Choose.${k}`);
   for (const h of ["start", "end", "card", "obstacle", "gray", "epilogue", "phase", "truth", "truth-status", "memory", "adjust", "gm", "scene", "note", "clue"]) need.push(`CdA.History.${h}`);
   const helps = new Set();
   for (const file of templates) for (const m of read(file).matchAll(/data-help="([a-z-]+)"/g)) helps.add(m[1]);
@@ -173,4 +173,11 @@ test("las variables CSS con imágenes usan rutas absolutas (cdaUrl/cssUrl)", () 
   for (const file of [...modules, ...templates]) {
     assert.doesNotMatch(read(file), /--[a-z-]+:\s*url\(['"]?(\{\{|\$\{)/, `${file}: url() relativa en variable CSS`);
   }
+});
+
+test("cartas clásicas: todas las caras oficiales existen", () => {
+  const c = ASSETS.classic;
+  const paths = [c.back, c.numberBack, c.gray, c.clue, c.incident, c.spirit, c.determination,
+    ...[4, 5, 6, 7].flatMap(v => [c.environment(v), c.character(v)]), ...Array.from({ length: 10 }, (_, i) => c.number(i + 1))];
+  for (const p of paths) assert.ok(existsSync(join(root, p.replace(`${PATH}/`, ""))), p);
 });

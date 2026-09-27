@@ -11,7 +11,6 @@ import { SystemApp, f, t } from "./base.mjs";
 import { cardView, roman } from "./view.mjs";
 import { openApp } from "./registry.mjs";
 
-const INSERTABLE = [["clues", CARD_KINDS.CLUE], ["environmentObstacles", CARD_KINDS.ENVIRONMENT], ["characterObstacles", CARD_KINDS.CHARACTER], ["incidents", CARD_KINDS.INCIDENT]];
 
 /**
  * Herramienta del Guardián: todo el control de la partida en una ventana compacta.
@@ -52,7 +51,7 @@ export class GuardianApp extends SystemApp {
     return {
       state, idle: state.phase === "idle",
       phase: t(`CdA.Phase.${state.phase}`),
-      scenario: scenario ? { name: scenario.name, epilogues: Object.entries(scenario.system.epilogues).map(([k, text]) => ({ label: t(`CdA.Epilogue.${k}`), text, current: k === Game.epilogueKey() })) } : null,
+      scenario: scenario ? { name: scenario.name, epilogues: scenario.system.epilogueTable.map(r => ({ label: r.label || `${r.min}–${r.max}`, text: r.text, current: r === Game.epilogueRow(scenario, actor) })) } : null,
       scene: scenes[state.scene] ? { ...scenes[state.scene], n: state.scene + 1, of: scenes.length } : null,
       hasPrev: state.scene > 0, hasNext: state.scene < scenes.length - 1,
       actor: actor ? { name: actor.name, spirit: actor.system.spirit, determination: actor.system.determination } : null,
@@ -61,7 +60,6 @@ export class GuardianApp extends SystemApp {
       grayLeft: DeckService.remaining().some(c => DeckService.meta(c).kind === CARD_KINDS.GRAY),
       canDraw: Game.canDraw(state),
       current: cardView(DeckService.current()),
-      insertable: scenario ? INSERTABLE.flatMap(([list, kind]) => scenario.system[list].map((e, i) => ({ value: `${list}:${i}`, label: `${t(`CdA.Kind.${kind}`)} · ${e.title}` }))) : [],
       memories: (scenario?.system.memories ?? []).map((m, i) => ({ i, title: m.title })),
       ambients: [{ value: "", label: t("CdA.Ambient.none"), selected: !state.ambient }, ...AMBIENTS.map(a => ({ value: a, label: t(`CdA.Ambient.${a}`), selected: a === state.ambient }))]
     };
@@ -93,25 +91,20 @@ export class GuardianApp extends SystemApp {
     ui.notifications.info(t("CdA.Guardian.GrayNext"));
   }
 
+  /** Insertar una Carta de Evento genérica (tipo y, si es obstáculo, dificultad 4‑7). */
   static async #insert(event, target) {
-    const scenario = StateService.scenario(); if (!scenario) return;
     const root = target.closest("fieldset");
-    const [list, i] = (root.querySelector("[name=insertCard]").value || "").split(":");
+    const kind = root.querySelector("[name=insertKind]").value;
+    const obstacle = kind === CARD_KINDS.ENVIRONMENT || kind === CARD_KINDS.CHARACTER;
+    const value = obstacle ? Number(root.querySelector("[name=insertValue]").value) || 5 : 0;
     const where = root.querySelector("[name=insertWhere]").value;
-    const kind = INSERTABLE.find(([l]) => l === list)?.[1];
-    const entry = scenario.system[list]?.[Number(i)];
-    const custom = GuardianApp.#value(root, "insertText");
-    const data = custom
-      ? DeckService.cardData({ title: custom, text: "" }, root.querySelector("[name=insertKind]").value)
-      : entry ? DeckService.cardData(entry, kind, scenario.system.customBack || undefined) : null;
-    if (!data) return;
+    const data = DeckService.cardData(kind, value, StateService.scenario()?.system.customBack || undefined);
     await DeckService.insert(data, where);
     await StateService.log({ type: "gm", result: "insert", card: data.name, hidden: true });
     ui.notifications.info(f("CdA.Guardian.Inserted", { name: data.name }));
   }
-
   static async #discard() {
-    await StateService.patch({ currentCardId: "", obstacle: null });
+    await StateService.patch({ currentCardId: "", obstacle: null, event: null });
   }
   static async #reshuffle() {
     await DeckService.reshuffleBlocks(game.settings.get("mr-cuentos-de-animas", "grayVariant"));

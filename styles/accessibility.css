@@ -29,13 +29,13 @@
 }
 
 /* Botones grandes */
-.cda-large-buttons .mr-cda button:not(.cda-pip):not(.cda-ink) { min-height: 44px; font-size: 1.02em; padding: .6em 1em; }
+.cda-large-buttons .mr-cda button:where(:not(.header-control)):not(.cda-pip):not(.cda-ink) { min-height: 44px; font-size: 1.02em; padding: .6em 1em; }
 .cda-large-buttons .mr-cda button.cda-icon-btn { min-width: 40px; min-height: 40px; }
 .cda-large-buttons .mr-cda button.cda-pip { width: 44px; height: 44px; }
 
 /* Alto contraste: bordes y textos marcados, sin transparencias engañosas */
 .cda-high-contrast .application.mr-cda { --cda-text: #ffffff; --cda-muted: #e6e0d4; --cda-line: rgba(255, 230, 180, .75); --cda-line-strong: #ffe2a8; border-color: #ffe2a8; }
-.cda-high-contrast .mr-cda button { border-width: 2px; }
+.cda-high-contrast .mr-cda button:where(:not(.header-control)) { border-width: 2px; }
 .cda-high-contrast .mr-cda input, .cda-high-contrast .mr-cda select, .cda-high-contrast .mr-cda textarea { border-width: 2px !important; border-color: #ffe2a8 !important; }
 .cda-high-contrast .mr-cda .cda-token.spent { opacity: .35; }
 .cda-high-contrast .mr-cda .cda-card-copy { background: rgba(0, 0, 0, .94); }

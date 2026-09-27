@@ -1,19 +1,47 @@
 {
   "TYPES": {
-    "Actor": { "protagonist": "Protagonista" },
-    "Item": { "scenario": "Escenario" }
+    "Actor": {
+      "protagonist": "Protagonista"
+    },
+    "Item": {
+      "scenario": "Escenario"
+    }
   },
   "CdA": {
     "App": {
-      "Table": "Mesa de Ánimas", "Library": "Biblioteca de relatos", "Guardian": "Guardián", "Diary": "Diario",
-      "Truths": "Verdades", "Memories": "Recuerdos", "Archive": "Verdades y Recuerdos", "Safety": "Seguridad"
+      "Table": "Mesa de Ánimas",
+      "Library": "Biblioteca de relatos",
+      "Guardian": "Guardián",
+      "Diary": "Diario",
+      "Truths": "Verdades",
+      "Memories": "Recuerdos",
+      "Archive": "Verdades y Recuerdos",
+      "Safety": "Seguridad"
     },
-    "Sheet": { "Protagonist": "MR · Protagonista", "Scenario": "MR · Escenario" },
-    "Controls": { "Protagonist": "Protagonista", "Scenario": "Escenario en juego", "NewProtagonist": "Protagonista" },
-    "Keys": { "Table": "Abrir la Mesa de Ánimas", "TableHint": "Abre o trae al frente la Mesa de Ánimas." },
+    "Sheet": {
+      "Protagonist": "MR · Protagonista",
+      "Scenario": "MR · Escenario"
+    },
+    "Controls": {
+      "Protagonist": "Protagonista",
+      "Scenario": "Escenario en juego",
+      "NewProtagonist": "Protagonista"
+    },
+    "Keys": {
+      "Table": "Abrir la Mesa de Ánimas",
+      "TableHint": "Abre o trae al frente la Mesa de Ánimas."
+    },
     "Common": {
-      "Close": "Cerrar", "Cancel": "Cancelar", "Add": "Añadir", "Delete": "Borrar", "Title": "Título", "Text": "Texto",
-      "Notes": "Notas", "Up": "Subir", "Down": "Bajar", "Browse": "Elegir archivo"
+      "Close": "Cerrar",
+      "Cancel": "Cancelar",
+      "Add": "Añadir",
+      "Delete": "Borrar",
+      "Title": "Título",
+      "Text": "Texto",
+      "Notes": "Notas",
+      "Up": "Subir",
+      "Down": "Bajar",
+      "Browse": "Elegir archivo"
     },
     "Error": {
       "Phase": "Cuentos de Ánimas: la fase «{phase}» no se pudo completar. Foundry sigue funcionando; abre Ajustes → Diagnóstico.",
@@ -25,218 +53,689 @@
       "GrayVariant": "Preparación del mazo",
       "GrayVariantHint": "Distribución clásica: cada Dama Gris cierra su tercio. Damas impredecibles: cada Dama se baraja dentro de su tercio.",
       "AutoDiary": "Diario automático",
-      "AutoDiaryHint": "Anota en el diario del protagonista cada carta, resultado, verdad y epílogo."
+      "AutoDiaryHint": "Anota en el diario del protagonista cada carta, resultado, verdad y epílogo.",
+      "CardSkin": "Estilo de las cartas",
+      "CardSkinHint": "Solo para ti. Fotográfico: el arte de MR · Cuentos de Ánimas. Clásico: las cartas originales del libro.",
+      "DeckSize": "Longitud de la partida",
+      "DeckSizeHint": "El libro propone quitar una o dos cartas de cada tipo para relatos más cortos. Las tres Damas siempre están."
     },
-    "Phase": { "idle": "Sin relato", "playing": "En juego", "epilogue": "Hacia el epílogo", "finished": "Relato cerrado" },
+    "Phase": {
+      "idle": "Sin relato",
+      "playing": "En juego",
+      "epilogue": "Hacia el epílogo",
+      "finished": "Relato cerrado"
+    },
     "Mode": {
-      "guardian": "A solas con el Guardián", "guardianHint": "Un protagonista y un Guardián. Preguntas, verdades y recuerdos.",
-      "bonfire": "La Hoguera", "bonfireHint": "Mesa tradicional: varias voces alrededor del fuego.",
-      "diary": "El Diario", "diaryHint": "En solitario, escribiendo el relato escena a escena.",
-      "free": "Relato libre", "freeHint": "Las cartas como motor narrativo, sin escenario cerrado."
+      "guardian": "A solas con el Guardián",
+      "guardianHint": "Un protagonista y un Guardián. Preguntas, verdades y recuerdos.",
+      "bonfire": "La Hoguera",
+      "bonfireHint": "Mesa tradicional: varias voces alrededor del fuego.",
+      "diary": "El Diario",
+      "diaryHint": "En solitario, escribiendo el relato escena a escena.",
+      "free": "Relato libre",
+      "freeHint": "Las cartas como motor narrativo, sin escenario cerrado."
     },
     "Kind": {
-      "clue": "Pista", "environment": "Obstáculo de entorno", "character": "Obstáculo de personaje",
-      "incident": "Percance", "gray": "Dama Gris", "number": "Carta numérica"
+      "clue": "Pista",
+      "environment": "Obstáculo de entorno",
+      "character": "Obstáculo de personaje",
+      "incident": "Percance",
+      "gray": "Dama Gris",
+      "number": "Carta numérica"
     },
-    "Resource": { "spirit": "Espíritu", "determination": "Determinación", "Max": "Máximo" },
+    "Resource": {
+      "spirit": "Espíritu",
+      "determination": "Determinación",
+      "Max": "Máximo"
+    },
     "Deck": {
-      "Event": "CdA · Mazo de Ánimas", "EventDiscard": "CdA · Cartas reveladas", "Number": "CdA · Cartas numéricas", "NumberDiscard": "CdA · Números revelados",
-      "Fixed": "Distribución clásica", "RandomThird": "Damas impredecibles",
-      "Variant": { "world": "Según el ajuste del mundo", "fixed": "Distribución clásica", "random-third": "Damas impredecibles" }
+      "Event": "CdA · Mazo de Ánimas",
+      "EventDiscard": "CdA · Cartas reveladas",
+      "Number": "CdA · Cartas numéricas",
+      "NumberDiscard": "CdA · Números revelados",
+      "Fixed": "Distribución clásica",
+      "RandomThird": "Damas impredecibles",
+      "Variant": {
+        "world": "Según el ajuste del mundo",
+        "fixed": "Distribución clásica",
+        "random-third": "Damas impredecibles"
+      },
+      "Size": {
+        "full": "Completa · 16 cartas + 3 Damas",
+        "short": "Corta · 12 cartas + 3 Damas",
+        "shorter": "Muy corta · 8 cartas + 3 Damas"
+      }
     },
     "Table": {
-      "Silent": "La mesa está en silencio", "Waiting": "Esperando un relato", "Tools": "Herramientas",
-      "Draw": "Robar", "Deck": "Mazo", "Discard": "Descarte", "Revealed": "revelada", "Zoom": "Ampliar la carta",
+      "Silent": "La mesa está en silencio",
+      "Waiting": "Esperando un relato",
+      "Tools": "Herramientas",
+      "Draw": "Robar",
+      "Deck": "Mazo",
+      "Discard": "Descarte",
+      "Revealed": "revelada",
+      "Zoom": "Ampliar la carta",
       "NextScene": "La siguiente escena espera boca abajo.",
       "EmptyHook": "Elige un escenario, un protagonista y enciende la primera vela.",
       "FootIdle": "Pulsa «Nuevo relato» o abre la Biblioteca para elegir escenario.",
-      "New": "Nuevo relato", "Change": "Otro relato", "End": "Cerrar el relato",
+      "New": "Nuevo relato",
+      "Change": "Otro relato",
+      "End": "Cerrar el relato",
       "EndConfirm": "El relato se cierra y la mesa queda en silencio. El diario y las verdades del protagonista se conservan.",
-      "ScenarioSheet": "Escenario"
+      "ScenarioSheet": "Escenario",
+      "Narrator": "Narra",
+      "Library": "Biblioteca",
+      "Story": "El relato",
+      "Synopsis": "Sinopsis",
+      "Clues": "Pistas halladas",
+      "NoClues": "Aún no hay pistas.",
+      "Tension": "Tensión revelada",
+      "NarrateThenDraw": "Narra la escena. Después, roba la siguiente carta."
     },
     "Game": {
-      "NoStory": "No hay ningún relato en marcha.", "PendingObstacle": "Primero resuelve el obstáculo de la mesa.",
-      "PendingGray": "La Dama Gris aún espera su precio.", "StoryClosing": "El relato se dirige a su epílogo.",
-      "EmptyDeck": "No quedan cartas en el Mazo de Ánimas.", "NoObstacle": "No hay ningún obstáculo que resolver.",
-      "NoProtagonist": "Este relato no tiene protagonista.", "NoDetermination": "No queda Determinación.",
-      "Difficulty": "Dificultad", "DifficultyShort": "Dif.", "Card": "Carta", "Total": "Total",
-      "Spend": "Gastar Determinación", "Reveal": "Revelar carta", "Push": "Empujar", "Reroll": "Repetir la carta", "Accept": "Aceptar el fallo",
-      "Success": "Superado", "Failure": "Fallido", "FailureSpirit": "Fallido · pierdes Espíritu",
+      "NoStory": "No hay ningún relato en marcha.",
+      "PendingObstacle": "Primero resuelve el obstáculo de la mesa.",
+      "PendingGray": "La Dama Gris aún espera su precio.",
+      "StoryClosing": "El relato se dirige a su epílogo.",
+      "EmptyDeck": "No quedan cartas en el Mazo de Ánimas.",
+      "NoObstacle": "No hay ningún obstáculo que resolver.",
+      "NoProtagonist": "Este relato no tiene protagonista.",
+      "NoDetermination": "No queda Determinación.",
+      "Difficulty": "Dificultad",
+      "DifficultyShort": "Dif.",
+      "Card": "Carta",
+      "Total": "Total",
+      "Spend": "Gastar Determinación",
+      "Reveal": "Revelar carta",
+      "Push": "Empujar",
+      "Reroll": "Repetir la carta",
+      "Accept": "Aceptar el fallo",
+      "Success": "Superado",
+      "Failure": "Fallido",
+      "FailureSpirit": "Fallido · pierdes Espíritu",
       "ResultDetail": "Carta {value} + {bonus} frente a dificultad {difficulty}.",
-      "GrayCrosses": "Algo cruza la habitación. Paga su precio: gasta Determinación o pierde Espíritu.",
-      "SpendDetermination": "Gastar Determinación", "LoseSpirit": "Perder Espíritu",
-      "Epilogue": "Epílogo", "EpilogueReady": "La tercera Dama ha llegado. El relato pide su final.", "OpenEpilogue": "Abrir el epílogo"
+      "GrayCrosses": "La tensión crece. Paga su precio: gasta un contador de Determinación o pierde uno de Espíritu. Desde ahora, +1 a la dificultad de los obstáculos.",
+      "SpendDetermination": "Gastar Determinación",
+      "LoseSpirit": "Perder Espíritu",
+      "Epilogue": "Epílogo",
+      "EpilogueReady": "La tercera Dama ha llegado. El relato pide su final.",
+      "OpenEpilogue": "Abrir el epílogo",
+      "PendingChoice": "Primero elige la escena de la carta revelada.",
+      "OnePerObstacle": "Solo se puede gastar un contador de Determinación por obstáculo.",
+      "NoPrice": "Seguir (no quedan contadores)"
     },
     "Epilogue": {
-      "high": "Espíritu entero", "highHint": "El protagonista conserva 2 o más de Espíritu.",
-      "low": "Espíritu frágil", "lowHint": "Queda 1 de Espíritu.",
-      "zero": "Espíritu extinguido", "zeroHint": "El Espíritu llegó a 0."
+      "high": "Espíritu entero",
+      "highHint": "El protagonista conserva 2 o más de Espíritu.",
+      "low": "Espíritu frágil",
+      "lowHint": "Queda 1 de Espíritu.",
+      "zero": "Espíritu extinguido",
+      "zeroHint": "El Espíritu llegó a 0."
     },
     "Session": {
-      "New": "Nuevo relato", "Scenario": "Escenario", "Mode": "Modo de juego", "Protagonist": "Protagonista",
-      "NewProtagonist": "— Crear uno nuevo —", "NewName": "Nombre (si se crea nuevo)", "Split": "Reparto de recursos",
+      "New": "Nuevo relato",
+      "Scenario": "Escenario",
+      "Mode": "Modo de juego",
+      "Protagonist": "Protagonista",
+      "NewProtagonist": "— Crear uno nuevo —",
+      "NewName": "Nombre (si se crea nuevo)",
+      "Split": "Reparto de recursos",
       "SplitHint": "Diez puntos entre Espíritu y Determinación, mínimo tres en cada uno.",
-      "Start": "Encender la primera vela", "Recommended": "Recomendado por el escenario",
+      "Start": "Encender la primera vela",
+      "Recommended": "Recomendado por el escenario",
       "Replaces": "Hay un relato en marcha: empezar otro rehace el mazo.",
-      "GMOnly": "Solo el Guardián puede empezar un relato.", "PickScenario": "Elige un escenario.",
+      "GMOnly": "Solo el Guardián puede empezar un relato.",
+      "PickScenario": "Elige un escenario.",
       "BadSplit": "El reparto debe sumar 10 con un mínimo de 3 en cada recurso."
     },
     "Actor": {
-      "Kicker": "Expediente", "DefaultName": "Protagonista", "Name": "Nombre", "Profession": "Ocupación", "Origin": "Procedencia", "Age": "Edad",
-      "Epithet": "Una frase que le describa…", "Traits": "Cuatro rasgos", "TraitName": "Rasgo", "TraitText": "Qué significa, cuándo pesa…",
-      "Description": "Descripción", "History": "Historia", "Objects": "Objetos importantes", "ObjectName": "Objeto", "ObjectText": "Por qué lo lleva",
-      "Significant": "Objeto significativo", "NoObjects": "Nada todavía.", "Bonds": "Vínculos", "BondName": "Persona",
-      "BondText": "Qué os une, qué os separa", "NoBonds": "Nadie todavía.",
+      "Kicker": "Expediente",
+      "DefaultName": "Protagonista",
+      "Name": "Nombre",
+      "Profession": "Ocupación",
+      "Origin": "Procedencia",
+      "Age": "Edad",
+      "Epithet": "Una frase que le describa…",
+      "Traits": "Cuatro rasgos",
+      "TraitName": "Rasgo",
+      "TraitText": "Qué significa, cuándo pesa…",
+      "Description": "Descripción",
+      "History": "Historia",
+      "Objects": "Objetos importantes",
+      "ObjectName": "Objeto",
+      "ObjectText": "Por qué lo lleva",
+      "Significant": "Objeto significativo",
+      "NoObjects": "Nada todavía.",
+      "Bonds": "Vínculos",
+      "BondName": "Persona",
+      "BondText": "Qué os une, qué os separa",
+      "NoBonds": "Nadie todavía.",
       "SplitNote": "Espíritu y Determinación máximos no suman 10: vale si el escenario lo pide."
     },
     "Diary": {
-      "Kicker": "Diario del relato", "NoActor": "Sin protagonista", "Book": "Diario", "Chronicle": "Crónica",
-      "Entry": "Escena", "NewEntry": "Nota", "Add": "Escribir", "Placeholder": "Escribe aquí lo que pasó, lo que sentiste, lo que no dijiste…",
+      "Kicker": "Diario del relato",
+      "NoActor": "Sin protagonista",
+      "Book": "Diario",
+      "Chronicle": "Crónica",
+      "Entry": "Escena",
+      "NewEntry": "Nota",
+      "Add": "Escribir",
+      "Placeholder": "Escribe aquí lo que pasó, lo que sentiste, lo que no dijiste…",
       "Empty": "El diario está en blanco. Cada carta robada dejará aquí su huella.",
-      "NoHistory": "La crónica empieza al robar la primera carta.", "ExportHistory": "Exportar crónica (JSON)"
+      "NoHistory": "La crónica empieza al robar la primera carta.",
+      "ExportHistory": "Exportar crónica (JSON)"
     },
     "History": {
-      "start": "Comienza", "end": "Relato cerrado", "card": "Carta", "obstacle": "Obstáculo", "gray": "Dama Gris",
-      "epilogue": "Epílogo", "phase": "Fase", "truth": "Verdad", "truth-status": "Verdad cambia", "memory": "Recuerdo",
-      "adjust": "Ajuste", "gm": "Guardián", "scene": "Escena", "note": "Nota", "clue": "Pista mostrada"
+      "start": "Comienza",
+      "end": "Relato cerrado",
+      "card": "Carta",
+      "obstacle": "Obstáculo",
+      "gray": "Dama Gris",
+      "epilogue": "Epílogo",
+      "phase": "Fase",
+      "truth": "Verdad",
+      "truth-status": "Verdad cambia",
+      "memory": "Recuerdo",
+      "adjust": "Ajuste",
+      "gm": "Guardián",
+      "scene": "Escena",
+      "note": "Nota",
+      "clue": "Pista mostrada",
+      "gray-price": "Precio de la Dama"
     },
-    "Archive": { "Kicker": "Lo que se dijo y lo que se recuerda" },
+    "Archive": {
+      "Kicker": "Lo que se dijo y lo que se recuerda"
+    },
     "Truth": {
-      "Statement": "Afirmación", "Placeholder": "«Yo no volví a hablar con mi hermano después de aquella noche.»",
-      "Register": "Registrar", "Established": "Verdad establecida", "StatusLabel": "Estado", "Category": "Categoría", "Origin": "Origen",
-      "Hidden": "Oculta al jugador", "HiddenShort": "Oculta", "Note": "Nota del Guardián", "Filter": "Filtrar verdades",
-      "Empty": "Ninguna verdad registrada todavía.", "Trail": "Cambios de estado", "Prepared": "Verdades preparadas del escenario",
-      "By": { "player": "La afirmó el jugador", "guardian": "La estableció el Guardián" },
+      "Statement": "Afirmación",
+      "Placeholder": "«Yo no volví a hablar con mi hermano después de aquella noche.»",
+      "Register": "Registrar",
+      "Established": "Verdad establecida",
+      "StatusLabel": "Estado",
+      "Category": "Categoría",
+      "Origin": "Origen",
+      "Hidden": "Oculta al jugador",
+      "HiddenShort": "Oculta",
+      "Note": "Nota del Guardián",
+      "Filter": "Filtrar verdades",
+      "Empty": "Ninguna verdad registrada todavía.",
+      "Trail": "Cambios de estado",
+      "Prepared": "Verdades preparadas del escenario",
+      "By": {
+        "player": "La afirmó el jugador",
+        "guardian": "La estableció el Guardián"
+      },
       "Status": {
-        "all": "Todas", "established": "Establecida", "doubtful": "Dudosa", "contradicted": "Contradicha",
-        "reinterpreted": "Reinterpretada", "pending": "Revelación pendiente", "resolved": "Resuelta"
+        "all": "Todas",
+        "established": "Establecida",
+        "doubtful": "Dudosa",
+        "contradicted": "Contradicha",
+        "reinterpreted": "Reinterpretada",
+        "pending": "Revelación pendiente",
+        "resolved": "Resuelta"
       }
     },
     "Memory": {
-      "Kicker": "Recuerdo", "KindLabel": "Tipo", "Known": "Lo conoce el jugador", "Launch": "Lanzar una pregunta del escenario",
-      "Add": "Añadir recuerdo", "Placeholder": "¿Lo recuerdas o prefieres no recordarlo?", "Empty": "Ningún recuerdo todavía.",
-      "Kind": { "memory": "Recuerdo", "question": "Pregunta", "locked": "Bloqueado", "confirmed": "Confirmado", "contradicted": "Contradictorio" }
+      "Kicker": "Recuerdo",
+      "KindLabel": "Tipo",
+      "Known": "Lo conoce el jugador",
+      "Launch": "Lanzar una pregunta del escenario",
+      "Add": "Añadir recuerdo",
+      "Placeholder": "¿Lo recuerdas o prefieres no recordarlo?",
+      "Empty": "Ningún recuerdo todavía.",
+      "Kind": {
+        "memory": "Recuerdo",
+        "question": "Pregunta",
+        "locked": "Bloqueado",
+        "confirmed": "Confirmado",
+        "contradicted": "Contradictorio"
+      }
     },
     "Link": {
-      "Label": "Enlazado a", "What": "¿A qué?", "none": "Sin enlace", "scene": "Escena", "object": "Objeto", "clue": "Pista",
-      "character": "Personaje", "truth": "Verdad", "card": "Carta", "epilogue": "Epílogo"
+      "Label": "Enlazado a",
+      "What": "¿A qué?",
+      "none": "Sin enlace",
+      "scene": "Escena",
+      "object": "Objeto",
+      "clue": "Pista",
+      "character": "Personaje",
+      "truth": "Verdad",
+      "card": "Carta",
+      "epilogue": "Epílogo"
     },
     "Guardian": {
-      "Idle": "No hay relato en marcha.", "Scene": "Escena", "PrevScene": "Escena anterior", "NextScene": "Escena siguiente",
-      "Ambient": "Ambiente", "Deck": "Mazo", "GrayInside": "Dama dentro", "Show": "Mostrar a todos", "Discard": "Descartar",
-      "Gray": "Adelantar Dama", "GrayNext": "La próxima carta será una Dama Gris.", "NoGrayLeft": "No quedan Damas en el mazo.",
-      "Reshuffle": "Rebarajar bloques", "Reshuffled": "Cada bloque se ha vuelto a barajar.", "Rebuild": "Rehacer mazo",
+      "Idle": "No hay relato en marcha.",
+      "Scene": "Escena",
+      "PrevScene": "Escena anterior",
+      "NextScene": "Escena siguiente",
+      "Ambient": "Ambiente",
+      "Deck": "Mazo",
+      "GrayInside": "Dama dentro",
+      "Show": "Mostrar a todos",
+      "Discard": "Descartar",
+      "Gray": "Adelantar Dama",
+      "GrayNext": "La próxima carta será una Dama Gris.",
+      "NoGrayLeft": "No quedan Damas en el mazo.",
+      "Reshuffle": "Rebarajar bloques",
+      "Reshuffled": "Cada bloque se ha vuelto a barajar.",
+      "Rebuild": "Rehacer mazo",
       "RebuildConfirm": "Se vuelve a preparar el mazo completo y las Damas empiezan de cero. Los recursos del protagonista no cambian.",
-      "Insert": "Insertar carta", "InsertFrom": "Carta del escenario", "InsertCustom": "…o escribe una carta nueva",
-      "InsertKind": "Tipo", "Where": "Dónde", "WhereNext": "Siguiente", "WhereBlock": "En este bloque", "WhereBottom": "Al fondo",
-      "InsertDo": "Insertar", "Inserted": "«{name}» está en el mazo.", "Max": "máx", "RaiseMax": "Subir el máximo",
-      "Record": "Registro", "TruthPending": "Oculta: revelación pendiente", "Launch": "Lanzar", "Note": "Nota",
-      "NotePlaceholder": "Nota privada para la crónica…", "ToEpilogue": "Ir al epílogo"
+      "Insert": "Insertar carta",
+      "InsertFrom": "Carta del escenario",
+      "InsertCustom": "…o escribe una carta nueva",
+      "InsertKind": "Tipo",
+      "Where": "Dónde",
+      "WhereNext": "Siguiente",
+      "WhereBlock": "En este bloque",
+      "WhereBottom": "Al fondo",
+      "InsertDo": "Insertar",
+      "Inserted": "«{name}» está en el mazo.",
+      "Max": "máx",
+      "RaiseMax": "Subir el máximo",
+      "Record": "Registro",
+      "TruthPending": "Oculta: revelación pendiente",
+      "Launch": "Lanzar",
+      "Note": "Nota",
+      "NotePlaceholder": "Nota privada para la crónica…",
+      "ToEpilogue": "Ir al epílogo"
     },
     "Scenario": {
-      "Kicker": "Escenario", "Active": "en juego", "Hook": "Gancho: una frase que atrape",
+      "Kicker": "Escenario",
+      "Active": "en juego",
+      "Hook": "Gancho: una frase que atrape",
       "Tab": {
-        "play": "En juego", "presentation": "Presentación", "characters": "Personajes", "clues": "Pistas", "obstacles": "Obstáculos",
-        "incidents": "Percances", "tension": "Tensión", "grays": "Damas Grises", "epilogues": "Epílogos", "memories": "Recuerdos",
-        "truths": "Verdades", "art": "Arte", "sound": "Sonido", "config": "Configuración"
+        "play": "En juego",
+        "presentation": "Presentación",
+        "characters": "Personajes",
+        "clues": "Pistas",
+        "obstacles": "Obstáculos",
+        "incidents": "Percances",
+        "tension": "Tensión",
+        "grays": "Damas Grises",
+        "epilogues": "Epílogos",
+        "memories": "Recuerdos",
+        "truths": "Verdades",
+        "art": "Arte",
+        "sound": "Sonido",
+        "config": "Configuración"
       },
-      "Author": "Autoría", "Duration": "Duración", "Players": "Jugadores", "Tone": "Tono (separado por comas)",
-      "ContentNotes": "Avisos de contenido", "Modes": "Modos", "Tags": "Etiquetas", "Synopsis": "Sinopsis", "Introduction": "Introducción",
-      "Cover": "Portada", "CustomBack": "Reverso propio de las cartas", "Handouts": "Handouts", "ShowHandout": "Mostrar handout",
-      "EmptyList": "Nada todavía.", "TensionHint": "Escenas del relato en orden de tensión creciente. El Guardián las recorre desde su herramienta.",
+      "Author": "Autoría",
+      "Duration": "Duración",
+      "Players": "Jugadores",
+      "Tone": "Tono (separado por comas)",
+      "ContentNotes": "Avisos de contenido",
+      "Modes": "Modos",
+      "Tags": "Etiquetas",
+      "Synopsis": "Sinopsis",
+      "Introduction": "Introducción",
+      "Cover": "Portada",
+      "CustomBack": "Reverso propio de las cartas",
+      "Handouts": "Handouts",
+      "ShowHandout": "Mostrar handout",
+      "EmptyList": "Nada todavía.",
+      "TensionHint": "Escenas del relato en orden de tensión creciente. El Guardián las recorre desde su herramienta.",
       "TruthsHint": "Afirmaciones que el relato pondrá a prueba y qué las contradice. Solo el Guardián ve la contradicción.",
       "SoundHint": "Ambiente sintetizado para cada momento, o la ruta de un archivo de audio propio.",
-      "Sound": { "intro": "Introducción", "play": "Durante el relato", "gray": "Tras una Dama Gris", "epilogue": "Epílogo" },
-      "DeckVariant": "Preparación del mazo", "RecommendedSpirit": "Espíritu recomendado", "RecommendedDetermination": "Determinación recomendada",
-      "CardCount": "Cartas en el mazo", "GuardianNotes": "Notas del Guardián", "NotActive": "Este escenario no está en juego.", "Imported": "Escenario importado"
+      "Sound": {
+        "intro": "Introducción",
+        "play": "Durante el relato",
+        "gray": "Tras una Dama Gris",
+        "epilogue": "Epílogo"
+      },
+      "DeckVariant": "Preparación del mazo",
+      "RecommendedSpirit": "Espíritu recomendado",
+      "RecommendedDetermination": "Determinación recomendada",
+      "CardCount": "Cartas en el mazo",
+      "GuardianNotes": "Notas del Guardián",
+      "NotActive": "Este escenario no está en juego.",
+      "Imported": "Escenario importado",
+      "EpilogueHint": "Tabla de Espíritu‑Epílogo: se usa la primera fila cuyo rango (mín.–máx.) incluya el Espíritu final.",
+      "Source": "Procedencia",
+      "License": "Licencia o permiso"
     },
     "Field": {
-      "title": "Título", "text": "Texto", "difficulty": "Dificultad", "image": "Imagen", "guardian": "Para el Guardián",
-      "name": "Nombre", "description": "Descripción", "secret": "Secreto", "handout": "Handout", "prompt": "Pregunta",
-      "followUp": "Repregunta", "kind": "Tipo", "link.type": "Enlazado a", "link.label": "¿A qué?", "contradiction": "Qué la contradice",
-      "reveal": "Cuándo se revela"
+      "title": "Título",
+      "text": "Texto",
+      "difficulty": "Dificultad",
+      "image": "Imagen",
+      "guardian": "Para el Guardián",
+      "name": "Nombre",
+      "description": "Descripción",
+      "secret": "Secreto",
+      "handout": "Handout",
+      "prompt": "Pregunta",
+      "followUp": "Repregunta",
+      "kind": "Tipo",
+      "link.type": "Enlazado a",
+      "link.label": "¿A qué?",
+      "contradiction": "Qué la contradice",
+      "reveal": "Cuándo se revela",
+      "label": "Condición",
+      "min": "Espíritu mín.",
+      "max": "Espíritu máx."
     },
     "Tag": {
-      "rural": "Horror rural", "supernatural": "Sobrenatural", "psychological": "Psicológico", "folklore": "Folclore",
-      "mystery": "Misterio", "scifi": "Ciencia ficción", "urban": "Urbano"
+      "rural": "Horror rural",
+      "supernatural": "Sobrenatural",
+      "psychological": "Psicológico",
+      "folklore": "Folclore",
+      "mystery": "Misterio",
+      "scifi": "Ciencia ficción",
+      "urban": "Urbano"
     },
     "Library": {
-      "Kicker": "Relatos para una noche", "Filters": "Filtros", "All": "Todos", "Play": "Jugar", "Edit": "Editar", "Read": "Leer",
-      "More": "Más acciones", "Duplicate": "Duplicar", "MakeVariant": "Crear variante", "Export": "Exportar", "Import": "Importar",
-      "Delete": "Borrar", "DeleteConfirm": "¿Borrar «{name}»? No se puede deshacer.", "Variant": "Variante",
-      "NewScenario": "Nuevo escenario", "Imported": "Escenario importado", "ImportedOk": "«{name}» se ha añadido a la biblioteca.",
-      "ImportFailed": "No se pudo importar: {error}", "CopyName": "{name} (copia)", "VariantName": "{name} · variante",
-      "Empty": "No hay escenarios con esos filtros."
+      "Kicker": "Relatos para una noche",
+      "Filters": "Filtros",
+      "All": "Todos",
+      "Play": "Jugar",
+      "Edit": "Editar",
+      "Read": "Leer",
+      "More": "Más acciones",
+      "Duplicate": "Duplicar",
+      "MakeVariant": "Crear variante",
+      "Export": "Exportar",
+      "Import": "Importar",
+      "Delete": "Borrar",
+      "DeleteConfirm": "¿Borrar «{name}»? No se puede deshacer.",
+      "Variant": "Variante",
+      "NewScenario": "Nuevo escenario",
+      "Imported": "Escenario importado",
+      "ImportedOk": "«{name}» se ha añadido a la biblioteca.",
+      "ImportFailed": "No se pudo importar: {error}",
+      "CopyName": "{name} (copia)",
+      "VariantName": "{name} · variante",
+      "Empty": "No hay escenarios con esos filtros.",
+      "World": "En tu mundo",
+      "Collection": "Colección incluida",
+      "HowImport": "Cómo importar",
+      "AddPlay": "Añadir y jugar",
+      "Add": "Añadir al mundo",
+      "ImportedMany": "Importados: {n} escenarios.",
+      "ImportProblems": "Escenarios no importados",
+      "ImportProblemsText": "{n} escenarios tienen problemas y no se han importado. El resto sí:"
     },
     "Import": {
-      "NotJSON": "el archivo no es JSON válido.", "NotScenario": "el archivo no contiene un escenario.",
-      "NoSystem": "faltan los datos del escenario.", "TooBig": "el archivo es demasiado grande."
+      "NotJSON": "el archivo no es JSON válido.",
+      "NotScenario": "el archivo no contiene un escenario.",
+      "NoSystem": "faltan los datos del escenario.",
+      "TooBig": "el archivo es demasiado grande.",
+      "TooMany": "demasiados escenarios en un solo archivo (máximo 200)."
     },
     "Ambient": {
-      "none": "Silencio", "fire": "Hoguera", "rain": "Lluvia", "wind": "Viento", "house": "Casa vieja", "forest": "Bosque",
-      "coast": "Costa", "storm": "Tormenta", "tape": "Cinta magnética", "silence": "Silencio sobrenatural"
+      "none": "Silencio",
+      "fire": "Hoguera",
+      "rain": "Lluvia",
+      "wind": "Viento",
+      "house": "Casa vieja",
+      "forest": "Bosque",
+      "coast": "Costa",
+      "storm": "Tormenta",
+      "tape": "Cinta magnética",
+      "silence": "Silencio sobrenatural"
     },
     "Safety": {
       "Intro": "Cualquiera puede usarlas en cualquier momento, sin explicar por qué.",
-      "Pause": "Pausa", "PauseHint": "Paramos un momento.", "PauseText": "Alguien ha pedido una pausa. Respiramos y seguimos cuando estemos bien.",
-      "Veil": "Velo", "VeilHint": "Fundido a negro: pasa, pero no se describe.", "VeilText": "Esta parte ocurre fuera de plano. La historia continúa después.",
-      "X": "Tarjeta X", "XHint": "Esto sale del relato. Sin preguntas.", "XText": "Alguien ha tocado la Tarjeta X. Retiramos lo último y seguimos por otro camino.",
-      "Continue": "Seguir", "Anonymous": "El aviso nunca dice quién lo activó."
+      "Pause": "Pausa",
+      "PauseHint": "Paramos un momento.",
+      "PauseText": "Alguien ha pedido una pausa. Respiramos y seguimos cuando estemos bien.",
+      "Veil": "Velo",
+      "VeilHint": "Fundido a negro: pasa, pero no se describe.",
+      "VeilText": "Esta parte ocurre fuera de plano. La historia continúa después.",
+      "X": "Tarjeta X",
+      "XHint": "Esto sale del relato. Sin preguntas.",
+      "XText": "Alguien ha tocado la Tarjeta X. Retiramos lo último y seguimos por otro camino.",
+      "Continue": "Seguir",
+      "Anonymous": "El aviso nunca dice quién lo activó."
     },
     "Access": {
-      "Title": "Lectura y accesibilidad", "Open": "Abrir", "Intro": "Ajustes solo para ti: tamaño, contraste, movimiento y sonido.",
-      "textScale": "Tamaño del texto", "sfxVolume": "Volumen de efectos", "ambientVolume": "Volumen de ambiente",
-      "readingMode": "Lectura limpia", "readingModeHint": "Fondos lisos y texto claro sobre oscuro.",
-      "highContrast": "Alto contraste", "highContrastHint": "Bordes y textos más marcados.",
-      "plainFont": "Tipografía sencilla", "plainFontHint": "Sin serifas, más fácil a tamaños pequeños.",
-      "wideSpacing": "Más espaciado", "wideSpacingHint": "Más aire entre líneas y letras.",
-      "largeButtons": "Botones grandes", "largeButtonsHint": "Objetivos más fáciles de pulsar.",
-      "reducedMotion": "Reducir movimiento", "reducedMotionHint": "Sin giros ni desplazamientos de cartas.",
-      "reducedEffects": "Reducir efectos", "reducedEffectsHint": "Sin niebla, motas ni parpadeos.",
-      "richHelp": "Ayuda contextual", "richHelpHint": "Notas al detenerte sobre un elemento; clic derecho para ampliar.",
-      "soundFx": "Sonido", "soundFxHint": "Ambiente y efectos sintetizados.",
-      "InkLabel": "Tinta de lectura", "Ink": { "soft": "Gris cálido", "cream": "Crema", "pearl": "Perla", "amber": "Ámbar", "mint": "Menta" },
-      "Reset": "Restablecer", "Forget": "Recolocar ventanas", "Forgotten": "Las ventanas volverán a su posición inicial al abrirse."
+      "Title": "Lectura y accesibilidad",
+      "Open": "Abrir",
+      "Intro": "Ajustes solo para ti: tamaño, contraste, movimiento y sonido.",
+      "textScale": "Tamaño del texto",
+      "sfxVolume": "Volumen de efectos",
+      "ambientVolume": "Volumen de ambiente",
+      "readingMode": "Lectura limpia",
+      "readingModeHint": "Fondos lisos y texto claro sobre oscuro.",
+      "highContrast": "Alto contraste",
+      "highContrastHint": "Bordes y textos más marcados.",
+      "plainFont": "Tipografía sencilla",
+      "plainFontHint": "Sin serifas, más fácil a tamaños pequeños.",
+      "wideSpacing": "Más espaciado",
+      "wideSpacingHint": "Más aire entre líneas y letras.",
+      "largeButtons": "Botones grandes",
+      "largeButtonsHint": "Objetivos más fáciles de pulsar.",
+      "reducedMotion": "Reducir movimiento",
+      "reducedMotionHint": "Sin giros ni desplazamientos de cartas.",
+      "reducedEffects": "Reducir efectos",
+      "reducedEffectsHint": "Sin niebla, motas ni parpadeos.",
+      "richHelp": "Ayuda contextual",
+      "richHelpHint": "Notas al detenerte sobre un elemento; clic derecho para ampliar.",
+      "soundFx": "Sonido",
+      "soundFxHint": "Ambiente y efectos sintetizados.",
+      "InkLabel": "Tinta de lectura",
+      "Ink": {
+        "soft": "Gris cálido",
+        "cream": "Crema",
+        "pearl": "Perla",
+        "amber": "Ámbar",
+        "mint": "Menta"
+      },
+      "Reset": "Restablecer",
+      "Forget": "Recolocar ventanas",
+      "Forgotten": "Las ventanas volverán a su posición inicial al abrirse."
     },
     "Diagnostic": {
-      "Title": "Diagnóstico", "Open": "Abrir diagnóstico", "Hint": "Estado del sistema, listo para copiar y enviar si algo falla.",
-      "AllGood": "Todo en orden.", "Problems": "Hay algo que revisar.", "Missing": "Falta", "Copy": "Copiar", "Copied": "Diagnóstico copiado.",
+      "Title": "Diagnóstico",
+      "Open": "Abrir diagnóstico",
+      "Hint": "Estado del sistema, listo para copiar y enviar si algo falla.",
+      "AllGood": "Todo en orden.",
+      "Problems": "Hay algo que revisar.",
+      "Missing": "Falta",
+      "Copy": "Copiar",
+      "Copied": "Diagnóstico copiado.",
       "Refresh": "Actualizar"
     },
     "Welcome": {
-      "Title": "MR · Cuentos de Ánimas", "Ready": "Todo está preparado.",
+      "Title": "MR · Cuentos de Ánimas",
+      "Ready": "Todo está preparado.",
       "Body": "La Mesa de Ánimas no se abre sola: está en la barra de la izquierda (luna), en los directorios y con Mayús+M.",
-      "Table": "Abrir la Mesa", "New": "Nuevo relato", "Protagonist": "Crear protagonista", "Library": "Biblioteca", "Hide": "No volver a mostrar"
+      "Table": "Abrir la Mesa",
+      "New": "Nuevo relato",
+      "Protagonist": "Crear protagonista",
+      "Library": "Biblioteca",
+      "Hide": "No volver a mostrar"
     },
     "Help": {
       "RightClick": "Clic derecho para saber más",
-      "spirit": { "Title": "Espíritu", "Short": "Tu equilibrio. Se pierde al fallar un obstáculo o ante una Dama Gris.", "Long": "Las piedras frías son el Espíritu. Cuando una se apaga, el relato se enfría. Si se apagan todas, el relato va directo a su epílogo más oscuro." },
-      "determination": { "Title": "Determinación", "Short": "Tu voluntad. Gástala para inclinar un obstáculo a tu favor.", "Long": "Antes de revelar la carta numérica suma +2; después, +1 si con eso basta. Desde la segunda Dama Gris también permite repetir la carta. Cada brasa gastada se apaga en la bandeja." },
-      "deck": { "Title": "Mazo de Ánimas", "Short": "Cada carta abre una escena: pista, obstáculo, percance o Dama Gris.", "Long": "El mazo se divide en tres bloques con una Dama Gris en cada uno. El jugador nunca ve qué viene; el Guardián solo ve cuántas cartas quedan en cada bloque." },
-      "gray": { "Title": "Damas Grises", "Short": "Tres umbrales de tensión. Cada una endurece el relato; la tercera abre el epílogo.", "Long": "Al aparecer, pide su precio (Determinación o Espíritu) y sube en 1 la dificultad de los obstáculos." },
-      "number": { "Title": "Carta numérica", "Short": "Del 1 al 10. Igualar o superar la dificultad supera el obstáculo.", "Long": "Lo que se suma: la carta, +2 si gastaste Determinación antes de revelar y +1 si empujas después." },
-      "spend": { "Title": "Gastar antes de revelar", "Short": "Una Determinación: +2 a la carta que vas a revelar." },
-      "push": { "Title": "Empujar", "Short": "Solo si te falta 1: una Determinación lo convierte en éxito." },
-      "reroll": { "Title": "Repetir la carta", "Short": "Desde la segunda Dama: una Determinación para revelar otra carta." },
-      "discard": { "Title": "Descarte", "Short": "Las cartas ya jugadas. La de arriba es la anterior a la actual." },
-      "card-clue": { "Title": "Pista", "Short": "Un descubrimiento. No se resuelve: se cuenta." },
-      "card-environment": { "Title": "Obstáculo de entorno", "Short": "El mundo físico se vuelve hostil. Tiene dificultad." },
-      "card-character": { "Title": "Obstáculo de personaje", "Short": "Un conflicto humano. Tiene dificultad." },
-      "card-incident": { "Title": "Percance", "Short": "Algo cambia, se rompe o se pierde. Sin tirada." },
-      "card-gray": { "Title": "Dama Gris", "Short": "La tensión da un paso. Pide su precio." },
-      "diary": { "Title": "Diario", "Short": "Las escenas se anotan solas; tú escribes lo que sintió el protagonista." },
-      "history": { "Title": "Crónica", "Short": "Registro estructurado de todo lo ocurrido, para reconstruir la sesión." },
-      "truths": { "Title": "Verdades", "Short": "Lo que el protagonista afirma. El relato puede ponerlo en duda.", "Long": "Establecida, dudosa, contradicha, reinterpretada, revelación pendiente o resuelta. No se trata de pillar al jugador: se trata de descubrir qué historia se estaba contando." },
-      "memories": { "Title": "Recuerdos", "Short": "Preguntas y respuestas sobre el pasado. Pueden quedar bloqueados o contradecirse." },
-      "guardian": { "Title": "Guardián", "Short": "Control compacto de la partida: mazo, escena, recursos y registro." },
-      "library": { "Title": "Biblioteca", "Short": "Escenarios para jugar, editar, duplicar o importar." },
-      "safety": { "Title": "Seguridad", "Short": "Pausa, Velo y Tarjeta X. Anónimas e inmediatas." },
-      "access": { "Title": "Accesibilidad", "Short": "Tamaño de texto, contraste, movimiento y sonido." },
-      "blocks": { "Title": "Bloques del mazo", "Short": "Cartas que quedan en cada tercio y si su Dama sigue dentro. Nunca qué carta es." },
-      "split": { "Title": "Reparto", "Short": "Diez puntos entre Espíritu y Determinación, mínimo 3 en cada uno. Un escenario puede cambiarlo." },
-      "traits": { "Title": "Rasgos", "Short": "Cuatro palabras o frases que definen al protagonista y dan ideas al narrar." },
-      "objects": { "Title": "Objetos", "Short": "Lo que lleva encima. Los marcados con estrella importan en el relato." },
-      "bonds": { "Title": "Vínculos", "Short": "Personas que importan: quién, qué os une, qué os separa." }
+      "spirit": {
+        "Title": "Espíritu",
+        "Short": "Tu equilibrio. Se pierde al fallar un obstáculo o ante una Dama Gris.",
+        "Long": "Las piedras frías son el Espíritu. Cuando una se apaga, el relato se enfría. Si se apagan todas, el relato va directo a su epílogo más oscuro."
+      },
+      "determination": {
+        "Title": "Determinación",
+        "Short": "Tu voluntad. Gástala para inclinar un obstáculo a tu favor.",
+        "Long": "Antes de revelar la carta numérica suma +2; después, +1 si con eso basta. Desde la segunda Dama Gris también permite repetir la carta. Cada brasa gastada se apaga en la bandeja."
+      },
+      "deck": {
+        "Title": "Mazo de Ánimas",
+        "Short": "Cada carta abre una escena: pista, obstáculo, percance o Dama Gris.",
+        "Long": "El mazo se divide en tres bloques con una Dama Gris en cada uno. El jugador nunca ve qué viene; el Guardián solo ve cuántas cartas quedan en cada bloque."
+      },
+      "gray": {
+        "Title": "Damas Grises",
+        "Short": "Tres umbrales de tensión. Cada una endurece el relato; la tercera abre el epílogo.",
+        "Long": "Al aparecer, pide su precio (Determinación o Espíritu) y sube en 1 la dificultad de los obstáculos."
+      },
+      "number": {
+        "Title": "Carta numérica",
+        "Short": "Del 1 al 10. Igualar o superar la dificultad supera el obstáculo.",
+        "Long": "Lo que se suma: la carta, +2 si gastaste Determinación antes de revelar y +1 si empujas después."
+      },
+      "spend": {
+        "Title": "Gastar antes de revelar",
+        "Short": "Una Determinación: +2 a la carta que vas a revelar."
+      },
+      "push": {
+        "Title": "Empujar",
+        "Short": "Solo si te falta 1: una Determinación lo convierte en éxito."
+      },
+      "reroll": {
+        "Title": "Repetir la carta",
+        "Short": "Desde la segunda Dama: una Determinación para revelar otra carta."
+      },
+      "discard": {
+        "Title": "Descarte",
+        "Short": "Las cartas ya jugadas. La de arriba es la anterior a la actual."
+      },
+      "card-clue": {
+        "Title": "Pista",
+        "Short": "Un descubrimiento. No se resuelve: se cuenta."
+      },
+      "card-environment": {
+        "Title": "Obstáculo de entorno",
+        "Short": "El mundo físico se vuelve hostil. Tiene dificultad."
+      },
+      "card-character": {
+        "Title": "Obstáculo de personaje",
+        "Short": "Un conflicto humano. Tiene dificultad."
+      },
+      "card-incident": {
+        "Title": "Percance",
+        "Short": "Algo cambia, se rompe o se pierde. Sin tirada."
+      },
+      "card-gray": {
+        "Title": "Dama Gris",
+        "Short": "La tensión da un paso. Pide su precio."
+      },
+      "diary": {
+        "Title": "Diario",
+        "Short": "Las escenas se anotan solas; tú escribes lo que sintió el protagonista."
+      },
+      "history": {
+        "Title": "Crónica",
+        "Short": "Registro estructurado de todo lo ocurrido, para reconstruir la sesión."
+      },
+      "truths": {
+        "Title": "Verdades",
+        "Short": "Lo que el protagonista afirma. El relato puede ponerlo en duda.",
+        "Long": "Establecida, dudosa, contradicha, reinterpretada, revelación pendiente o resuelta. No se trata de pillar al jugador: se trata de descubrir qué historia se estaba contando."
+      },
+      "memories": {
+        "Title": "Recuerdos",
+        "Short": "Preguntas y respuestas sobre el pasado. Pueden quedar bloqueados o contradecirse."
+      },
+      "guardian": {
+        "Title": "Guardián",
+        "Short": "Control compacto de la partida: mazo, escena, recursos y registro."
+      },
+      "library": {
+        "Title": "Biblioteca",
+        "Short": "Escenarios para jugar, editar, duplicar o importar."
+      },
+      "safety": {
+        "Title": "Seguridad",
+        "Short": "Pausa, Velo y Tarjeta X. Anónimas e inmediatas."
+      },
+      "access": {
+        "Title": "Accesibilidad",
+        "Short": "Tamaño de texto, contraste, movimiento y sonido."
+      },
+      "blocks": {
+        "Title": "Bloques del mazo",
+        "Short": "Cartas que quedan en cada tercio y si su Dama sigue dentro. Nunca qué carta es."
+      },
+      "split": {
+        "Title": "Reparto",
+        "Short": "Diez puntos entre Espíritu y Determinación, mínimo 3 en cada uno. Un escenario puede cambiarlo."
+      },
+      "traits": {
+        "Title": "Rasgos",
+        "Short": "Cuatro palabras o frases que definen al protagonista y dan ideas al narrar."
+      },
+      "objects": {
+        "Title": "Objetos",
+        "Short": "Lo que lleva encima. Los marcados con estrella importan en el relato."
+      },
+      "bonds": {
+        "Title": "Vínculos",
+        "Short": "Personas que importan: quién, qué os une, qué os separa."
+      },
+      "story": {
+        "Title": "El relato",
+        "Short": "Sinopsis, pistas halladas y tensión revelada, siempre a mano para releer. Se puede plegar."
+      },
+      "synopsis": {
+        "Title": "Sinopsis",
+        "Short": "La narración inicial del escenario. Se lee al empezar y queda aquí para releerla."
+      },
+      "clues": {
+        "Title": "Pistas halladas",
+        "Short": "Cada Pista elegida queda aquí, fuera del descarte. Pulsa una para verla en grande."
+      },
+      "collection": {
+        "Title": "Colección incluida",
+        "Short": "Escenarios que acompañan al sistema. Añádelos a tu mundo para jugarlos o editarlos."
+      }
+    },
+    "Skin": {
+      "mr": "Fotográfico",
+      "classic": "Clásico (cartas del libro)"
+    },
+    "Choose": {
+      "clue": "¿Qué pista o indicio descubre el protagonista?",
+      "environment": "¿Qué obstáculo presenta el entorno?",
+      "character": "¿Qué obstáculo presenta un personaje?",
+      "incident": "¿Qué personaje secundario sufre el percance?",
+      "Waiting": "Elige la escena en la lista del escenario…",
+      "Used": "ya usada",
+      "Empty": "El escenario no tiene entradas para esta carta: escribe la escena.",
+      "Custom": "…o escribe tu propia escena",
+      "Use": "Usar esta escena"
+    },
+    "ImportHelp": {
+      "Title": "Cómo importar escenarios",
+      "Intro": "La Biblioteca importa escenarios desde un archivo JSON. Puedes escribirlo a mano con la plantilla o pedírselo a una IA con el prompt de abajo, pegando el texto del escenario.",
+      "FileTitle": "El archivo",
+      "File1": "Formato JSON en UTF‑8, con extensión .json. Puede estar en cualquier carpeta de tu ordenador.",
+      "File2": "Se elige desde Biblioteca → Importar. No hace falta copiarlo a la carpeta de Foundry.",
+      "File3": "Un archivo puede contener uno o muchos escenarios, dentro de la lista «scenarios».",
+      "File4": "Todo es texto normal: los párrafos se separan con una línea en blanco (\\n\\n). No hace falta HTML.",
+      "FieldsTitle": "Campos",
+      "Key": "Clave",
+      "What": "Qué contiene",
+      "Required": "obligatorio",
+      "Values": "Valores admitidos —",
+      "TemplateTitle": "Plantilla",
+      "PromptTitle": "Prompt para generarlo con una IA",
+      "PromptIntro": "Copia este texto en tu IA y pega a continuación el escenario (del PDF o escrito por ti). Guarda la respuesta como archivo .json e impórtalo.",
+      "ErrorsTitle": "Si algo falla",
+      "Errors": "El sistema revisa cada escenario antes de tocar el mundo. Los válidos se importan; de los demás verás exactamente qué falta. Un JSON mal formado no se importa y no cambia nada.",
+      "Download": "Descargar plantilla",
+      "CopyPrompt": "Copiar prompt",
+      "Copied": "Prompt copiado.",
+      "Prompt": "Convierte el escenario de «Cuentos de ánimas» que pego al final en un archivo JSON para el sistema MR · Cuentos de Ánimas de Foundry VTT.\n\nResponde SOLO con el JSON, sin explicaciones ni bloques de código.\n\nUsa exactamente esta estructura y estos nombres de campo:\n{template}\n\nReglas:\n- «format» y «version» van tal cual.\n- Copia los textos del escenario sin resumirlos. Separa los párrafos de «synopsis» con \\n\\n.\n- «synopsis»: la sinopsis o introducción que se lee en voz alta al empezar.\n- «characters»: personajes secundarios, cada uno con «name» y «description».\n- «clues», «environmentObstacles» y «characterObstacles»: una frase por entrada (pistas e indicios, obstáculos de entorno, obstáculos de personaje). Sin dificultad: la trae la carta.\n- «incidents»: normalmente vacía; los percances los sufre un personaje secundario.\n- «tension»: exactamente tres textos, primera, segunda y tercera Dama Gris.\n- «epilogues»: una entrada por cada fila de la Tabla de Espíritu‑Epílogo, en el mismo orden, con «label» (la condición tal cual), «min» y «max» (número de contadores de Espíritu que cubre; 99 = sin límite) y «text». Debe haber una fila con min 0.\n- «modes»: elige entre {modes}.\n- «tags»: elige entre {tags}.\n- Si el escenario tiene una nota del autor que no se lee a los jugadores, ponla en «guardianNotes».\n- Rellena «author» y «source» con la autoría y la procedencia.\n\nEscenario:\n",
+      "Field": {
+        "name": "Título del escenario.",
+        "synopsis": "Narración inicial que se lee al empezar; queda visible en la Mesa.",
+        "characters": "Personajes secundarios: { name, description }.",
+        "clues": "Pistas e indicios: una frase por entrada.",
+        "environmentObstacles": "Obstáculos de entorno: una frase por entrada.",
+        "characterObstacles": "Obstáculos de personaje: una frase por entrada.",
+        "tension": "Tabla de Tensión: tres textos, uno por Dama Gris.",
+        "epilogues": "Tabla de Espíritu‑Epílogo: { label, min, max, text }; se usa la primera fila que incluya el Espíritu final.",
+        "author": "Autoría.",
+        "duration": "Duración orientativa.",
+        "players": "Número de jugadores.",
+        "modes": "Modos recomendados.",
+        "tags": "Etiquetas para los filtros de la Biblioteca.",
+        "tone": "Palabras de tono, libres.",
+        "contentNotes": "Avisos de contenido.",
+        "hook": "Frase gancho para la Biblioteca.",
+        "incidents": "Percances propios (opcional; si no, se elige un personaje).",
+        "guardianNotes": "Notas solo para quien dirige.",
+        "source": "Procedencia: { collection, license, url }."
+      }
     }
   }
 }

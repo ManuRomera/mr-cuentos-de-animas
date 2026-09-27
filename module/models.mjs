@@ -92,7 +92,8 @@ export class ScenarioModel extends foundry.abstract.TypeDataModel {
       characterObstacles: list(cardEntry(5)),
       incidents: list(cardEntry(0)),
       tension: list({ title: str(), text: str(), guardian: str() }),
-      epilogues: new f.SchemaField({ high: str(), low: str(), zero: str() }),
+      // Tabla de Espíritu‑Epílogo: se usa la primera fila cuyo rango incluya el Espíritu final.
+      epilogueTable: list({ label: str(), min: int(0, 0, 99), max: int(99, 0, 99), text: str() }),
       memories: list({ title: str(), prompt: str(), followUp: str(), kind: choice(MEMORY_KINDS, "question"), link: link() }),
       truths: list({ text: str(), contradiction: str(), reveal: str() }),
       handouts: list({ title: str(), image: str(), text: str() }),
@@ -101,13 +102,23 @@ export class ScenarioModel extends foundry.abstract.TypeDataModel {
       deckVariant: choice(["world", "fixed", "random-third"], "world"),
       recommendedSpirit: int(5, RULES.resourceMin, RULES.resourceMax),
       recommendedDetermination: int(5, RULES.resourceMin, RULES.resourceMax),
-      variantOf: str()
+      variantOf: str(),
+      source: new f.SchemaField({ collection: str(), license: str(), url: str() })
     };
   }
 
   static migrateData(source) {
     if (Array.isArray(source.secondaryCharacters) && !source.characters) source.characters = source.secondaryCharacters;
     if (typeof source.instructions === "string" && !source.guardianNotes) source.guardianNotes = source.instructions;
+    // 1.1: epílogos fijos alto/bajo/cero → tabla por rangos.
+    const old = source.epilogues;
+    if (old && typeof old === "object" && !Array.isArray(old) && !source.epilogueTable?.length) {
+      source.epilogueTable = [
+        { label: "", min: 2, max: 99, text: old.high ?? "" },
+        { label: "", min: 1, max: 1, text: old.low ?? "" },
+        { label: "", min: 0, max: 0, text: old.zero ?? "" }
+      ].filter(r => r.text);
+    }
     return super.migrateData(source);
   }
 }

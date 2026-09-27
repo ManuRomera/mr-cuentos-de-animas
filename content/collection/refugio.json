@@ -1,0 +1,273 @@
+{
+ "format": "mr-cuentos-de-animas/scenario",
+ "version": 2,
+ "collection": {
+  "id": "refugio",
+  "title": "Escenarios del Refugio",
+  "collection": "El Refugio de Ryhope",
+  "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+  "url": "https://www.elrefugioeditorial.com"
+ },
+ "scenarios": [
+  {
+   "id": "refugio/cuento-de-navidad",
+   "name": "Cuento de Navidad",
+   "author": "El Refugio de Ryhope",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural"
+   ],
+   "synopsis": "Nochebuena de diciembre de 1843. Estás en tu oficina, un cartel en la puerta reza: «Scrooge y Marley». Tu nombre es Ebenezer Scrooge. Eres un tipo solitario, huraño y avariento, la frialdad de tu espíritu parece haber congelado tus propias facciones. Te comportas de un modo bastante desagradable con la gente que te rodea. Hace justo siete años murió tu socio y único amigo, Jacob Marley, y tu temperamento no ha cambiado un ápice, ni siquiera para las fechas navideñas. Odias la Navidad y si por ti fuera toda esa gente que anda cantando y sonriendo por las calles, aun cuando sus vidas son de lo más insignificantes, se podían ir a hacer puñetas. (Nota: para mantener el espíritu del relato de Dickens, aconsejamos tener en cuenta que la narración de «Cuento de Navidad» se desarrolla a lo largo del día de Nochebuena y del día de Navidad. El resto lo dejamos a expensas de vuestra terrorífica imaginación).",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Bob Cratchit",
+     "description": "Padre de familia numerosa, es tu único empleado, al que le pagas una miseria y maltratas sin ningún tipo de reparo."
+    },
+    {
+     "name": "Fred",
+     "description": "Tu sobrino. Un joven muy alegre y agraciado, de rostro sonrosado y ojos chispeantes, que pese a tus continuos insultos y reproches sobre la Navidad, siempre se muestra amable y cariñoso."
+    },
+    {
+     "name": "Tiny Tim",
+     "description": "El hijo pequeño de tu empleado. Es menudo y está enfermo. El señor y la señora Cratchit, prácticamente, han perdido toda esperanza de vida, dada la escasa capacidad económica de la familia para alimentar y tratar su enfermedad como deberían."
+    },
+    {
+     "name": "Gente feliz celebrando la Navidad",
+     "description": "Grupos de jóvenes cantando, amables vagabundos, tenderos vendiendo sus suculentos manjares, clientes de la oficina, hombres y mujeres, de toda condición social, conocidos y desconocidos, celebrando con júbilo una fecha tan especial."
+    }
+   ],
+   "clues": [
+    "Un ejemplar de Hamlet, el clásico de Shakespeare.",
+    "Un reloj enloquecido.",
+    "Aparición del fantasma de la Navidad del Pasado.",
+    "Aparición del fantasma de la Navidad del Futuro.",
+    "La visión de un entierro donde la gente se burla del fallecido y chismorrea sobre a dónde habrá ido a parar su dinero.",
+    "El juego del «sí» y del «no»."
+   ],
+   "environmentObstacles": [
+    "Una niebla y un frío extrañamente intensos.",
+    "Una aparente presencia, invisible a los ojos.",
+    "Una campanilla pasa de una leve oscilación a un repiqueteo sonoro que contagia al resto de campanas del lugar, creando un fantasmagórico coro.",
+    "Espeluznantes sonidos de lamento y pesar.",
+    "La visión de estar condenado a arrastrar una larga cadena.",
+    "Violentos temblores."
+   ],
+   "characterObstacles": [
+    "Un personaje se muestra amable, felicitándote la Navidad.",
+    "Unos desconocidos recaudan dinero para los más necesitados.",
+    "Un personaje intenta convencerte de ir a celebrar la Navidad junto a su familia.",
+    "Tienes un encuentro fortuito con una mujer importante en tu vida pasada que apenas recuerdas.",
+    "Un personaje tiene una deuda contigo que no puede saldar."
+   ],
+   "tension": [
+    "Al llegar a casa, miras lleno de pavor cómo el aldabón de la puerta de la entrada tiene el rostro de tu antiguo socio. Tras registrar toda la casa, te dices a ti mismo que no son más que tonterías. Te sientas junto a la chimenea para tranquilizarte, pero un fuerte estruendo precede a la aparición de la fantasmal figura del mismísimo Jacob Marley. Se presenta para anunciarte los males que te acechan por tu lamentable comportamiento a lo largo de toda una vida.",
+    "El salón de tu casa ha sufrido una sorprendente transformación. El techo y las paredes están cubiertos de vegetación, como si de un bosquecillo se tratara: frescas y tersas hojas de acebo, muérdago y yedra llena de luz la estancia. En el suelo amontonados: pavos, lechones, pastelitos de carne, ostras, tartas de ciruela, manzanas de un rojo intenso, copas de ponche burbujeante. Una voz turbadora se dirige a ti: «Soy el fantasma de la Navidad del Presente».",
+    "Despiertas en tu cama con la sensación de haber tenido un sueño intenso y revelador que ha parecido durar décadas. No sabes a ciencia cierta qué día es hoy. Sales gateando de entre las sábanas y buscas algo que te aporte respuestas. Cuando compruebas que es el día de Navidad de 1843, te das cuenta de que sigues teniendo toda tu vida por delante."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan contadores de Espíritu",
+     "min": 1,
+     "max": 99,
+     "text": "Decides enmendar el rumbo de tu vida. Harás honor a la Navidad y procurarás mantener su espíritu a lo largo de todo el año. Solo puedes reír y saltar, loar a tu viejo amigo Jacob Marley, a las visiones y los fantasmas de la Navidad. Eres feliz y harás feliz a los demás. (Nuestro consejo es, ya sea en solitario o con varios jugadores, hacer una narración conjunta para cerrar la historia con los actos que haría el señor Scrooge en el día de Navidad)."
+    },
+    {
+     "label": "Si no quedan contadores",
+     "min": 0,
+     "max": 0,
+     "text": "Haces oídos sordos a tus visiones y perseveras en tu comportamiento de toda una vida. Los demás están equivocados, siempre lo han estado, viven una falsa felicidad y tú no eres quién para seguir sus absurdas imposiciones. Vives el resto de tu vida en soledad, solo pensando en tu propio lucro. La muerte te espera para burlarse de ti."
+    }
+   ],
+   "source": {
+    "collection": "El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "refugio/desvelos-del-pasado",
+   "name": "Desvelos del pasado",
+   "author": "El Refugio de Ryhope",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural",
+    "mystery"
+   ],
+   "synopsis": "Barcelona. Finales del siglo XIX. Has conocido recientemente a Amalia Martín y una fuerte amistad ha surgido entre vosotras. Te ha pedido que la acompañes a una sesión de iniciación a la que ha sido invitada, en una casa espiritista. Acudís a la sede de esa Sociedad, ubicada en una casa señorial de un barrio acomodado de la ciudad. A la sesión también asisten: el padre Damián, el médium Eulagio, así como un grupo reducido de personas, entre los que se encuentra una redactora del periódico espiritista El Criterio.",
+   "guardianNotes": "",
+   "characters": [
+    {
+     "name": "Amalia Martín",
+     "description": "Mujer religiosa y piadosa, recién llegada a Barcelona, que ha encontrado sosiego a sus fantasmas en el mundo espiritista."
+    },
+    {
+     "name": "Eulagio Cots",
+     "description": "Médium conocido por su carácter extravagante."
+    },
+    {
+     "name": "Padre Damián",
+     "description": "Párroco y guía espiritual de Amalia, hombre de grandes convicciones, en conflicto constante con la Iglesia por sus coqueteos con el espiritismo."
+    },
+    {
+     "name": "Mariona",
+     "description": "Joven escritora fascinada por el espiritismo que redacta crónicas para El Criterio."
+    },
+    {
+     "name": "Un grupo reducido de personas que parecen estar aquí por primera vez.",
+     "description": ""
+    }
+   ],
+   "clues": [
+    "Un periódico perdido entre libros destaca una noticia macabra ocurrida en este barrio.",
+    "Encuentras un pequeño libro de tapas gastadas con rituales de invocación y posesión y numerosas anotaciones.",
+    "Alguien te cuenta una aterradora historia que une a dos de los personajes secundarios.",
+    "Alguien te habla de extraños sucesos vinculados históricamente a esta casa.",
+    "Uno de los presentes está extremadamente nervioso."
+   ],
+   "environmentObstacles": [
+    "La luz de una lámpara incandescente vibra, cuando intentas ajustarla explota.",
+    "La sala sufre un repentino e inexplicable descenso de temperatura que parece adormeceros.",
+    "Una puerta se cierra violentamente ante ti.",
+    "Una presencia sobrenatural revela algo sobre ti que mantenías en secreto.",
+    "La casa tiembla, es un temblor anormal, dirías que parece latir o convulsionar."
+   ],
+   "characterObstacles": [
+    "Un personaje trata de cortarte el paso o impedirte hacer algo.",
+    "Un personaje pierde el control.",
+    "Un personaje comienza a palidecer ante ti, parece cansado y errático.",
+    "Un personaje te amenaza o amenaza a otro.",
+    "Un espíritu trata de poseerte."
+   ],
+   "tension": [
+    "Una entidad no invitada a la reunión se manifiesta a través de Eulagio Cots, está relacionada con alguno o algunos de los presentes, pero no lo desvela con claridad.",
+    "La entidad no invitada comienza a comportarse de un modo que resulta violento, llegando a saltar de cuerpo en cuerpo entre los presentes, jugando con ellos.",
+    "La entidad revela que ha venido a cobrarse la vida de algún personaje, desvelando su lado oscuro."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan contadores de Espíritu",
+     "min": 1,
+     "max": 99,
+     "text": "Consigues salir de la casa sola o acompañada, con tu retina llena de imágenes aterradoras que lucharás por erradicar de tu mente. Quizá alejándote de este mundo o quizá volviendo al espiritismo en busca de redención."
+    },
+    {
+     "label": "Si no quedan contadores",
+     "min": 0,
+     "max": 0,
+     "text": "Tu mente ha quedado alienada por los horrores vividos y los que alguno de los presentes llegó a cometer y aquí se han desvelado. Las imágenes de pesadilla se agolpan en tu retina. Te ingresan en un manicomio donde pasas los días anestesiada para evitar las convulsiones de una casa que parece habitar dentro de ti."
+    }
+   ],
+   "source": {
+    "collection": "El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  },
+  {
+   "id": "refugio/grabacion-en-vivo",
+   "name": "Grabación en vivo",
+   "author": "José Antonio García «Baljos»",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "urban",
+    "supernatural",
+    "psychological"
+   ],
+   "synopsis": "Eres el técnico en imagen y sonido del CSI de Maine. Te ha tocado revisar unas cintas del escenario de un crimen que están, parcialmente, quemadas; un trabajo fácil para ti. Si hay algo, se digitaliza y listo, y si no, pues un informe rápido con palabrería técnica justificando lo que no has podido hacer con el material. Hoy podrás salir a tu hora, has quedado con ese bombón del departamento de denuncias. Siempre viene tan arreglada como para ir a una fiesta. Esperas que el idiota de tu jefe, que te considera un friki y no entiende qué ha visto ella en ti, no te la líe a última hora con alguna u otra cosa. Te informan de que las imágenes que debes recuperar corresponden a la sala de autopsias de Maine, donde se realizaba ayer la autopsia de la joven Jane Doe (así llamáis a los sujetos femeninos sin identificar). Esta joven había aparecido enterrada en un sótano y había sido trasladada a las dependencias forenses. Dichas dependencias están ahora precintadas, ya que han sido el escenario de varias extrañas muertes/homicidios, y te necesitan para que arrojes algo de luz sobre lo que pudo ocurrir allí. ¿Qué puede salir mal?",
+   "guardianNotes": "La idea de «Grabación en vivo» surge al acabar de jugar «La autopsia de Jane Doe», escenario de Juan Fernando Martín ‘Dr. Alban’, cuando un ingenioso jugador me pregunta qué pasará cuando alguien visione dichas cintas. Me atreví a recoger ese guante y me he inspirado en dicha partida única e irrepetible, en la película que da nombre al escenario jugado, y en «Archivo 81», una miniserie con temática análoga al presente escenario. Dedicado a los magníficos jugadores de esa sesión, en especial a dos de ellos: el ingenioso jugador Fuegan, y a EME por ayudarme a escribirlo.",
+   "characters": [
+    {
+     "name": "Hellen",
+     "description": "La policía de la oficina de denuncias, una preciosa poli que no acabas de entender que te haga caso y le encante pasar el rato contigo."
+    },
+    {
+     "name": "Lou",
+     "description": "Tu jefe, un tipo de la vieja escuela, fornido y cascarrabias que está harto de trabajar con frikis."
+    },
+    {
+     "name": "Tom",
+     "description": "Un genio de la informática al que le encantan las historias sobrenaturales, con el que te llevas muy bien."
+    },
+    {
+     "name": "Clayton",
+     "description": "Un policía que, a pesar de ser un poco bruto, hace bien su trabajo. Se encarga de la seguridad del edificio y acaba de entrar en su turno de trabajo."
+    }
+   ],
+   "clues": [
+    "La cubierta de la cinta está totalmente quemada pero el interior intacto.",
+    "Tu equipo audiovisual habitual falla cuando intentas reproducir la cinta.",
+    "Las imágenes parecen manipuladas, pero técnicamente no encuentras nada que lo demuestre.",
+    "El cadáver de la autopsia se mueve de forma sutil.",
+    "El cadáver sangra, algo técnicamente imposible dado el tiempo desde el fallecimiento.",
+    "Al cadáver le falta la lengua.",
+    "Durante la grabación se va la luz y las personas se mueven como a oscuras; sin embargo, la cámara sigue grabando con la misma nitidez que cuando había luz.",
+    "El cadáver aparece en dos partes de la imagen a la vez."
+   ],
+   "environmentObstacles": [
+    "Tu equipo se reinicia constantemente, y no te deja realizar tu trabajo.",
+    "La luz se va en tu lugar de trabajo, retrasando tu hora de salida.",
+    "Tu silla se rompe y se te clava un hierro abriéndote una herida sangrante.",
+    "Tu ratón traza espirales en la pantalla sin que tú lo manipules.",
+    "Tus ojos te escuecen de los cambios constantes de brillo que hay en la grabación, te marean hasta causarte náuseas y tienes que parar un rato.",
+    "Te afectan los cambios de color y luz/oscuridad que se producen en la cinta y sufres un ataque epiléptico.",
+    "De repente, sientes que en tu silla hace muchísimo frío, incluso puedes llegar a tiritar.",
+    "De la pantalla sale un mano que te coge el cuello e intenta arrastrate al interior de la pantalla."
+   ],
+   "characterObstacles": [
+    "Alguien discute contigo.",
+    "Alguien duda de tu trabajo.",
+    "Alguien te vigila e intimida desde la ventana de enfrente.",
+    "Alguien te vigila e intimida cuando sales a la calle a descansar un momento.",
+    "Alguien manipula tu equipo audiovisual.",
+    "Alguien te agrede, con o sin motivo aparente.",
+    "Alguien te falta al respeto.",
+    "Alguien te intenta distraer para llevarse una cinta."
+   ],
+   "tension": [
+    "Consigues recuperar una parte de la grabación donde hacen una autopsia. De repente se corta y ves la cara de la chica muerta dentro... o delante del monitor. Saltas de la silla y profieres un grito corto y agudo.",
+    "Tu compañero Tom, que sí es un friki, te cuenta una historia sobre las brujas de Salem, y el por qué les cortaban la lengua. Te da detalles macabros sobre un líquido que les inyectaban para paralizarlas y así quedaban en un estado como de momificación...",
+    "La oficina arde. Ese cortocircuito que se ha provocado (¿cómo se ha provocado?) prendió unos papeles, y luego los múltiples disolventes que utilizáis hicieron el resto. Alguno de tus compañeros intenta salir de esa planta, pero las puertas parecen atrancadas y el ascensor tarda demasiado en llegar."
+   ],
+   "epilogues": [
+    {
+     "label": "Si quedan contadores de Espíritu",
+     "min": 1,
+     "max": 99,
+     "text": "Sales del edificio con vida, dejando atrás una carnicería. Crees que estarás a salvo fuera del país, aunque no tienes claro que puedas sacar de tus sueños la cara de esa chica. Pierdes la noción de la realidad y al despertar, en tu apartamento, notas un líquido caliente caer por tu barbilla y la boca tiene un sabor metálico. Eso que tienes dentro de la boca es blando y no soportas el dolor. Te has cortado la lengua con tus propios dientes. Tus huesos acaban en un manicomio, pero eres feliz, porque nadie sabrá la verdad y allí no podrás hacerle daño a nadie ni tampoco ella te encontrará... o sí."
+    },
+    {
+     "label": "Si no quedan contadores",
+     "min": 0,
+     "max": 0,
+     "text": "Crees que puedes escapar. Llevas tu pistola y te da la confianza de que eso te salvará. Cuando llegas al ascensor, algo te lo impide. Sonríes tétricamente y sabes que no controlas tus actos. Te abalanzas sobre tus compañeros para cortarles una parte de su cuerpo que te llevarás contigo, y les propinas varios disparos con tu pistola reglamentaria. (Dinos qué parte de su cuerpo). Ahora formas parte de ella, o ella de ti, y quizás poco a poco dejes de estar en ti mismo. Pero, mientras dure esa comunión, vas a disfrutarla como si hubieses nacido para eso."
+    }
+   ],
+   "source": {
+    "collection": "El Refugio de Ryhope",
+    "license": "Publicación gratuita de El Refugio de Ryhope · © sus autores",
+    "url": "https://www.elrefugioeditorial.com"
+   }
+  }
+ ]
+}

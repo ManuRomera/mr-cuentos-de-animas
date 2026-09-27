@@ -128,3 +128,12 @@ test("se respeta prefers-reduced-motion", () => {
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(read("module/settings.mjs"), /prefers-reduced-motion/);
 });
+
+test("los estilos de botón no tocan los controles de cabecera de Foundry (sus iconos)", () => {
+  for (const { selector, body } of allRules) {
+    for (const s of selector.split(",").map(x => x.trim())) {
+      if (!/\bbutton(?![.\w-])/.test(s) || /header-control|window-content|\.cda-/.test(s)) continue;
+      if (/font|background|border|padding|height/.test(body)) assert.fail(`«${s}» alcanzaría los botones de cabecera`);
+    }
+  }
+});

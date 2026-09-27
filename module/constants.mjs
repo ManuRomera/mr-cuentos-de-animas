@@ -1,4 +1,4 @@
-export { CARD_KINDS, RULES } from "./rules.mjs";
+export { CARD_KINDS, KIND_LIST, RULES } from "./rules.mjs";
 
 export const SYSTEM_ID = "mr-cuentos-de-animas";
 export const PATH = `systems/${SYSTEM_ID}`;
@@ -26,6 +26,11 @@ export const DEFAULT_STATE = Object.freeze({
   pendingGray: 0,           // Dama recién revelada que aún espera su precio
   obstacle: null,           // ver rules.newObstacle
   currentCardId: "",
+  event: null,              // { cardId, kind, value, choice: null | { list, index, title, text } }
+  clues: [],                // pistas halladas: { title, text }
+  used: {},                 // { lista: [índices ya elegidos] }
+  tension: [],              // textos de las Damas ya reveladas
+  turn: 0,                  // La Hoguera: quién narra la escena
   scene: 0,                 // escena del escenario en la que está el Guardián
   ambient: "",
   startedAt: 0
@@ -55,5 +60,13 @@ export const ASSETS = Object.freeze({
     voice: img("scenarios/la-voz-que-dejaste-atras.webp"),
     house: img("scenarios/la-casa-que-respira.webp")
   },
-  portrait: img("branding/portrait.webp")
+  portrait: img("branding/portrait.webp"),
+  /** Cartas oficiales del libro (reproducibles según la propia edición): estilo «Clásico». */
+  classic: {
+    back: img("classic/back.webp"), numberBack: img("classic/number-back.webp"), gray: img("classic/gray.webp"),
+    clue: img("classic/clue.webp"), incident: img("classic/incident.webp"),
+    spirit: img("classic/spirit.webp"), determination: img("classic/determination.webp"),
+    environment: v => img(`classic/environment-${v}.webp`), character: v => img(`classic/character-${v}.webp`),
+    number: n => img(`classic/number-${n}.webp`)
+  }
 });

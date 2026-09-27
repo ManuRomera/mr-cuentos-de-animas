@@ -87,11 +87,11 @@ const VOICE = {
       { title: "Segunda Dama · La conversación imposible", text: "La cinta reproduce una frase que has dicho hace unos minutos, en este piso. Después, la voz responde: «Eso tampoco es exactamente así».", guardian: "La cinta ya no es pasado: escucha. Contradice una Verdad." },
       { title: "Tercera Dama · La séptima cinta", text: "Aparece la última cinta. En ella se oye tu voz de ahora mismo.", guardian: "Pasa a la escena VII. Sin cartas." }
     ],
-    epilogues: {
-      high: "Eliges un solo objeto. Lo demás se queda. Al cerrar la puerta no sabes si te han perdonado, pero descubres que ya no necesitas saberlo.",
-      low: "Te llevas la última cinta. Años después aún la escuchas algunas noches. Siempre termina igual, hasta que una noche hay tres segundos nuevos al final: tu nombre, dicho muy bajo.",
-      zero: "Al recoger la séptima cinta ves una fecha escrita a lápiz bajo la etiqueta. Es la de mañana. La voz, esta vez, es la tuya."
-    },
+    epilogueTable: [
+      { label: "Si quedan dos o más contadores de Espíritu", min: 2, max: 99, text: "Eliges un solo objeto. Lo demás se queda. Al cerrar la puerta no sabes si te han perdonado, pero descubres que ya no necesitas saberlo." },
+      { label: "Si queda un contador de Espíritu", min: 1, max: 1, text: "Te llevas la última cinta. Años después aún la escuchas algunas noches. Siempre termina igual, hasta que una noche hay tres segundos nuevos al final: tu nombre, dicho muy bajo." },
+      { label: "Si no quedan contadores de Espíritu", min: 0, max: 0, text: "Al recoger la séptima cinta ves una fecha escrita a lápiz bajo la etiqueta. Es la de mañana. La voz, esta vez, es la tuya." }
+    ],
     memories: [
       { title: "La última frase", prompt: "¿Cuál es la última frase que recuerdas haberle dicho?", followUp: "¿Seguro que fue la última?", kind: "question", link: { type: "scene", label: "I · La fotografía" } },
       { title: "La disculpa", prompt: "¿Qué disculpa esperaste durante años?", followUp: "¿Y cuál pudo esperar de ti?", kind: "question", link: { type: "", label: "" } },
@@ -174,11 +174,11 @@ const HOUSE = {
       { title: "Segunda Dama · La habitación", text: "Aparece la habitación del plano. Dentro hay objetos de tu infancia que jamás estuvieron aquí.", guardian: "" },
       { title: "Tercera Dama · Demolición", text: "Se oye la maquinaria. Ha amanecido, pero las ventanas siguen mostrando noche cerrada.", guardian: "" }
     ],
-    epilogues: {
-      high: "Sales cuando la primera máquina golpea la fachada. Entre el polvo, durante un instante, alguien te mira desde una ventana que nunca existió.",
-      low: "Escapas. Semanas después aparece una marca de altura nueva en el marco de tu dormitorio.",
-      zero: "Cuando derriban la casa no encuentran a nadie. En una pared interior hay una marca nueva con tu nombre y la fecha de hoy."
-    },
+    epilogueTable: [
+      { label: "Si quedan dos o más contadores de Espíritu", min: 2, max: 99, text: "Sales cuando la primera máquina golpea la fachada. Entre el polvo, durante un instante, alguien te mira desde una ventana que nunca existió." },
+      { label: "Si queda un contador de Espíritu", min: 1, max: 1, text: "Escapas. Semanas después aparece una marca de altura nueva en el marco de tu dormitorio." },
+      { label: "Si no quedan contadores de Espíritu", min: 0, max: 0, text: "Cuando derriban la casa no encuentran a nadie. En una pared interior hay una marca nueva con tu nombre y la fecha de hoy." }
+    ],
     memories: [
       { title: "La primera casa", prompt: "¿Qué lugar de tu infancia te parecía enorme y hoy sabes que era diminuto?", followUp: "¿Quién estaba siempre allí contigo?", kind: "question", link: { type: "scene", label: "IV · La habitación del plano" } },
       { title: "La voz", prompt: "¿Quién te llamaba por ese apodo?", followUp: "¿Qué fue lo último que te dijo?", kind: "question", link: { type: "", label: "" } },

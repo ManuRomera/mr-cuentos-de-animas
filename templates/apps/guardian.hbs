@@ -35,7 +35,7 @@
         </div>
         {{/each}}
       </div>
-      {{#if current}}<p class="cda-current-line"><i class="{{current.icon}}" aria-hidden="true"></i>{{current.title}}{{#if current.guardian}} — <em>{{current.guardian}}</em>{{/if}}</p>{{/if}}
+      {{#if current}}<p class="cda-current-line"><i class="{{current.icon}}" aria-hidden="true"></i>{{current.title}}{{#if current.scene}} — <em>{{current.scene.title}}</em>{{/if}}</p>{{/if}}
       <div class="cda-g-grid">
         <button type="button" class="cda-primary" data-action="draw" {{#unless canDraw}}disabled{{/unless}}><i class="fa-regular fa-clone" aria-hidden="true"></i>{{localize "CdA.Table.Draw"}}</button>
         <button type="button" data-action="show" {{#unless current}}disabled{{/unless}}><i class="fa-solid fa-expand" aria-hidden="true"></i>{{localize "CdA.Guardian.Show"}}</button>
@@ -46,10 +46,9 @@
       </div>
       <fieldset class="cda-g-insert">
         <legend>{{localize "CdA.Guardian.Insert"}}</legend>
-        <select name="insertCard" aria-label="{{localize 'CdA.Guardian.InsertFrom'}}"><option value="">—</option>{{#each insertable}}<option value="{{value}}">{{label}}</option>{{/each}}</select>
         <div class="cda-g-row">
-          <input type="text" name="insertText" placeholder="{{localize 'CdA.Guardian.InsertCustom'}}" aria-label="{{localize 'CdA.Guardian.InsertCustom'}}">
-          <select name="insertKind" aria-label="{{localize 'CdA.Guardian.InsertKind'}}"><option value="clue">{{localize "CdA.Kind.clue"}}</option><option value="environment">{{localize "CdA.Kind.environment"}}</option><option value="character">{{localize "CdA.Kind.character"}}</option><option value="incident">{{localize "CdA.Kind.incident"}}</option></select>
+          <select name="insertKind" aria-label="{{localize 'CdA.Guardian.InsertKind'}}"><option value="clue">{{localize "CdA.Kind.clue"}}</option><option value="incident">{{localize "CdA.Kind.incident"}}</option><option value="environment">{{localize "CdA.Kind.environment"}}</option><option value="character">{{localize "CdA.Kind.character"}}</option></select>
+          <select name="insertValue" aria-label="{{localize 'CdA.Game.Difficulty'}}"><option>4</option><option selected>5</option><option>6</option><option>7</option></select>
         </div>
         <div class="cda-g-row">
           <select name="insertWhere" aria-label="{{localize 'CdA.Guardian.Where'}}"><option value="next">{{localize "CdA.Guardian.WhereNext"}}</option><option value="block">{{localize "CdA.Guardian.WhereBlock"}}</option><option value="bottom">{{localize "CdA.Guardian.WhereBottom"}}</option></select>

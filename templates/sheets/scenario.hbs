@@ -108,11 +108,7 @@
       </div>
     </section>
 
-    <section class="tab {{tabs.epilogues.cssClass}}" data-group="scenario" data-tab="epilogues">
-      <div class="cda-epilogue-editor">
-        {{#each epilogues}}<label class="cda-field epilogue-{{key}}"><span>{{label}}</span><small>{{hint}}</small><textarea name="system.epilogues.{{key}}" rows="6">{{value}}</textarea></label>{{/each}}
-      </div>
-    </section>
+    <section class="tab {{tabs.epilogues.cssClass}}" data-group="scenario" data-tab="epilogues"><p class="cda-lede">{{localize "CdA.Scenario.EpilogueHint"}}</p>{{> entries entries=lists.epilogueTable list="epilogueTable" editable=editable}}</section>
     <section class="tab {{tabs.memories.cssClass}}" data-group="scenario" data-tab="memories">{{> entries entries=lists.memories list="memories" editable=editable}}</section>
     <section class="tab {{tabs.truths.cssClass}}" data-group="scenario" data-tab="truths"><p class="cda-lede">{{localize "CdA.Scenario.TruthsHint"}}</p>{{> entries entries=lists.truths list="truths" editable=editable}}</section>
 
@@ -141,7 +137,9 @@
         <label><span>{{localize "CdA.Scenario.DeckVariant"}}</span><select name="system.deckVariant">{{#each variants}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
         <label><span>{{localize "CdA.Scenario.RecommendedSpirit"}}</span><input type="number" name="system.recommendedSpirit" value="{{system.recommendedSpirit}}" min="3" max="7"></label>
         <label><span>{{localize "CdA.Scenario.RecommendedDetermination"}}</span><input type="number" name="system.recommendedDetermination" value="{{system.recommendedDetermination}}" min="3" max="7"></label>
-        <p class="cda-note wide">{{localize "CdA.Scenario.CardCount"}}: <b>{{counts.cards}}</b> + 3 {{localize "CdA.Kind.gray"}}</p>
+        <label><span>{{localize "CdA.Scenario.Source"}}</span><input type="text" name="system.source.collection" value="{{system.source.collection}}"></label>
+        <label><span>{{localize "CdA.Scenario.License"}}</span><input type="text" name="system.source.license" value="{{system.source.license}}"></label>
+        <label><span>URL</span><input type="text" name="system.source.url" value="{{system.source.url}}"></label>
       </div>
       {{#if gm}}<label class="cda-field wide gm"><span><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i> {{localize "CdA.Scenario.GuardianNotes"}}</span></label><prose-mirror name="system.guardianNotes" value="{{system.guardianNotes}}" toggled>{{{enriched.guardianNotes}}}</prose-mirror>{{/if}}
     </section>

@@ -4,8 +4,13 @@
       <span class="cda-kicker">{{localize "CdA.Library.Kicker"}}</span>
       <h2>{{localize "CdA.App.Library"}}</h2>
     </div>
+    <nav class="cda-segmented" aria-label="{{localize 'CdA.App.Library'}}">
+      <button type="button" data-action="shelf" data-shelf="world" aria-pressed="{{#if (eq shelf 'world')}}true{{else}}false{{/if}}">{{localize "CdA.Library.World"}} <b>{{counts.world}}</b></button>
+      <button type="button" data-action="shelf" data-shelf="collection" aria-pressed="{{#if (eq shelf 'collection')}}true{{else}}false{{/if}}" data-help="collection">{{localize "CdA.Library.Collection"}} <b>{{counts.collection}}</b></button>
+    </nav>
     {{#if gm}}
     <div class="cda-row-end">
+      <button type="button" data-action="help"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>{{localize "CdA.Library.HowImport"}}</button>
       <button type="button" data-action="import"><i class="fa-solid fa-file-import" aria-hidden="true"></i>{{localize "CdA.Library.Import"}}</button>
       <button type="button" class="cda-primary" data-action="create"><i class="fa-solid fa-feather-pointed" aria-hidden="true"></i>{{localize "CdA.Library.NewScenario"}}</button>
     </div>
@@ -22,8 +27,11 @@
   <div class="cda-library-scroll">
     <div class="cda-shelf">
       {{#each scenarios}}
-      <article class="cda-book" data-id="{{id}}">
-        <div class="cda-book-cover"><img src="{{img}}" alt="" loading="lazy" decoding="async">{{#if variant}}<span class="cda-ribbon">{{localize "CdA.Library.Variant"}}</span>{{/if}}</div>
+      <article class="cda-book" {{#if world}}data-id="{{id}}"{{else}}data-cid="{{cid}}"{{/if}}>
+        <div class="cda-book-cover {{#unless img}}typographic{{/unless}}">
+          {{#if img}}<img src="{{img}}" alt="" loading="lazy" decoding="async">{{else}}<span class="cda-cover-title">{{name}}</span><span class="cda-cover-author">{{author}}</span>{{/if}}
+          {{#if variant}}<span class="cda-ribbon">{{localize "CdA.Library.Variant"}}</span>{{/if}}
+        </div>
         <div class="cda-book-body">
           <h3>{{name}}</h3>
           {{#if author}}<span class="cda-byline">{{author}}</span>{{/if}}
@@ -32,22 +40,27 @@
             {{#if duration}}<div><dt><i class="fa-regular fa-clock" aria-hidden="true"></i><span class="sr-only">{{localize "CdA.Scenario.Duration"}}</span></dt><dd>{{duration}}</dd></div>{{/if}}
             {{#if players}}<div><dt><i class="fa-solid fa-user-group" aria-hidden="true"></i><span class="sr-only">{{localize "CdA.Scenario.Players"}}</span></dt><dd>{{players}}</dd></div>{{/if}}
           </dl>
-          <div class="cda-tags">{{#each modes}}<span class="cda-tag mode">{{this}}</span>{{/each}}{{#each tags}}<span class="cda-tag">{{this}}</span>{{/each}}</div>
-          {{#if tone}}<small class="cda-tone">{{tone}}</small>{{/if}}
+          <div class="cda-tags">{{#each tags}}<span class="cda-tag">{{this}}</span>{{/each}}</div>
+          {{#if source}}<small class="cda-tone"><i class="fa-solid fa-book-bookmark" aria-hidden="true"></i> {{source}}</small>{{/if}}
         </div>
         <footer class="cda-book-actions">
-          {{#if ../gm}}<button type="button" class="cda-primary" data-action="play"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.Library.Play"}}</button>{{/if}}
-          <button type="button" data-action="edit"><i class="fa-solid fa-book-skull" aria-hidden="true"></i>{{#if owner}}{{localize "CdA.Library.Edit"}}{{else}}{{localize "CdA.Library.Read"}}{{/if}}</button>
-          {{#if ../gm}}
-          <details class="cda-more">
-            <summary aria-label="{{localize 'CdA.Library.More'}}"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></summary>
-            <div class="cda-menu">
-              <button type="button" data-action="duplicate"><i class="fa-regular fa-copy" aria-hidden="true"></i>{{localize "CdA.Library.Duplicate"}}</button>
-              <button type="button" data-action="variant"><i class="fa-solid fa-code-branch" aria-hidden="true"></i>{{localize "CdA.Library.MakeVariant"}}</button>
-              <button type="button" data-action="export"><i class="fa-solid fa-file-export" aria-hidden="true"></i>{{localize "CdA.Library.Export"}}</button>
-              <button type="button" data-action="delete" class="danger"><i class="fa-solid fa-trash" aria-hidden="true"></i>{{localize "CdA.Library.Delete"}}</button>
-            </div>
-          </details>
+          {{#if world}}
+            {{#if ../gm}}<button type="button" class="cda-primary" data-action="play"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.Library.Play"}}</button>{{/if}}
+            <button type="button" data-action="edit"><i class="fa-solid fa-book-skull" aria-hidden="true"></i>{{#if owner}}{{localize "CdA.Library.Edit"}}{{else}}{{localize "CdA.Library.Read"}}{{/if}}</button>
+            {{#if ../gm}}
+            <details class="cda-more">
+              <summary aria-label="{{localize 'CdA.Library.More'}}"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></summary>
+              <div class="cda-menu">
+                <button type="button" data-action="duplicate"><i class="fa-regular fa-copy" aria-hidden="true"></i>{{localize "CdA.Library.Duplicate"}}</button>
+                <button type="button" data-action="variant"><i class="fa-solid fa-code-branch" aria-hidden="true"></i>{{localize "CdA.Library.MakeVariant"}}</button>
+                <button type="button" data-action="export"><i class="fa-solid fa-file-export" aria-hidden="true"></i>{{localize "CdA.Library.Export"}}</button>
+                <button type="button" data-action="delete" class="danger"><i class="fa-solid fa-trash" aria-hidden="true"></i>{{localize "CdA.Library.Delete"}}</button>
+              </div>
+            </details>
+            {{/if}}
+          {{else if ../gm}}
+            <button type="button" class="cda-primary" data-action="addPlay"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.Library.AddPlay"}}</button>
+            <button type="button" data-action="add"><i class="fa-solid fa-plus" aria-hidden="true"></i>{{localize "CdA.Library.Add"}}</button>
           {{/if}}
         </footer>
       </article>

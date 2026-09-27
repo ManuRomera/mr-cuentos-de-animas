@@ -1,0 +1,98 @@
+{
+ "format": "mr-cuentos-de-animas/scenario",
+ "version": 2,
+ "collection": {
+  "id": "cima",
+  "title": "Cima",
+  "collection": "Folclore Rol Jam 2022",
+  "license": "CC BY-NC-SA 4.0 · Kai Bierge y Fada",
+  "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es"
+ },
+ "scenarios": [
+  {
+   "id": "cima/cima",
+   "name": "Cima",
+   "author": "Kai Bierge y Fada",
+   "duration": "60–120 min",
+   "players": "1–4",
+   "modes": [
+    "bonfire",
+    "diary",
+    "guardian"
+   ],
+   "tags": [
+    "rural",
+    "folklore",
+    "psychological"
+   ],
+   "synopsis": "Montserrat, 2014.\n\nLa calma del refugio que ofrece tu habitación es interrumpida por una llamada de teléfono. Un viejo amigo te hace una propuesta inesperada. La única información que recibes es que prepares una mochila con ropa de abrigo. Titubeas, odias las sorpresas.\n\nUn cálido «¿confías en mí?», te conduce a aceptar. Tras unas horas en coche, sin saber a dónde te diriges, llegáis a vuestro destino. Un paisaje rocoso se presenta ante ti. Tu amigo señala con el dedo índice la cima y te sonríe.\n\nEl Sol empieza a desaparecer por el horizonte. Tú te sientes pequeña, sientes el primer temblor.",
+   "guardianNotes": "Cima es un escenario de Cuentos de ánimas ambientado en Montserrat que utiliza como atrezo leyendas del folclore asturiano y catalán. Creado para la tercera edición de la Folclore Rol Jam 2022, «Mitos de tu lugar de origen».",
+   "characters": [
+    {
+     "name": "Maricuchilla",
+     "description": "Una joven desaliñada con un cuchillo en una mano y la cabeza decapitada de un niño en la otra. Pactó con el diablo degollar a su hermano a cambio del amor de un ermitaño. Arrepentida, persigue el cuerpo decapitado de su hermano para coserle la cabeza de nuevo."
+    },
+    {
+     "name": "La Bruxa de Brañavara",
+     "description": "Una anciana vestida con un grueso abrigo de lana, pañuelo y un candil que el viento no puede apagar. Adivina y nigromante exiliada de origen asturiano. Capaz de hablar con los muertos y ver las cuentas pendientes de los vivos."
+    },
+    {
+     "name": "El dip",
+     "description": "Un perro de pelaje denso y negro. Cojo de una pata. Suele aparecer solo de noche; se rumorea que es un espíritu maligno que se alimenta de la gente que merodea por el lugar."
+    },
+    {
+     "name": "Isidro, el tamborilero del Bruch",
+     "description": "Un chavalín de diecisiete años, de familia humilde. Viste una zamarra y una barretina típica de su tierra. Le puede la cobardía. Cuenta la leyenda que venció a las tropas napoleónicas a golpe de tambor gracias a la reverberación que le ofrecía la montaña."
+    }
+   ],
+   "clues": [
+    "Encuentras una marca de orientación que indica la ruta que debes seguir.",
+    "Ves el refugio en la lejanía.",
+    "Te atreves a apagar el frontal y la luz de la luna barre el terreno y te ofrece una perspectiva más amplia.",
+    "Encuentras una nota que te han dejado tus compañeros.",
+    "El tiempo ha empeorado y volver atrás no es una opción.",
+    "Escuchas a tus compañeros gritar tu nombre."
+   ],
+   "environmentObstacles": [
+    "Paso estrecho.",
+    "Lugar escarpado.",
+    "Oscuridad.",
+    "Silencio.",
+    "La mochila pesa demasiado.",
+    "Ruidos indescifrables."
+   ],
+   "characterObstacles": [
+    "Un personaje te ofrece refugio.",
+    "Un personaje te ofrece llamar a casa y rendirte.",
+    "Un personaje te muestra lo frágil que eres.",
+    "Un personaje te agrede físicamente.",
+    "Un personaje te desorienta o te desvía del camino.",
+    "Un personaje te pide ayuda o necesita consuelo."
+   ],
+   "tension": [
+    "Sola en mitad de la montaña te invaden pensamientos intrusivos: no vas a lograrlo, te han abandonado…",
+    "La oscuridad de la noche avanza, cada vez es más difícil orientarse y el miedo te domina.",
+    "Tu cuerpo comienza a fallarte, te falta el aire, las fuerzas flaquean y no crees que puedas seguir."
+   ],
+   "epilogues": [
+    {
+     "label": "Si te queda algún contador",
+     "min": 1,
+     "max": 99,
+     "text": "Logras llegar al refugio. Tus amigos te reciben con una sonrisa celebrando que lo hayas logrado. Suena una botella de vino descorchándose."
+    },
+    {
+     "label": "Si no te queda ningún contador",
+     "min": 0,
+     "max": 0,
+     "text": "No lo logras. El miedo te paraliza, buscas un rincón para hacerte pequeña y esperar a que amanezca y alguien te rescate."
+    }
+   ],
+   "source": {
+    "collection": "Folclore Rol Jam 2022",
+    "license": "CC BY-NC-SA 4.0 · Kai Bierge y Fada",
+    "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es"
+   }
+  }
+ ]
+}

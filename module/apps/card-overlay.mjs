@@ -46,8 +46,8 @@ export class CardOverlay {
   static async show(card, { flip = false } = {}) {
     if (!card) return;
     const html = await renderTemplate(`${TEMPLATES}/partials/card.hbs`, { card, size: "huge" });
-    const guardian = card.guardian ? `<aside class="cda-overlay-note"><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>${esc(card.guardian)}</aside>` : "";
-    const layer = this.#open(`${html}${guardian}`, "cda-overlay-card", card.title);
+    const slip = await renderTemplate(`${TEMPLATES}/partials/slip.hbs`, { card });
+    const layer = this.#open(`${html}${slip}`, "cda-overlay-card", card.scene?.title || card.kindLabel);
     if (flip && !reducedMotion()) {
       layer.querySelector(".cda-card")?.animate([
         { transform: "translateY(60px) scale(.7) rotateY(180deg)" },
@@ -57,16 +57,18 @@ export class CardOverlay {
     }
   }
 
-  static memory({ title, prompt, followUp }) {
-    this.#open(`<div class="cda-overlay-paper"><span class="cda-kicker">${esc(game.i18n.localize("CdA.Memory.Kicker"))}</span>
+  static memory({ title, prompt, followUp, kicker }) {
+    this.#open(`<div class="cda-overlay-paper"><span class="cda-kicker">${esc(kicker ?? game.i18n.localize("CdA.Memory.Kicker"))}</span>
       <h2>${esc(title)}</h2><blockquote>${esc(prompt)}</blockquote>${followUp ? `<p class="cda-follow">${esc(followUp)}</p>` : ""}</div>`, "cda-overlay-memory", title);
   }
 
-  static epilogue(scenario, { key, text }) {
-    if (!scenario) return;
+  /** Epílogo: el tercer texto de tensión y la fila de la Tabla de Espíritu que corresponde. */
+  static epilogue(scenario, row, tension = "") {
+    if (!scenario || !row) return;
     const cover = scenario.system.cover || scenario.img;
     this.#open(`<div class="cda-overlay-epilogue" style="--cover:${esc(cssUrl(cover))}">
-      <span class="cda-kicker">${esc(game.i18n.localize("CdA.Game.Epilogue"))} · ${esc(game.i18n.localize(`CdA.Epilogue.${key}`))}</span>
-      <h2>${esc(scenario.name)}</h2><p>${esc(text)}</p></div>`, `cda-overlay-final ${key}`, scenario.name);
+      <span class="cda-kicker">${esc(game.i18n.localize("CdA.Game.Epilogue"))}${row.label ? ` · ${esc(row.label)}` : ""}</span>
+      <h2>${esc(scenario.name)}</h2>${tension ? `<p class="cda-epilogue-tension">${esc(tension)}</p>` : ""}<p>${esc(row.text)}</p></div>`,
+    `cda-overlay-final ${row.max === 0 ? "zero" : ""}`, scenario.name);
   }
 }

@@ -1,17 +1,27 @@
 /**
- * Reglas del relato. Módulo puro: no toca Foundry, así se prueba en Node.
- * Si tu edición del libro usa otros valores, cámbialos aquí y en ningún otro sitio.
+ * Reglas de Cuentos de ánimas (Scott Malthouse; ed. El Refugio de Ryhope, 2019).
+ * Módulo puro: no toca Foundry, así se prueba en Node.
+ *
+ *  - Mazo de Cartas de Evento: 4 Pistas, 4 Percances de Personaje, 4 Obstáculos de
+ *    Entorno (4‑7) y 4 de Personaje (4‑7), más 3 Damas Grises.
+ *  - Se prepara en tres montones de 6, 6 y 4 cartas; cada uno descansa sobre su Dama.
+ *  - Una sola Determinación por obstáculo: +2 antes de revelar, o después +1 o
+ *    repetir la carta (esto último solo con dos Damas en juego).
+ *  - Fallar un obstáculo cuesta 1 de Espíritu. Cada Dama cuesta 1 de Determinación o
+ *    de Espíritu y suma +1 a la dificultad. La tercera lleva al epílogo.
  */
 export const RULES = Object.freeze({
-  resourceTotal: 10,          // Espíritu + Determinación al crear el protagonista
-  resourceMin: 3,             // mínimo en cada recurso
-  resourceMax: 7,             // máximo en cada recurso al repartir (10 − 3)
-  preRevealBonus: 2,          // gastar 1 Determinación antes de revelar
-  pushBonus: 1,               // gastar 1 Determinación tras revelar, si basta para superar
-  rerollFromGray: 2,          // desde esta Dama Gris se puede repetir la carta pagando Determinación
-  grayDifficultyStep: 1,      // cada Dama Gris revelada endurece la dificultad
-  failureSpiritLoss: 1,       // Espíritu perdido al fallar un obstáculo
-  grayLadies: 3               // la tercera abre el epílogo
+  resourceTotal: 10,
+  resourceMin: 3,
+  resourceMax: 7,
+  preRevealBonus: 2,
+  pushBonus: 1,
+  rerollFromGray: 2,
+  grayDifficultyStep: 1,
+  failureSpiritLoss: 1,
+  grayLadies: 3,
+  obstacleValues: [4, 5, 6, 7],
+  perKind: 4
 });
 
 export const CARD_KINDS = Object.freeze({
@@ -19,81 +29,53 @@ export const CARD_KINDS = Object.freeze({
 });
 export const OBSTACLE_KINDS = Object.freeze([CARD_KINDS.ENVIRONMENT, CARD_KINDS.CHARACTER]);
 
-/** Reparto inicial válido: suma exacta y mínimos. */
+/** Lista del escenario de la que se elige la escena para cada tipo de carta. */
+export const KIND_LIST = Object.freeze({
+  clue: "clues", environment: "environmentObstacles", character: "characterObstacles", incident: "characters"
+});
+
 export function validSplit(spirit, determination) {
   return Number.isInteger(spirit) && Number.isInteger(determination)
     && spirit >= RULES.resourceMin && determination >= RULES.resourceMin
     && spirit + determination === RULES.resourceTotal;
 }
 
-/** Dificultad real de un obstáculo según las Damas Grises ya reveladas. */
 export function difficulty(base, grayLadies = 0) {
   return Math.max(0, Number(base) || 0) + Math.max(0, grayLadies) * RULES.grayDifficultyStep;
 }
 
-/** Obstáculo recién robado, antes de revelar ninguna carta numérica. */
-export function newObstacle({ cardId = "", title = "", kind = CARD_KINDS.ENVIRONMENT, base = 0 }, grayLadies = 0) {
-  return { cardId, title, kind, base: Number(base) || 0, difficulty: difficulty(base, grayLadies), preBonus: 0, value: null, bonus: 0, rerolled: false, outcome: null, spent: 0 };
+/**
+ * Cartas de Evento (sin Damas). `size`: "full" (16), "short" (−1 de cada tipo, 12) o
+ * "shorter" (−2 de cada tipo, 8), como propone «Partidas más cortas».
+ */
+export function eventCards(size = "full") {
+  const drop = { full: 0, short: 1, shorter: 2 }[size] ?? 0;
+  const n = RULES.perKind - drop;
+  const values = RULES.obstacleValues.slice(0, n);
+  return [
+    ...Array.from({ length: n }, () => ({ kind: CARD_KINDS.CLUE, value: 0 })),
+    ...Array.from({ length: n }, () => ({ kind: CARD_KINDS.INCIDENT, value: 0 })),
+    ...values.map(value => ({ kind: CARD_KINDS.ENVIRONMENT, value })),
+    ...values.map(value => ({ kind: CARD_KINDS.CHARACTER, value }))
+  ];
 }
 
-export const total = o => (o.value ?? 0) + o.preBonus + o.bonus;
-
-/** Opciones disponibles en cada momento de la resolución. */
-export function obstacleOptions(o, { determination = 0, grayLadies = 0 } = {}) {
-  if (!o || o.outcome) return { spend: false, reveal: false, push: false, reroll: false, accept: false };
-  if (o.value === null) return { spend: determination > 0 && o.preBonus === 0, reveal: true, push: false, reroll: false, accept: false };
-  const short = o.difficulty - total(o);
-  return {
-    spend: false, reveal: false,
-    push: short > 0 && short <= RULES.pushBonus && o.bonus === 0 && determination > 0,
-    reroll: short > 0 && !o.rerolled && grayLadies >= RULES.rerollFromGray && determination > 0,
-    accept: short > 0
-  };
-}
-
-/** Transiciones. Devuelven un obstáculo nuevo y lo que hay que cobrar; no mutan. */
-export function spendBeforeReveal(o) {
-  if (o.value !== null || o.preBonus) return { obstacle: o, cost: 0 };
-  return { obstacle: { ...o, preBonus: RULES.preRevealBonus, spent: o.spent + 1 }, cost: 1 };
-}
-export function reveal(o, value) {
-  const next = { ...o, value: Number(value) };
-  return settle(next);
-}
-export function push(o) {
-  if (o.value === null || o.bonus || o.outcome) return { obstacle: o, cost: 0 };
-  return { obstacle: settle({ ...o, bonus: RULES.pushBonus, spent: o.spent + 1 }), cost: 1 };
-}
-export function reroll(o, value) {
-  if (o.value === null || o.rerolled || o.outcome) return { obstacle: o, cost: 0 };
-  return { obstacle: settle({ ...o, value: Number(value), bonus: 0, rerolled: true, spent: o.spent + 1 }), cost: 1 };
-}
-export function accept(o) {
-  return { ...o, outcome: total(o) >= o.difficulty ? "success" : "failure" };
-}
-/** Un éxito se resuelve solo; un fallo espera a que el jugador decida si empuja o acepta. */
-function settle(o) {
-  return total(o) >= o.difficulty ? { ...o, outcome: "success" } : o;
-}
-
-/** Qué epílogo corresponde a los recursos finales. */
-export function epilogueKey(spirit) {
-  if (spirit <= 0) return "zero";
-  if (spirit <= 1) return "low";
-  return "high";
+/** Tamaño de los tres montones en orden de robo: 6, 6 y 4 con el mazo completo. */
+export function blockSizes(n) {
+  const first = Math.floor(n * 6 / 16), second = Math.floor(n * 6 / 16);
+  return [first, second, n - first - second];
 }
 
 /**
- * Orden del Mazo de Ánimas.
- *  - "fixed" (distribución clásica): tres bloques, la Dama cierra cada bloque.
- *  - "random-third" (Damas impredecibles): cada Dama se baraja dentro de su tercio.
- * Devuelve las cartas en orden de robo con `block` (1‑3) anotado.
+ * Orden de robo. "fixed": cada Dama cierra su montón (preparación del libro).
+ * "random-third": cada Dama se baraja dentro de su montón («Partidas de duración variable»).
  */
 export function orderDeck(normal, grays, variant = "fixed", random = Math.random) {
   const cards = shuffle(normal, random);
-  const blocks = [[], [], []];
-  cards.forEach((card, i) => blocks[Math.min(2, Math.floor(i * 3 / Math.max(1, cards.length)))].push(card));
-  return blocks.flatMap((block, i) => {
+  const sizes = blockSizes(cards.length);
+  let at = 0;
+  return sizes.flatMap((size, i) => {
+    const block = cards.slice(at, at += size);
     const withGray = grays[i] ? [...block, grays[i]] : block;
     const ordered = variant === "random-third" ? shuffle(withGray, random) : withGray;
     return ordered.map(card => ({ ...card, block: i + 1 }));
@@ -109,10 +91,65 @@ export function shuffle(list, random = Math.random) {
   return a;
 }
 
-/** Resumen del mazo para el Guardián: cuántas quedan por bloque y si la Dama sigue dentro, sin identidades. */
 export function blockSummary(remaining) {
   return [1, 2, 3].map(block => {
     const cards = remaining.filter(c => c.block === block);
     return { block, count: cards.length, gray: cards.some(c => c.kind === CARD_KINDS.GRAY) };
   });
+}
+
+/* -------------------------------------------- */
+/*  Obstáculos                                  */
+/* -------------------------------------------- */
+
+export function newObstacle({ cardId = "", title = "", kind = CARD_KINDS.ENVIRONMENT, base = 0 }, grayLadies = 0) {
+  return { cardId, title, kind, base: Number(base) || 0, difficulty: difficulty(base, grayLadies), preBonus: 0, value: null, bonus: 0, rerolled: false, outcome: null, spent: 0 };
+}
+
+export const total = o => (o.value ?? 0) + o.preBonus + o.bonus;
+
+/** Opciones en cada momento. Solo un contador de Determinación por carta de obstáculo. */
+export function obstacleOptions(o, { determination = 0, grayLadies = 0 } = {}) {
+  if (!o || o.outcome) return { spend: false, reveal: false, push: false, reroll: false, accept: false };
+  const canSpend = determination > 0 && o.spent === 0;
+  if (o.value === null) return { spend: canSpend, reveal: true, push: false, reroll: false, accept: false };
+  const failing = total(o) < o.difficulty;
+  return {
+    spend: false, reveal: false,
+    push: failing && canSpend,
+    reroll: failing && canSpend && grayLadies >= RULES.rerollFromGray,
+    accept: failing
+  };
+}
+
+export function spendBeforeReveal(o) {
+  if (o.value !== null || o.spent) return { obstacle: o, cost: 0 };
+  return { obstacle: { ...o, preBonus: RULES.preRevealBonus, spent: 1 }, cost: 1 };
+}
+export function reveal(o, value) {
+  return settle({ ...o, value: Number(value) });
+}
+export function push(o) {
+  if (o.value === null || o.spent || o.outcome) return { obstacle: o, cost: 0 };
+  return { obstacle: settle({ ...o, bonus: RULES.pushBonus, spent: 1 }), cost: 1 };
+}
+export function reroll(o, value) {
+  if (o.value === null || o.spent || o.outcome) return { obstacle: o, cost: 0 };
+  return { obstacle: settle({ ...o, value: Number(value), rerolled: true, spent: 1 }), cost: 1 };
+}
+export function accept(o) {
+  return { ...o, outcome: total(o) >= o.difficulty ? "success" : "failure" };
+}
+/** Un éxito se cierra solo; un fallo espera a que el jugador decida si gasta Determinación o acepta. */
+function settle(o) {
+  return total(o) >= o.difficulty ? { ...o, outcome: "success" } : o;
+}
+
+/* -------------------------------------------- */
+/*  Epílogo                                     */
+/* -------------------------------------------- */
+
+/** Tabla de Espíritu‑Epílogo: la primera fila cuyo rango incluye el Espíritu restante. */
+export function epilogueRow(rows = [], spirit = 0) {
+  return rows.find(r => spirit >= (r.min ?? 0) && spirit <= (r.max ?? 99)) ?? rows.at(-1) ?? null;
 }

@@ -1,17 +1,15 @@
-{{!-- Carta física: frente con arte, marco y texto; reverso para el giro. Uso: {{> "…/card.hbs" card=… size="…"}} --}}
-<div class="cda-card kind-{{card.kind}} {{size}}" data-card-id="{{card.id}}" data-help="card-{{card.kind}}"
-  aria-label="{{card.kindLabel}}: {{card.title}}">
+{{!-- Carta física. Estilo fotográfico: arte + marco + tipo + dificultad. Estilo clásico: la carta oficial tal cual. --}}
+<div class="cda-card kind-{{card.kind}} {{size}} {{#if card.classic}}skin-classic{{/if}}" data-card-id="{{card.id}}" data-help="card-{{card.kind}}"
+  aria-label="{{card.kindLabel}}{{#if card.value}} {{card.value}}{{/if}}{{#if card.gray}} {{card.gray}}{{/if}}{{#if card.scene}}: {{card.scene.title}}{{/if}}">
   <div class="cda-card-inner">
     <div class="cda-card-face cda-card-front">
-      <img class="cda-card-art" src="{{card.img}}" alt="" loading="lazy" decoding="async">
+      <img class="cda-card-art" src="{{card.img}}" alt="" decoding="async">
+      {{#unless card.classic}}
       <div class="cda-card-frame" aria-hidden="true"></div>
       <span class="cda-card-kind"><i class="{{card.icon}}" aria-hidden="true"></i>{{card.kindLabel}}{{#if card.gray}} {{card.gray}}{{/if}}</span>
-      {{#if card.difficulty}}<span class="cda-card-seal" title="{{localize 'CdA.Game.Difficulty'}}"><small>{{localize "CdA.Game.DifficultyShort"}}</small>{{card.difficulty}}</span>{{/if}}
-      <div class="cda-card-copy">
-        <h3>{{card.title}}</h3>
-        {{#if card.text}}<p>{{card.text}}</p>{{/if}}
-      </div>
+      {{#if card.value}}<span class="cda-card-seal" title="{{localize 'CdA.Game.Difficulty'}}"><small>{{localize "CdA.Game.DifficultyShort"}}</small>{{card.value}}</span>{{/if}}
+      {{/unless}}
     </div>
-    <div class="cda-card-face cda-card-back" aria-hidden="true"><img src="{{card.back}}" alt="" loading="lazy"></div>
+    <div class="cda-card-face cda-card-back" aria-hidden="true"><img src="{{card.back}}" alt=""></div>
   </div>
 </div>

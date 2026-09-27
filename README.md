@@ -15,7 +15,7 @@
   <a href="https://manuromera.github.io/mr-cuentos-de-animas/"><img alt="Página del proyecto" src="https://img.shields.io/badge/p%C3%A1gina-GitHub%20Pages-8a2f3c"></a>
 </p>
 
-> Sistema **no oficial**. No incluye ni reproduce el texto, las cartas, las ilustraciones ni los escenarios de *Cuentos de Ánimas*. Si tienes el libro, puedes introducir su contenido en tu mundo, para uso privado, con el editor y el importador de escenarios.
+> Sistema **no oficial** de *Cuentos de ánimas* (Scott Malthouse · El Refugio de Ryhope). No incluye el texto del libro ni sus doce escenarios; sí las cartas, que la propia edición permite reproducir, y 34 escenarios de distribución libre con su autoría. Detalles en [`NOTICE.md`](NOTICE.md).
 
 ## Instalación
 
@@ -32,8 +32,10 @@ Crea un mundo con **MR · Cuentos de Ánimas**. Al entrar como Guardián aparece
 | | |
 |---|---|
 | **Mesa de Ánimas** | Mesa física vista desde arriba: mazo, carta actual, descarte, tres huecos para las Damas Grises, piedras de Espíritu y ámbar de Determinación. La carta sale del mazo, viaja, gira y se asienta. |
-| **Cartas** | Documentos *Cards* de Foundry como almacenamiento y sincronización; presentación propia. Pista, Obstáculo de entorno, Obstáculo de personaje, Percance, Dama Gris y carta numérica 1–10, cada familia con su marco, icono y nombre. |
-| **Resolución** | Dificultad, carta revelada, Determinación gastada y resultado en la propia mesa, sincronizado para todos. +2 antes de revelar, +1 al empujar, repetir desde la segunda Dama. |
+| **Cartas** | El mazo del libro sobre documentos *Cards* de Foundry: 4 Pistas, 4 Percances, Obstáculos de Entorno y de Personaje 4‑7 y 3 Damas Grises, en montones de 6, 6 y 4. Dos estilos: **Fotográfico** o **Clásico** (las cartas originales). |
+| **Escenas** | Al revelar una carta se elige la escena en la lista del escenario (o se escribe otra) y queda escrita en una hoja bajo la carta. Las pistas halladas quedan a la vista, fuera del descarte. |
+| **El relato a la vista** | La Sinopsis, las pistas y la tensión revelada quedan en una columna de la Mesa para releerlas en cualquier momento. |
+| **Resolución** | Dificultad de la carta +1 por Dama, carta numérica y resultado en la propia mesa, sincronizado. Una Determinación por obstáculo: +2 antes de revelar, o +1 / repetir después. |
 | **Damas Grises** | Tres umbrales de tensión: cada una pide su precio, endurece los obstáculos y enfría la mesa (niebla, sombra, desaturación). La tercera abre el epílogo. |
 | **Mazo automático** | Tres bloques con una Dama en cada uno: *distribución clásica* o *Damas impredecibles*. El Guardián ve cuántas cartas quedan por bloque y si la Dama sigue dentro, nunca qué carta viene. |
 | **A solas con el Guardián** | Verdades (establecida, dudosa, contradicha, reinterpretada, revelación pendiente, resuelta) con origen, autor, enlaces y notas ocultas; recuerdos y preguntas que el Guardián lanza a todos. |
@@ -44,7 +46,12 @@ Crea un mundo con **MR · Cuentos de Ánimas**. Al entrar como Guardián aparece
 | **Accesibilidad** | Tamaño de texto, alto contraste, tipografía sencilla, espaciado, botones grandes, reducir movimiento (y `prefers-reduced-motion`), reducir efectos, lectura limpia, ayuda contextual. |
 | **Mejoras MR** | Memoria de ventanas por usuario y mundo, siempre dentro de la pantalla; ayuda al detenerse sobre un elemento y ficha ampliada con clic derecho; español e inglés. |
 
-## Escenarios originales incluidos
+## Escenarios
+
+- **Colección incluida: 34 escenarios** de la *Folclore Rol Jam 2022*, los *Escenarios fanmade*, *Cuento de Navidad*, *Desvelos del pasado*, *Grabación en vivo* y *Cima*. Biblioteca → *Colección incluida* → *Añadir y jugar*.
+- **Importar los tuyos** (o los del libro, para uso privado): Biblioteca → *Cómo importar* explica el formato exacto y te da un prompt para generarlo con una IA. Guía: [`docs/IMPORTAR.md`](docs/IMPORTAR.md).
+
+### Originales de este sistema
 
 - **La voz que dejaste atrás** · 1 + Guardián · 90–150 min. Un piso que se vacía mañana, un magnetófono y siete cintas con tu nombre. No hay crimen que resolver: hay dos personas que necesitaron contarse una versión soportable de lo que pasó.
 - **La casa que respira** · 1–4 jugadores · 45–70 min. Escenario corto para aprender la Mesa: robar, resolver, gastar Determinación, perder Espíritu y ver llegar una Dama Gris.

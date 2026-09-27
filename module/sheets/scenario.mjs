@@ -3,7 +3,6 @@ import { enrich, shareImage } from "../compat.mjs";
 import { MEMORY_KINDS, LINK_TYPES } from "../models.mjs";
 import { AMBIENTS } from "../services/sound.mjs";
 import { ContentService } from "../services/content.mjs";
-import { DeckService } from "../services/decks.mjs";
 import { Presenter } from "../services/presenter.mjs";
 import { Records } from "../services/records.mjs";
 import { StateService } from "../services/state.mjs";
@@ -14,14 +13,16 @@ import { BaseItemSheet, splitTags } from "./base.mjs";
 const t = key => game.i18n.localize(key);
 
 /** Campos de cada lista del escenario. [nombre, tipo, opciones]. */
-const CARD_FIELDS = [["title", "text"], ["difficulty", "number"], ["text", "textarea"], ["image", "image"], ["guardian", "textarea", { gm: true }]];
+/** La dificultad no va en la lista: la trae impresa la carta de obstáculo que se roba (4‑7). */
+const CARD_FIELDS = [["title", "text"], ["text", "textarea"], ["image", "image"], ["guardian", "textarea", { gm: true }]];
 const LISTS = {
   scenes: [["title", "text"], ["text", "textarea"], ["guardian", "textarea", { gm: true }], ["handout", "image"]],
   characters: [["name", "text"], ["description", "textarea"], ["secret", "textarea", { gm: true }], ["image", "image"]],
-  clues: CARD_FIELDS.filter(([k]) => k !== "difficulty"),
+  clues: CARD_FIELDS,
   environmentObstacles: CARD_FIELDS,
   characterObstacles: CARD_FIELDS,
-  incidents: CARD_FIELDS.filter(([k]) => k !== "difficulty"),
+  incidents: CARD_FIELDS,
+  epilogueTable: [["label", "text"], ["min", "number"], ["max", "number"], ["text", "textarea"]],
   tension: [["title", "text"], ["text", "textarea"], ["guardian", "textarea", { gm: true }]],
   memories: [["title", "text"], ["kind", "select", { choices: MEMORY_KINDS, prefix: "CdA.Memory.Kind" }], ["prompt", "textarea"], ["followUp", "textarea"], ["link.type", "select", { choices: LINK_TYPES, prefix: "CdA.Link" }], ["link.label", "text"]],
   truths: [["text", "textarea"], ["contradiction", "textarea", { gm: true }], ["reveal", "text", { gm: true }]],
@@ -37,7 +38,8 @@ const BLANK = {
   tension: { title: "", text: "", guardian: "" },
   memories: { title: "", prompt: "", followUp: "", kind: "question", link: { type: "", label: "" } },
   truths: { text: "", contradiction: "", reveal: "" },
-  handouts: { title: "", image: "", text: "" }
+  handouts: { title: "", image: "", text: "" },
+  epilogueTable: { label: "", min: 0, max: 99, text: "" }
 };
 const LIST_KIND = { clues: CARD_KINDS.CLUE, environmentObstacles: CARD_KINDS.ENVIRONMENT, characterObstacles: CARD_KINDS.CHARACTER, incidents: CARD_KINDS.INCIDENT };
 
@@ -108,7 +110,6 @@ export class ScenarioSheet extends BaseItemSheet {
       toneText: s.tone.join(", "), notesText: s.contentNotes.join(", "),
       tagChoices: SCENARIO_TAGS.map(k => ({ key: k, label: t(`CdA.Tag.${k}`), checked: s.tags.includes(k) })),
       modeChoices: Object.values(MODES).map(k => ({ key: k, label: t(`CdA.Mode.${k}`), checked: s.modes.includes(k) })),
-      epilogues: ["high", "low", "zero"].map(k => ({ key: k, label: t(`CdA.Epilogue.${k}`), hint: t(`CdA.Epilogue.${k}Hint`), value: s.epilogues[k] })),
       grays: [0, 1, 2].map(i => ({ i, roman: ["I", "II", "III"][i], img: ASSETS.gray[i], entry: s.tension[i] ?? { title: "", text: "", guardian: "" } })),
       sounds: ["intro", "play", "gray", "epilogue"].map(k => ({
         key: k, label: t(`CdA.Scenario.Sound.${k}`), value: s.sounds[k], custom: s.sounds[k] && !AMBIENTS.includes(s.sounds[k]),
@@ -159,8 +160,7 @@ export class ScenarioSheet extends BaseItemSheet {
   static #reveal(event, target) {
     const entry = this.document.system.clues[Number(target.dataset.index)];
     if (!entry) return;
-    const data = DeckService.cardData(entry, CARD_KINDS.CLUE);
-    Presenter.broadcast({ type: "card", card: { id: "", kind: "clue", icon: KIND_ICONS.clue, kindLabel: t("CdA.Kind.clue"), title: entry.title, text: entry.text, img: data.faces[0].img, back: ASSETS.cardBack, difficulty: 0, gray: "", guardian: "" } });
+    Presenter.broadcast({ type: "clue", clue: { title: entry.title, text: entry.text } });
     StateService.log({ type: "clue", card: entry.title });
   }
   static #handout(event, target) {
