@@ -1,6 +1,243 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MR · Cuentos de Ánimas</title><style>
-:root{color-scheme:dark;--paper:#e2d5bd;--gold:#b8924c;--ink:#100e0c;--wine:#70413f}*{box-sizing:border-box}body{margin:0;background:#0c0a09;color:var(--paper);font-family:Georgia,serif;background-image:radial-gradient(circle at 50% 20%,#292017 0,#0c0a09 52%)}a{color:#dec178}.hero{min-height:82vh;display:grid;place-items:center;text-align:center;padding:4rem 1.5rem;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:url('../assets/branding/cover.webp') center/cover no-repeat;opacity:.38;filter:saturate(.7)}.hero>div{position:relative;max-width:960px}.logo{width:min(900px,92vw)}h1{font-size:clamp(3rem,8vw,7rem);letter-spacing:.08em;margin:.4rem 0}p{line-height:1.65}.lead{font-size:1.35rem;color:#cbb99a;max-width:760px;margin:auto}.cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}.btn{padding:1rem 1.4rem;border:1px solid #9f7d45;border-radius:999px;text-decoration:none;background:#1f1812}.btn.primary{background:#9f7d45;color:#100d0a;font-weight:bold}.section{max-width:1180px;margin:auto;padding:5rem 1.5rem}.section h2{text-align:center;font-size:2.4rem;margin-bottom:2rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}.card{border:1px solid #604c32;background:#17130fdd;border-radius:18px;padding:1.4rem;box-shadow:0 18px 50px #0008}.card h3{color:#dec178}.ritual{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}.ritual img{max-width:100%;max-height:540px;filter:drop-shadow(0 20px 35px #000)}.footer{text-align:center;padding:3rem;color:#8f816b;border-top:1px solid #372b20}@media(max-width:760px){.ritual{grid-template-columns:1fr}}
-</style></head><body><section class="hero"><div><img class="logo" src="../assets/branding/logo.svg" alt="Cuentos de Ánimas"><p class="lead">Una mesa digital de horror íntimo y sobrenatural para Foundry VTT. Cartas, piedras rituales, recuerdos, contradicciones y tres presencias que anuncian el final.</p><div class="cta"><a class="btn primary" href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest">Descargar</a><a class="btn" href="https://github.com/ManuRomera/mr-cuentos-de-animas">Ver GitHub</a></div></div></section>
-<section class="section"><h2>No parece otra ficha de Foundry</h2><div class="cards"><article class="card"><h3>Mesa de Ánimas</h3><p>Mazo, revelación, Damas Grises y recursos conviven en una mesa ritual propia.</p></article><article class="card"><h3>1+1 de verdad</h3><p>Verdades, contradicciones y recuerdos convierten la intimidad entre Guardián y protagonista en mecánica.</p></article><article class="card"><h3>Accesible</h3><p>Escala de texto, alto contraste, lectura limpia, reducción de movimiento y ayuda contextual.</p></article><article class="card"><h3>Sin módulos</h3><p>Cartas, seguridad, efectos, sonidos y diario funcionan de forma autónoma.</p></article></div></section>
-<section class="section ritual"><div><h2>La caja ritual</h2><p>El sistema trata las mecánicas como objetos físicos: Espíritu es piedra lunar; Determinación, ámbar cálido. Las cartas usan el backend nativo de Foundry, pero jamás obligan a jugar desde su interfaz estándar.</p><p>La v1.0 incluye dos escenarios originales y un editor completo para escribir los tuyos.</p></div><img src="../assets/cards/back.webp" alt="Reverso de las cartas"></section>
-<footer class="footer">MR · Cuentos de Ánimas · Manu Romera · Proyecto no oficial</footer></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MR · Cuentos de Ánimas · Foundry VTT</title>
+<meta name="description" content="Sistema para Foundry VTT 13 y 14: relatos de horror rural con la Mesa de Ánimas, cartas físicas, Espíritu y Determinación, tres Damas Grises y un modo íntimo 1 + 1.">
+<meta property="og:title" content="MR · Cuentos de Ánimas">
+<meta property="og:description" content="Una caja de relatos malditos encontrada en una vieja casa rural. Para Foundry VTT 13 y 14.">
+<meta property="og:image" content="img/mesa.webp">
+<link rel="icon" href="img/icon.svg">
+<style>
+:root{
+  --coal:#0c0a09;--coal2:#14100d;--walnut:#2a1c13;--ivory:#efe5d0;--paper:#e9dcc0;--muted:#b3a792;--dim:#8c806c;
+  --brass:#c49a57;--brass2:#e2c088;--frost:#a9c6dc;--ember:#e39a45;--wine:#8a2f3c;--line:rgba(196,154,87,.22);
+  --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--coal);color:var(--ivory);font:17px/1.6 var(--serif);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(60% 45% at 15% 5%,rgba(227,154,69,.10),transparent 60%),radial-gradient(50% 40% at 90% 30%,rgba(169,198,220,.06),transparent 60%);z-index:0}
+a{color:var(--brass2)}
+img{max-width:100%;display:block}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:rgba(12,10,9,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:16px}
+nav .brand{font-weight:600;letter-spacing:.02em;color:var(--ivory);text-decoration:none;display:flex;gap:10px;align-items:center}
+nav .brand img{width:26px;height:26px}
+nav .brand b{color:var(--brass2);font-weight:600}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font:14px var(--sans)}
+nav ul a{color:var(--muted);text-decoration:none}
+nav ul a:hover{color:var(--ivory)}
+.kicker{font:600 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font:600 15px var(--sans);text-decoration:none;border:1px solid var(--line);color:var(--ivory);background:rgba(255,255,255,.03)}
+.btn:hover{border-color:var(--brass)}
+.btn.primary{background:linear-gradient(180deg,#d7ae66,#a47938);color:#1a120a;border-color:#e7c78e}
+.hero{padding:88px 0 72px;display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(44px,6vw,78px);line-height:.98;margin:18px 0 22px;letter-spacing:-.01em;font-weight:600}
+.hero h1 em{font-style:normal;color:var(--brass2)}
+.hero p.lede{font-size:20px;color:#d9ceba;max-width:34em;margin:0 0 22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
+.chip{font:13px var(--sans);padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(255,255,255,.02)}
+.chip b{color:var(--ivory);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.frame{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(226,192,136,.35);box-shadow:0 40px 90px rgba(0,0,0,.7),0 0 0 8px rgba(42,28,19,.6)}
+.frame::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 80px rgba(0,0,0,.35);pointer-events:none}
+.hero .frame{transform:perspective(1600px) rotateY(-7deg) rotateX(2deg)}
+section{padding:80px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(32px,4vw,50px);line-height:1.05;margin:14px 0 18px;font-weight:600}
+section .intro{color:#d2c7b3;max-width:44em;font-size:19px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split.rev{grid-template-columns:1.1fr .9fr}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.card{padding:24px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
+.card .n{font:600 12px var(--mono);color:var(--brass);letter-spacing:.14em}
+.card h3{font-size:22px;margin:8px 0 8px;font-weight:600}
+.card p{margin:0;color:#cbbfab;font-size:16px}
+.resources{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.res{padding:22px;border-radius:12px;border:1px solid var(--line)}
+.res.frost{background:radial-gradient(120% 100% at 0 0,rgba(169,198,220,.13),transparent 60%)}
+.res.ember{background:radial-gradient(120% 100% at 100% 0,rgba(227,154,69,.14),transparent 60%)}
+.res h3{margin:0 0 6px;font-size:22px}
+.res.frost h3{color:#dcecf7}.res.ember h3{color:#ffd9a1}
+.res p{margin:0;color:#cbbfab;font-size:16px}
+.ladies{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.lady{padding:18px;border-radius:12px;border:1px solid rgba(201,204,208,.25);background:linear-gradient(180deg,rgba(201,204,208,.07),transparent)}
+.lady b{display:block;font-size:34px;line-height:1;color:#e8ebee;font-weight:500}
+.lady span{font:13px var(--sans);color:var(--dim)}
+.lady p{margin:8px 0 0;font-size:15px;color:#cfd3d7}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+.gallery figure{margin:0}
+.gallery figcaption{font:14px var(--sans);color:var(--muted);padding:10px 2px 0}
+.gallery figcaption b{color:var(--ivory);font-weight:600}
+.truths{margin-top:26px;display:flex;flex-direction:column;gap:10px;max-width:640px}
+.truth{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:12px 16px;border-radius:8px;background:var(--paper);color:#2b2119}
+.truth span{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:5px;text-align:center}
+.truth .ok{background:rgba(111,127,85,.25);color:#3b4a25}.truth .dub{background:rgba(196,154,87,.3);color:#6b4a12}.truth .no{background:rgba(138,47,60,.2);color:#6d1f2b}
+.truth .no + p{text-decoration:line-through;text-decoration-color:rgba(138,47,60,.6)}
+.truth p{margin:0;font-style:italic}
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
+.book{display:grid;grid-template-columns:40% 1fr;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#16110d}
+.book img{height:100%;object-fit:cover}
+.book div{padding:22px}
+.book h3{margin:0 0 4px;font-size:26px;font-weight:600}
+.book small{font:13px var(--sans);color:var(--brass)}
+.book p{color:#cbbfab;font-size:16px}
+.install{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start}
+.manifest{display:flex;gap:8px;align-items:stretch;margin:18px 0}
+.manifest code{flex:1;font:14px var(--mono);padding:14px 16px;border-radius:8px;background:#000;border:1px solid var(--line);color:var(--brass2);overflow-x:auto;white-space:nowrap}
+.manifest button{font:600 14px var(--sans);padding:0 16px;border-radius:8px;border:1px solid var(--line);background:#1b1410;color:var(--ivory);cursor:pointer}
+ol.steps{padding-left:20px;color:#d2c7b3}
+ol.steps li{margin:6px 0}
+.req{padding:22px;border-radius:12px;border:1px solid var(--line);font:15px/1.7 var(--sans);color:#cbbfab}
+.req b{color:var(--ivory)}
+.credits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+footer{padding:40px 0 60px;border-top:1px solid var(--line);font:14px var(--sans);color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media (max-width:900px){
+  nav ul{display:none}
+  .hero,.split,.split.rev,.install{grid-template-columns:1fr}
+  .hero .frame{transform:none}
+  .cards,.credits{grid-template-columns:1fr 1fr}
+  .gallery,.scen,.resources{grid-template-columns:1fr}
+  .book{grid-template-columns:1fr}
+  .truth{grid-template-columns:1fr}
+}
+@media (max-width:560px){.cards,.credits,.ladies{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#"><img src="img/icon.svg" alt=""><span><b>MR ·</b> Cuentos de Ánimas</span></a>
+  <ul><li><a href="#mesa">La Mesa</a></li><li><a href="#funciones">Funciones</a></li><li><a href="#guardian">1 + 1</a></li><li><a href="#escenarios">Escenarios</a></li><li><a href="#instalar">Instalación</a></li><li><a href="https://github.com/ManuRomera/mr-cuentos-de-animas">GitHub</a></li></ul>
+</div></nav>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <span class="kicker">Foundry VTT 13 · 14 · Horror rural · Relatos</span>
+    <h1>Enciende la primera vela.<br><em>Las ánimas escuchan.</em></h1>
+    <p class="lede">Una caja de relatos malditos encontrada en una vieja casa rural, convertida en sistema para Foundry VTT: cartas que se giran sobre madera, piedras frías de Espíritu, ámbar de Determinación y tres Damas Grises que se acercan.</p>
+    <div class="chips">
+      <span class="chip"><b>4 modos</b> · Hoguera, Diario, 1 + 1, Libre</span>
+      <span class="chip"><b>2 escenarios</b> originales</span>
+      <span class="chip"><b>Sin módulos</b> obligatorios</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest">Descargar última versión</a>
+      <a class="btn" href="https://github.com/ManuRomera/mr-cuentos-de-animas">Ver código</a>
+    </div>
+  </div>
+  <div class="frame"><img src="img/mesa.webp" alt="La Mesa de Ánimas en Foundry: mazo, carta de obstáculo, Dama Gris revelada, piedras de Espíritu y ámbar de Determinación"></div>
+</div>
+
+<section id="mesa"><div class="wrap split rev">
+  <div class="frame"><img src="img/carta.webp" alt="Carta de obstáculo de entorno ampliada, con su marco, dificultad y texto"></div>
+  <div>
+    <span class="kicker">La Mesa de Ánimas</span>
+    <h2>Esto no parece Foundry.<br>Pero funciona como Foundry.</h2>
+    <p class="intro">La Mesa es una mesa física vista desde arriba. Robas y la carta sale del mazo, viaja, gira y se asienta. Clic para verla de cerca. Debajo, los documentos <em>Cards</em> de Foundry hacen el trabajo invisible: barajar, robar, descartar, sincronizar.</p>
+    <p class="intro">Nunca se abre sola: tiene su icono en los controles de escena, botones en los directorios y el atajo <b>Mayús + M</b>.</p>
+  </div>
+</div></section>
+
+<section id="funciones"><div class="wrap">
+  <span class="kicker">Diseñado como objeto</span>
+  <h2>Todo lo que la mesa necesita, nada que sobre.</h2>
+  <div class="resources">
+    <div class="res frost"><h3>Espíritu · piedras frías</h3><p>Piedra lunar y cuarzo lechoso. Cada fallo apaga una: pierde el brillo, se agrieta y la mesa se vuelve fría y desaturada.</p></div>
+    <div class="res ember"><h3>Determinación · ámbar</h3><p>Resina y brasa. Gástala antes de revelar (+2) o para empujar tras un fallo por poco (+1). Cada una que gastas se apaga en la bandeja.</p></div>
+  </div>
+  <div class="ladies">
+    <div class="lady"><b>I</b><span>Primera Dama Gris</span><p>Lejana. Apenas visible. Luz más fría.</p></div>
+    <div class="lady"><b>II</b><span>Segunda Dama Gris</span><p>Más cerca. Niebla, sombra, sonido.</p></div>
+    <div class="lady"><b>III</b><span>Tercera Dama Gris</span><p>Personal. Ineludible. Y después, el epílogo.</p></div>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="n">01 · MAZO</span><h3>Preparación automática</h3><p>Tres bloques con una Dama en cada uno: distribución clásica o Damas impredecibles. El Guardián ve la forma del mazo, nunca la carta que viene.</p></div>
+    <div class="card"><span class="n">02 · RESOLUCIÓN</span><h3>Sin convertirlo en calculadora</h3><p>Dificultad, carta revelada, Determinación gastada y resultado, en la propia mesa y sincronizado para todos.</p></div>
+    <div class="card"><span class="n">03 · DIARIO</span><h3>El relato se escribe solo</h3><p>Cada carta, resultado y verdad queda en el diario del protagonista. Tú añades lo que sintió. Exporta a Markdown o HTML.</p></div>
+    <div class="card"><span class="n">04 · ESCENARIOS</span><h3>Editor sin JSON</h3><p>Trece pestañas para crear un escenario completo, biblioteca editorial con filtros, variantes e importación validada.</p></div>
+    <div class="card"><span class="n">05 · SEGURIDAD</span><h3>Pausa, Velo y Tarjeta X</h3><p>Inmediatas, sincronizadas y anónimas: el aviso nunca dice quién lo activó.</p></div>
+    <div class="card"><span class="n">06 · SONIDO</span><h3>Ambiente sin archivos</h3><p>Hoguera, lluvia, viento, casa vieja, cinta magnética o silencio sobrenatural, sintetizados en el navegador, con volúmenes separados.</p></div>
+    <div class="card"><span class="n">07 · ACCESIBILIDAD</span><h3>Desde el núcleo</h3><p>Tamaño de texto, alto contraste, tipografía sencilla, espaciado, botones grandes, sin movimiento, sin efectos y lectura limpia.</p></div>
+    <div class="card"><span class="n">08 · MEJORAS MR</span><h3>Ventanas que se recuerdan</h3><p>Posición, tamaño y pestaña por usuario y mundo, siempre dentro de la pantalla. Ayuda al detenerse y con clic derecho.</p></div>
+    <div class="card"><span class="n">09 · ARRANQUE SEGURO</span><h3>Foundry siempre operativo</h3><p>Arranque por fases aisladas y diagnóstico copiable en Ajustes. Si algo falla, avisa y el resto sigue.</p></div>
+  </div>
+</div></section>
+
+<section id="guardian"><div class="wrap split">
+  <div>
+    <span class="kicker">A solas con el Guardián · 1 + 1</span>
+    <h2>No se trata de descubrir la verdad.</h2>
+    <p class="intro">Se trata de descubrir <em>qué historia se estaban contando</em> los personajes a sí mismos. El Guardián registra lo que el jugador afirma y el relato lo pone a prueba: una carta, una pista o un recuerdo pueden cuestionarlo más tarde.</p>
+    <div class="truths">
+      <div class="truth"><span class="ok">Establecida</span><p>«Yo no volví a hablar con mi hermano después de aquella noche.»</p></div>
+      <div class="truth"><span class="dub">Dudosa</span><p>«Fue él quien se marchó.»</p></div>
+      <div class="truth"><span class="no">Contradicha</span><p>«La carta nunca llegó a enviarse.»</p></div>
+    </div>
+  </div>
+  <div class="frame"><img src="img/verdades.webp" alt="Panel de Verdades y Recuerdos con estados establecida, dudosa, contradicha y revelación pendiente"></div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="kicker">Galería</span>
+  <h2>Cada ventana, un objeto distinto de la misma caja.</h2>
+  <div class="gallery">
+    <figure><div class="frame"><img src="img/guardian.webp" alt="La Mesa junto a la herramienta del Guardián" loading="lazy"></div><figcaption><b>Guardián.</b> Mazo por bloques, escena actual, recursos, verdades, recuerdos y epílogos en una columna.</figcaption></figure>
+    <figure><div class="frame"><img src="img/expediente.webp" alt="Ficha del protagonista como expediente de papel" loading="lazy"></div><figcaption><b>Expediente.</b> El protagonista en una sola vista, sin pestañas ni desplazamientos absurdos.</figcaption></figure>
+    <figure><div class="frame"><img src="img/biblioteca.webp" alt="Biblioteca de relatos con portadas y filtros" loading="lazy"></div><figcaption><b>Biblioteca.</b> Portadas, duración, modos y tono; jugar, editar, duplicar o importar.</figcaption></figure>
+    <figure><div class="frame"><img src="img/escenario.webp" alt="Editor de escenarios con trece pestañas" loading="lazy"></div><figcaption><b>Escenario.</b> Editor completo y pestaña «En juego» con lo que toca en cada escena.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="escenarios"><div class="wrap">
+  <span class="kicker">Contenido original incluido</span>
+  <h2>Dos relatos para la primera noche.</h2>
+  <div class="scen">
+    <article class="book"><img src="img/voz.webp" alt="" loading="lazy"><div><small>1 + Guardián · 90–150 min</small><h3>La voz que dejaste atrás</h3><p>Un piso que se vacía mañana. Un magnetófono y siete cintas, todas con tu nombre. No hay un crimen que resolver: hay dos personas que se quisieron y necesitaron contarse una versión soportable de lo que pasó.</p></div></article>
+    <article class="book"><img src="img/casa.webp" alt="" loading="lazy"><div><small>1–4 jugadores · 45–70 min</small><h3>La casa que respira</h3><p>Has venido a inventariar una casa antes de su demolición. La casa lleva toda la noche inventariándote a ti. El escenario perfecto para aprender la Mesa.</p></div></article>
+  </div>
+</div></section>
+
+<section id="instalar"><div class="wrap install">
+  <div>
+    <span class="kicker">Instalación</span>
+    <h2>Un manifest. Un mundo nuevo.</h2>
+    <ol class="steps">
+      <li>En Foundry, <b>Sistemas de juego → Instalar sistema</b>.</li>
+      <li>Pega el manifest y pulsa <b>Instalar</b>.</li>
+      <li>Crea un mundo con <b>MR · Cuentos de Ánimas</b>. Al entrar como Guardián verás un aviso breve con los accesos.</li>
+    </ol>
+    <div class="manifest"><code id="manifest">https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest/download/system.json</code><button type="button" onclick="navigator.clipboard.writeText(document.getElementById('manifest').textContent).then(()=>{this.textContent='Copiado'})">Copiar</button></div>
+    <a class="btn" href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest">Abrir la release estable</a>
+  </div>
+  <div class="req">
+    <p><b>Foundry VTT</b> 13 y 14 · una sola base de código.</p>
+    <p><b>Módulos</b> ninguno obligatorio.</p>
+    <p><b>Idiomas</b> español e inglés.</p>
+    <p><b>Diagnóstico</b> Ajustes → MR · Cuentos de Ánimas → Diagnóstico, o <code>game.mrCuentosDeAnimas.diagnostic()</code>.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="kicker">Créditos y aviso</span>
+  <h2>Hecho con respeto por el juego original.</h2>
+  <div class="credits">
+    <div class="card"><span class="n">IMPLEMENTACIÓN</span><h3>Manu Romera</h3><p>Diseño e implementación para Foundry VTT: arquitectura, interfaz, accesibilidad, escenarios originales y publicación.</p></div>
+    <div class="card"><span class="n">JUEGO ORIGINAL</span><h3>Cuentos de Ánimas</h3><p>Pertenece a sus autores y editorial. Este sistema no es oficial y no reproduce su texto, cartas, ilustraciones ni escenarios.</p></div>
+    <div class="card"><span class="n">TU EJEMPLAR</span><h3>Contenido privado</h3><p>Si tienes el libro, puedes introducir su material en tu mundo con el editor e importador de escenarios, para uso privado.</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>MR · Cuentos de Ánimas · sistema no oficial para Foundry VTT</span>
+  <span><a href="https://github.com/ManuRomera/mr-cuentos-de-animas/blob/main/CHANGELOG.md">Cambios</a> · <a href="https://github.com/ManuRomera/mr-cuentos-de-animas/issues">Incidencias</a> · <a href="https://github.com/ManuRomera/mr-cuentos-de-animas">GitHub</a></span>
+</div></footer>
+</body>
+</html>

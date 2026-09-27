@@ -77,8 +77,9 @@ export class ScenarioSheet extends BaseItemSheet {
   }
 
   /** El Guardián abre el escenario en juego directamente en «En juego»; un jugador nunca ve esa pestaña. */
-  async _preFirstRender(context, options) {
-    await super._preFirstRender(context, options);
+  _configureRenderOptions(options) {
+    super._configureRenderOptions(options);
+    if (!options.isFirstRender) return;
     if (game.user.isGM && this.isActive) this.tabGroups.scenario = "play";
     else if (!game.user.isGM && this.tabGroups.scenario === "play") this.tabGroups.scenario = "presentation";
   }

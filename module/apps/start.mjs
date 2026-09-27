@@ -22,7 +22,7 @@ export class StartApp extends SystemApp {
   static DEFAULT_OPTIONS = {
     id: "cda-start", classes: ["cda-start-app"],
     window: { title: "CdA.Session.New", icon: "fa-solid fa-book" },
-    position: { width: 1060, height: 720 },
+    position: { width: 1060, height: 620 },
     actions: { scenario: StartApp.#pickScenario, mode: StartApp.#pickMode, start: StartApp.#start }
   };
   static PARTS = { body: { template: `${TEMPLATES}/apps/start.hbs`, scrollable: [".cda-start-scenarios"] } };

@@ -136,6 +136,7 @@ async function ensureScene() {
   if (game.scenes.size && !onlyCoreDefault) return game.settings.set(SYSTEM_ID, "sceneReady", true);
   const scene = await Scene.implementation.create(welcomeSceneData({ name: game.i18n.localize("CdA.App.Table"), src: ASSETS.scene }));
   if (scene && !scene.active) await scene.activate();
+  await scene?.view(); // el Guardián seguía mirando la escena por defecto de Foundry
   await game.settings.set(SYSTEM_ID, "sceneReady", true);
 }
 
