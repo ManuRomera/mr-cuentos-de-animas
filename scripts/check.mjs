@@ -26,11 +26,11 @@ if(manifest.id!=="mr-cuentos-de-animas") errors.push("system.json: id inesperado
 if(Number(manifest.compatibility?.minimum)<13) errors.push("system.json: minimum debe ser 13+");
 const refs=[...new Set(files.filter(f=>/\.(mjs|hbs|css|json|md|html)$/.test(f)).flatMap(async()=>[]))];
 const required=[
- "assets/branding/cover.svg","assets/branding/logo.svg","assets/branding/table.svg",
- "assets/cards/back.svg","assets/cards/number-back.svg","assets/cards/gray-1.svg","assets/cards/gray-2.svg","assets/cards/gray-3.svg",
- "assets/counters/spirit-on.svg","assets/counters/spirit-off.svg","assets/counters/determination-on.svg","assets/counters/determination-off.svg"
+ "assets/branding/cover.webp","assets/branding/logo.svg","assets/branding/table.webp",
+ "assets/cards/back.webp","assets/cards/number-back.webp","assets/cards/gray-1.webp","assets/cards/gray-2.webp","assets/cards/gray-3.webp",
+ "assets/counters/spirit-on.webp","assets/counters/spirit-off.webp","assets/counters/determination-on.webp","assets/counters/determination-off.webp"
 ];
-for(let i=1;i<=10;i++) required.push(`assets/cards/number-${i}.svg`);
+for(let i=1;i<=10;i++) required.push(`assets/cards/number-${i}.webp`);
 for(const p of required) try{await access(join(root,p));}catch{errors.push(`Falta asset: ${p}`)}
 if(errors.length){ console.error(errors.join("\n\n")); process.exit(1); }
 console.log(`✓ ${files.filter(f=>f.endsWith('.mjs')).length} módulos JS válidos`);
