@@ -9,14 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Expand prepared v1.0.0 source
-        run: |
-          test -f bootstrap.b64
-          base64 -d bootstrap.b64 > /tmp/mr-cda-source.tar.xz
-          tar -xJf /tmp/mr-cda-source.tar.xz
-          rm -f bootstrap.b64 .github/workflows/bootstrap.yml
+      - name: Verify and expand prepared source
+        run: python bootstrap.py
       - name: Publish source tree
         run: |
+          rm -f bootstrap.py bootstrap.b64 bootstrap.part.* .github/workflows/bootstrap.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
