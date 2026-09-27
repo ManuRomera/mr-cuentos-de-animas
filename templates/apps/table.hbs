@@ -16,7 +16,7 @@
   <main class="cda-table-stage">
     <aside class="cda-altar cda-altar-spirit" data-mr-help="spirit">
       <h3><i class="fa-solid fa-gem"></i> {{localize "CdA.Table.Spirit"}}</h3>
-      <div class="cda-stones">{{#each spirit}}<img src="{{#if on}}systems/mr-cuentos-de-animas/assets/counters/spirit-on.svg{{else}}systems/mr-cuentos-de-animas/assets/counters/spirit-off.svg{{/if}}" alt="" class="{{#unless on}}spent{{/unless}}">{{/each}}</div>
+      <div class="cda-stones">{{#each spirit}}<img src="{{#if on}}systems/mr-cuentos-de-animas/assets/counters/spirit-on.webp{{else}}systems/mr-cuentos-de-animas/assets/counters/spirit-off.webp{{/if}}" alt="" class="{{#unless on}}spent{{/unless}}">{{/each}}</div>
       {{#if actor}}<button type="button" class="cda-nameplate" data-action="sheet">{{actor.name}}</button>{{/if}}
     </aside>
 
@@ -42,7 +42,7 @@
 
     <aside class="cda-altar cda-altar-determination" data-mr-help="determination">
       <h3><i class="fa-solid fa-fire"></i> {{localize "CdA.Table.Determination"}}</h3>
-      <div class="cda-embers">{{#each determination}}<img src="{{#if on}}systems/mr-cuentos-de-animas/assets/counters/determination-on.svg{{else}}systems/mr-cuentos-de-animas/assets/counters/determination-off.svg{{/if}}" alt="" class="{{#unless on}}spent{{/unless}}">{{/each}}</div>
+      <div class="cda-embers">{{#each determination}}<img src="{{#if on}}systems/mr-cuentos-de-animas/assets/counters/determination-on.webp{{else}}systems/mr-cuentos-de-animas/assets/counters/determination-off.webp{{/if}}" alt="" class="{{#unless on}}spent{{/unless}}">{{/each}}</div>
       {{#if actor}}<small>{{actor.system.determination.value}} / {{actor.system.determination.max}}</small>{{/if}}
     </aside>
   </main>
