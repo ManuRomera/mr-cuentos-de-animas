@@ -3,10 +3,10 @@ import { StateService } from "./state.mjs";
 
 const ROLE_NAMES = { event: "Mazo de Ánimas", eventReveal: "Carta revelada", number: "Cartas numéricas", numberReveal: "Número revelado" };
 const CARD_ASSET = {
-  [CARD_KINDS.CLUE]: `${PATH}/assets/cards/clue.svg`,
-  [CARD_KINDS.ENVIRONMENT]: `${PATH}/assets/cards/environment.svg`,
-  [CARD_KINDS.CHARACTER]: `${PATH}/assets/cards/character.svg`,
-  [CARD_KINDS.INCIDENT]: `${PATH}/assets/cards/incident.svg`
+  [CARD_KINDS.CLUE]: `${PATH}/assets/cards/clue.webp`,
+  [CARD_KINDS.ENVIRONMENT]: `${PATH}/assets/cards/environment.webp`,
+  [CARD_KINDS.CHARACTER]: `${PATH}/assets/cards/character.webp`,
+  [CARD_KINDS.INCIDENT]: `${PATH}/assets/cards/incident.webp`
 };
 const shuffle = input => { const a = [...input]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const cardsImpl = () => globalThis.Cards?.implementation ?? globalThis.Cards;
@@ -37,7 +37,7 @@ export class DeckService {
     await this.#clear("numberReveal"); await this.#clear("number");
     const cards = Array.from({ length: 10 }, (_, i) => {
       const n = i + 1;
-      return { name: `Carta ${n}`, type: "base", value: n, faces: [{ name: `${n}`, img: `${PATH}/assets/cards/number-${n}.svg`, text: `${n}` }], back: { img: ASSETS.numberBack }, face: null, sort: n * 1000, flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind: "number", value: n } } } };
+      return { name: `Carta ${n}`, type: "base", value: n, faces: [{ name: `${n}`, img: `${PATH}/assets/cards/number-${n}.webp`, text: `${n}` }], back: { img: ASSETS.numberBack }, face: null, sort: n * 1000, flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind: "number", value: n } } } };
     });
     await deck.createEmbeddedDocuments("Card", cards); await deck.shuffle({ chatNotification: false });
   }
@@ -56,7 +56,7 @@ export class DeckService {
   static #grayCard(scenario, index) {
     const entry = scenario.system.tension[index - 1] ?? { title: `Dama Gris ${index}`, text: "La tensión aumenta." };
     return {
-      name: entry.title, type: "base", faces: [{ name: entry.title, img: `${PATH}/assets/cards/gray-${index}.svg`, text: entry.text }], back: { img: scenario.system.customBack || ASSETS.cardBack }, face: null,
+      name: entry.title, type: "base", faces: [{ name: entry.title, img: `${PATH}/assets/cards/gray-${index}.webp`, text: entry.text }], back: { img: scenario.system.customBack || ASSETS.cardBack }, face: null,
       flags: { [SYSTEM_ID]: { [FLAGS.CARD]: { kind: CARD_KINDS.GRAY, grayIndex: index, text: entry.text, title: entry.title } } }
     };
   }
