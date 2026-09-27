@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 744 1039">
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eadfca"/><stop offset=".55" stop-color="#cdbb9b"/><stop offset="1" stop-color="#a58d69"/></linearGradient>
+  <radialGradient id="inkfade"><stop stop-color="#3d352b" stop-opacity=".18"/><stop offset="1" stop-color="#11100f" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5c879"/><stop offset=".5" stop-color="#9a7134"/><stop offset="1" stop-color="#5e431e"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity=".55"/></filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="7" result="n"/><feBlend in="SourceGraphic" in2="n" mode="multiply"/></filter>
+  <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><path d="M0 1h9" stroke="#231f1b" stroke-opacity=".08" stroke-width="1"/></pattern>
+</defs>
+<rect width="744" height="1039" rx="42" fill="#11100f"/>
+<rect x="18" y="18" width="708" height="1003" rx="34" fill="url(#paper)"/>
+<rect x="36" y="36" width="672" height="967" rx="24" fill="url(#hatch)" stroke="#62696b" stroke-width="5"/>
+<path d="M70 92 Q372 30 674 92 M70 947 Q372 1009 674 947" fill="none" stroke="#62696b" stroke-width="4" opacity=".8"/>
+<path d="M85 122h574M85 917h574" stroke="#2a241d" stroke-width="1.8" opacity=".55"/>
+<circle cx="372" cy="483" r="252" fill="url(#inkfade)"/>
+<text x="372" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="29" letter-spacing="9" fill="#2b251e">DAMA GRIS · 2</text>
+<text x="372" y="885" text-anchor="middle" font-family="Georgia,serif" font-size="20" letter-spacing="5" fill="#453a2c">CUENTOS DE ÁNIMAS</text>
+<text x="372" y="965" text-anchor="middle" font-family="Georgia,serif" font-size="45" fill="#62696b">☾</text>
+<g transform="translate(372 498)" filter="url(#shadow)">
+<path d="M0-245c-91 43-145 137-137 239 7 88-44 164-103 230h480c-59-66-110-142-103-230 8-102-46-196-137-239z" fill="#33383a" opacity=".92"/>
+<path d="M0-198c-70 39-101 112-91 182 10 70-19 125-56 172h294c-37-47-66-102-56-172 10-70-21-143-91-182z" fill="#c7c9c7" opacity="0.42"/>
+<ellipse cx="0" cy="-54" rx="72" ry="99" fill="#151717" opacity=".92"/><circle cx="-33" cy="-47" r="7" fill="#e9e7df"/><circle cx="33" cy="-47" r="7" fill="#e9e7df"/>
+<path d="M-112 166C-55 93-27 17 0-78 27 17 55 93 112 166" fill="none" stroke="#d9dad5" stroke-opacity=".55" stroke-width="5"/>
+</g><text x="372" y="778" text-anchor="middle" font-family="Georgia,serif" font-size="70" fill="#4d5355">II</text></svg>

@@ -1,0 +1,62 @@
+<div class="cda-table" style="--table-art:url('{{assets.table}}')">
+  <header class="cda-table-header">
+    <div class="cda-brand-lockup"><img src="{{assets.logo}}" alt=""><div><span>MR ·</span><strong>Cuentos de Ánimas</strong></div></div>
+    <div class="cda-session-title">
+      {{#if scenario}}<small>{{modeLabel}}</small><h2>{{scenario.name}}</h2>{{else}}<small>{{localize "CdA.Table.Silent"}}</small><h2>{{localize "CdA.Table.Waiting"}}</h2>{{/if}}
+    </div>
+    <nav class="cda-table-tools">
+      <button type="button" data-action="library" title="{{localize 'CdA.Table.Library'}}"><i class="fa-solid fa-book-open"></i></button>
+      <button type="button" data-action="diary" data-mr-help="diary" title="{{localize 'CdA.Table.Diary'}}"><i class="fa-solid fa-book-open"></i></button>
+      <button type="button" data-action="truths" data-mr-help="truth" title="{{localize 'CdA.Table.Truths'}}"><i class="fa-solid fa-eye"></i></button>
+      <button type="button" data-action="safety" title="{{localize 'CdA.Table.Safety'}}"><i class="fa-solid fa-shield-heart"></i></button>
+      <button type="button" data-action="access" title="{{localize 'CdA.Table.Access'}}"><i class="fa-solid fa-universal-access"></i></button>
+    </nav>
+  </header>
+
+  <main class="cda-table-stage">
+    <aside class="cda-altar cda-altar-spirit" data-mr-help="spirit">
+      <h3><i class="fa-solid fa-gem"></i> {{localize "CdA.Table.Spirit"}}</h3>
+      <div class="cda-stones">{{#each spirit}}<img src="{{#if on}}systems/mr-cuentos-de-animas/assets/counters/spirit-on.svg{{else}}systems/mr-cuentos-de-animas/assets/counters/spirit-off.svg{{/if}}" alt="" class="{{#unless on}}spent{{/unless}}">{{/each}}</div>
+      {{#if actor}}<button type="button" class="cda-nameplate" data-action="sheet">{{actor.name}}</button>{{/if}}
+    </aside>
+
+    <section class="cda-center-table">
+      <div class="cda-gray-track" data-mr-help="gray">
+        {{#each gray}}<div class="cda-gray-slot {{#if on}}revealed{{/if}}"><span>{{n}}</span>{{#if on}}<img src="{{img}}" alt="Dama Gris {{n}}">{{/if}}</div>{{/each}}
+      </div>
+
+      <div class="cda-card-zone">
+        <button type="button" class="cda-deck {{#unless canDraw}}disabled{{/unless}}" data-action="draw" data-mr-help="deck" {{#unless canDraw}}disabled{{/unless}}>
+          <img src="{{assets.cardBack}}" alt="Mazo de Ánimas"><span>{{localize "CdA.Table.Draw"}}</span>
+        </button>
+        <div class="cda-reveal-slot {{#if lastCard}}has-card{{/if}}">
+          {{#if lastCard}}<img src="{{lastCard.img}}" alt=""><div><strong>{{lastCard.name}}</strong><p>{{lastCard.text}}</p></div>{{else}}<div class="cda-empty-seal"><i class="fa-solid fa-moon"></i><span>{{localize "CdA.Table.NextScene"}}</span></div>{{/if}}
+        </div>
+        <button type="button" class="cda-number-action {{#unless canResolve}}ghost{{/unless}}" data-action="resolve" data-mr-help="number" {{#unless canResolve}}disabled{{/unless}}>
+          <i class="fa-solid fa-diamond"></i><span>{{#if state.activeObstacle}}Resolver · dificultad {{state.activeObstacle.difficulty}}{{else}}{{localize "CdA.Table.NumberCard"}}{{/if}}</span>
+        </button>
+      </div>
+
+      {{#if canEpilogue}}<button type="button" class="cda-epilogue-button" data-action="epilogue"><i class="fa-solid fa-door-open"></i><span>{{localize "CdA.Table.Epilogue"}}</span></button>{{/if}}
+    </section>
+
+    <aside class="cda-altar cda-altar-determination" data-mr-help="determination">
+      <h3><i class="fa-solid fa-fire"></i> {{localize "CdA.Table.Determination"}}</h3>
+      <div class="cda-embers">{{#each determination}}<img src="{{#if on}}systems/mr-cuentos-de-animas/assets/counters/determination-on.svg{{else}}systems/mr-cuentos-de-animas/assets/counters/determination-off.svg{{/if}}" alt="" class="{{#unless on}}spent{{/unless}}">{{/each}}</div>
+      {{#if actor}}<small>{{actor.system.determination.value}} / {{actor.system.determination.max}}</small>{{/if}}
+    </aside>
+  </main>
+
+  <footer class="cda-table-footer">
+    <div class="cda-table-side">
+      {{#if scenario}}
+        <p class="cda-hook">{{scenario.system.hook}}</p>
+        {{#if memories.length}}<div class="cda-memory-strip" data-mr-help="memory">{{#each memories}}<button type="button" data-action="memory" data-index="{{i}}"><i class="fa-solid fa-cloud-moon"></i>{{title}}</button>{{/each}}</div>{{/if}}
+      {{else}}<p class="cda-hook">{{localize "CdA.Table.EmptyHook"}}</p>{{/if}}
+    </div>
+    <div class="cda-footer-actions">
+      <button type="button" data-action="start"><i class="fa-solid fa-book"></i>{{#if isIdle}}{{localize "CdA.Table.New"}}{{else}}{{localize "CdA.Table.Change"}}{{/if}}</button>
+      {{#unless isIdle}}<button type="button" data-action="reset" class="subtle"><i class="fa-solid fa-box-archive"></i>{{localize "CdA.Table.End"}}</button>{{/unless}}
+    </div>
+  </footer>
+</div>

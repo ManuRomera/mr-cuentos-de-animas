@@ -1,0 +1,40 @@
+{
+  "id": "mr-cuentos-de-animas",
+  "title": "MR · Cuentos de Ánimas",
+  "description": "Sistema no oficial para Foundry VTT inspirado en Cuentos de Ánimas: horror narrativo, cartas, Espíritu, Determinación, Damas Grises, diario y un modo íntimo 1+1. No redistribuye el texto del juego original.",
+  "version": "1.0.0",
+  "compatibility": { "minimum": "13", "verified": "14.368" },
+  "authors": [
+    { "name": "Manu Romera", "url": "https://github.com/ManuRomera", "flags": { "role": "Diseño e implementación Foundry VTT" } },
+    { "name": "OpenAI", "flags": { "role": "Asistencia de desarrollo y diseño visual" } }
+  ],
+  "esmodules": ["mr-cuentos-de-animas.mjs"],
+  "styles": ["styles/system.css", "styles/accessibility.css"],
+  "languages": [
+    { "lang": "es", "name": "Español", "path": "lang/es.json" },
+    { "lang": "en", "name": "English", "path": "lang/en.json" }
+  ],
+  "documentTypes": {
+    "Actor": { "protagonist": { "htmlFields": ["physicalDescription", "backstory", "notes"] } },
+    "Item": {
+      "scenario": { "htmlFields": ["synopsis", "instructions"] },
+      "clue": { "htmlFields": ["text", "secret"] },
+      "obstacle": { "htmlFields": ["text", "secret"] },
+      "memory": { "htmlFields": ["text", "secret"] },
+      "truth": { "htmlFields": ["text", "secret"] }
+    }
+  },
+  "socket": true,
+  "grid": { "distance": 1, "units": "" },
+  "primaryTokenAttribute": "spirit",
+  "secondaryTokenAttribute": "determination",
+  "background": "systems/mr-cuentos-de-animas/assets/branding/cover.svg",
+  "media": [{ "type": "setup", "url": "systems/mr-cuentos-de-animas/assets/branding/cover.svg", "thumbnail": "systems/mr-cuentos-de-animas/assets/branding/logo.svg" }],
+  "url": "https://github.com/ManuRomera/mr-cuentos-de-animas",
+  "bugs": "https://github.com/ManuRomera/mr-cuentos-de-animas/issues",
+  "manifest": "https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest/download/system.json",
+  "download": "https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest/download/mr-cuentos-de-animas.zip",
+  "readme": "https://github.com/ManuRomera/mr-cuentos-de-animas#readme",
+  "changelog": "https://github.com/ManuRomera/mr-cuentos-de-animas/blob/main/CHANGELOG.md",
+  "license": "LICENSE"
+}

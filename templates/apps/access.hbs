@@ -1,0 +1,7 @@
+<div class="cda-access-body">
+  <header><i class="fa-solid fa-universal-access"></i><div><h2>{{localize "CdA.Access.Title"}}</h2><p>{{localize "CdA.Access.Intro"}}</p></div></header>
+  <label class="cda-range">{{localize "CdA.Access.Scale"}} <input type="range" name="textScale" min="85" max="160" step="5" value="{{scale}}"><output data-scale-out>{{scale}}%</output></label>
+  <div class="cda-access-toggles">{{#each toggles}}<button type="button" data-action="toggle" data-key="{{key}}" class="{{#if on}}on{{/if}}"><i class="fa-solid {{#if on}}fa-toggle-on{{else}}fa-toggle-off{{/if}}"></i><span>{{label}}</span></button>{{/each}}</div>
+  <div class="cda-ink-row"><span>{{localize "CdA.Access.Ink"}}</span>{{#each inks}}<button type="button" data-action="ink" data-key="{{key}}" class="{{#if selected}}selected{{/if}}" style="--swatch:{{color}}" aria-label="{{key}}"></button>{{/each}}</div>
+  <button type="button" class="cda-reset" data-action="reset"><i class="fa-solid fa-rotate-left"></i>{{localize "CdA.Access.Reset"}}</button>
+</div>

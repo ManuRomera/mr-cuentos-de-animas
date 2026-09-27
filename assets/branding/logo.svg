@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 460"><defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eadfca"/><stop offset=".55" stop-color="#cdbb9b"/><stop offset="1" stop-color="#a58d69"/></linearGradient>
+  <radialGradient id="inkfade"><stop stop-color="#3d352b" stop-opacity=".18"/><stop offset="1" stop-color="#11100f" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e5c879"/><stop offset=".5" stop-color="#9a7134"/><stop offset="1" stop-color="#5e431e"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity=".55"/></filter>
+  <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="7" result="n"/><feBlend in="SourceGraphic" in2="n" mode="multiply"/></filter>
+  <pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(22)"><path d="M0 1h9" stroke="#231f1b" stroke-opacity=".08" stroke-width="1"/></pattern>
+</defs><g transform="translate(700 200)"><circle r="145" fill="none" stroke="#b8924c" stroke-width="3" opacity=".8"/><path d="M0-132c-48 37-68 92-40 142 12 22 26 35 40 49 14-14 28-27 40-49 28-50 8-105-40-142z" fill="none" stroke="#c6a867" stroke-width="6"/><path d="M-112 64C-63 28-31 5 0-46 31 5 63 28 112 64" fill="none" stroke="#c6a867" stroke-width="4"/></g><text x="700" y="405" text-anchor="middle" font-family="Georgia,serif" font-size="108" letter-spacing="15" fill="#e4d8bf">CUENTOS DE ÁNIMAS</text><text x="700" y="448" text-anchor="middle" font-family="Georgia,serif" font-size="24" letter-spacing="9" fill="#b8924c">MR · FOUNDRY VTT</text></svg>
