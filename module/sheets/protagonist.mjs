@@ -36,8 +36,7 @@ export class ProtagonistSheet extends BaseActorSheet {
       spirit: resource(actor, "spirit"), determination: resource(actor, "determination"),
       splitOk: validSplit(s.spirit.max, s.determination.max),
       total: RULES.resourceTotal,
-      // El reparto se fija al crear: con el relato en marcha ya no se toca.
-      canSplit: this.isEditable && StateService.get().protagonistUuid !== actor.uuid,
+      canSplit: this.isEditable,
       splitMin: s.spirit.max <= RULES.resourceMin, splitMax: s.spirit.max >= RULES.resourceMax,
       missing: creationProblems(actor).map(k => game.i18n.localize(`CdA.Create.Missing.${k}`)),
       traits: traits.slice(0, 4).map((x, i) => ({ ...x, i, n: i + 1 })),
@@ -57,11 +56,22 @@ export class ProtagonistSheet extends BaseActorSheet {
     const value = this.document.system[key].value;
     await this.document.update({ [`system.${key}.value`]: value === n ? n - 1 : n });
   }
-  /** Mueve un punto entre Espíritu y Determinación sin salir nunca del reparto del libro (10, mínimo 3). */
+  /**
+   * Mueve un punto entre Espíritu y Determinación sin salir nunca del reparto del libro (10, mínimo 3).
+   * Fuera de un relato los contadores quedan llenos; en pleno relato el punto se mueve también
+   * entre los contadores actuales, sin rellenar lo ya gastado.
+   */
   static async #split(event, target) {
-    const spirit = Math.clamp(this.document.system.spirit.max + Number(target.dataset.delta), RULES.resourceMin, RULES.resourceMax);
+    const s = this.document.system;
+    const spirit = Math.clamp(s.spirit.max + Number(target.dataset.delta), RULES.resourceMin, RULES.resourceMax);
     const determination = RULES.resourceTotal - spirit;
-    await this.document.update({ "system.spirit": { value: spirit, max: spirit }, "system.determination": { value: determination, max: determination } });
+    const shift = spirit - s.spirit.max;
+    const playing = StateService.get().protagonistUuid === this.document.uuid;
+    const value = (r, max, d) => playing ? Math.clamp(r.value + d, 0, max) : max;
+    await this.document.update({
+      "system.spirit": { value: value(s.spirit, spirit, shift), max: spirit },
+      "system.determination": { value: value(s.determination, determination, -shift), max: determination }
+    });
   }
   /** Vuelve a tirar un solo campo. */
   static async #roll(event, target) {

@@ -25,6 +25,12 @@ export async function randomProtagonist() {
   return actor;
 }
 
+/** Espíritu del reparto de un protagonista, si su reparto es válido. */
+function actorSpirit(uuid) {
+  const s = uuid ? fromUuidSync(uuid)?.system : null;
+  return s && validSplit(s.spirit.max, s.determination.max) ? s.spirit.max : null;
+}
+
 /** Nuevo relato: escenario, protagonista, modo y reparto de recursos en una sola vista. */
 export class StartApp extends SystemApp {
   static MEMORY = "start";
@@ -54,7 +60,8 @@ export class StartApp extends SystemApp {
     sel.scenario ||= state.scenarioUuid || scenarios[0]?.uuid || "";
     const scenario = fromUuidSync(sel.scenario);
     sel.mode ||= scenario?.system.modes[0] ?? MODES.GUARDIAN;
-    sel.spirit ??= scenario?.system.recommendedSpirit ?? 5;
+    // El reparto parte del protagonista elegido; si es nuevo, del que recomienda el escenario.
+    sel.spirit ??= actorSpirit(sel.actor) ?? scenario?.system.recommendedSpirit ?? 5;
     const protagonists = game.actors.filter(a => a.type === "protagonist");
     return {
       scenarios: scenarios.map(s => ({ uuid: s.uuid, name: s.name, img: s.system.cover || s.img, duration: s.system.duration, hook: s.system.hook, selected: s.uuid === sel.scenario })),
@@ -78,8 +85,7 @@ export class StartApp extends SystemApp {
     // Al elegir un protagonista ya hecho, el reparto parte del suyo (si es válido).
     this.element.querySelector("select[name=actor]")?.addEventListener("change", e => {
       this.selected.actor = e.target.value;
-      const s = fromUuidSync(e.target.value)?.system;
-      if (s && validSplit(s.spirit.max, s.determination.max)) this.selected.spirit = s.spirit.max;
+      this.selected.spirit = actorSpirit(e.target.value) ?? this.selected.spirit;
       this.render();
     });
   }
@@ -88,7 +94,7 @@ export class StartApp extends SystemApp {
     this.selected.scenario = target.dataset.uuid;
     const s = fromUuidSync(target.dataset.uuid);
     this.selected.mode = s?.system.modes[0] ?? this.selected.mode;
-    this.selected.spirit = s?.system.recommendedSpirit ?? this.selected.spirit;
+    this.selected.spirit = actorSpirit(this.selected.actor) ?? s?.system.recommendedSpirit ?? this.selected.spirit;
     this.render();
   }
   static #pickMode(event, target) { this.selected.mode = target.dataset.mode; this.render(); }

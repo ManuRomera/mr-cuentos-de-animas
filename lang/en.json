@@ -647,7 +647,7 @@
       },
       "split": {
         "Title": "Split",
-        "Short": "Ten points between Spirit and Determination, at least 3 and at most 7 in each. It is set when the protagonist is created; once the story is running it cannot change."
+        "Short": "Ten points between Spirit and Determination, at least 3 and at most 7 in each. The arrows move one point from one to the other within those rules; mid-story they do not refill what was spent."
       },
       "traits": {
         "Title": "Traits",

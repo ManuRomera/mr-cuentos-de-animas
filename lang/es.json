@@ -647,7 +647,7 @@
       },
       "split": {
         "Title": "Reparto",
-        "Short": "Diez puntos entre Espíritu y Determinación, mínimo 3 y máximo 7 en cada uno. Se fija al crear el protagonista; con el relato en marcha ya no se cambia."
+        "Short": "Diez puntos entre Espíritu y Determinación, mínimo 3 y máximo 7 en cada uno. Las flechas mueven un punto de uno a otro sin salirse de esas reglas; en pleno relato no rellenan lo ya gastado."
       },
       "traits": {
         "Title": "Rasgos",
