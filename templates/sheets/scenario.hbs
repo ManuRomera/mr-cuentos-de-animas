@@ -1,28 +1,149 @@
+{{#*inline "entries"}}{{> "systems/mr-cuentos-de-animas/templates/partials/entries.hbs"}}{{/inline}}
 <div class="cda-scenario-sheet">
-  <header class="cda-scenario-hero">
-    <img src="{{system.cover}}" data-edit="system.cover" alt="">
-    <div><span class="eyebrow">{{localize "CdA.Scenario.Kicker"}}</span><input class="cda-name" name="name" value="{{item.name}}"><input name="system.hook" value="{{system.hook}}" placeholder="{{localize 'CdA.Scenario.HookPlaceholder'}}"><div class="cda-meta-row"><input name="system.author" value="{{system.author}}" placeholder="{{localize 'CdA.Scenario.Author'}}"><input name="system.duration" value="{{system.duration}}" placeholder="{{localize 'CdA.Scenario.Duration'}}"></div></div>
-    <div class="cda-scenario-actions"><button type="button" data-action="play"><i class="fa-solid fa-play"></i>{{localize "CdA.Common.Play"}}</button><button type="button" data-action="export" class="subtle"><i class="fa-solid fa-file-export"></i>JSON</button></div>
+  <header class="cda-scenario-head" style="--cover:{{cdaUrl cover}}">
+    <div class="cda-scenario-title">
+      <span class="cda-kicker">{{localize "CdA.Scenario.Kicker"}}{{#if active}} · <b>{{localize "CdA.Scenario.Active"}}</b>{{/if}}</span>
+      <input class="cda-name" type="text" name="name" value="{{item.name}}" aria-label="{{localize 'CdA.Common.Title'}}">
+      <input class="cda-hook-input" type="text" name="system.hook" value="{{system.hook}}" placeholder="{{localize 'CdA.Scenario.Hook'}}" aria-label="{{localize 'CdA.Scenario.Hook'}}">
+    </div>
+    <div class="cda-row-end">
+      <button type="button" data-action="export"><i class="fa-solid fa-file-export" aria-hidden="true"></i>{{localize "CdA.Library.Export"}}</button>
+      {{#if gm}}<button type="button" class="cda-primary" data-action="play"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.Library.Play"}}</button>{{/if}}
+    </div>
   </header>
-  <main class="cda-sheet-scroll cda-scenario-grid">
-    <section class="cda-paper-panel wide"><header><i class="fa-solid fa-scroll"></i><h3>{{localize "CdA.Scenario.Premise"}}</h3></header><div class="cda-two"><label>{{localize "CdA.Scenario.Synopsis"}}<textarea name="system.synopsis" rows="8">{{system.synopsis}}</textarea></label><label>{{localize "CdA.Scenario.GuardianNotes"}}<textarea name="system.instructions" rows="8">{{system.instructions}}</textarea></label></div></section>
 
-    <section class="cda-paper-panel"><header><i class="fa-solid fa-users"></i><h3>{{localize "CdA.Scenario.Characters"}}</h3><button type="button" data-action="add" data-list="secondaryCharacters"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each characters}}<article><div class="cda-repeat-head"><input name="system.secondaryCharacters.{{i}}.name" value="{{name}}"><button type="button" data-action="remove" data-list="secondaryCharacters" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.secondaryCharacters.{{i}}.description" rows="3">{{description}}</textarea><textarea class="secret" name="system.secondaryCharacters.{{i}}.secret" rows="2" placeholder="{{localize 'CdA.Scenario.GuardianSecret'}}">{{secret}}</textarea><input type="hidden" name="system.secondaryCharacters.{{i}}.image" value="{{image}}"></article>{{/each}}</div></section>
+  <nav class="tabs cda-scenario-tabs" aria-label="{{localize 'CdA.Scenario.Kicker'}}">
+    {{#each tabs}}<button type="button" class="{{cssClass}}" data-action="tab" data-group="scenario" data-tab="{{id}}"><i class="{{icon}}" aria-hidden="true"></i><span>{{localize label}}</span></button>{{/each}}
+  </nav>
 
-    <section class="cda-paper-panel"><header><i class="fa-solid fa-magnifying-glass"></i><h3>{{localize "CdA.Scenario.Clues"}}</h3><button type="button" data-action="add" data-list="clues"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each clues}}<article><div class="cda-repeat-head"><input name="system.clues.{{i}}.title" value="{{title}}"><button type="button" data-action="remove" data-list="clues" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.clues.{{i}}.text" rows="3">{{text}}</textarea><input name="system.clues.{{i}}.image" value="{{image}}" placeholder="{{localize 'CdA.Scenario.CardArt'}}"><input type="hidden" name="system.clues.{{i}}.difficulty" value="0"></article>{{/each}}</div></section>
+  <div class="cda-scenario-scroll">
+    {{!-- EN JUEGO --}}
+    {{#if tabs.play}}
+    <section class="tab {{tabs.play.cssClass}}" data-group="scenario" data-tab="play">
+      {{#if play}}
+      <div class="cda-play-grid">
+        <div class="cda-play-scene">
+          <span class="cda-kicker">{{play.phase}} · {{localize "CdA.Kind.gray"}} {{play.gray}}/3</span>
+          {{#if play.scene}}
+          <div class="cda-scene-nav">
+            <button type="button" class="cda-icon-btn" data-action="scene" data-delta="-1" {{#unless play.hasPrev}}disabled{{/unless}} aria-label="{{localize 'CdA.Guardian.PrevScene'}}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+            <h3>{{play.scene.title}} <small>{{play.scene.n}}/{{play.scene.of}}</small></h3>
+            <button type="button" class="cda-icon-btn" data-action="scene" data-delta="1" {{#unless play.hasNext}}disabled{{/unless}} aria-label="{{localize 'CdA.Guardian.NextScene'}}"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+          </div>
+          <p class="cda-read">{{play.scene.text}}</p>
+          {{#if play.scene.guardian}}<p class="cda-gm-text"><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>{{play.scene.guardian}}</p>{{/if}}
+          {{#if play.scene.handout}}<button type="button" data-action="handout" data-src="{{play.scene.handout}}" data-title="{{play.scene.title}}"><i class="fa-solid fa-image" aria-hidden="true"></i>{{localize "CdA.Scenario.ShowHandout"}}</button>{{/if}}
+          {{/if}}
+          <div class="cda-g-row cda-truth-quick"><input type="text" placeholder="{{localize 'CdA.Truth.Placeholder'}}" aria-label="{{localize 'CdA.Truth.Statement'}}"><button type="button" data-action="truth"><i class="fa-solid fa-eye" aria-hidden="true"></i>{{localize "CdA.Truth.Register"}}</button></div>
+          <div class="cda-row-end">
+            <button type="button" data-action="openApp" data-app="guardian"><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>{{localize "CdA.App.Guardian"}}</button>
+            <button type="button" data-action="openApp" data-app="truths"><i class="fa-solid fa-eye" aria-hidden="true"></i>{{localize "CdA.App.Truths"}}</button>
+            <button type="button" data-action="openApp" data-app="table"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.App.Table"}}</button>
+          </div>
+        </div>
+        <div class="cda-play-side">
+          <h4>{{localize "CdA.Scenario.Tab.clues"}}</h4>
+          <div class="cda-chip-row">{{#each play.clues}}<button type="button" class="cda-chip" data-action="reveal" data-index="{{i}}" title="{{text}}"><i class="fa-solid fa-key" aria-hidden="true"></i>{{title}}</button>{{/each}}</div>
+          <h4>{{localize "CdA.App.Memories"}}</h4>
+          <div class="cda-chip-row">{{#each play.memories}}<button type="button" class="cda-chip" data-action="launch" data-index="{{i}}" title="{{prompt}}"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i>{{title}}</button>{{/each}}</div>
+          {{#if play.handouts.length}}<h4>{{localize "CdA.Scenario.Handouts"}}</h4>
+          <div class="cda-chip-row">{{#each play.handouts}}<button type="button" class="cda-chip" data-action="handout" data-src="{{image}}" data-title="{{title}}"><i class="fa-solid fa-image" aria-hidden="true"></i>{{title}}</button>{{/each}}</div>{{/if}}
+          <h4>{{localize "CdA.Scenario.Tab.characters"}}</h4>
+          <ul class="cda-cast">{{#each play.characters}}<li><strong>{{name}}</strong> {{description}}{{#if secret}}<em>{{secret}}</em>{{/if}}</li>{{/each}}</ul>
+        </div>
+      </div>
+      {{else}}
+      <div class="cda-empty"><p>{{localize "CdA.Scenario.NotActive"}}</p><button type="button" class="cda-primary" data-action="play"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.Library.Play"}}</button></div>
+      {{/if}}
+    </section>
+    {{/if}}
 
-    <section class="cda-paper-panel"><header><i class="fa-solid fa-tree"></i><h3>{{localize "CdA.Scenario.Environment"}}</h3><button type="button" data-action="add" data-list="environmentObstacles"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each env}}<article><div class="cda-repeat-head"><input name="system.environmentObstacles.{{i}}.title" value="{{title}}"><input class="difficulty" type="number" name="system.environmentObstacles.{{i}}.difficulty" value="{{difficulty}}" min="1" max="10"><button type="button" data-action="remove" data-list="environmentObstacles" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.environmentObstacles.{{i}}.text" rows="3">{{text}}</textarea><input name="system.environmentObstacles.{{i}}.image" value="{{image}}" placeholder="{{localize 'CdA.Scenario.CardArt'}}"></article>{{/each}}</div></section>
+    {{!-- PRESENTACIÓN --}}
+    <section class="tab {{tabs.presentation.cssClass}}" data-group="scenario" data-tab="presentation">
+      <div class="cda-present-grid">
+        <figure class="cda-cover-edit"><img src="{{cover}}" alt="">
+          <span class="cda-path"><input type="text" name="system.cover" value="{{system.cover}}" aria-label="{{localize 'CdA.Scenario.Cover'}}"><button type="button" class="cda-icon-btn" data-action="pick" aria-label="{{localize 'CdA.Common.Browse'}}"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></button></span>
+        </figure>
+        <div class="cda-form-grid">
+          <label><span>{{localize "CdA.Scenario.Author"}}</span><input type="text" name="system.author" value="{{system.author}}"></label>
+          <label><span>{{localize "CdA.Scenario.Duration"}}</span><input type="text" name="system.duration" value="{{system.duration}}"></label>
+          <label><span>{{localize "CdA.Scenario.Players"}}</span><input type="text" name="system.players" value="{{system.players}}"></label>
+          <label><span>{{localize "CdA.Scenario.Tone"}}</span><input type="text" name="toneText" value="{{toneText}}"></label>
+          <label class="wide"><span>{{localize "CdA.Scenario.ContentNotes"}}</span><input type="text" name="notesText" value="{{notesText}}"></label>
+          <fieldset class="wide"><legend>{{localize "CdA.Scenario.Modes"}}</legend>{{#each modeChoices}}<label class="cda-check"><input type="checkbox" name="modeSet.{{key}}" {{checked checked}}>{{label}}</label>{{/each}}</fieldset>
+          <fieldset class="wide"><legend>{{localize "CdA.Scenario.Tags"}}</legend>{{#each tagChoices}}<label class="cda-check"><input type="checkbox" name="tagSet.{{key}}" {{checked checked}}>{{label}}</label>{{/each}}</fieldset>
+        </div>
+      </div>
+      <div class="cda-two-col">
+        <div class="cda-field wide"><span>{{localize "CdA.Scenario.Synopsis"}}</span><prose-mirror name="system.synopsis" value="{{system.synopsis}}" toggled>{{{enriched.synopsis}}}</prose-mirror></div>
+        <div class="cda-field wide"><span>{{localize "CdA.Scenario.Introduction"}}</span><prose-mirror name="system.introduction" value="{{system.introduction}}" toggled>{{{enriched.introduction}}}</prose-mirror></div>
+      </div>
+    </section>
 
-    <section class="cda-paper-panel"><header><i class="fa-solid fa-user-lock"></i><h3>{{localize "CdA.Scenario.CharacterObstacles"}}</h3><button type="button" data-action="add" data-list="characterObstacles"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each char}}<article><div class="cda-repeat-head"><input name="system.characterObstacles.{{i}}.title" value="{{title}}"><input class="difficulty" type="number" name="system.characterObstacles.{{i}}.difficulty" value="{{difficulty}}" min="1" max="10"><button type="button" data-action="remove" data-list="characterObstacles" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.characterObstacles.{{i}}.text" rows="3">{{text}}</textarea><input name="system.characterObstacles.{{i}}.image" value="{{image}}" placeholder="{{localize 'CdA.Scenario.CardArt'}}"></article>{{/each}}</div></section>
+    <section class="tab {{tabs.characters.cssClass}}" data-group="scenario" data-tab="characters">{{> entries entries=lists.characters list="characters" editable=editable}}</section>
+    <section class="tab {{tabs.clues.cssClass}}" data-group="scenario" data-tab="clues">{{> entries entries=lists.clues list="clues" editable=editable}}</section>
+    <section class="tab {{tabs.obstacles.cssClass}}" data-group="scenario" data-tab="obstacles">
+      <h3 class="cda-section-title"><i class="fa-solid fa-tree" aria-hidden="true"></i>{{localize "CdA.Kind.environment"}}</h3>
+      {{> entries entries=lists.environmentObstacles list="environmentObstacles" editable=editable}}
+      <h3 class="cda-section-title"><i class="fa-solid fa-user-large" aria-hidden="true"></i>{{localize "CdA.Kind.character"}}</h3>
+      {{> entries entries=lists.characterObstacles list="characterObstacles" editable=editable}}
+    </section>
+    <section class="tab {{tabs.incidents.cssClass}}" data-group="scenario" data-tab="incidents">{{> entries entries=lists.incidents list="incidents" editable=editable}}</section>
+    <section class="tab {{tabs.tension.cssClass}}" data-group="scenario" data-tab="tension"><p class="cda-lede">{{localize "CdA.Scenario.TensionHint"}}</p>{{> entries entries=lists.scenes list="scenes" editable=editable}}</section>
 
-    <section class="cda-paper-panel"><header><i class="fa-solid fa-wand-sparkles"></i><h3>{{localize "CdA.Scenario.Incidents"}}</h3><button type="button" data-action="add" data-list="incidents"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each incidents}}<article><div class="cda-repeat-head"><input name="system.incidents.{{i}}.title" value="{{title}}"><button type="button" data-action="remove" data-list="incidents" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.incidents.{{i}}.text" rows="3">{{text}}</textarea><input name="system.incidents.{{i}}.image" value="{{image}}" placeholder="{{localize 'CdA.Scenario.CardArt'}}"><input type="hidden" name="system.incidents.{{i}}.difficulty" value="0"></article>{{/each}}</div></section>
+    {{!-- DAMAS GRISES --}}
+    <section class="tab {{tabs.grays.cssClass}}" data-group="scenario" data-tab="grays">
+      <div class="cda-gray-editor">
+        {{#each grays}}
+        <article class="cda-gray-card">
+          <img src="{{img}}" alt="">
+          <div>
+            <span class="cda-kicker">{{localize "CdA.Kind.gray"}} {{roman}}</span>
+            <input type="text" name="system.tension.{{i}}.title" value="{{entry.title}}" placeholder="{{localize 'CdA.Common.Title'}}" aria-label="{{localize 'CdA.Common.Title'}}">
+            <textarea name="system.tension.{{i}}.text" rows="4" aria-label="{{localize 'CdA.Common.Text'}}">{{entry.text}}</textarea>
+            {{#if ../gm}}<label class="cda-field gm"><span><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i> {{localize "CdA.Field.guardian"}}</span><textarea name="system.tension.{{i}}.guardian" rows="2">{{entry.guardian}}</textarea></label>{{/if}}
+          </div>
+        </article>
+        {{/each}}
+      </div>
+    </section>
 
-    <section class="cda-paper-panel cda-gray-editor"><header><i class="fa-solid fa-ghost"></i><h3>{{localize "CdA.Scenario.Gray"}}</h3></header><div class="cda-repeat-list">{{#each tension}}<article><div class="cda-repeat-head"><span class="roman">{{i}}</span><input name="system.tension.{{i}}.title" value="{{title}}"></div><textarea name="system.tension.{{i}}.text" rows="4">{{text}}</textarea></article>{{/each}}</div></section>
+    <section class="tab {{tabs.epilogues.cssClass}}" data-group="scenario" data-tab="epilogues">
+      <div class="cda-epilogue-editor">
+        {{#each epilogues}}<label class="cda-field epilogue-{{key}}"><span>{{label}}</span><small>{{hint}}</small><textarea name="system.epilogues.{{key}}" rows="6">{{value}}</textarea></label>{{/each}}
+      </div>
+    </section>
+    <section class="tab {{tabs.memories.cssClass}}" data-group="scenario" data-tab="memories">{{> entries entries=lists.memories list="memories" editable=editable}}</section>
+    <section class="tab {{tabs.truths.cssClass}}" data-group="scenario" data-tab="truths"><p class="cda-lede">{{localize "CdA.Scenario.TruthsHint"}}</p>{{> entries entries=lists.truths list="truths" editable=editable}}</section>
 
-    <section class="cda-paper-panel"><header><i class="fa-solid fa-cloud-moon"></i><h3>{{localize "CdA.Scenario.MemoryQuestions"}}</h3><button type="button" data-action="add" data-list="memories"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each memories}}<article><div class="cda-repeat-head"><input name="system.memories.{{i}}.title" value="{{title}}"><button type="button" data-action="remove" data-list="memories" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.memories.{{i}}.prompt" rows="2">{{prompt}}</textarea><textarea name="system.memories.{{i}}.followUp" rows="2" placeholder="{{localize 'CdA.Scenario.FollowUp'}}">{{followUp}}</textarea></article>{{/each}}</div></section>
+    {{!-- ARTE --}}
+    <section class="tab {{tabs.art.cssClass}}" data-group="scenario" data-tab="art">
+      <div class="cda-form-grid">
+        <label class="wide"><span>{{localize "CdA.Scenario.CustomBack"}}</span><span class="cda-path"><input type="text" name="system.customBack" value="{{system.customBack}}"><button type="button" class="cda-icon-btn" data-action="pick" aria-label="{{localize 'CdA.Common.Browse'}}"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></button></span></label>
+      </div>
+      <h3 class="cda-section-title">{{localize "CdA.Scenario.Handouts"}}</h3>
+      {{> entries entries=lists.handouts list="handouts" editable=editable}}
+    </section>
 
-    <section class="cda-paper-panel wide"><header><i class="fa-solid fa-palette"></i><h3>{{localize "CdA.Scenario.Art"}}</h3></header><div class="cda-two"><label>{{localize "CdA.Scenario.Cover"}}<input name="system.cover" value="{{system.cover}}" placeholder="systems/.../cover.webp"></label><label>{{localize "CdA.Scenario.Back"}}<input name="system.customBack" value="{{system.customBack}}" placeholder="Vacío = reverso del sistema"></label></div><p class="hint">{{localize "CdA.Scenario.ArtHint"}}</p></section>
+    {{!-- SONIDO --}}
+    <section class="tab {{tabs.sound.cssClass}}" data-group="scenario" data-tab="sound">
+      <p class="cda-lede">{{localize "CdA.Scenario.SoundHint"}}</p>
+      <div class="cda-form-grid">
+        {{#each sounds}}
+        <label><span>{{label}}</span><select name="system.sounds.{{key}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}{{#if custom}}<option value="{{value}}" selected>{{value}}</option>{{/if}}</select></label>
+        {{/each}}
+      </div>
+    </section>
 
-    <section class="cda-paper-panel wide"><header><i class="fa-solid fa-door-open"></i><h3>{{localize "CdA.Scenario.Epilogues"}}</h3></header><div class="cda-epilogues"><label><strong>2 o más</strong><textarea name="system.epilogues.high" rows="4">{{system.epilogues.high}}</textarea></label><label><strong>1</strong><textarea name="system.epilogues.low" rows="4">{{system.epilogues.low}}</textarea></label><label><strong>0</strong><textarea name="system.epilogues.zero" rows="4">{{system.epilogues.zero}}</textarea></label></div></section>
-  </main>
+    {{!-- CONFIGURACIÓN --}}
+    <section class="tab {{tabs.config.cssClass}}" data-group="scenario" data-tab="config">
+      <div class="cda-form-grid">
+        <label><span>{{localize "CdA.Scenario.DeckVariant"}}</span><select name="system.deckVariant">{{#each variants}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+        <label><span>{{localize "CdA.Scenario.RecommendedSpirit"}}</span><input type="number" name="system.recommendedSpirit" value="{{system.recommendedSpirit}}" min="3" max="7"></label>
+        <label><span>{{localize "CdA.Scenario.RecommendedDetermination"}}</span><input type="number" name="system.recommendedDetermination" value="{{system.recommendedDetermination}}" min="3" max="7"></label>
+        <p class="cda-note wide">{{localize "CdA.Scenario.CardCount"}}: <b>{{counts.cards}}</b> + 3 {{localize "CdA.Kind.gray"}}</p>
+      </div>
+      {{#if gm}}<label class="cda-field wide gm"><span><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i> {{localize "CdA.Scenario.GuardianNotes"}}</span></label><prose-mirror name="system.guardianNotes" value="{{system.guardianNotes}}" toggled>{{{enriched.guardianNotes}}}</prose-mirror>{{/if}}
+    </section>
+  </div>
 </div>

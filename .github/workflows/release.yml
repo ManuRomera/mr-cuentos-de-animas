@@ -1,10 +1,7 @@
-name: Release Foundry System
+name: Publicar
 on:
-  workflow_dispatch:
   push:
-    branches: [main]
-    paths:
-      - ".release-trigger"
+    tags: ["v*"]
 permissions:
   contents: write
 jobs:
@@ -15,17 +12,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Read version
-        run: echo "VERSION=$(jq -r .version package.json)" >> "$GITHUB_ENV"
+      - name: Comprobar que la etiqueta coincide con system.json
+        run: |
+          V=$(jq -r .version system.json)
+          [ "v$V" = "${GITHUB_REF_NAME}" ] || { echo "system.json dice $V y la etiqueta es ${GITHUB_REF_NAME}"; exit 1; }
       - run: npm test
       - run: npm run check
       - run: npm run build
-      - name: Create GitHub Release
+      - name: Crear la release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.VERSION }}
-          target_commitish: ${{ github.sha }}
           files: |
             dist/mr-cuentos-de-animas.zip
             dist/system.json
-          generate_release_notes: true
+          body_path: dist/release-notes.md

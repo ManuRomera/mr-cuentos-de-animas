@@ -1,24 +1,25 @@
 {
   "id": "mr-cuentos-de-animas",
   "title": "MR · Cuentos de Ánimas",
-  "description": "Sistema no oficial para Foundry VTT inspirado en Cuentos de Ánimas: horror narrativo, cartas, Espíritu, Determinación, Damas Grises, diario y un modo íntimo 1+1. No redistribuye el texto del juego original.",
-  "version": "1.0.2",
+  "description": "Sistema no oficial para Foundry VTT inspirado en Cuentos de Ánimas: relatos de horror rural y folclore con la Mesa de Ánimas, cartas físicas, Espíritu y Determinación, Damas Grises, diario, verdades y recuerdos, y un modo íntimo 1 + 1. No redistribuye texto, cartas ni ilustraciones del juego original.",
+  "version": "1.1.0",
   "compatibility": {
     "minimum": "13",
-    "verified": "14.366"
+    "verified": "13.351",
+    "maximum": "14"
   },
   "authors": [
     {
       "name": "Manu Romera",
       "url": "https://github.com/ManuRomera",
       "flags": {
-        "role": "Diseño e implementación Foundry VTT"
+        "role": "Diseño e implementación"
       }
     },
     {
       "name": "OpenAI",
       "flags": {
-        "role": "Asistencia de desarrollo y diseño visual"
+        "role": "Asistencia de desarrollo y diseño visual (v1.0)"
       }
     }
   ],
@@ -45,7 +46,7 @@
     "Actor": {
       "protagonist": {
         "htmlFields": [
-          "physicalDescription",
+          "description",
           "backstory",
           "notes"
         ]
@@ -55,31 +56,8 @@
       "scenario": {
         "htmlFields": [
           "synopsis",
-          "instructions"
-        ]
-      },
-      "clue": {
-        "htmlFields": [
-          "text",
-          "secret"
-        ]
-      },
-      "obstacle": {
-        "htmlFields": [
-          "text",
-          "secret"
-        ]
-      },
-      "memory": {
-        "htmlFields": [
-          "text",
-          "secret"
-        ]
-      },
-      "truth": {
-        "htmlFields": [
-          "text",
-          "secret"
+          "introduction",
+          "guardianNotes"
         ]
       }
     }
@@ -96,9 +74,27 @@
     {
       "type": "setup",
       "url": "systems/mr-cuentos-de-animas/assets/branding/cover.webp",
-      "thumbnail": "systems/mr-cuentos-de-animas/assets/branding/logo.svg"
+      "thumbnail": "systems/mr-cuentos-de-animas/assets/branding/logo.webp"
+    },
+    {
+      "type": "icon",
+      "url": "systems/mr-cuentos-de-animas/assets/branding/icon.svg"
     }
   ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "hbs",
+        "json"
+      ],
+      "paths": [
+        "styles",
+        "templates",
+        "lang"
+      ]
+    }
+  },
   "url": "https://github.com/ManuRomera/mr-cuentos-de-animas",
   "bugs": "https://github.com/ManuRomera/mr-cuentos-de-animas/issues",
   "manifest": "https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest/download/system.json",

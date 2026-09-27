@@ -1,0 +1,10 @@
+<div class="cda-diagnostic">
+  <p class="cda-status {{#if ok}}ok{{else}}bad{{/if}}"><i class="fa-solid {{#if ok}}fa-circle-check{{else}}fa-triangle-exclamation{{/if}}" aria-hidden="true"></i>{{#if ok}}{{localize "CdA.Diagnostic.AllGood"}}{{else}}{{localize "CdA.Diagnostic.Problems"}}{{/if}}</p>
+  {{#if errors.length}}<ul class="cda-diag-list">{{#each errors}}<li><strong>{{phase}}</strong> {{message}}</li>{{/each}}</ul>{{/if}}
+  {{#if missing.length}}<ul class="cda-diag-list">{{#each missing}}<li><strong>{{localize "CdA.Diagnostic.Missing"}}</strong> {{this}}</li>{{/each}}</ul>{{/if}}
+  <textarea readonly aria-label="{{localize 'CdA.Diagnostic.Title'}}">{{json}}</textarea>
+  <footer class="cda-row-end">
+    <button type="button" data-action="refresh"><i class="fa-solid fa-rotate" aria-hidden="true"></i>{{localize "CdA.Diagnostic.Refresh"}}</button>
+    <button type="button" class="cda-primary" data-action="copy"><i class="fa-regular fa-copy" aria-hidden="true"></i>{{localize "CdA.Diagnostic.Copy"}}</button>
+  </footer>
+</div>

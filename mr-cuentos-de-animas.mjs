@@ -1,105 +1,221 @@
+/**
+ * MR · Cuentos de Ánimas — arranque.
+ *
+ * Regla de oro: el sistema nunca puede dejar Foundry inservible. Cada fase va
+ * aislada en `bootPhase`: si falla, avisa, lo anota para el diagnóstico y el
+ * resto sigue. Nada se abre solo al entrar; la Mesa se abre a petición.
+ */
 import { DATA_MODELS } from "./module/models.mjs";
-import { DocumentSheetConfig, addSceneTool, diagnostic, generation, loadTemplates, supportsV2 } from "./module/compat.mjs";
-import { ASSETS, PATH, SYSTEM_ID, TEMPLATES, VERSION } from "./module/constants.mjs";
-import { registerSettings, applyPreferences } from "./module/settings.mjs";
+import { DocumentSheetConfig, addControlGroup, loadTemplates, welcomeSceneData } from "./module/compat.mjs";
+import { ASSETS, FLAGS, LOG, SYSTEM_ID, TEMPLATES } from "./module/constants.mjs";
+import { applyPreferences, registerMenus, registerSettings } from "./module/settings.mjs";
+import { BOOT, bootPhase, diagnostic } from "./module/services/diagnostic.mjs";
 import { ProtagonistSheet } from "./module/sheets/protagonist.mjs";
 import { ScenarioSheet } from "./module/sheets/scenario.mjs";
+import { Apps, openApp } from "./module/apps/registry.mjs";
+import { cssUrl } from "./module/apps/view.mjs";
 import { TableApp } from "./module/apps/table.mjs";
 import { LibraryApp } from "./module/apps/library.mjs";
+import { GuardianApp } from "./module/apps/guardian.mjs";
+import { DiaryApp } from "./module/apps/diary.mjs";
+import { ArchiveApp } from "./module/apps/archive.mjs";
 import { AccessPanel } from "./module/apps/access.mjs";
 import { SafetyPanel } from "./module/apps/safety.mjs";
-import { DiaryApp } from "./module/apps/diary.mjs";
-import { TruthRegistryApp } from "./module/apps/truths.mjs";
-import { RichHelp } from "./module/services/help.mjs";
+import { StartApp, createProtagonist } from "./module/apps/start.mjs";
+import { WelcomeApp } from "./module/apps/welcome.mjs";
+import { DiagnosticApp } from "./module/apps/diagnostic.mjs";
 import { ContentService } from "./module/services/content.mjs";
 import { DeckService } from "./module/services/decks.mjs";
 import { GameplayService } from "./module/services/gameplay.mjs";
-import { SessionService } from "./module/services/session.mjs";
 import { StateService } from "./module/services/state.mjs";
+import { Records } from "./module/services/records.mjs";
+import { RichHelp } from "./module/services/help.mjs";
+import { SoundService } from "./module/services/sound.mjs";
+import { Presenter } from "./module/services/presenter.mjs";
+
+const TEMPLATE_FILES = [
+  "apps/table.hbs", "apps/guardian.hbs", "apps/library.hbs", "apps/start.hbs", "apps/diary.hbs", "apps/archive.hbs",
+  "apps/access.hbs", "apps/safety.hbs", "apps/welcome.hbs", "apps/diagnostic.hbs",
+  "sheets/protagonist.hbs", "sheets/scenario.hbs", "partials/card.hbs", "partials/entries.hbs"
+].map(p => `${TEMPLATES}/${p}`);
+
+/* -------------------------------------------- */
+/*  init                                        */
+/* -------------------------------------------- */
 
 Hooks.once("init", () => {
-  console.info(`MR · Cuentos de Ánimas ${VERSION} | Inicializando`);
-  try {
-    if (!supportsV2()) console.warn("MR · Cuentos de Ánimas | No se han detectado todas las APIs V2 esperadas; se cargará en modo seguro.");
-    if (CONFIG.Actor?.dataModels) Object.assign(CONFIG.Actor.dataModels, DATA_MODELS.Actor);
-    if (CONFIG.Item?.dataModels) Object.assign(CONFIG.Item.dataModels, DATA_MODELS.Item);
-    if (CONFIG.Actor) CONFIG.Actor.trackableAttributes = { protagonist: { bar: ["spirit", "determination"], value: [] } };
-    DocumentSheetConfig.registerSheet(Actor, SYSTEM_ID, ProtagonistSheet, { types:["protagonist"], makeDefault:true, label:"MR · Cuentos de Ánimas" });
-    DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, ScenarioSheet, { types:["scenario"], makeDefault:true, label:"MR · Escenario" });
+  console.info(`${LOG} ${game.system.version} · inicializando`);
+
+  bootPhase("models", () => {
+    Object.assign(CONFIG.Actor.dataModels, DATA_MODELS.Actor);
+    Object.assign(CONFIG.Item.dataModels, DATA_MODELS.Item);
+    CONFIG.Actor.trackableAttributes = { protagonist: { bar: ["spirit", "determination"], value: [] } };
+  });
+
+  bootPhase("settings", () => {
     registerSettings();
-    Promise.resolve(loadTemplates([`${TEMPLATES}/apps/table.hbs`,`${TEMPLATES}/apps/access.hbs`,`${TEMPLATES}/apps/library.hbs`,`${TEMPLATES}/apps/diary.hbs`,`${TEMPLATES}/apps/truths.hbs`,`${TEMPLATES}/apps/safety.hbs`])).catch(error => console.error("MR · Cuentos de Ánimas | plantillas", error));
-    game.keybindings.register(SYSTEM_ID,"openTable",{name:"CdA.App.Table",editable:[{key:"KeyA",modifiers:["Shift"]}],onDown:()=>{TableApp.open();return true;}});
-    game.mrCuentosDeAnimas = Object.freeze({ open:()=>TableApp.open(), library:()=>LibraryApp.open(), access:()=>AccessPanel.open(), safety:()=>SafetyPanel.open(), start:opts=>SessionService.startWizard(opts), draw:()=>GameplayService.drawEvent(), resolve:()=>GameplayService.resolveObstacle(), epilogue:()=>GameplayService.epilogue(), state:()=>StateService.get(), diagnostic });
-  } catch (error) {
-    console.error("MR · Cuentos de Ánimas | error de inicialización no fatal", error);
-  }
+    registerMenus({ AccessPanel, DiagnosticApp });
+  });
+
+  bootPhase("sheets", () => {
+    DocumentSheetConfig.registerSheet(Actor, SYSTEM_ID, ProtagonistSheet, { types: ["protagonist"], makeDefault: true, label: "CdA.Sheet.Protagonist" });
+    DocumentSheetConfig.registerSheet(Item, SYSTEM_ID, ScenarioSheet, { types: ["scenario"], makeDefault: true, label: "CdA.Sheet.Scenario" });
+  });
+
+  bootPhase("templates", () => {
+    Handlebars.registerHelper("cdaUrl", path => cssUrl(path));
+    return loadTemplates(TEMPLATE_FILES);
+  });
+
+  bootPhase("apps", () => {
+    Object.assign(Apps, {
+      table: TableApp, library: LibraryApp, guardian: GuardianApp, diary: DiaryApp, access: AccessPanel,
+      safety: SafetyPanel, start: StartApp, diagnostic: DiagnosticApp, welcome: WelcomeApp,
+      truths: { open: (o = {}) => ArchiveApp.open({ ...o, tab: "truths" }) },
+      memories: { open: (o = {}) => ArchiveApp.open({ ...o, tab: "memories" }) },
+      protagonist: { open: ({ actor } = {}) => (actor ?? StateService.focus())?.sheet.render(true) },
+      scenario: { open: () => StateService.scenario()?.sheet.render(true) }
+    });
+    game.keybindings.register(SYSTEM_ID, "openTable", {
+      name: "CdA.Keys.Table", hint: "CdA.Keys.TableHint",
+      editable: [{ key: "KeyM", modifiers: ["Shift"] }],
+      onDown: () => { openApp("table"); return true; }
+    });
+  });
+
+  bootPhase("api", () => {
+    game.mrCuentosDeAnimas = Object.freeze({
+      open: () => openApp("table"), table: () => openApp("table"), library: () => openApp("library"),
+      guardian: () => openApp("guardian"), diary: () => openApp("diary"), truths: () => openApp("truths"),
+      memories: () => openApp("memories"), access: () => openApp("access"), safety: () => openApp("safety"),
+      start: options => openApp("start", options), createProtagonist,
+      draw: () => GameplayService.draw(), epilogue: () => GameplayService.epilogue(),
+      state: () => StateService.get(), history: () => StateService.history(),
+      /** Informe copiable. `game.mrCuentosDeAnimas.diagnostic({ show: true })` abre la ventana. */
+      diagnostic: async ({ show = false } = {}) => {
+        const report = await diagnostic();
+        console.info(`${LOG} diagnóstico`, report);
+        if (show) openApp("diagnostic");
+        return report;
+      },
+      boot: BOOT
+    });
+  });
 });
+
+/* -------------------------------------------- */
+/*  ready                                       */
+/* -------------------------------------------- */
 
 Hooks.once("ready", async () => {
-  try { applyPreferences(); } catch (error) { console.error("MR · Cuentos de Ánimas | preferencias", error); }
-  try { RichHelp.init(); } catch (error) { console.error("MR · Cuentos de Ánimas | ayuda contextual", error); }
-  try { SafetyPanel.init(); } catch (error) { console.error("MR · Cuentos de Ánimas | seguridad", error); }
+  bootPhase("preferences", applyPreferences);
+  bootPhase("help", () => RichHelp.init());
+  bootPhase("sound", () => SoundService.init());
+  bootPhase("safety", () => SafetyPanel.init());
 
   if (game.user.isGM) {
-    try { await ContentService.ensureSeed(); }
-    catch (error) { console.error("MR · Cuentos de Ánimas | contenido inicial", error); ui.notifications.error("Cuentos de Ánimas: no se pudo preparar el contenido inicial. Foundry seguirá funcionando; consulta la consola (F12)."); }
-    try { await DeckService.ensureStacks(); }
-    catch (error) { console.error("MR · Cuentos de Ánimas | mazos", error); ui.notifications.error("Cuentos de Ánimas: no se pudieron preparar los mazos. Foundry seguirá funcionando; consulta la consola (F12)."); }
-    if (!game.scenes.size) {
-      try {
-        const scene = await Scene.create({
-          name: "Mesa de Ánimas",
-          active: true,
-          width: 1920,
-          height: 1080,
-          padding: 0,
-          background: { src: ASSETS.table },
-          grid: { type: 0, size: 100, distance: 1, units: "" }
-        });
-        if (scene && !scene.active) await scene.activate();
-      } catch (error) { console.error("MR · Cuentos de Ánimas | escena de bienvenida", error); }
-    }
+    await bootPhase("content", () => ContentService.ensureSeed());
+    await bootPhase("decks", () => DeckService.ensureStacks());
+    await bootPhase("migration", migrate);
+    await bootPhase("scene", ensureScene);
   }
+  bootPhase("presenter", () => Presenter.init());
 
-  console.info(`MR · Cuentos de Ánimas ${game.system.version} · Foundry ${game.version} (generación ${generation()})`);
-  if (game.user.isGM && game.settings.get(SYSTEM_ID,"welcomeVersion") !== VERSION) {
-    await game.settings.set(SYSTEM_ID,"welcomeVersion",VERSION);
-    ui.notifications.info("MR · Cuentos de Ánimas está listo. Abre la Mesa de Ánimas desde el directorio de Actores, Objetos o la barra de escena.");
-  } else if (game.settings.get(SYSTEM_ID,"autoOpen")) {
-    try { TableApp.open(); } catch (error) { console.error("MR · Cuentos de Ánimas | Mesa de Ánimas", error); }
-  }
+  console.info(`${LOG} listo · Foundry ${game.version}`, BOOT.errors.length ? BOOT.errors : "sin errores");
+  if (game.user.isGM) bootPhase("welcome", () => WelcomeApp.maybeShow());
+  if (game.settings.get(SYSTEM_ID, "openOnStart")) bootPhase("openOnStart", () => openApp("table"));
 });
 
-const refresh = () => { for (const app of foundry.applications.instances.values()) if (app instanceof TableApp || app instanceof LibraryApp || app instanceof DiaryApp || app instanceof TruthRegistryApp) app.render(); };
-Hooks.on("mrCdaRefresh", refresh);
-Hooks.on("updateCards", refresh); Hooks.on("createCard", refresh); Hooks.on("deleteCard", refresh);
-Hooks.on("updateActor", actor => { if (actor.type === "protagonist") refresh(); });
-Hooks.on("updateItem", item => { if (item.type === "scenario") refresh(); });
+/**
+ * Un mundo nuevo no debe quedarse vacío: se crea la mesa ambiental una sola vez, sin abrir ninguna ventana.
+ * Foundry 13 crea su propia escena de bienvenida (NUEDEFAULTSCENE0); si es la única, se sustituye como activa.
+ */
+async function ensureScene() {
+  if (game.settings.get(SYSTEM_ID, "sceneReady")) return;
+  const onlyCoreDefault = game.scenes.size === 1 && game.scenes.has("NUEDEFAULTSCENE0");
+  if (game.scenes.size && !onlyCoreDefault) return game.settings.set(SYSTEM_ID, "sceneReady", true);
+  const scene = await Scene.implementation.create(welcomeSceneData({ name: game.i18n.localize("CdA.App.Table"), src: ASSETS.scene }));
+  if (scene && !scene.active) await scene.activate();
+  await game.settings.set(SYSTEM_ID, "sceneReady", true);
+}
+
+/** Datos de versiones anteriores. Idempotente: se puede ejecutar en cada arranque. */
+async function migrate() {
+  const version = game.system.version;
+  if (game.settings.get(SYSTEM_ID, "migratedVersion") === version) return;
+  // v1.0.x guardaba el estado con otras claves; un relato de entonces no puede continuarse.
+  const saved = StateService.eventDeck()?.getFlag(SYSTEM_ID, FLAGS.STATE);
+  if (saved && ("activeObstacle" in saved || "lastCardUuid" in saved)) await StateService.reset();
+  for (const actor of game.actors.filter(a => a.type === "protagonist")) await Records.ensureIds(actor);
+  await game.settings.set(SYSTEM_ID, "migratedVersion", version);
+}
+
+/* -------------------------------------------- */
+/*  Accesos visibles                            */
+/* -------------------------------------------- */
 
 Hooks.on("getSceneControlButtons", controls => {
-  addSceneTool(controls,"notes",{name:"cdaTable",title:game.i18n.localize("CdA.App.Table"),icon:"fa-solid fa-fire-flame-curved",onChange:()=>TableApp.open()});
-  addSceneTool(controls,"notes",{name:"cdaLibrary",title:game.i18n.localize("CdA.App.Library"),icon:"fa-solid fa-book-open",onChange:()=>LibraryApp.open()});
+  try {
+    const t = k => game.i18n.localize(k);
+    const tools = [
+      { name: "cdaTable", title: t("CdA.App.Table"), icon: "fa-solid fa-fire-flame-curved", onChange: () => openApp("table") },
+      { name: "cdaProtagonist", title: t("CdA.Controls.Protagonist"), icon: "fa-solid fa-id-card", onChange: () => openApp("protagonist") },
+      { name: "cdaLibrary", title: t("CdA.App.Library"), icon: "fa-solid fa-book-open", onChange: () => openApp("library") },
+      { name: "cdaDiary", title: t("CdA.App.Diary"), icon: "fa-solid fa-feather-pointed", onChange: () => openApp("diary") },
+      { name: "cdaSafety", title: t("CdA.App.Safety"), icon: "fa-solid fa-shield-heart", onChange: () => openApp("safety") }
+    ];
+    if (game.user.isGM) {
+      tools.splice(1, 0, { name: "cdaGuardian", title: t("CdA.App.Guardian"), icon: "fa-solid fa-hat-wizard", onChange: () => openApp("guardian") });
+      tools.push({ name: "cdaScenario", title: t("CdA.Controls.Scenario"), icon: "fa-solid fa-book-skull", onChange: () => openApp("scenario") });
+    }
+    addControlGroup(controls, { name: "cda", title: "MR · Cuentos de Ánimas", icon: "fa-solid fa-moon", tools });
+  } catch (error) { console.error(`${LOG} controles de escena`, error); }
 });
 
-Hooks.on("renderActorDirectory", (_app, html) => {
-  const root=html instanceof HTMLElement?html:html?.[0];if(!root||root.querySelector(".cda-directory-actions"))return;
-  const box=document.createElement("div");box.className="cda-directory-actions";box.innerHTML=`<button type="button" data-cda="table"><i class="fa-solid fa-fire-flame-curved"></i>Mesa de Ánimas</button><button type="button" data-cda="new"><i class="fa-solid fa-user-plus"></i>Protagonista</button>`;
-  box.querySelector('[data-cda="table"]').onclick=()=>TableApp.open();box.querySelector('[data-cda="new"]').onclick=async()=>{const a=await SessionService.createProtagonist();a.sheet.render(true);};(root.querySelector(".directory-header")??root).append(box);
+/** Botonera propia en los directorios de Actores y Objetos. */
+function directoryButtons(root, buttons) {
+  const el = root instanceof HTMLElement ? root : root?.[0];
+  if (!el || el.querySelector(".cda-directory-actions")) return;
+  const bar = document.createElement("div");
+  bar.className = "cda-directory-actions";
+  for (const { label, icon, run } of buttons) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.innerHTML = `<i class="${icon}" aria-hidden="true"></i> ${foundry.utils.escapeHTML(game.i18n.localize(label))}`;
+    b.addEventListener("click", run);
+    bar.append(b);
+  }
+  (el.querySelector(".directory-header") ?? el).append(bar);
+}
+
+Hooks.on("renderActorDirectory", (app, html) => {
+  try {
+    directoryButtons(html, [
+      { label: "CdA.App.Table", icon: "fa-solid fa-fire-flame-curved", run: () => openApp("table") },
+      { label: "CdA.Controls.NewProtagonist", icon: "fa-solid fa-user-plus", run: async () => (await createProtagonist())?.sheet.render(true) }
+    ]);
+  } catch (error) { console.error(`${LOG} directorio de actores`, error); }
 });
 
-Hooks.on("renderItemDirectory", (_app, html) => {
-  const root=html instanceof HTMLElement?html:html?.[0];if(!root||root.querySelector(".cda-item-actions"))return;
-  const box=document.createElement("div");box.className="cda-directory-actions cda-item-actions";box.innerHTML=`<button type="button"><i class="fa-solid fa-book-open"></i>Biblioteca de Ánimas</button>`;box.querySelector("button").onclick=()=>LibraryApp.open();(root.querySelector(".directory-header")??root).append(box);
+Hooks.on("renderItemDirectory", (app, html) => {
+  try { directoryButtons(html, [{ label: "CdA.App.Library", icon: "fa-solid fa-book-open", run: () => openApp("library") }]); }
+  catch (error) { console.error(`${LOG} directorio de objetos`, error); }
 });
 
-Hooks.on("renderSettings", (_app, html) => {
-  const root = html instanceof HTMLElement ? html : html?.[0];
-  const section = root?.querySelector("section") ?? root;
-  if (!section || section.querySelector(".cda-open-table-settings")) return;
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "cda-open-table-settings";
-  button.innerHTML = `<i class="fa-solid fa-fire-flame-curved"></i> Mesa de Ánimas`;
-  button.addEventListener("click", () => TableApp.open());
-  section.prepend(button);
+Hooks.on("renderSettings", (app, html) => {
+  try {
+    const root = html instanceof HTMLElement ? html : html?.[0];
+    if (!root || root.querySelector(".cda-settings-block")) return;
+    const block = document.createElement("section");
+    block.className = "cda-settings-block";
+    block.innerHTML = `<h4 class="divider">MR · Cuentos de Ánimas</h4>`;
+    for (const [label, icon, name] of [["CdA.App.Table", "fa-fire-flame-curved", "table"], ["CdA.Access.Title", "fa-universal-access", "access"], ["CdA.Diagnostic.Title", "fa-stethoscope", "diagnostic"]]) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.innerHTML = `<i class="fa-solid ${icon}" aria-hidden="true"></i> ${foundry.utils.escapeHTML(game.i18n.localize(label))}`;
+      b.addEventListener("click", () => openApp(name));
+      block.append(b);
+    }
+    (root.querySelector("section.settings, .settings") ?? root.querySelector("section") ?? root).prepend(block);
+  } catch (error) { console.error(`${LOG} ajustes`, error); }
 });

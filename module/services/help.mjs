@@ -1,39 +1,100 @@
-import { SYSTEM_ID } from "../constants.mjs";
-const HELP = {
-  spirit: ["Espíritu", "Tu equilibrio emocional y físico. Cuando se extingue, el relato cobra un precio muy alto."],
-  determination: ["Determinación", "La voluntad de seguir adelante. Puedes consumirla para inclinar a tu favor una prueba difícil."],
-  deck: ["Mazo de Ánimas", "Cada carta abre una nueva escena. El reverso oculta pistas, obstáculos, percances o una Dama Gris."],
-  gray: ["Damas Grises", "Tres umbrales de tensión. Cada aparición endurece el relato y la tercera conduce al epílogo."],
-  truth: ["Verdad establecida", "Una afirmación que el protagonista ha hecho cierta durante la ficción. Más adelante puede ser matizada o contradicha."],
-  memory: ["Recuerdo", "Una pregunta sobre el pasado. No busca una respuesta correcta: busca descubrir quién era el personaje."],
-  diary: ["Diario", "El relato conserva automáticamente sus escenas. Puedes editarlo y exportarlo al terminar."],
-  number: ["Carta numérica", "Revela un valor del 1 al 10. Si iguala o supera la dificultad modificada, superas el obstáculo."]
-};
+import { get } from "../settings.mjs";
+
+/**
+ * Ayuda contextual en dos niveles:
+ *  - Hover prolongado (≈1,2 s) sobre un elemento con `data-help`: nota breve.
+ *  - Clic derecho: ficha ampliada que se queda hasta cerrarla.
+ * Textos en lang/*.json bajo CdA.Help.<clave>.{Title,Short,Long}.
+ * No actúa sobre campos de texto ni mientras se arrastra, y el menú contextual
+ * normal sigue funcionando en todo lo que no tenga `data-help`.
+ */
+const DELAY = 1200;
 
 export class RichHelp {
-  static #tip; static #timer;
+  static #tip = null; static #timer = null; static #target = null; static #controller = null;
+
   static init() {
-    document.addEventListener("pointerover", e => this.#schedule(e.target.closest?.("[data-mr-help]")));
-    document.addEventListener("pointerout", e => { if (e.target.closest?.("[data-mr-help]")) this.hide(); });
-    document.addEventListener("contextmenu", e => {
-      const target = e.target.closest?.("[data-mr-help]"); if (!target) return;
-      e.preventDefault(); this.show(target, true);
-    });
+    this.#controller?.abort();
+    this.#controller = new AbortController();
+    const signal = this.#controller.signal;
+    document.addEventListener("pointerover", e => this.#enter(e), { signal, passive: true });
+    document.addEventListener("pointerout", e => this.#leave(e), { signal, passive: true });
+    document.addEventListener("pointerdown", e => { if (!this.#tip?.contains(e.target)) this.hide(); }, { signal, passive: true });
+    document.addEventListener("contextmenu", e => this.#context(e), { signal });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") this.hide(); }, { signal });
   }
-  static #schedule(target) {
-    if (!target || !game.settings.get(SYSTEM_ID, "richHelp")) return;
-    clearTimeout(this.#timer); this.#timer = setTimeout(() => this.show(target), 650);
+
+  static #find(el) {
+    const target = el?.closest?.("[data-help]");
+    if (!target || target.matches("input, textarea, select, [contenteditable]")) return null;
+    return target;
   }
+
+  static #enter(event) {
+    if (event.buttons || !get("richHelp")) return;
+    const target = this.#find(event.target);
+    if (!target || target === this.#target) return;
+    clearTimeout(this.#timer);
+    this.#target = target;
+    this.#timer = setTimeout(() => { if (this.#target === target && target.isConnected) this.show(target); }, DELAY);
+  }
+
+  static #leave(event) {
+    const target = this.#find(event.target);
+    if (!target || target.contains(event.relatedTarget)) return;
+    clearTimeout(this.#timer);
+    this.#target = null;
+    if (!this.#tip?.classList.contains("pinned")) this.hide();
+  }
+
+  static #context(event) {
+    if (!get("richHelp")) return;
+    const target = this.#find(event.target);
+    if (!target) return;
+    event.preventDefault();
+    event.stopPropagation();
+    this.show(target, true);
+  }
+
+  static text(key) {
+    const base = `CdA.Help.${key}`;
+    if (!game.i18n.has(`${base}.Title`)) return null;
+    return {
+      title: game.i18n.localize(`${base}.Title`),
+      short: game.i18n.localize(`${base}.Short`),
+      long: game.i18n.has(`${base}.Long`) ? game.i18n.localize(`${base}.Long`) : ""
+    };
+  }
+
   static show(target, pinned = false) {
-    clearTimeout(this.#timer); this.hide();
-    const key = target.dataset.mrHelp; const data = HELP[key]; if (!data) return;
-    const el = document.createElement("aside"); el.className = `cda-rich-help${pinned ? " pinned" : ""}`;
-    el.innerHTML = `<strong>${data[0]}</strong><p>${data[1]}</p>${pinned ? '<small>Clic para cerrar</small>' : ''}`;
-    document.body.append(el); this.#tip = el;
-    const r = target.getBoundingClientRect(), w = 320;
-    el.style.left = `${Math.min(window.innerWidth - w - 12, Math.max(12, r.left + r.width / 2 - w / 2))}px`;
-    el.style.top = `${Math.min(window.innerHeight - el.offsetHeight - 12, r.bottom + 10)}px`;
-    if (pinned) el.addEventListener("click", () => this.hide(), { once: true });
+    clearTimeout(this.#timer);
+    this.hide();
+    const data = this.text(target.dataset.help); if (!data) return;
+    const el = document.createElement("aside");
+    el.className = `cda-help${pinned ? " pinned" : ""}`;
+    el.setAttribute("role", pinned ? "dialog" : "tooltip");
+    el.setAttribute("aria-label", data.title);
+    const esc = s => foundry.utils.escapeHTML(s);
+    el.innerHTML = `<strong>${esc(data.title)}</strong><p>${esc(data.short)}</p>`
+      + (pinned && data.long ? `<p class="cda-help-long">${esc(data.long)}</p>` : "")
+      + (pinned ? `<button type="button" class="cda-help-close">${esc(game.i18n.localize("CdA.Common.Close"))}</button>`
+        : `<small>${esc(game.i18n.localize("CdA.Help.RightClick"))}</small>`);
+    document.body.append(el);
+    this.#tip = el;
+    const r = target.getBoundingClientRect(), w = el.offsetWidth, h = el.offsetHeight;
+    const below = r.bottom + 10 + h < innerHeight;
+    el.style.left = `${Math.round(Math.clamp(r.left + r.width / 2 - w / 2, 8, innerWidth - w - 8))}px`;
+    el.style.top = `${Math.round(below ? r.bottom + 10 : Math.max(8, r.top - h - 10))}px`;
+    if (pinned) {
+      const close = el.querySelector(".cda-help-close");
+      close.addEventListener("click", () => this.hide());
+      close.focus();
+    }
   }
-  static hide() { clearTimeout(this.#timer); this.#tip?.remove(); this.#tip = null; }
+
+  static hide() {
+    clearTimeout(this.#timer);
+    this.#tip?.remove();
+    this.#tip = null;
+  }
 }

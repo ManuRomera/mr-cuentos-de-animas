@@ -1,0 +1,120 @@
+<div class="cda-archive">
+  <header class="cda-paper-head">
+    <div>
+      <span class="cda-kicker">{{localize "CdA.Archive.Kicker"}}</span>
+      <h2>{{#if actor}}{{actor.name}}{{else}}{{localize "CdA.Diary.NoActor"}}{{/if}}</h2>
+    </div>
+    <nav class="tabs cda-segmented" aria-label="{{localize 'CdA.App.Archive'}}">
+      <button type="button" class="{{tabs.truths.cssClass}}" data-action="tab" data-group="archive" data-tab="truths" data-help="truths"><i class="fa-solid fa-eye" aria-hidden="true"></i>{{localize "CdA.App.Truths"}}</button>
+      <button type="button" class="{{tabs.memories.cssClass}}" data-action="tab" data-group="archive" data-tab="memories" data-help="memories"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i>{{localize "CdA.App.Memories"}}</button>
+    </nav>
+  </header>
+
+  <div class="cda-archive-scroll">
+    {{!-- VERDADES --}}
+    <section class="tab {{tabs.truths.cssClass}}" data-group="archive" data-tab="truths">
+      {{#if canEdit}}
+      <form class="cda-compose" autocomplete="off">
+        <textarea name="text" rows="2" placeholder="{{localize 'CdA.Truth.Placeholder'}}" aria-label="{{localize 'CdA.Truth.Statement'}}"></textarea>
+        <div class="cda-compose-row">
+          <select name="status" aria-label="{{localize 'CdA.Truth.StatusLabel'}}">{{#each newStatuses}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+          <input type="text" name="category" placeholder="{{localize 'CdA.Truth.Category'}}" aria-label="{{localize 'CdA.Truth.Category'}}">
+          <input type="text" name="origin" placeholder="{{localize 'CdA.Truth.Origin'}}" aria-label="{{localize 'CdA.Truth.Origin'}}">
+          <select name="linkType" aria-label="{{localize 'CdA.Link.Label'}}">{{#each newLinks}}<option value="{{value}}">{{label}}</option>{{/each}}</select>
+          <input type="text" name="linkLabel" placeholder="{{localize 'CdA.Link.What'}}" aria-label="{{localize 'CdA.Link.What'}}">
+          {{#if gm}}<label class="cda-check"><input type="checkbox" name="hidden">{{localize "CdA.Truth.Hidden"}}</label>{{/if}}
+          <button type="button" class="cda-primary" data-action="addTruth"><i class="fa-solid fa-eye" aria-hidden="true"></i>{{localize "CdA.Truth.Register"}}</button>
+        </div>
+      </form>
+      {{/if}}
+
+      <div class="cda-chip-row" role="toolbar" aria-label="{{localize 'CdA.Truth.Filter'}}">
+        {{#each filters}}<button type="button" class="cda-chip {{#if active}}active{{/if}}" data-action="filter" data-filter="{{key}}" aria-pressed="{{#if active}}true{{else}}false{{/if}}">{{label}}</button>{{/each}}
+      </div>
+
+      <ol class="cda-truths">
+        {{#each truths}}
+        <li class="cda-truth status-{{status}} {{#if hidden}}is-hidden{{/if}}">
+          <span class="cda-status-badge"><i class="{{icon}}" aria-hidden="true"></i>{{statusLabel}}</span>
+          {{#if ../canEdit}}
+          <textarea rows="2" data-truth="{{id}}" data-field="text" aria-label="{{localize 'CdA.Truth.Statement'}}">{{text}}</textarea>
+          {{else}}<p class="cda-truth-text">{{text}}</p>{{/if}}
+          <div class="cda-truth-meta">
+            <time>{{date}}</time>
+            <span>{{byLabel}}</span>
+            {{#if origin}}<span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{origin}}</span>{{/if}}
+            {{#if category}}<span class="cda-tag">{{category}}</span>{{/if}}
+            {{#if link.label}}<span><i class="fa-solid fa-link" aria-hidden="true"></i>{{link.label}}</span>{{/if}}
+            {{#if trail}}<span class="cda-trail" title="{{localize 'CdA.Truth.Trail'}}">{{trail}}</span>{{/if}}
+            {{#if hidden}}<span class="cda-secret"><i class="fa-solid fa-user-secret" aria-hidden="true"></i>{{localize "CdA.Truth.HiddenShort"}}</span>{{/if}}
+          </div>
+          {{#if ../canEdit}}
+          <div class="cda-truth-edit">
+            <select data-truth="{{id}}" data-field="status" aria-label="{{localize 'CdA.Truth.StatusLabel'}}">{{#each statuses}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+            <select data-truth="{{id}}" data-field="link.type" aria-label="{{localize 'CdA.Link.Label'}}">{{#each links}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+            <input type="text" data-truth="{{id}}" data-field="link.label" value="{{link.label}}" placeholder="{{localize 'CdA.Link.What'}}" aria-label="{{localize 'CdA.Link.What'}}">
+            {{#if ../gm}}
+            <label class="cda-check"><input type="checkbox" data-truth="{{id}}" data-field="hidden" {{checked hidden}}>{{localize "CdA.Truth.Hidden"}}</label>
+            <input type="text" class="cda-gm-note" data-truth="{{id}}" data-field="note" value="{{note}}" placeholder="{{localize 'CdA.Truth.Note'}}" aria-label="{{localize 'CdA.Truth.Note'}}">
+            {{/if}}
+            <button type="button" class="cda-icon-btn" data-action="remove" data-list="truths" data-id="{{id}}" aria-label="{{localize 'CdA.Common.Delete'}}"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+          </div>
+          {{/if}}
+        </li>
+        {{else}}
+        <li class="cda-empty"><i class="fa-solid fa-eye" aria-hidden="true"></i><p>{{localize "CdA.Truth.Empty"}}</p></li>
+        {{/each}}
+      </ol>
+
+      {{#if prepared.length}}
+      <details class="cda-gm-block" data-memory="prepared">
+        <summary><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>{{localize "CdA.Truth.Prepared"}}</summary>
+        <ul>{{#each prepared}}<li><strong>{{text}}</strong>{{#if contradiction}}<span>↯ {{contradiction}}</span>{{/if}}{{#if reveal}}<em>{{reveal}}</em>{{/if}}</li>{{/each}}</ul>
+      </details>
+      {{/if}}
+    </section>
+
+    {{!-- RECUERDOS --}}
+    <section class="tab {{tabs.memories.cssClass}}" data-group="archive" data-tab="memories">
+      {{#if prompts.length}}
+      <div class="cda-gm-block cda-prompts">
+        <span class="cda-kicker"><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>{{localize "CdA.Memory.Launch"}}</span>
+        <div class="cda-chip-row">{{#each prompts}}<button type="button" class="cda-chip" data-action="launch" data-index="{{i}}" title="{{prompt}}"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i>{{title}}</button>{{/each}}</div>
+      </div>
+      {{/if}}
+      {{#if canEdit}}
+      <form class="cda-compose" autocomplete="off">
+        <div class="cda-compose-row">
+          <input type="text" name="title" placeholder="{{localize 'CdA.Common.Title'}}" aria-label="{{localize 'CdA.Common.Title'}}">
+          <select name="kind" aria-label="{{localize 'CdA.Memory.KindLabel'}}">{{#each newKinds}}<option value="{{value}}">{{label}}</option>{{/each}}</select>
+          {{#if gm}}<label class="cda-check"><input type="checkbox" name="known" checked>{{localize "CdA.Memory.Known"}}</label>{{/if}}
+          <button type="button" class="cda-primary" data-action="addMemory"><i class="fa-solid fa-plus" aria-hidden="true"></i>{{localize "CdA.Memory.Add"}}</button>
+        </div>
+        <textarea name="text" rows="2" placeholder="{{localize 'CdA.Memory.Placeholder'}}" aria-label="{{localize 'CdA.Common.Text'}}"></textarea>
+      </form>
+      {{/if}}
+      <div class="cda-memory-grid">
+        {{#each memories}}
+        <article class="cda-memory kind-{{kind}} {{#unless known}}is-hidden{{/unless}}">
+          <header><span class="cda-status-badge"><i class="{{icon}}" aria-hidden="true"></i>{{kindLabel}}</span><time>{{date}}</time></header>
+          {{#if ../canEdit}}
+          <input type="text" class="cda-memory-title" data-memory-id="{{id}}" data-field="title" value="{{title}}" aria-label="{{localize 'CdA.Common.Title'}}">
+          <textarea rows="3" data-memory-id="{{id}}" data-field="text" aria-label="{{title}}">{{text}}</textarea>
+          <footer>
+            <select data-memory-id="{{id}}" data-field="kind" aria-label="{{localize 'CdA.Memory.KindLabel'}}">{{#each kinds}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+            <select data-memory-id="{{id}}" data-field="link.type" aria-label="{{localize 'CdA.Link.Label'}}">{{#each links}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+            <input type="text" data-memory-id="{{id}}" data-field="link.label" value="{{link.label}}" placeholder="{{localize 'CdA.Link.What'}}" aria-label="{{localize 'CdA.Link.What'}}">
+            {{#if ../gm}}<button type="button" class="cda-icon-btn" data-action="known" data-id="{{id}}" aria-label="{{localize 'CdA.Memory.Known'}}" aria-pressed="{{#if known}}true{{else}}false{{/if}}"><i class="fa-solid {{#if known}}fa-eye{{else}}fa-eye-slash{{/if}}" aria-hidden="true"></i></button>{{/if}}
+            <button type="button" class="cda-icon-btn" data-action="remove" data-list="memories" data-id="{{id}}" aria-label="{{localize 'CdA.Common.Delete'}}"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+          </footer>
+          {{else}}
+          <h3>{{title}}</h3><p>{{text}}</p>{{#if link.label}}<small><i class="fa-solid fa-link" aria-hidden="true"></i>{{link.label}}</small>{{/if}}
+          {{/if}}
+        </article>
+        {{else}}
+        <div class="cda-empty"><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i><p>{{localize "CdA.Memory.Empty"}}</p></div>
+        {{/each}}
+      </div>
+    </section>
+  </div>
+</div>

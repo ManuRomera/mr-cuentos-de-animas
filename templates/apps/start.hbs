@@ -1,0 +1,58 @@
+<div class="cda-start">
+  <section class="cda-start-scenarios" aria-label="{{localize 'CdA.Session.Scenario'}}">
+    <span class="cda-kicker">1 · {{localize "CdA.Session.Scenario"}}</span>
+    <div class="cda-start-list" role="radiogroup">
+      {{#each scenarios}}
+      <button type="button" class="cda-start-scenario {{#if selected}}selected{{/if}}" data-action="scenario" data-uuid="{{uuid}}" role="radio" aria-checked="{{#if selected}}true{{else}}false{{/if}}">
+        <img src="{{img}}" alt="" loading="lazy"><span><strong>{{name}}</strong><small>{{duration}}</small></span>
+      </button>
+      {{else}}<p class="cda-empty">{{localize "CdA.Library.Empty"}}</p>{{/each}}
+    </div>
+  </section>
+
+  <section class="cda-start-setup">
+    {{#if scenario}}
+    <header class="cda-start-hero">
+      <h2>{{scenario.name}}</h2>
+      <p>{{scenario.synopsis}}</p>
+      {{#if scenario.notes}}<p class="cda-content-notes"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>{{localize "CdA.Scenario.ContentNotes"}}: {{scenario.notes}}</p>{{/if}}
+    </header>
+    {{/if}}
+
+    <div class="cda-start-block">
+      <span class="cda-kicker">2 · {{localize "CdA.Session.Mode"}}</span>
+      <div class="cda-mode-grid" role="radiogroup">
+        {{#each modes}}
+        <button type="button" class="cda-mode {{#if selected}}selected{{/if}}" data-action="mode" data-mode="{{key}}" role="radio" aria-checked="{{#if selected}}true{{else}}false{{/if}}">
+          <strong>{{label}}{{#if recommended}} <i class="fa-solid fa-star" aria-label="{{localize 'CdA.Session.Recommended'}}"></i>{{/if}}</strong><small>{{hint}}</small>
+        </button>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="cda-start-row">
+      <div class="cda-start-block">
+        <span class="cda-kicker">3 · {{localize "CdA.Session.Protagonist"}}</span>
+        <select name="actor" aria-label="{{localize 'CdA.Session.Protagonist'}}">
+          <option value="">{{localize "CdA.Session.NewProtagonist"}}</option>
+          {{#each protagonists}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}
+        </select>
+        <input type="text" name="newName" placeholder="{{localize 'CdA.Session.NewName'}}" aria-label="{{localize 'CdA.Session.NewName'}}">
+      </div>
+      <div class="cda-start-block cda-split" data-help="split">
+        <span class="cda-kicker">4 · {{localize "CdA.Session.Split"}}</span>
+        <div class="cda-split-row">
+          <span class="frost"><b data-out="spirit">{{spirit}}</b>{{localize "CdA.Resource.spirit"}}</span>
+          <input type="range" name="spirit" min="{{min}}" max="{{max}}" step="1" value="{{spirit}}" aria-label="{{localize 'CdA.Resource.spirit'}}">
+          <span class="ember"><b data-out="determination">{{determination}}</b>{{localize "CdA.Resource.determination"}}</span>
+        </div>
+        <small>{{localize "CdA.Session.SplitHint"}}</small>
+      </div>
+    </div>
+
+    <footer class="cda-row-end">
+      {{#if running}}<span class="cda-warning"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>{{localize "CdA.Session.Replaces"}}</span>{{/if}}
+      <button type="button" class="cda-primary cda-big" data-action="start"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.Session.Start"}}</button>
+    </footer>
+  </section>
+</div>

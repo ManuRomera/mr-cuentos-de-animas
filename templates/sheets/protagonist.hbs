@@ -1,25 +1,97 @@
-<div class="cda-protagonist-sheet">
-  <header class="cda-sheet-hero">
-    <img class="cda-portrait" src="{{actor.img}}" data-edit="img" alt="{{actor.name}}">
+<div class="cda-dossier">
+  {{!-- Cabecera: retrato, identidad y recursos --}}
+  <header class="cda-dossier-head">
+    <figure class="cda-portrait">
+      <img src="{{actor.img}}" alt="{{actor.name}}" {{#if editable}}data-action="editImage" data-edit="img"{{/if}}>
+      <figcaption>{{localize "CdA.Actor.Kicker"}}</figcaption>
+    </figure>
     <div class="cda-identity">
-      <span class="eyebrow">{{localize "CdA.Actor.Kicker"}}</span>
-      <input class="cda-name" name="name" value="{{actor.name}}" placeholder="{{localize 'CdA.Actor.Name'}}">
-      <div class="cda-identity-row"><input name="system.profession" value="{{system.profession}}" placeholder="{{localize 'CdA.Actor.Profession'}}"><input name="system.origin" value="{{system.origin}}" placeholder="{{localize 'CdA.Actor.Origin'}}"></div>
+      <input class="cda-name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'CdA.Actor.Name'}}" aria-label="{{localize 'CdA.Actor.Name'}}">
+      <div class="cda-identity-grid">
+        <label><span>{{localize "CdA.Actor.Profession"}}</span><input type="text" name="system.profession" value="{{system.profession}}"></label>
+        <label><span>{{localize "CdA.Actor.Origin"}}</span><input type="text" name="system.origin" value="{{system.origin}}"></label>
+        <label><span>{{localize "CdA.Actor.Age"}}</span><input type="text" name="system.age" value="{{system.age}}"></label>
+      </div>
+      <input class="cda-epithet" type="text" name="system.epithet" value="{{system.epithet}}" placeholder="{{localize 'CdA.Actor.Epithet'}}" aria-label="{{localize 'CdA.Actor.Epithet'}}">
     </div>
-    <div class="cda-sheet-shortcuts"><button type="button" data-action="diary" data-mr-help="diary"><i class="fa-solid fa-book-open"></i><span>{{diaryCount}}</span></button><button type="button" data-action="truths" data-mr-help="truth"><i class="fa-solid fa-eye"></i><span>{{truthCount}}</span></button></div>
+    <div class="cda-dossier-resources">
+      <div class="cda-res frost" data-help="spirit">
+        <span class="cda-res-label">{{localize "CdA.Resource.spirit"}}</span>
+        <div class="cda-res-pips">{{#each spirit.items}}<button type="button" class="cda-pip {{#unless on}}spent{{/unless}}" data-action="pip" data-resource="spirit" data-n="{{n}}" aria-label="{{localize 'CdA.Resource.spirit'}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}><img src="{{#if on}}{{@root.assets.spirit.on}}{{else}}{{@root.assets.spirit.off}}{{/if}}" alt=""></button>{{/each}}</div>
+        <span class="cda-res-num"><input type="number" name="system.spirit.value" value="{{system.spirit.value}}" min="0" max="{{system.spirit.max}}" aria-label="{{localize 'CdA.Resource.spirit'}}"> / <input type="number" name="system.spirit.max" value="{{system.spirit.max}}" min="1" max="12" aria-label="{{localize 'CdA.Resource.Max'}}"></span>
+      </div>
+      <div class="cda-res ember" data-help="determination">
+        <span class="cda-res-label">{{localize "CdA.Resource.determination"}}</span>
+        <div class="cda-res-pips">{{#each determination.items}}<button type="button" class="cda-pip {{#unless on}}spent{{/unless}}" data-action="pip" data-resource="determination" data-n="{{n}}" aria-label="{{localize 'CdA.Resource.determination'}} {{n}}" {{#unless @root.editable}}disabled{{/unless}}><img src="{{#if on}}{{@root.assets.determination.on}}{{else}}{{@root.assets.determination.off}}{{/if}}" alt=""></button>{{/each}}</div>
+        <span class="cda-res-num"><input type="number" name="system.determination.value" value="{{system.determination.value}}" min="0" max="{{system.determination.max}}" aria-label="{{localize 'CdA.Resource.determination'}}"> / <input type="number" name="system.determination.max" value="{{system.determination.max}}" min="1" max="12" aria-label="{{localize 'CdA.Resource.Max'}}"></span>
+      </div>
+      {{#unless splitOk}}<p class="cda-warning" data-help="split"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>{{localize "CdA.Actor.SplitNote"}}</p>{{/unless}}
+    </div>
   </header>
-  <div class="cda-resource-ribbon">
-    <section class="cda-resource spirit" data-mr-help="spirit"><div><span>{{localize "CdA.Table.Spirit"}}</span><strong>{{system.spirit.value}} / {{system.spirit.max}}</strong></div><div class="cda-resource-gems">{{#each spirit}}<button type="button" data-action="resource" data-resource="spirit" data-n="{{n}}"><img src="systems/mr-cuentos-de-animas/assets/counters/{{#if on}}spirit-on{{else}}spirit-off{{/if}}.webp" alt="{{n}}"></button>{{/each}}</div></section>
-    <div class="cda-resource-divider"><i class="fa-solid fa-moon"></i></div>
-    <section class="cda-resource determination" data-mr-help="determination"><div><span>{{localize "CdA.Table.Determination"}}</span><strong>{{system.determination.value}} / {{system.determination.max}}</strong></div><div class="cda-resource-gems">{{#each determination}}<button type="button" data-action="resource" data-resource="determination" data-n="{{n}}"><img src="systems/mr-cuentos-de-animas/assets/counters/{{#if on}}determination-on{{else}}determination-off{{/if}}.webp" alt="{{n}}"></button>{{/each}}</div></section>
+
+  <div class="cda-dossier-body">
+    {{!-- Quién es --}}
+    <section class="cda-dossier-col">
+      <h3 class="cda-section-title" data-help="traits">{{localize "CdA.Actor.Traits"}}</h3>
+      <div class="cda-traits">
+        {{#each traits}}
+        <div class="cda-trait">
+          <span class="cda-trait-n" aria-hidden="true">{{n}}</span>
+          <input type="text" name="system.traits.{{i}}.label" value="{{label}}" placeholder="{{localize 'CdA.Actor.TraitName'}}" aria-label="{{localize 'CdA.Actor.TraitName'}} {{n}}">
+          <textarea name="system.traits.{{i}}.text" rows="2" placeholder="{{localize 'CdA.Actor.TraitText'}}" aria-label="{{localize 'CdA.Actor.TraitText'}} {{n}}">{{text}}</textarea>
+        </div>
+        {{/each}}
+      </div>
+      <h3 class="cda-section-title">{{localize "CdA.Actor.Description"}}</h3>
+      <textarea class="cda-prose" name="system.description" rows="4" aria-label="{{localize 'CdA.Actor.Description'}}">{{system.description}}</textarea>
+      <h3 class="cda-section-title">{{localize "CdA.Actor.History"}}</h3>
+      <textarea class="cda-prose" name="system.backstory" rows="6" aria-label="{{localize 'CdA.Actor.History'}}">{{system.backstory}}</textarea>
+    </section>
+
+    {{!-- Lo que lleva --}}
+    <section class="cda-dossier-col">
+      <h3 class="cda-section-title" data-help="objects">{{localize "CdA.Actor.Objects"}}
+        {{#if editable}}<button type="button" class="cda-icon-btn" data-action="add" data-list="objects" aria-label="{{localize 'CdA.Common.Add'}}"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>{{/if}}</h3>
+      <ul class="cda-list-edit">
+        {{#each objects}}
+        <li>
+          <input type="text" name="system.objects.{{i}}.label" value="{{label}}" placeholder="{{localize 'CdA.Actor.ObjectName'}}" aria-label="{{localize 'CdA.Actor.ObjectName'}}">
+          <label class="cda-star" title="{{localize 'CdA.Actor.Significant'}}"><input type="checkbox" name="system.objects.{{i}}.significant" {{checked significant}}><i class="fa-solid fa-star" aria-hidden="true"></i><span class="sr-only">{{localize "CdA.Actor.Significant"}}</span></label>
+          <button type="button" class="cda-icon-btn" data-action="remove" data-list="objects" data-index="{{i}}" aria-label="{{localize 'CdA.Common.Delete'}}"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          <textarea name="system.objects.{{i}}.text" rows="1" placeholder="{{localize 'CdA.Actor.ObjectText'}}" aria-label="{{localize 'CdA.Actor.ObjectText'}}">{{text}}</textarea>
+        </li>
+        {{else}}<li class="cda-empty-line">{{localize "CdA.Actor.NoObjects"}}</li>{{/each}}
+      </ul>
+      <h3 class="cda-section-title" data-help="bonds">{{localize "CdA.Actor.Bonds"}}
+        {{#if editable}}<button type="button" class="cda-icon-btn" data-action="add" data-list="bonds" aria-label="{{localize 'CdA.Common.Add'}}"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>{{/if}}</h3>
+      <ul class="cda-list-edit">
+        {{#each bonds}}
+        <li>
+          <input type="text" name="system.bonds.{{i}}.name" value="{{name}}" placeholder="{{localize 'CdA.Actor.BondName'}}" aria-label="{{localize 'CdA.Actor.BondName'}}">
+          <button type="button" class="cda-icon-btn" data-action="remove" data-list="bonds" data-index="{{i}}" aria-label="{{localize 'CdA.Common.Delete'}}"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+          <textarea name="system.bonds.{{i}}.text" rows="1" placeholder="{{localize 'CdA.Actor.BondText'}}" aria-label="{{localize 'CdA.Actor.BondText'}}">{{text}}</textarea>
+        </li>
+        {{else}}<li class="cda-empty-line">{{localize "CdA.Actor.NoBonds"}}</li>{{/each}}
+      </ul>
+      <h3 class="cda-section-title">{{localize "CdA.Common.Notes"}}</h3>
+      <textarea class="cda-prose" name="system.notes" rows="4" aria-label="{{localize 'CdA.Common.Notes'}}">{{system.notes}}</textarea>
+    </section>
+
+    {{!-- Lo que recuerda y afirma --}}
+    <section class="cda-dossier-col cda-dossier-records">
+      <div class="cda-record-card">
+        <h3 class="cda-section-title" data-help="memories"><button type="button" class="cda-link" data-action="open" data-app="memories">{{localize "CdA.App.Memories"}} <b>{{counts.memories}}</b></button></h3>
+        <ul>{{#each memories}}<li><i class="{{icon}}" title="{{label}}" aria-label="{{label}}"></i><span>{{#if title}}{{title}}{{else}}{{text}}{{/if}}</span></li>{{else}}<li class="cda-empty-line">{{localize "CdA.Memory.Empty"}}</li>{{/each}}</ul>
+      </div>
+      <div class="cda-record-card">
+        <h3 class="cda-section-title" data-help="truths"><button type="button" class="cda-link" data-action="open" data-app="truths">{{localize "CdA.App.Truths"}} <b>{{counts.truths}}</b></button></h3>
+        <ul>{{#each truths}}<li class="status-{{status}}"><i class="{{icon}}" title="{{label}}" aria-label="{{label}}"></i><span>{{text}}</span></li>{{else}}<li class="cda-empty-line">{{localize "CdA.Truth.Empty"}}</li>{{/each}}</ul>
+      </div>
+      <div class="cda-record-card">
+        <h3 class="cda-section-title" data-help="diary"><button type="button" class="cda-link" data-action="open" data-app="diary">{{localize "CdA.App.Diary"}} <b>{{counts.diary}}</b></button></h3>
+        <ul>{{#each diary}}<li><i class="fa-solid fa-feather-pointed" aria-hidden="true"></i><span>{{title}}</span></li>{{else}}<li class="cda-empty-line">{{localize "CdA.Diary.Empty"}}</li>{{/each}}</ul>
+      </div>
+      <button type="button" class="cda-primary cda-wide" data-action="table"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.App.Table"}}</button>
+    </section>
   </div>
-  <main class="cda-sheet-scroll">
-    <div class="cda-sheet-columns">
-      <section class="cda-paper-panel"><header><i class="fa-solid fa-feather"></i><h3>{{localize "CdA.Actor.Who"}}</h3></header><label>{{localize "CdA.Actor.Description"}}<textarea name="system.physicalDescription" rows="5">{{system.physicalDescription}}</textarea></label><label>{{localize "CdA.Actor.History"}}<textarea name="system.backstory" rows="8">{{system.backstory}}</textarea></label></section>
-      <section class="cda-paper-panel"><header><i class="fa-solid fa-shapes"></i><h3>{{localize "CdA.Actor.Defines"}}</h3><button type="button" data-action="add" data-list="traits"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each traits}}<article><div class="cda-repeat-head"><i class="{{icon}}"></i><input name="system.traits.{{i}}.label" value="{{label}}"><button type="button" data-action="remove" data-list="traits" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.traits.{{i}}.text" rows="2">{{text}}</textarea><input type="hidden" name="system.traits.{{i}}.icon" value="{{icon}}"></article>{{/each}}</div></section>
-      <section class="cda-paper-panel"><header><i class="fa-solid fa-key"></i><h3>{{localize "CdA.Actor.Objects"}}</h3><button type="button" data-action="add" data-list="objects"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each objects}}<article><div class="cda-repeat-head"><input name="system.objects.{{i}}.label" value="{{label}}"><button type="button" data-action="remove" data-list="objects" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.objects.{{i}}.text" rows="2">{{text}}</textarea><input name="system.objects.{{i}}.image" value="{{image}}" placeholder="{{localize 'CdA.Actor.OptionalImage'}}"></article>{{/each}}</div></section>
-      <section class="cda-paper-panel"><header><i class="fa-solid fa-cloud-moon"></i><h3>{{localize "CdA.Actor.Memories"}}</h3><button type="button" data-action="add" data-list="memories"><i class="fa-solid fa-plus"></i></button></header><div class="cda-repeat-list">{{#each memories}}<article><div class="cda-repeat-head"><input name="system.memories.{{i}}.title" value="{{title}}"><button type="button" data-action="remove" data-list="memories" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea name="system.memories.{{i}}.text" rows="3">{{text}}</textarea><label class="cda-inline-check"><input type="checkbox" name="system.memories.{{i}}.revealed" {{checked revealed}}> {{localize "CdA.Actor.Revealed"}}</label></article>{{/each}}</div></section>
-    </div>
-    <section class="cda-paper-panel cda-notes"><header><i class="fa-solid fa-pen-nib"></i><h3>{{localize "CdA.Common.Notes"}}</h3></header><textarea name="system.notes" rows="5">{{system.notes}}</textarea></section>
-  </main>
 </div>

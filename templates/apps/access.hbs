@@ -1,7 +1,23 @@
-<div class="cda-access-body">
-  <header><i class="fa-solid fa-universal-access"></i><div><h2>{{localize "CdA.Access.Title"}}</h2><p>{{localize "CdA.Access.Intro"}}</p></div></header>
-  <label class="cda-range">{{localize "CdA.Access.Scale"}} <input type="range" name="textScale" min="85" max="160" step="5" value="{{scale}}"><output data-scale-out>{{scale}}%</output></label>
-  <div class="cda-access-toggles">{{#each toggles}}<button type="button" data-action="toggle" data-key="{{key}}" class="{{#if on}}on{{/if}}"><i class="fa-solid {{#if on}}fa-toggle-on{{else}}fa-toggle-off{{/if}}"></i><span>{{label}}</span></button>{{/each}}</div>
-  <div class="cda-ink-row"><span>{{localize "CdA.Access.Ink"}}</span>{{#each inks}}<button type="button" data-action="ink" data-key="{{key}}" class="{{#if selected}}selected{{/if}}" style="--swatch:{{color}}" aria-label="{{key}}"></button>{{/each}}</div>
-  <button type="button" class="cda-reset" data-action="reset"><i class="fa-solid fa-rotate-left"></i>{{localize "CdA.Access.Reset"}}</button>
+<div class="cda-access">
+  <p class="cda-lede">{{localize "CdA.Access.Intro"}}</p>
+  <div class="cda-ranges">
+    {{#each ranges}}
+    <label class="cda-range"><span>{{label}}</span><input type="range" name="{{key}}" min="{{min}}" max="{{max}}" step="{{step}}" value="{{value}}"><output>{{value}}%</output></label>
+    {{/each}}
+  </div>
+  <div class="cda-toggle-grid">
+    {{#each toggles}}
+    <button type="button" class="cda-toggle {{#if on}}on{{/if}}" data-action="toggle" data-key="{{key}}" role="switch" aria-checked="{{#if on}}true{{else}}false{{/if}}">
+      <span class="cda-switch" aria-hidden="true"></span><span><strong>{{label}}</strong><small>{{hint}}</small></span>
+    </button>
+    {{/each}}
+  </div>
+  <div class="cda-ink-row" role="radiogroup" aria-label="{{localize 'CdA.Access.InkLabel'}}">
+    <span>{{localize "CdA.Access.InkLabel"}}</span>
+    {{#each inks}}<button type="button" class="cda-ink {{#if selected}}selected{{/if}}" data-action="ink" data-key="{{key}}" style="--swatch:{{color}}" role="radio" aria-checked="{{#if selected}}true{{else}}false{{/if}}" aria-label="{{label}}" title="{{label}}"></button>{{/each}}
+  </div>
+  <footer class="cda-row-end">
+    <button type="button" data-action="forget"><i class="fa-solid fa-up-down-left-right" aria-hidden="true"></i>{{localize "CdA.Access.Forget"}}</button>
+    <button type="button" data-action="reset"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>{{localize "CdA.Access.Reset"}}</button>
+  </footer>
 </div>

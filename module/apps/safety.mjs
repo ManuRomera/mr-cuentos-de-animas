@@ -1,9 +1,56 @@
-import { ApplicationV2, HandlebarsApplicationMixin } from "../compat.mjs";
-import { SYSTEM_ID, TEMPLATES } from "../constants.mjs";
-import { WithMemory } from "../memory.mjs";
-export class SafetyPanel extends WithMemory(HandlebarsApplicationMixin(ApplicationV2)) {
-  static MEMORY="safety"; static DEFAULT_OPTIONS={id:"cda-safety",classes:["mr-cda","cda-app","cda-safety"],window:{title:"CdA.App.Safety",icon:"fa-solid fa-shield-heart"},position:{width:430,height:"auto"},actions:{signal:SafetyPanel.#signal}};static MEMORY_FIELDS=["left","top","width"];static PARTS={body:{template:`${TEMPLATES}/apps/safety.hbs`}};static #instance;static open(){return(this.#instance??=new SafetyPanel()).render({force:true});}
-  static #signal(e,b){game.socket.emit(`system.${SYSTEM_ID}`,{type:"safety",signal:b.dataset.signal});SafetyPanel.showSignal(b.dataset.signal);}
-  static init(){game.socket.on(`system.${SYSTEM_ID}`,data=>{if(data?.type==="safety")this.showSignal(data.signal);});}
-  static showSignal(signal){const t=k=>game.i18n.localize(k);const labels={pause:[t("CdA.Safety.Pause"),t("CdA.Safety.OverlayPause")],veil:[t("CdA.Safety.Veil"),t("CdA.Safety.OverlayVeil")],stop:[t("CdA.Safety.X"),t("CdA.Safety.OverlayX")]};const [title,text]=labels[signal]??labels.pause;document.querySelector(".cda-safety-overlay")?.remove();const el=document.createElement("div");el.className=`cda-safety-overlay ${signal}`;el.innerHTML=`<div><i class="fa-solid ${signal==="stop"?"fa-xmark":signal==="veil"?"fa-eye-slash":"fa-pause"}"></i><h2>${title}</h2><p>${text}</p><button type="button">${t("CdA.Safety.Ack")}</button></div>`;document.body.append(el);requestAnimationFrame(()=>el.classList.add("visible"));el.querySelector("button").onclick=()=>{el.classList.remove("visible");setTimeout(()=>el.remove(),180);};}
+import { SOCKET, TEMPLATES } from "../constants.mjs";
+import { SystemApp, t } from "./base.mjs";
+
+const SIGNALS = {
+  pause: { icon: "fa-pause", overlay: true },
+  veil: { icon: "fa-eye-slash", overlay: false },
+  x: { icon: "fa-xmark", overlay: true }
+};
+
+/**
+ * Seguridad en mesa: Pausa, Velo y Tarjeta X. Inmediata y sincronizada.
+ * El aviso nunca dice quién lo activó; la Tarjeta X no se registra en ningún sitio.
+ */
+export class SafetyPanel extends SystemApp {
+  static MEMORY = "safety";
+  static MEMORY_FIELDS = ["left", "top"];
+  static DEFAULT_OPTIONS = {
+    id: "cda-safety", classes: ["cda-safety-app"],
+    window: { title: "CdA.App.Safety", icon: "fa-solid fa-shield-heart", resizable: false },
+    position: { width: 380, height: "auto" },
+    actions: { signal: SafetyPanel.#signal }
+  };
+  static PARTS = { body: { template: `${TEMPLATES}/apps/safety.hbs` } };
+
+  static init() {
+    game.socket.on(SOCKET, data => {
+      if (data?.type === "safety") this.show(data.signal);
+      if (data?.type === "safety-clear") this.clear();
+    });
+  }
+
+  static #signal(event, target) {
+    const signal = target.dataset.signal;
+    if (!SIGNALS[signal]) return;
+    game.socket.emit(SOCKET, { type: "safety", signal });
+    SafetyPanel.show(signal);
+  }
+
+  static clear() { document.querySelector(".cda-safety-signal")?.remove(); }
+
+  static show(signal) {
+    const s = SIGNALS[signal]; if (!s) return;
+    this.clear();
+    const el = document.createElement("div");
+    el.className = `mr-cda cda-safety-signal ${signal} ${s.overlay ? "overlay" : "banner"}`;
+    el.setAttribute("role", "alertdialog");
+    const key = { pause: "Pause", veil: "Veil", x: "X" }[signal];
+    el.innerHTML = `<div class="cda-safety-box"><i class="fa-solid ${s.icon}" aria-hidden="true"></i>
+      <h2>${t(`CdA.Safety.${key}`)}</h2><p>${t(`CdA.Safety.${key}Text`)}</p>
+      <button type="button">${t("CdA.Safety.Continue")}</button></div>`;
+    document.body.append(el);
+    const button = el.querySelector("button");
+    button.addEventListener("click", () => { game.socket.emit(SOCKET, { type: "safety-clear" }); this.clear(); });
+    button.focus();
+  }
 }

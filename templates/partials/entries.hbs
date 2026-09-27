@@ -1,0 +1,32 @@
+{{!-- Editor genérico de listas del escenario. Uso: {{> "…/entries.hbs" entries=lists.clues list="clues" editable=editable}} --}}
+<div class="cda-entries">
+  {{#each entries}}
+  <article class="cda-entry-card {{#if kind}}kind-{{kind}}{{/if}}">
+    <header>
+      <span class="cda-entry-n">{{n}}</span>
+      {{#if ../editable}}
+      <div class="cda-entry-tools">
+        <button type="button" class="cda-icon-btn" data-action="move" data-list="{{list}}" data-index="{{i}}" data-delta="-1" aria-label="{{localize 'CdA.Common.Up'}}"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+        <button type="button" class="cda-icon-btn" data-action="move" data-list="{{list}}" data-index="{{i}}" data-delta="1" aria-label="{{localize 'CdA.Common.Down'}}"><i class="fa-solid fa-arrow-down" aria-hidden="true"></i></button>
+        <button type="button" class="cda-icon-btn" data-action="remove" data-list="{{list}}" data-index="{{i}}" aria-label="{{localize 'CdA.Common.Delete'}}"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+      </div>
+      {{/if}}
+    </header>
+    <div class="cda-fields">
+      {{#each fields}}
+      <label class="cda-field f-{{type}} {{#if wide}}wide{{/if}} {{#if gm}}gm{{/if}}">
+        <span>{{#if gm}}<i class="fa-solid fa-hat-wizard" aria-hidden="true"></i> {{/if}}{{label}}</span>
+        {{#if (eq type "textarea")}}<textarea name="{{name}}" rows="2">{{value}}</textarea>
+        {{else if (eq type "number")}}<input type="number" name="{{name}}" value="{{value}}" min="0" max="20">
+        {{else if (eq type "select")}}<select name="{{name}}">{{#each options}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+        {{else if (eq type "image")}}<span class="cda-path"><input type="text" name="{{name}}" value="{{value}}" placeholder="…/imagen.webp"><button type="button" class="cda-icon-btn" data-action="pick" aria-label="{{localize 'CdA.Common.Browse'}}"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></button></span>
+        {{else}}<input type="text" name="{{name}}" value="{{value}}">{{/if}}
+      </label>
+      {{/each}}
+    </div>
+  </article>
+  {{else}}
+  <p class="cda-empty-line">{{localize "CdA.Scenario.EmptyList"}}</p>
+  {{/each}}
+  {{#if editable}}<button type="button" class="cda-add-entry" data-action="add" data-list="{{list}}"><i class="fa-solid fa-plus" aria-hidden="true"></i>{{localize "CdA.Common.Add"}}</button>{{/if}}
+</div>

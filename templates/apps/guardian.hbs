@@ -1,0 +1,113 @@
+<div class="cda-guardian">
+  <header class="cda-guardian-head">
+    <span class="cda-kicker">{{phase}}</span>
+    <strong>{{#if scenario}}{{scenario.name}}{{else}}{{localize "CdA.Table.Waiting"}}{{/if}}</strong>
+  </header>
+
+  <div class="cda-guardian-scroll">
+  {{#if idle}}
+    <div class="cda-empty"><p>{{localize "CdA.Guardian.Idle"}}</p>
+      <button type="button" class="cda-primary" data-action="open" data-app="start"><i class="fa-solid fa-book" aria-hidden="true"></i>{{localize "CdA.Table.New"}}</button></div>
+  {{else}}
+    {{!-- Escena --}}
+    <details class="cda-g-section" data-memory="scene" open>
+      <summary><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{localize "CdA.Guardian.Scene"}}{{#if scene}} <small>{{scene.n}}/{{scene.of}}</small>{{/if}}</summary>
+      {{#if scene}}
+      <div class="cda-scene-nav">
+        <button type="button" class="cda-icon-btn" data-action="scene" data-delta="-1" {{#unless hasPrev}}disabled{{/unless}} aria-label="{{localize 'CdA.Guardian.PrevScene'}}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+        <strong>{{scene.title}}</strong>
+        <button type="button" class="cda-icon-btn" data-action="scene" data-delta="1" {{#unless hasNext}}disabled{{/unless}} aria-label="{{localize 'CdA.Guardian.NextScene'}}"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      {{#if scene.guardian}}<p class="cda-gm-text"><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>{{scene.guardian}}</p>{{/if}}
+      {{/if}}
+      <label class="cda-inline">{{localize "CdA.Guardian.Ambient"}}<select name="ambient">{{#each ambients}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
+    </details>
+
+    {{!-- Mazo --}}
+    <details class="cda-g-section" data-memory="deck" open>
+      <summary><i class="fa-solid fa-layer-group" aria-hidden="true"></i>{{localize "CdA.Guardian.Deck"}} <small>{{remaining}}</small></summary>
+      <div class="cda-blocks" data-help="blocks">
+        {{#each blocks}}
+        <div class="cda-block {{#if current}}current{{/if}} {{#unless count}}done{{/unless}}">
+          <span class="cda-block-roman">{{roman}}</span>
+          <span class="cda-block-count">{{count}}</span>
+          <span class="cda-block-gray">{{#if gray}}<i class="fa-solid fa-ghost" aria-hidden="true"></i>{{localize "CdA.Guardian.GrayInside"}}{{else}}—{{/if}}</span>
+        </div>
+        {{/each}}
+      </div>
+      {{#if current}}<p class="cda-current-line"><i class="{{current.icon}}" aria-hidden="true"></i>{{current.title}}{{#if current.guardian}} — <em>{{current.guardian}}</em>{{/if}}</p>{{/if}}
+      <div class="cda-g-grid">
+        <button type="button" class="cda-primary" data-action="draw" {{#unless canDraw}}disabled{{/unless}}><i class="fa-regular fa-clone" aria-hidden="true"></i>{{localize "CdA.Table.Draw"}}</button>
+        <button type="button" data-action="show" {{#unless current}}disabled{{/unless}}><i class="fa-solid fa-expand" aria-hidden="true"></i>{{localize "CdA.Guardian.Show"}}</button>
+        <button type="button" data-action="discard" {{#unless current}}disabled{{/unless}}><i class="fa-solid fa-hand" aria-hidden="true"></i>{{localize "CdA.Guardian.Discard"}}</button>
+        <button type="button" data-action="gray" {{#unless grayLeft}}disabled{{/unless}}><i class="fa-solid fa-ghost" aria-hidden="true"></i>{{localize "CdA.Guardian.Gray"}}</button>
+        <button type="button" data-action="reshuffle"><i class="fa-solid fa-shuffle" aria-hidden="true"></i>{{localize "CdA.Guardian.Reshuffle"}}</button>
+        <button type="button" data-action="rebuild"><i class="fa-solid fa-rotate" aria-hidden="true"></i>{{localize "CdA.Guardian.Rebuild"}}</button>
+      </div>
+      <fieldset class="cda-g-insert">
+        <legend>{{localize "CdA.Guardian.Insert"}}</legend>
+        <select name="insertCard" aria-label="{{localize 'CdA.Guardian.InsertFrom'}}"><option value="">—</option>{{#each insertable}}<option value="{{value}}">{{label}}</option>{{/each}}</select>
+        <div class="cda-g-row">
+          <input type="text" name="insertText" placeholder="{{localize 'CdA.Guardian.InsertCustom'}}" aria-label="{{localize 'CdA.Guardian.InsertCustom'}}">
+          <select name="insertKind" aria-label="{{localize 'CdA.Guardian.InsertKind'}}"><option value="clue">{{localize "CdA.Kind.clue"}}</option><option value="environment">{{localize "CdA.Kind.environment"}}</option><option value="character">{{localize "CdA.Kind.character"}}</option><option value="incident">{{localize "CdA.Kind.incident"}}</option></select>
+        </div>
+        <div class="cda-g-row">
+          <select name="insertWhere" aria-label="{{localize 'CdA.Guardian.Where'}}"><option value="next">{{localize "CdA.Guardian.WhereNext"}}</option><option value="block">{{localize "CdA.Guardian.WhereBlock"}}</option><option value="bottom">{{localize "CdA.Guardian.WhereBottom"}}</option></select>
+          <button type="button" data-action="insert"><i class="fa-solid fa-plus" aria-hidden="true"></i>{{localize "CdA.Guardian.InsertDo"}}</button>
+        </div>
+      </fieldset>
+    </details>
+
+    {{!-- Recursos --}}
+    {{#if actor}}
+    <details class="cda-g-section" data-memory="resources" open>
+      <summary><i class="fa-solid fa-user" aria-hidden="true"></i>{{actor.name}}</summary>
+      <div class="cda-g-resources">
+        <div class="frost"><span>{{localize "CdA.Resource.spirit"}}</span>
+          <button type="button" class="cda-icon-btn" data-action="resource" data-resource="spirit" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus" aria-hidden="true"></i></button>
+          <b>{{actor.spirit.value}}<small>/{{actor.spirit.max}}</small></b>
+          <button type="button" class="cda-icon-btn" data-action="resource" data-resource="spirit" data-delta="1" aria-label="+1"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <button type="button" class="cda-mini" data-action="resource" data-resource="spirit" data-delta="1" data-max="1" title="{{localize 'CdA.Guardian.RaiseMax'}}">{{localize "CdA.Guardian.Max"}}+</button>
+        </div>
+        <div class="ember"><span>{{localize "CdA.Resource.determination"}}</span>
+          <button type="button" class="cda-icon-btn" data-action="resource" data-resource="determination" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus" aria-hidden="true"></i></button>
+          <b>{{actor.determination.value}}<small>/{{actor.determination.max}}</small></b>
+          <button type="button" class="cda-icon-btn" data-action="resource" data-resource="determination" data-delta="1" aria-label="+1"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+          <button type="button" class="cda-mini" data-action="resource" data-resource="determination" data-delta="1" data-max="1" title="{{localize 'CdA.Guardian.RaiseMax'}}">{{localize "CdA.Guardian.Max"}}+</button>
+        </div>
+      </div>
+    </details>
+    {{/if}}
+
+    {{!-- Registro --}}
+    <details class="cda-g-section" data-memory="record" open>
+      <summary><i class="fa-solid fa-pen-nib" aria-hidden="true"></i>{{localize "CdA.Guardian.Record"}}</summary>
+      <fieldset>
+        <div class="cda-g-row"><input type="text" name="truth" placeholder="{{localize 'CdA.Truth.Placeholder'}}" aria-label="{{localize 'CdA.Truth.Statement'}}"><button type="button" data-action="truth"><i class="fa-solid fa-eye" aria-hidden="true"></i></button></div>
+        <label class="cda-check"><input type="checkbox" name="truthHidden">{{localize "CdA.Guardian.TruthPending"}}</label>
+      </fieldset>
+      <fieldset>
+        <div class="cda-g-row"><select name="memory" aria-label="{{localize 'CdA.App.Memories'}}">{{#each memories}}<option value="{{i}}">{{title}}</option>{{/each}}</select><button type="button" data-action="memory" {{#unless memories.length}}disabled{{/unless}}><i class="fa-solid fa-cloud-moon" aria-hidden="true"></i>{{localize "CdA.Guardian.Launch"}}</button></div>
+      </fieldset>
+      <fieldset>
+        <div class="cda-g-row"><input type="text" name="note" placeholder="{{localize 'CdA.Guardian.NotePlaceholder'}}" aria-label="{{localize 'CdA.Guardian.Note'}}"><button type="button" data-action="note"><i class="fa-solid fa-feather" aria-hidden="true"></i></button></div>
+      </fieldset>
+    </details>
+
+    {{!-- Epílogo --}}
+    {{#if scenario}}
+    <details class="cda-g-section" data-memory="epilogue">
+      <summary><i class="fa-solid fa-door-open" aria-hidden="true"></i>{{localize "CdA.Game.Epilogue"}}</summary>
+      <ul class="cda-epilogues">{{#each scenario.epilogues}}<li class="{{#if current}}current{{/if}}"><strong>{{label}}</strong><p>{{text}}</p></li>{{/each}}</ul>
+      <button type="button" data-action="epilogue"><i class="fa-solid fa-forward" aria-hidden="true"></i>{{localize "CdA.Guardian.ToEpilogue"}}</button>
+    </details>
+    {{/if}}
+  {{/if}}
+  </div>
+
+  <footer class="cda-g-foot">
+    <button type="button" data-action="open" data-app="table"><i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>{{localize "CdA.App.Table"}}</button>
+    <button type="button" data-action="open" data-app="safety" class="cda-nav-safety"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i>{{localize "CdA.App.Safety"}}</button>
+    {{#unless idle}}<button type="button" data-action="end" class="subtle"><i class="fa-solid fa-box-archive" aria-hidden="true"></i>{{localize "CdA.Table.End"}}</button>{{/unless}}
+  </footer>
+</div>

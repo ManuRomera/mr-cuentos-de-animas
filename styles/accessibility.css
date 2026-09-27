@@ -1,12 +1,59 @@
-.cda-reading .mr-cda,.cda-reading .cda-rich-help { color:var(--cda-reading-ink)!important; }
-.cda-reading .cda-table,.cda-reading .cda-library-body,.cda-reading .cda-diary-body,.cda-reading .cda-truth-body { background:#080808!important; }
-.cda-reading .cda-paper-panel { background:#171717!important; color:var(--cda-reading-ink)!important; border-color:#555!important; }
-.cda-reading .cda-paper-panel input,.cda-reading .cda-paper-panel textarea { background:#0b0b0b!important; color:var(--cda-reading-ink)!important; border-color:#555!important; }
-.cda-plain-font .mr-cda,.cda-plain-font .cda-rich-help { font-family:Arial,Helvetica,sans-serif!important; }
-.cda-wide-spacing .mr-cda { letter-spacing:.035em; line-height:1.58; }
-.cda-high-contrast .mr-cda { --cda-ink:#fff; --cda-muted:#ddd; --cda-brass:#ffd27a; }
-.cda-high-contrast .cda-paper-panel { background:#fff4d8; color:#050505; border:2px solid #000; }
-.cda-high-contrast .cda-table-tools button,.cda-high-contrast .cda-footer-actions button { border-width:2px; }
-.cda-reduced-motion *,.cda-reduced-motion *::before,.cda-reduced-motion *::after { animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
-.cda-reduced-motion .cda-mote { display:none!important; }
-@media (prefers-reduced-motion:reduce){.mr-cda *,.mr-cda *::before,.mr-cda *::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+/* ==========================================================================
+   Accesibilidad. Las clases viven en <html> (settings.applyPreferences),
+   pero todas las reglas se limitan a ventanas y capas del sistema.
+   ========================================================================== */
+
+/* Movimiento: el sistema operativo o el ajuste interno */
+@media (prefers-reduced-motion: reduce) {
+  .mr-cda *, .mr-cda *::before, .mr-cda *::after, .cda-help { animation: none !important; transition-duration: .01ms !important; }
+}
+.cda-reduced-motion .mr-cda *, .cda-reduced-motion .mr-cda *::before, .cda-reduced-motion .mr-cda *::after,
+.cda-reduced-motion .mr-cda.cda-overlay { animation: none !important; transition-duration: .01ms !important; }
+
+/* Efectos: niebla, motas, parpadeo */
+.cda-reduced-effects .mr-cda .cda-atmos { display: none; }
+.cda-reduced-effects .mr-cda .cda-table { filter: none !important; }
+.cda-reduced-effects .mr-cda .cda-draw-hint { animation: none; }
+.cda-reduced-effects .mr-cda .cda-overlay-scrim { backdrop-filter: none; }
+
+/* Tipografía sencilla */
+.cda-plain-font .application.mr-cda, .cda-plain-font .mr-cda.cda-overlay, .cda-plain-font .cda-help {
+  --cda-serif: var(--cda-sans); --cda-display: var(--cda-sans);
+}
+.cda-plain-font .mr-cda h1, .cda-plain-font .mr-cda h2, .cda-plain-font .mr-cda h3 { font-weight: 700; }
+.cda-plain-font .mr-cda em, .cda-plain-font .mr-cda .cda-lede, .cda-plain-font .mr-cda .cda-hook { font-style: normal; }
+
+/* Espaciado */
+.cda-wide-spacing .mr-cda p, .cda-wide-spacing .mr-cda textarea, .cda-wide-spacing .mr-cda li, .cda-wide-spacing .cda-help p {
+  line-height: 1.8 !important; letter-spacing: .03em; word-spacing: .08em;
+}
+
+/* Botones grandes */
+.cda-large-buttons .mr-cda button:not(.cda-pip):not(.cda-ink) { min-height: 44px; font-size: 1.02em; padding: .6em 1em; }
+.cda-large-buttons .mr-cda button.cda-icon-btn { min-width: 40px; min-height: 40px; }
+.cda-large-buttons .mr-cda button.cda-pip { width: 44px; height: 44px; }
+
+/* Alto contraste: bordes y textos marcados, sin transparencias engañosas */
+.cda-high-contrast .application.mr-cda { --cda-text: #ffffff; --cda-muted: #e6e0d4; --cda-line: rgba(255, 230, 180, .75); --cda-line-strong: #ffe2a8; border-color: #ffe2a8; }
+.cda-high-contrast .mr-cda button { border-width: 2px; }
+.cda-high-contrast .mr-cda input, .cda-high-contrast .mr-cda select, .cda-high-contrast .mr-cda textarea { border-width: 2px !important; border-color: #ffe2a8 !important; }
+.cda-high-contrast .mr-cda .cda-token.spent { opacity: .35; }
+.cda-high-contrast .mr-cda .cda-card-copy { background: rgba(0, 0, 0, .94); }
+.cda-high-contrast .mr-cda .cda-table-head, .cda-high-contrast .mr-cda .cda-table-foot { background: #000; }
+.cda-high-contrast .mr-cda .cda-atmos { display: none; }
+.cda-high-contrast .mr-cda.cda-paper-window .window-content { background: #fffaf0; color: #000; }
+.cda-high-contrast .mr-cda.cda-paper-window { --cda-ink: #000; }
+.cda-high-contrast .mr-cda :focus-visible { outline: 3px solid #ffd35a; outline-offset: 2px; }
+
+/* Lectura limpia: fondos lisos, tinta elegida por el usuario */
+.cda-reading .application.mr-cda .window-content,
+.cda-reading .application.mr-cda.cda-paper-window .window-content { background: #121110; color: var(--cda-reading-ink); }
+.cda-reading .mr-cda.cda-paper-window { --cda-ink: var(--cda-reading-ink); }
+.cda-reading .mr-cda.cda-paper-window input, .cda-reading .mr-cda.cda-paper-window textarea, .cda-reading .mr-cda.cda-paper-window select { color: var(--cda-reading-ink) !important; background: rgba(255, 255, 255, .04) !important; }
+.cda-reading .mr-cda.cda-paper-window .cda-truth, .cda-reading .mr-cda.cda-paper-window .cda-memory,
+.cda-reading .mr-cda.cda-paper-window .cda-trait, .cda-reading .mr-cda.cda-paper-window .cda-record-card,
+.cda-reading .mr-cda.cda-paper-window .cda-list-edit li, .cda-reading .mr-cda.cda-paper-window .cda-compose { background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .12); transform: none; box-shadow: none; }
+.cda-reading .mr-cda.cda-paper-window .cda-status-badge { background: rgba(255, 255, 255, .1); color: var(--cda-reading-ink); }
+.cda-reading .mr-cda.cda-paper-window .cda-kicker, .cda-reading .mr-cda.cda-paper-window .cda-section-title { color: var(--cda-reading-ink) !important; opacity: .75; }
+.cda-reading .mr-cda .cda-overlay-paper { background: #121110; color: var(--cda-reading-ink); transform: none; }
+.cda-reading .mr-cda .cda-card-copy p, .cda-reading .mr-cda .cda-read, .cda-reading .mr-cda .cda-hook { color: var(--cda-reading-ink); font-style: normal; }

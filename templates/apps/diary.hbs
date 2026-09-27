@@ -1,1 +1,44 @@
-<div class="cda-diary-body"><header><div><span>{{localize "CdA.Diary.Kicker"}}</span><h2>{{actor.name}}</h2></div><div><button type="button" data-action="add"><i class="fa-solid fa-plus"></i>{{localize "CdA.Diary.Add"}}</button><button type="button" data-action="export"><i class="fa-solid fa-file-arrow-down"></i>Markdown</button></div></header><div class="cda-diary-list">{{#each entries}}<article><div class="cda-diary-meta"><span>{{date}}</span><strong>{{title}}</strong><button type="button" data-action="remove" data-index="{{i}}"><i class="fa-solid fa-trash"></i></button></div><textarea data-entry="{{i}}" rows="5">{{text}}</textarea></article>{{else}}<div class="cda-empty-state"><i class="fa-solid fa-feather-pointed"></i><p>{{localize "CdA.Diary.Empty"}}</p></div>{{/each}}</div></div>
+<div class="cda-diary">
+  <header class="cda-paper-head">
+    <div>
+      <span class="cda-kicker">{{localize "CdA.Diary.Kicker"}}</span>
+      <h2>{{#if actor}}{{actor.name}}{{else}}{{localize "CdA.Diary.NoActor"}}{{/if}}</h2>
+    </div>
+    <nav class="cda-segmented" aria-label="{{localize 'CdA.App.Diary'}}">
+      <button type="button" data-action="view" data-view="diary" aria-pressed="{{#if (eq view 'diary')}}true{{else}}false{{/if}}">{{localize "CdA.Diary.Book"}}</button>
+      <button type="button" data-action="view" data-view="history" aria-pressed="{{#if (eq view 'history')}}true{{else}}false{{/if}}" data-help="history">{{localize "CdA.Diary.Chronicle"}}</button>
+    </nav>
+  </header>
+
+  <div class="cda-diary-scroll">
+  {{#if (eq view "diary")}}
+    {{#each entries}}
+    <article class="cda-entry kind-{{kind}}">
+      <div class="cda-entry-meta"><i class="{{icon}}" aria-hidden="true"></i><time>{{date}}</time>{{#if result}}<em>{{result}}</em>{{/if}}
+        {{#if ../canEdit}}<button type="button" class="cda-icon-btn" data-action="remove" data-id="{{id}}" aria-label="{{localize 'CdA.Common.Delete'}}"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>{{/if}}</div>
+      {{#if ../canEdit}}
+      <input class="cda-entry-title" type="text" value="{{title}}" data-entry="{{id}}" data-field="title" aria-label="{{localize 'CdA.Common.Title'}}">
+      <textarea data-entry="{{id}}" data-field="text" rows="3" placeholder="{{localize 'CdA.Diary.Placeholder'}}" aria-label="{{title}}">{{text}}</textarea>
+      {{else}}<h3>{{title}}</h3><p>{{text}}</p>{{/if}}
+    </article>
+    {{else}}
+    <div class="cda-empty"><i class="fa-solid fa-feather-pointed" aria-hidden="true"></i><p>{{localize "CdA.Diary.Empty"}}</p></div>
+    {{/each}}
+  {{else}}
+    <ol class="cda-history">
+      {{#each history}}<li class="type-{{type}}"><time>{{date}}</time><strong>{{label}}</strong><span>{{card}}{{#if text}} {{text}}{{/if}}</span>{{#if result}}<em>{{result}}</em>{{/if}}{{#if (ne spirit null)}}<small title="{{localize 'CdA.Resource.spirit'}} / {{localize 'CdA.Resource.determination'}}">{{spirit}} · {{determination}}</small>{{/if}}</li>
+      {{else}}<li class="cda-empty">{{localize "CdA.Diary.NoHistory"}}</li>{{/each}}
+    </ol>
+  {{/if}}
+  </div>
+
+  <footer class="cda-row-end">
+    {{#if (eq view "diary")}}
+      {{#if canEdit}}<button type="button" class="cda-primary" data-action="add"><i class="fa-solid fa-plus" aria-hidden="true"></i>{{localize "CdA.Diary.Add"}}</button>{{/if}}
+      <button type="button" data-action="md" {{#unless actor}}disabled{{/unless}}><i class="fa-brands fa-markdown" aria-hidden="true"></i>Markdown</button>
+      <button type="button" data-action="html" {{#unless actor}}disabled{{/unless}}><i class="fa-solid fa-file-lines" aria-hidden="true"></i>HTML</button>
+    {{else}}
+      <button type="button" data-action="history"><i class="fa-solid fa-file-code" aria-hidden="true"></i>{{localize "CdA.Diary.ExportHistory"}}</button>
+    {{/if}}
+  </footer>
+</div>

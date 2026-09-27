@@ -1,0 +1,17 @@
+{{!-- Carta física: frente con arte, marco y texto; reverso para el giro. Uso: {{> "…/card.hbs" card=… size="…"}} --}}
+<div class="cda-card kind-{{card.kind}} {{size}}" data-card-id="{{card.id}}" data-help="card-{{card.kind}}"
+  aria-label="{{card.kindLabel}}: {{card.title}}">
+  <div class="cda-card-inner">
+    <div class="cda-card-face cda-card-front">
+      <img class="cda-card-art" src="{{card.img}}" alt="" loading="lazy" decoding="async">
+      <div class="cda-card-frame" aria-hidden="true"></div>
+      <span class="cda-card-kind"><i class="{{card.icon}}" aria-hidden="true"></i>{{card.kindLabel}}{{#if card.gray}} {{card.gray}}{{/if}}</span>
+      {{#if card.difficulty}}<span class="cda-card-seal" title="{{localize 'CdA.Game.Difficulty'}}"><small>{{localize "CdA.Game.DifficultyShort"}}</small>{{card.difficulty}}</span>{{/if}}
+      <div class="cda-card-copy">
+        <h3>{{card.title}}</h3>
+        {{#if card.text}}<p>{{card.text}}</p>{{/if}}
+      </div>
+    </div>
+    <div class="cda-card-face cda-card-back" aria-hidden="true"><img src="{{card.back}}" alt="" loading="lazy"></div>
+  </div>
+</div>
