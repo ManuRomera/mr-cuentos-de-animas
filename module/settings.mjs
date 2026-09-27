@@ -15,7 +15,7 @@ export function registerSettings() {
   client("richHelp", { type: Boolean, default: true });
   client("soundFx", { type: Boolean, default: true });
   client("tableParticles", { type: Boolean, default: true });
-  client("autoOpen", { type: Boolean, default: true });
+  client("autoOpen", { type: Boolean, default: false });
   client("counterSkin", { type: String, default: "stones" });
   world("autoDiary", { type: Boolean, default: true });
   world("grayVariant", { type: String, default: "fixed" });
