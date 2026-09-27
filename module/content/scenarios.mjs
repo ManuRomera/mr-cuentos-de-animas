@@ -4,9 +4,9 @@ export const SCENARIOS = [
   {
     name: "La voz que dejaste atrás",
     type: "scenario",
-    img: `${PATH}/assets/branding/scenario-voice.svg`,
+    img: `${PATH}/assets/branding/scenario-voice.webp`,
     system: {
-      author: "MR · Cuentos de Ánimas", duration: "90–150 min", cover: `${PATH}/assets/branding/scenario-voice.svg`,
+      author: "MR · Cuentos de Ánimas", duration: "90–150 min", cover: `${PATH}/assets/branding/scenario-voice.webp`,
       hook: "Siete cintas. Una casa vacía. Una persona muerta que todavía tiene algo que preguntarte.",
       tone: ["Íntimo", "Sobrenatural", "Melancólico", "Misterio"], modes: ["guardian", "diary"],
       contentNotes: ["Duelo", "Rupturas afectivas", "Culpa", "Muerte de una persona cercana"],
@@ -70,9 +70,9 @@ export const SCENARIOS = [
   {
     name: "La casa que respira",
     type: "scenario",
-    img: `${PATH}/assets/branding/scenario-house.svg`,
+    img: `${PATH}/assets/branding/scenario-house.webp`,
     system: {
-      author: "MR · Cuentos de Ánimas", duration: "45–70 min", cover: `${PATH}/assets/branding/scenario-house.svg`,
+      author: "MR · Cuentos de Ánimas", duration: "45–70 min", cover: `${PATH}/assets/branding/scenario-house.webp`,
       hook: "Has venido a inventariar una casa antes de su demolición. La casa lleva toda la noche inventariándote a ti.",
       tone: ["Horror rural", "Casa encantada", "Breve"], modes: ["guardian", "bonfire", "diary"],
       contentNotes: ["Claustrofobia", "Muerte familiar"], recommendedSpirit: 5, recommendedDetermination: 5,
