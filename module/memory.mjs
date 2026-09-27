@@ -13,6 +13,17 @@ function writeMemory(id, patch) {
 }
 const numeric = (pos, fields = FIELDS) => Object.fromEntries(fields.filter(f => Number.isFinite(pos?.[f])).map(f => [f, Math.round(pos[f])]))
 
+function safeGeometry(pos = {}) {
+  const out = { ...pos };
+  const vw = Math.max(640, globalThis.innerWidth || 1920);
+  const vh = Math.max(480, globalThis.innerHeight || 1080);
+  if (Number.isFinite(out.width)) out.width = Math.min(out.width, Math.max(420, vw - 140));
+  if (Number.isFinite(out.height)) out.height = Math.min(out.height, Math.max(360, vh - 120));
+  if (Number.isFinite(out.left)) out.left = Math.max(0, Math.min(out.left, vw - 120));
+  if (Number.isFinite(out.top)) out.top = Math.max(0, Math.min(out.top, vh - 80));
+  return out;
+}
+
 export function clearWindowMemory() {
   for (let i = localStorage.length - 1; i >= 0; i--) {
     const k = localStorage.key(i);
@@ -28,7 +39,7 @@ export function WithMemory(Base) {
       const id = options.memory ?? options.document?.uuid ?? C.MEMORY ?? C.name;
       const saved = readMemory(id);
       const inherited = saved.position ? {} : numeric(readMemory(`class.${C.name}`).position, ["width", "height"]);
-      super({ ...options, position: { ...options.position, ...inherited, ...numeric(saved.position, C.MEMORY_FIELDS) } });
+      super({ ...options, position: safeGeometry({ ...options.position, ...inherited, ...numeric(saved.position, C.MEMORY_FIELDS) }) });
       this._mrMemory = { id, sections: saved.sections ?? {}, scroll: saved.scroll ?? {} };
       if (saved.tabs) Object.assign(this.tabGroups, saved.tabs);
     }
