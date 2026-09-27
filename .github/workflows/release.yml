@@ -1,0 +1,31 @@
+name: Release Foundry System
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".release-trigger"
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Read version
+        run: echo "VERSION=$(node -p \"require('./package.json').version\")" >> "$GITHUB_ENV"
+      - run: npm test
+      - run: npm run check
+      - run: npm run build
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          target_commitish: ${{ github.sha }}
+          files: |
+            dist/mr-cuentos-de-animas.zip
+            dist/system.json
+          generate_release_notes: true
