@@ -213,3 +213,15 @@
 
 @media (max-width:900px){.cda-table-stage{grid-template-columns:110px 1fr 110px;padding:.7rem}.cda-card-zone{grid-template-columns:100px 1fr 100px}.cda-deck img{width:90px}.cda-stones img,.cda-embers img{width:36px;height:36px}.cda-reveal-slot{min-height:270px}.cda-reveal-slot.has-card{grid-template-columns:1fr}.cda-reveal-slot>img{display:none}.cda-sheet-columns,.cda-scenario-grid{grid-template-columns:1fr}.cda-paper-panel.wide,.cda-notes{grid-column:auto}.cda-two,.cda-epilogues{grid-template-columns:1fr}.cda-table-header{grid-template-columns:1fr auto}.cda-session-title{display:none}}
 .cda-library-actions{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}.cda-library-actions button{white-space:nowrap}
+
+
+/* v1.0.1 · viewport safety and photographic art */
+.cda-table-app { max-width: calc(100vw - 150px); max-height: calc(100vh - 96px); }
+.cda-table-app .window-content { min-width:0; min-height:0; }
+.cda-table { background-position:center; background-size:cover; }
+.cda-table::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,rgba(4,3,3,.3),transparent 24%,transparent 76%,rgba(4,3,3,.3)),linear-gradient(0deg,rgba(3,3,3,.25),transparent 30%); z-index:1; }
+.cda-table-header,.cda-table-stage,.cda-table-footer { z-index:2; }
+.cda-deck img,.cda-gray-slot img,.cda-reveal-slot>img,.cda-overlay-art { filter:saturate(.92) contrast(1.04); }
+.cda-stones img,.cda-embers img,.cda-resource-gems img { border-radius:50%; }
+@media (max-width:1200px){.cda-table-stage{grid-template-columns:110px minmax(420px,1fr) 110px;padding:.7rem}.cda-card-zone{grid-template-columns:120px minmax(240px,1fr) 120px}.cda-deck img{width:106px}.cda-stones img,.cda-embers img{width:38px;height:38px}}
+@media (max-width:900px){.cda-table-stage{grid-template-columns:1fr;overflow:auto;align-content:start}.cda-altar{display:none}.cda-card-zone{grid-template-columns:95px minmax(220px,1fr) 95px}.cda-table-header{grid-template-columns:1fr auto}.cda-session-title{display:none}}
