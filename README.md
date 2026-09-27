@@ -69,7 +69,7 @@ El arranque va por fases aisladas: si una falla, Foundry sigue funcionando y apa
 
 ## Arte
 
-El arte actual es **provisional** y está generado por código. La lista de imágenes definitivas, con tamaños, encuadres y prompts, está en [`docs/ARTE.md`](docs/ARTE.md). Para incorporarlas basta con dejarlas en `art-inbox/` y ejecutar `python3 scripts/import-art.py`.
+El estilo **fotográfico** usa arte creado para el sistema con una biblia de estilo común ([`docs/ARTE.md`](docs/ARTE.md)): luz de vela, niebla, madera y papel. Para sustituir una imagen basta con dejarla en `art-inbox/` con su nombre y ejecutar `python3 scripts/import-art.py`.
 
 ## Desarrollo
 

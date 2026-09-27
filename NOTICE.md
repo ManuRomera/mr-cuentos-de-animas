@@ -4,7 +4,8 @@
 
 ## Qué incluye este repositorio
 
-- **Código, interfaz y arte provisional**: originales de este proyecto (licencia MIT, ver `LICENSE`).
+- **Código e interfaz**: originales de este proyecto (licencia MIT, ver `LICENSE`).
+- **Arte del estilo fotográfico** (`assets/` salvo `assets/classic/`): creado para este proyecto por Manu Romera siguiendo `docs/ARTE.md`.
 - **Escenarios originales**: *La voz que dejaste atrás* y *La casa que respira*, de Manu Romera.
 - **Cartas del estilo «Clásico»** (`assets/classic/`): las cartas de evento, numéricas y contadores del libro. La propia edición indica que «pueden ser reproducidos» y descargarse para jugar online. Ilustraciones: Arthur Rackham (Obstáculo de Personaje), John Leech (Percance de Personaje), Wilhelm Jordan (Obstáculo de Entorno), Jo. Franciscus Mutilana (Pista, Wellcome Collection, CC BY) y Sarah Bernhardt (Dama Gris, Wellcome Collection, CC BY).
 - **Colección de escenarios** (`content/collection/`), cada uno con su autoría y procedencia en el propio escenario:

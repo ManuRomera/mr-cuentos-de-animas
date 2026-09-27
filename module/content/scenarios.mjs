@@ -3,7 +3,9 @@
  * ningún escenario ni carta oficial del juego. `flags.seed` identifica cada uno
  * para no duplicarlo ni pisar las ediciones del Guardián.
  */
-import { ASSETS, FLAGS, SYSTEM_ID } from "../constants.mjs";
+import { ASSETS, FLAGS, PATH, SYSTEM_ID } from "../constants.mjs";
+
+const PATH_VOICE = `${PATH}/assets/scenarios/voice`;
 
 const seed = id => ({ [SYSTEM_ID]: { [FLAGS.SEED]: id } });
 
@@ -40,12 +42,12 @@ const VOICE = {
 <p><strong>Lo que no ocurre.</strong> El protagonista no está muerto. La persona de las cintas no era un monstruo. Nadie tiene toda la razón.</p>
 <p><strong>Final.</strong> La séptima cinta se escucha sin cartas. Baja el ritmo, apaga el ambiente y deja silencio después de cada frase.</p>`,
     scenes: [
-      { title: "I · La fotografía", text: "Una fotografía feliz, colocada boca abajo en la estantería. La primera cinta termina justo cuando la tocas.", guardian: "Primera cinta: «Si estás escuchando esto…». Pide al jugador que describa la foto ANTES de girarla. Registra lo que diga como primera Verdad.", handout: "" },
-      { title: "II · La llave", text: "Una llave pequeña, de las de cajón o de buzón, atada con un cordel que reconoces.", guardian: "Segunda cinta: la voz habla de una promesa. ¿Qué puerta prometió el protagonista no volver a abrir? Ofrece el recuerdo «La decisión».", handout: "" },
-      { title: "III · La carta sin enviar", text: "Un sobre cerrado con tu dirección de hace muchos años. Tiene sello. Nunca pasó por correos.", guardian: "Antes de abrirla, pregunta qué llevaba años deseando que dijera. La carta dice algo parecido… pero no exactamente. Marca una Verdad como Dudosa.", handout: "" },
+      { title: "I · La fotografía", text: "Una fotografía feliz, colocada boca abajo en la estantería. La primera cinta termina justo cuando la tocas.", guardian: "Primera cinta: «Si estás escuchando esto…». Pide al jugador que describa la foto ANTES de girarla. Registra lo que diga como primera Verdad.", handout: `${PATH_VOICE}/voice-photo.webp` },
+      { title: "II · La llave", text: "Una llave pequeña, de las de cajón o de buzón, atada con un cordel que reconoces.", guardian: "Segunda cinta: la voz habla de una promesa. ¿Qué puerta prometió el protagonista no volver a abrir? Ofrece el recuerdo «La decisión».", handout: `${PATH_VOICE}/voice-key.webp` },
+      { title: "III · La carta sin enviar", text: "Un sobre cerrado con tu dirección de hace muchos años. Tiene sello. Nunca pasó por correos.", guardian: "Antes de abrirla, pregunta qué llevaba años deseando que dijera. La carta dice algo parecido… pero no exactamente. Marca una Verdad como Dudosa.", handout: `${PATH_VOICE}/voice-letter.webp` },
       { title: "IV · El objeto insignificante", text: "Algo sin ningún valor, guardado con un cuidado absurdo. Perteneció a los dos.", guardian: "El jugador decide qué es. Tercera y cuarta cinta: la voz cuenta un día bueno. Si el jugador recuerda ese día de otra forma, ambas versiones son ciertas.", handout: "" },
-      { title: "V · La habitación cerrada", text: "La puerta del fondo del pasillo tiene la llave puesta por dentro.", guardian: "Obstáculo natural de la escena. Dentro está la vida que la otra persona hizo sin el protagonista: la tercera persona aparece aquí, como testigo, no como culpable.", handout: "" },
-      { title: "VI · La cinta sin etiqueta", text: "Una cinta que no estaba antes. Sin nombre. Lleva grabada tu propia voz.", guardian: "Es una grabación antigua del protagonista diciendo algo que no recuerda haber dicho. Usa la Verdad más firme y dale la vuelta, con suavidad.", handout: "" },
+      { title: "V · La habitación cerrada", text: "La puerta del fondo del pasillo tiene la llave puesta por dentro.", guardian: "Obstáculo natural de la escena. Dentro está la vida que la otra persona hizo sin el protagonista: la tercera persona aparece aquí, como testigo, no como culpable.", handout: `${PATH_VOICE}/voice-door.webp` },
+      { title: "VI · La cinta sin etiqueta", text: "Una cinta que no estaba antes. Sin nombre. Lleva grabada tu propia voz.", guardian: "Es una grabación antigua del protagonista diciendo algo que no recuerda haber dicho. Usa la Verdad más firme y dale la vuelta, con suavidad.", handout: `${PATH_VOICE}/voice-blank-tape.webp` },
       { title: "VII · La cinta final", text: "La última cinta dura menos que las demás. Antes de pulsar, la habitación se queda en silencio.", guardian: "Sin cartas. La voz pregunta: «Si pudieras volver a aquella noche sabiendo lo que sabes ahora, ¿harías algo distinto?». Deja que el jugador conteste. Después, epílogo.", handout: "" }
     ],
     characters: [
@@ -105,7 +107,14 @@ const VOICE = {
       { text: "No volvieron a hablar después de aquella noche.", contradiction: "El mensaje borrado y la llamada que nadie contestó.", reveal: "Segunda Dama" },
       { text: "El protagonista no tuvo culpa.", contradiction: "Su propia voz en la cinta sin etiqueta.", reveal: "Escena VI" }
     ],
-    handouts: [],
+    handouts: [
+      { title: "El magnetófono y las siete cintas", image: `${PATH_VOICE}/voice-tapes.webp`, text: "Sobre la mesa del comedor, alineadas. Todas llevan tu nombre." },
+      { title: "La fotografía boca abajo", image: `${PATH_VOICE}/voice-photo.webp`, text: "" },
+      { title: "La llave con cordel", image: `${PATH_VOICE}/voice-key.webp`, text: "" },
+      { title: "La carta que no llegó", image: `${PATH_VOICE}/voice-letter.webp`, text: "" },
+      { title: "La puerta del fondo", image: `${PATH_VOICE}/voice-door.webp`, text: "" },
+      { title: "La cinta sin etiqueta", image: `${PATH_VOICE}/voice-blank-tape.webp`, text: "" }
+    ],
     sounds: { intro: "tape", play: "house", gray: "silence", epilogue: "silence" },
     customBack: ""
   }

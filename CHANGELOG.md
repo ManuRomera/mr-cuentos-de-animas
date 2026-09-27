@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 · 2026-09-27
+
+### Arte final
+- **Arte definitivo del estilo fotográfico**: mesa, escena de bienvenida, portada del sistema, logo, reverso y reverso numérico, las cuatro familias de cartas, las tres Damas Grises (cada vez más cerca), piedras de Espíritu y ámbar de Determinación (encendidos y apagados), fondo de las cartas numéricas, retrato por defecto y portadas de *La voz que dejaste atrás* y *La casa que respira*.
+- **Handouts de *La voz que dejaste atrás***: el magnetófono y las siete cintas, la fotografía, la llave, la carta sin enviar, la puerta del fondo y la cinta sin etiqueta, enlazados a sus escenas (pestaña «En juego» → Mostrar handout). Los mundos ya creados los reciben al actualizar.
+- Retirado el generador de arte provisional.
+
 ## 1.2.0 · 2026-09-27
 
 ### Reglas, ahora fieles al libro

@@ -305,7 +305,8 @@
 .mr-cda .cda-token img { width: 100%; height: 100%; object-fit: contain; border: none; }
 .mr-cda .cda-token.spirit { filter: drop-shadow(0 0 8px rgba(169, 198, 220, .55)) drop-shadow(0 4px 4px rgba(0, 0, 0, .6)); animation: cda-breathe 6s ease-in-out infinite; animation-delay: calc(var(--i) * -.7s); }
 .mr-cda .cda-token.determination { filter: drop-shadow(0 0 10px rgba(227, 140, 50, .6)) drop-shadow(0 4px 4px rgba(0, 0, 0, .6)); animation: cda-ember 3.2s ease-in-out infinite; animation-delay: calc(var(--i) * -.45s); }
-.mr-cda .cda-token.spent { filter: grayscale(1) brightness(.55) drop-shadow(0 3px 3px rgba(0, 0, 0, .7)); opacity: .55; transform: translateY(4px) scale(.92); animation: none; }
+/* El arte «apagado» ya muestra la piedra fría y el ámbar muerto: solo se asienta y pierde algo de presencia. */
+.mr-cda .cda-token.spent { filter: brightness(.85) drop-shadow(0 3px 3px rgba(0, 0, 0, .7)); opacity: .8; transform: translateY(4px) scale(.9); animation: none; }
 /* Estilo clásico: los contadores son las cartas E y D del libro. */
 .mr-cda.cda-skin-classic .cda-token { width: 32px; aspect-ratio: 125 / 193; animation: none; filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .6)); }
 .mr-cda.cda-skin-classic .cda-token.spent { filter: grayscale(1) brightness(.45); opacity: .35; }
@@ -845,7 +846,7 @@
 .mr-cda button.cda-pip img { width: 100%; height: 100%; object-fit: contain; border: none; transition: filter .4s, opacity .4s; }
 .mr-cda .cda-res.frost .cda-pip img { filter: drop-shadow(0 0 5px rgba(169, 198, 220, .55)); }
 .mr-cda .cda-res.ember .cda-pip img { filter: drop-shadow(0 0 6px rgba(227, 140, 50, .6)); }
-.mr-cda button.cda-pip.spent img { filter: grayscale(1) brightness(.55); opacity: .5; }
+.mr-cda button.cda-pip.spent img { filter: brightness(.85); opacity: .8; }
 .mr-cda .cda-res-num { display: flex; align-items: center; gap: .2rem; font-family: var(--cda-sans); color: var(--cda-muted); }
 .mr-cda .cda-res-num input { width: 3em !important; text-align: center; padding: .15em; min-height: 26px; color: var(--cda-text) !important; background: rgba(0, 0, 0, .35) !important; }
 .mr-cda .cda-dossier-resources .cda-warning { color: #e9c07c; font-size: .78em; }

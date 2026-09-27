@@ -36,12 +36,12 @@ TARGETS = {
     "determination-off": ("assets/counters/determination-off.webp", 256, 256, True),
     "voice": ("assets/scenarios/la-voz-que-dejaste-atras.webp", 900, 1275, False),
     "house": ("assets/scenarios/la-casa-que-respira.webp", 900, 1275, False),
-    "voice-tapes": ("assets/scenarios/voice/tapes.webp", 1600, 1000, False),
-    "voice-photo": ("assets/scenarios/voice/photo.webp", 1200, 900, False),
-    "voice-key": ("assets/scenarios/voice/key.webp", 1200, 900, False),
-    "voice-letter": ("assets/scenarios/voice/letter.webp", 1200, 900, False),
-    "voice-door": ("assets/scenarios/voice/door.webp", 1000, 1400, False),
-    "voice-blank-tape": ("assets/scenarios/voice/blank-tape.webp", 1200, 900, False),
+    "voice-tapes": ("assets/scenarios/voice/voice-tapes.webp", 1600, 1000, False),
+    "voice-photo": ("assets/scenarios/voice/voice-photo.webp", 1200, 900, False),
+    "voice-key": ("assets/scenarios/voice/voice-key.webp", 1200, 900, False),
+    "voice-letter": ("assets/scenarios/voice/voice-letter.webp", 1200, 900, False),
+    "voice-door": ("assets/scenarios/voice/voice-door.webp", 1000, 1400, False),
+    "voice-blank-tape": ("assets/scenarios/voice/voice-blank-tape.webp", 1200, 900, False),
 }
 EXTS = {".png", ".jpg", ".jpeg", ".webp", ".tif", ".tiff"}
 

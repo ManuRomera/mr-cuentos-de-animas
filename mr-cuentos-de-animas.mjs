@@ -26,6 +26,7 @@ import { WelcomeApp } from "./module/apps/welcome.mjs";
 import { DiagnosticApp } from "./module/apps/diagnostic.mjs";
 import { ImportHelpApp } from "./module/apps/import-help.mjs";
 import { ContentService } from "./module/services/content.mjs";
+import { SCENARIOS } from "./module/content/scenarios.mjs";
 import { DeckService } from "./module/services/decks.mjs";
 import { GameplayService } from "./module/services/gameplay.mjs";
 import { StateService } from "./module/services/state.mjs";
@@ -149,6 +150,13 @@ async function migrate() {
   const saved = StateService.eventDeck()?.getFlag(SYSTEM_ID, FLAGS.STATE);
   if (saved && ("activeObstacle" in saved || "lastCardUuid" in saved)) await StateService.reset();
   for (const actor of game.actors.filter(a => a.type === "protagonist")) await Records.ensureIds(actor);
+  // 1.3: handouts de «La voz que dejaste atrás» en mundos creados antes de tener su arte.
+  const voice = game.items.find(i => i.getFlag(SYSTEM_ID, FLAGS.SEED) === "voice");
+  const fresh = SCENARIOS.find(s => s.flags[SYSTEM_ID][FLAGS.SEED] === "voice")?.system;
+  if (voice && fresh && !voice.system.handouts.length) {
+    const scenes = voice.system.scenes.map((sc, i) => ({ ...sc, handout: sc.handout || fresh.scenes[i]?.handout || "" }));
+    await voice.update({ "system.handouts": fresh.handouts, "system.scenes": scenes });
+  }
   await game.settings.set(SYSTEM_ID, "migratedVersion", version);
 }
 

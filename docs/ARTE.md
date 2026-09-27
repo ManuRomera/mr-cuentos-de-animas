@@ -2,7 +2,7 @@
 
 Todo el arte debe parecer sacado **de la misma caja**: una caja de relatos encontrada en una casa rural, fotografiada con una cámara analógica a la luz de una vela. Este documento fija el estilo y enumera cada imagen que usa el sistema, con su nombre de archivo, tamaño y un prompt listo para usar.
 
-El arte actual es **provisional** (generado por código, sin fotos ni IA). Cada imagen definitiva sustituye a la provisional con el mismo nombre; no hay que tocar código.
+El arte de esta lista **ya está incorporado** (versión 1.3.0). Este documento se conserva como referencia de estilo para futuras imágenes: una imagen nueva sustituye a la anterior dejándola con el mismo nombre.
 
 ### Qué cubre cada estilo de cartas
 
@@ -94,7 +94,7 @@ cropped subject, tilted horizon, modern objects, smartphone, plastic
 
 ### Opcionales · handouts de *La voz que dejaste atrás*
 
-Se mostrarán a los jugadores desde la pestaña «En juego». Van en `assets/scenarios/voice/`; en cuanto existan los enlazo a cada escena.
+Se mostrarán a los jugadores desde la pestaña «En juego». Van en `assets/scenarios/voice/` (archivos `voice-<clave>.webp`); en cuanto existan los enlazo a cada escena.
 
 | Clave | Tamaño | Qué es |
 |---|---|---|
