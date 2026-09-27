@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/branding/cover.svg" alt="MR · Cuentos de Ánimas" width="100%">
+  <img src="assets/branding/cover.webp" alt="MR · Cuentos de Ánimas" width="100%">
 </p>
 
 # MR · Cuentos de Ánimas
@@ -7,7 +7,7 @@
 **Una mesa digital para relatos de horror íntimo, rural y sobrenatural en Foundry VTT 13/14.**  
 Implementación no oficial concebida como una caja ritual: cartas físicas, piedras de Espíritu, ámbar de Determinación, Damas Grises y un diario que conserva la historia que la mesa acaba de inventar.
 
-> Este repositorio no incluye ni reproduce el reglamento, escenarios, cartas ni textos oficiales de *Cuentos de Ánimas*. Para usar material oficial necesitas tu propio ejemplar y cargarlo de forma privada. La v1.0 incluye exclusivamente contenido y arte originales del proyecto.
+> Este repositorio no incluye ni reproduce el reglamento, escenarios, cartas ni textos oficiales de *Cuentos de Ánimas*. Para usar material oficial necesitas tu propio ejemplar y cargarlo de forma privada. La versión pública incluye exclusivamente contenido y arte originales del proyecto.
 
 
 ## ✦ Lo que hace diferente a este sistema
