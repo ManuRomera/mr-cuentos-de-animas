@@ -1,0 +1,24 @@
+name: Bootstrap source
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  unpack:
+    if: ${{ hashFiles('bootstrap.b64') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand prepared v1.0.0 source
+        run: |
+          base64 -d bootstrap.b64 > /tmp/mr-cda-source.tar.xz
+          tar -xJf /tmp/mr-cda-source.tar.xz
+          rm -f bootstrap.b64 .github/workflows/bootstrap.yml
+      - name: Publish source tree
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Release v1.0.0 · complete Foundry system"
+          git push
