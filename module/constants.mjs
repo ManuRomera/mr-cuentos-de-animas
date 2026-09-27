@@ -1,6 +1,6 @@
 export const SYSTEM_ID = "mr-cuentos-de-animas";
 export const PATH = `systems/${SYSTEM_ID}`;
-export const VERSION = "1.0.0";
+export const VERSION = "1.0.1";
 export const FLAGS = Object.freeze({ STATE: "sessionState", CARD: "cardMeta", GENERATED: "generated" });
 export const CARD_KINDS = Object.freeze({
   CLUE: "clue",
@@ -29,12 +29,12 @@ export const DEFAULT_STATE = Object.freeze({
 export const ASSETS = Object.freeze({
   cover: `${PATH}/assets/branding/cover.webp`,
   logo: `${PATH}/assets/branding/logo.svg`,
-  table: `${PATH}/assets/branding/table.svg`,
-  cardBack: `${PATH}/assets/cards/back.svg`,
-  numberBack: `${PATH}/assets/cards/number-back.svg`,
-  spiritOn: `${PATH}/assets/counters/spirit-on.svg`,
-  spiritOff: `${PATH}/assets/counters/spirit-off.svg`,
-  determinationOn: `${PATH}/assets/counters/determination-on.svg`,
-  determinationOff: `${PATH}/assets/counters/determination-off.svg`
+  table: `${PATH}/assets/branding/table.webp`,
+  cardBack: `${PATH}/assets/cards/back.webp`,
+  numberBack: `${PATH}/assets/cards/back.webp`,
+  spiritOn: `${PATH}/assets/counters/spirit-on.webp`,
+  spiritOff: `${PATH}/assets/counters/spirit-off.webp`,
+  determinationOn: `${PATH}/assets/counters/determination-on.webp`,
+  determinationOff: `${PATH}/assets/counters/determination-off.webp`
 });
 export const TEMPLATES = `${PATH}/templates`;
