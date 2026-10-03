@@ -9,6 +9,24 @@
     <div class="cda-empty"><p>{{localize "CdA.Guardian.Idle"}}</p>
       <button type="button" class="cda-primary" data-action="open" data-app="start"><i class="fa-solid fa-book" aria-hidden="true"></i>{{localize "CdA.Table.New"}}</button></div>
   {{else}}
+    {{#if directed}}
+    <section class="cda-g-section cda-direction-now" aria-label="{{localize 'CdA.Directed.Now'}}">
+      <h2>{{localize "CdA.Directed.Now"}}</h2>
+      <label>{{localize "CdA.Directed.Narrator"}}<select name="narrator"><option value="">{{localize "CdA.Directed.SelectNarrator"}}</option>{{#each players}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>
+      <p role="status">{{now}}</p>
+      {{#if current}}<p>{{current.kindLabel}} {{current.value}}</p>{{/if}}
+      {{#if delivery}}<p><strong>{{delivery.title}}</strong> · {{deliveryStatus}}</p><p class="cda-private-text">{{delivery.text}}</p>{{#if deliveryNotes}}<p class="cda-gm-text">{{deliveryNotes}}</p>{{/if}}
+      <div class="cda-g-grid"><button type="button" data-action="private">{{localize "CdA.Directed.Private"}}</button><button type="button" data-action="publish">{{localize "CdA.Directed.Reveal"}}</button><button type="button" data-action="finish" {{#unless canFinish}}disabled{{/unless}}>{{localize "CdA.Directed.Finish"}}</button></div>{{/if}}
+      {{#each choices}}<button type="button" class="cda-direction-choice" data-action="choose" data-list="{{list}}" data-index="{{index}}"><strong>{{title}}{{#if used}} · {{localize "CdA.Directed.Used"}}{{/if}}</strong><span>{{text}}</span>{{#if guardian}}<span class="cda-gm-text">{{guardian}}</span>{{/if}}</button>{{/each}}
+      {{#if choices.length}}<fieldset><label>{{localize "CdA.Directed.Custom"}}<input name="custom" type="text"></label><button type="button" data-action="custom">{{localize "CdA.Directed.Send"}}</button></fieldset>{{/if}}
+    </section>
+    <details class="cda-g-section" open><summary>{{localize "CdA.Directed.Private"}}</summary>
+      <fieldset><label>{{localize "CdA.Directed.Recipient"}}<select name="recipient">{{#each players}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>
+      <label>{{localize "CdA.Directed.Text"}}<textarea name="privateText" rows="3"></textarea></label>
+      <label>{{localize "CdA.Directed.Handout"}}<select name="handout"><option value="-1">—</option>{{#each handouts}}<option value="{{i}}">{{title}}</option>{{/each}}</select></label><button type="button" data-action="sendPrivate">{{localize "CdA.Directed.Send"}}</button></fieldset>
+      <fieldset><label>{{localize "CdA.Directed.Private"}}<select name="delivery">{{#each deliveries}}<option value="{{id}}">{{title}}</option>{{/each}}</select></label><label>{{localize "CdA.Directed.Recipient"}}<select name="recipient"><option value="all">{{localize "CdA.Directed.All"}}</option>{{#each players}}<option value="{{id}}">{{name}}</option>{{/each}}</select></label><button type="button" data-action="forward">{{localize "CdA.Directed.Forward"}}</button></fieldset>
+    </details>
+    {{/if}}
     {{!-- Escena --}}
     <details class="cda-g-section" data-memory="scene" open>
       <summary><i class="fa-solid fa-location-dot" aria-hidden="true"></i>{{localize "CdA.Guardian.Scene"}}{{#if scene}} <small>{{scene.n}}/{{scene.of}}</small>{{/if}}</summary>
@@ -98,6 +116,7 @@
     <details class="cda-g-section" data-memory="epilogue">
       <summary><i class="fa-solid fa-door-open" aria-hidden="true"></i>{{localize "CdA.Game.Epilogue"}}</summary>
       <ul class="cda-epilogues">{{#each scenario.epilogues}}<li class="{{#if current}}current{{/if}}"><strong>{{label}}</strong><p>{{text}}</p></li>{{/each}}</ul>
+      {{#if directed}}<fieldset><label>{{localize "CdA.Directed.Recipient"}}<select name="finalRecipient"><option value="">{{localize "CdA.Directed.GMOnly"}}</option><option value="all">{{localize "CdA.Directed.All"}}</option>{{#each players}}<option value="{{id}}">{{name}}</option>{{/each}}</select></label><button type="button" data-action="final">{{localize "CdA.Game.OpenEpilogue"}}</button></fieldset>{{/if}}
       <button type="button" data-action="epilogue"><i class="fa-solid fa-forward" aria-hidden="true"></i>{{localize "CdA.Guardian.ToEpilogue"}}</button>
     </details>
     {{/if}}

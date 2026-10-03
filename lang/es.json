@@ -764,5 +764,36 @@
         "split": "un reparto válido de Espíritu y Determinación"
       }
     }
-  }
+  },
+  "CdA.Directed.Now": "Ahora",
+  "CdA.Directed.Narrator": "Narrador",
+  "CdA.Directed.SelectNarrator": "Elegir narrador",
+  "CdA.Directed.Waiting": "El Director está preparando la escena…",
+  "CdA.Directed.Private": "Tarjeta privada",
+  "CdA.Directed.Change": "Pedir cambio (1 por escena)",
+  "CdA.Directed.Reveal": "Revelar a todos",
+  "CdA.Directed.Finish": "Finalizar narración",
+  "CdA.Directed.Send": "Enviar",
+  "CdA.Directed.Recipient": "Destinatario",
+  "CdA.Directed.All": "Todos",
+  "CdA.Directed.GMOnly": "Leer yo (solo GM)",
+  "CdA.Directed.Forward": "Reenviar / revelar",
+  "CdA.Directed.Text": "Texto privado",
+  "CdA.Directed.Handout": "Handout",
+  "CdA.Directed.Custom": "Escena personalizada",
+  "CdA.Directed.NoGM": "Hace falta un GM conectado para ejecutar la acción.",
+  "CdA.Directed.Request": "Solicitud de acción al Director",
+  "CdA.Directed.SelectOption": "Siguiente: elegir y enviar una escena al narrador.",
+  "CdA.Directed.ChangePending": "Cambio solicitado: elegir otra opción.",
+  "CdA.Directed.Mechanical": "Pendiente: decisión mecánica del narrador en la Mesa.",
+  "CdA.Directed.Narrating": "Pendiente: el narrador cuenta la escena; después finaliza o revela.",
+  "CdA.Directed.Next": "Siguiente: robar una carta.",
+  "CdA.Directed.FinalPending": "Siguiente: gestionar el epílogo y su destinatario.",
+  "CdA.Directed.sent": "Enviado (sin confirmar recepción)",
+  "CdA.Directed.delivered": "Destinatario conectado",
+  "CdA.Directed.read": "Tarjeta abierta",
+  "CdA.Directed.Used": "Ya usada",
+  "CdA.Mode.directed": "Dirigido",
+  "CdA.Mode.directedHint": "El Director elige la escena; solo el narrador la recibe hasta revelarla.",
+  "CdA.Directed.PublicSynopsis": "Sinopsis pública (Dirigido; vacío = gancho)"
 }

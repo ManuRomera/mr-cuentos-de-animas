@@ -1,3 +1,4 @@
+import { Direction } from "./direction.mjs";
 import { DEFAULT_STATE, FLAGS, SYSTEM_ID } from "../constants.mjs";
 
 const HISTORY_LIMIT = 1000;
@@ -15,6 +16,7 @@ export class StateService {
   }
 
   static async patch(changes) {
+    if (!game.user.isGM) throw new Error("GM authority required");
     const deck = this.eventDeck();
     if (!deck) throw new Error("No existe el Mazo de Ánimas.");
     const next = { ...this.get(), ...changes };
@@ -25,6 +27,7 @@ export class StateService {
 
   /** Estado limpio. Se borra antes: setFlag fusiona y dejaría vivas, p. ej., las entradas «ya usadas» del relato anterior. */
   static async reset(patch = {}) {
+    if (!game.user.isGM) throw new Error("GM authority required");
     await this.eventDeck()?.unsetFlag(SYSTEM_ID, FLAGS.STATE);
     return this.patch({ ...foundry.utils.deepClone(DEFAULT_STATE), ...patch });
   }
@@ -50,6 +53,8 @@ export class StateService {
    * Anota automáticamente hora, protagonista y recursos en ese momento.
    */
   static async log(entry) {
+    if (!game.user.isGM) return Direction.request("log", entry);
+    if (entry.hidden) return Direction.privateRecord(entry);
     const deck = this.eventDeck(); if (!deck) return;
     const actor = this.protagonist();
     const event = {
@@ -65,5 +70,5 @@ export class StateService {
     return event;
   }
 
-  static async clearHistory() { await this.eventDeck()?.unsetFlag(SYSTEM_ID, FLAGS.HISTORY); }
+  static async clearHistory() { if (!game.user.isGM) return; await this.eventDeck()?.unsetFlag(SYSTEM_ID, FLAGS.HISTORY); }
 }

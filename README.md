@@ -17,6 +17,16 @@
 
 > Sistema **no oficial** de *Cuentos de ánimas* (Scott Malthouse · El Refugio de Ryhope). No incluye el texto del libro ni sus doce escenarios; sí las cartas, que la propia edición permite reproducir, y 34 escenarios de distribución libre con su autoría. Detalles en [`NOTICE.md`](NOTICE.md).
 
+## Candidata 2.0 · Dirigido
+
+El Director ve y elige las opciones; el narrador recibe solo la escena elegida en una tarjeta privada persistente con whisper nativo. Conserva las decisiones mecánicas, puede pedir un cambio por escena y revela el contenido al terminar o antes si pulsa **Revelar**. La cabina **Ahora** propone narrador, muestra la decisión pendiente y permite texto libre, handouts, reenvíos y gestionar el epílogo por destinatario.
+
+Guardián, Hoguera, Diario y Libre mantienen sus opciones narrativas públicas. Dirigido usa `publicSynopsis` o el gancho como presentación pública y mantiene las notas guardian fuera de la tarjeta del jugador.
+
+**Esta rama prepara 2.0.0; la publicación estable necesita prueba multicliente en Foundry 13 y 14.** Consulta la [guía Dirigido](docs/DIRIGIDO.md) y la [auditoría y aceptación](docs/AUDIT-2.0.md). Los whispers ofrecen la privacidad normal de Foundry, sin cifrado frente a inspección técnica; no borrar el chat que contiene entregas, registros privados y respaldos de permisos. Probar la actualización en una copia del mundo.
+
+**English:** Directed mode gives the GM all narrative options and delivers only the selected scene to the current narrator as a persistent private card and native whisper. The narrator keeps mechanical choices, gets one scene change, and reveals early or on finishing. Normal modes keep public narrative options. See the [guide](docs/DIRIGIDO.md) and [release audit](docs/AUDIT-2.0.md); live v13/v14 acceptance remains required.
+
 ## Instalación
 
 En Foundry: **Sistemas de juego → Instalar sistema → URL del manifiesto**

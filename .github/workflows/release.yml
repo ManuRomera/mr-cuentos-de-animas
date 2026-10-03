@@ -2,26 +2,48 @@ name: Publicar
 on:
   push:
     tags: ["v*"]
+  # Publicación puntual de 2.0.0 autorizada al fusionar la PR 1.
+  pull_request:
+    types: [closed]
 permissions:
   contents: write
 jobs:
   release:
+    if: >-
+      github.event_name == 'push' ||
+      (github.event.pull_request.merged == true &&
+       github.event.pull_request.number == 1 &&
+       github.event.pull_request.base.ref == 'main')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Comprobar que la etiqueta coincide con system.json
+      - name: Comprobar la versión de publicación
+        id: version
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           V=$(jq -r .version system.json)
-          [ "v$V" = "${GITHUB_REF_NAME}" ] || { echo "system.json dice $V y la etiqueta es ${GITHUB_REF_NAME}"; exit 1; }
+          TAG="v$V"
+          if [ "$EVENT_NAME" = "push" ]; then
+            [ "$TAG" = "$GITHUB_REF_NAME" ] || { echo "system.json dice $V y la etiqueta es $GITHUB_REF_NAME"; exit 1; }
+          else
+            [ "$V" = "2.0.0" ] || { echo "La publicación puntual solo admite 2.0.0"; exit 1; }
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
       - run: npm test
       - run: npm run check
       - run: npm run build
       - name: Crear la release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          target_commitish: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
+          make_latest: true
           files: |
             dist/mr-cuentos-de-animas.zip
             dist/system.json

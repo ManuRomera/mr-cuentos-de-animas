@@ -764,5 +764,36 @@
         "split": "a valid Spirit/Determination split"
       }
     }
-  }
+  },
+  "CdA.Directed.Now": "Now",
+  "CdA.Directed.Narrator": "Narrator",
+  "CdA.Directed.SelectNarrator": "Choose narrator",
+  "CdA.Directed.Waiting": "The Director is preparing the scene…",
+  "CdA.Directed.Private": "Private card",
+  "CdA.Directed.Change": "Request change (1 per scene)",
+  "CdA.Directed.Reveal": "Reveal to everyone",
+  "CdA.Directed.Finish": "Finish narration",
+  "CdA.Directed.Send": "Send",
+  "CdA.Directed.Recipient": "Recipient",
+  "CdA.Directed.All": "Everyone",
+  "CdA.Directed.GMOnly": "Read myself (GM only)",
+  "CdA.Directed.Forward": "Forward / reveal",
+  "CdA.Directed.Text": "Private text",
+  "CdA.Directed.Handout": "Handout",
+  "CdA.Directed.Custom": "Custom scene",
+  "CdA.Directed.NoGM": "A connected GM is required to execute this action.",
+  "CdA.Directed.Request": "Action request to the Director",
+  "CdA.Directed.SelectOption": "Next: choose and send a scene to the narrator.",
+  "CdA.Directed.ChangePending": "Change requested: choose another option.",
+  "CdA.Directed.Mechanical": "Pending: narrator’s mechanical decision at the Table.",
+  "CdA.Directed.Narrating": "Pending: narrator tells the scene, then finishes or reveals.",
+  "CdA.Directed.Next": "Next: draw a card.",
+  "CdA.Directed.FinalPending": "Next: manage the epilogue and its recipient.",
+  "CdA.Directed.sent": "Sent (receipt unconfirmed)",
+  "CdA.Directed.delivered": "Recipient connected",
+  "CdA.Directed.read": "Card opened",
+  "CdA.Directed.Used": "Already used",
+  "CdA.Mode.directed": "Directed",
+  "CdA.Mode.directedHint": "The Director chooses the scene; only the narrator receives it until revelation.",
+  "CdA.Directed.PublicSynopsis": "Public synopsis (Directed; blank = hook)"
 }

@@ -1,4 +1,5 @@
-import { FLAGS, PATH, SYSTEM_ID } from "../constants.mjs";
+import { MODES, FLAGS, PATH, SYSTEM_ID } from "../constants.mjs";
+import { StateService } from "./state.mjs";
 import { SCENARIOS } from "../content/scenarios.mjs";
 import { FORMAT, FORMAT_VERSION, MAX_SCENARIOS, normalizeScenario, problems, unpack } from "../content/format.mjs";
 import { download, slug } from "./records.mjs";
@@ -8,7 +9,7 @@ const COLLECTION = `${PATH}/content/collection`;
 
 /** Escenarios: semilla, colección incluida, importación validada y exportación. */
 export class ContentService {
-  static scenarios() { return game.items.filter(i => i.type === "scenario").sort((a, b) => a.name.localeCompare(b.name)); }
+  static scenarios() { if (!game.user.isGM && StateService.get().mode === MODES.DIRECTED) return []; return game.items.filter(i => i.type === "scenario").sort((a, b) => a.name.localeCompare(b.name)); }
 
   /** Crea los escenarios originales que falten. Nunca sobrescribe los que el usuario haya editado. */
   static async ensureSeed() {
@@ -34,6 +35,7 @@ export class ContentService {
 
   /** Escenarios que acompañan al sistema (content/collection). Se cargan una vez por sesión. */
   static async collection() {
+    if (!game.user.isGM && StateService.get().mode === MODES.DIRECTED) return [];
     if (this.#collection) return this.#collection;
     try {
       const index = await (await fetch(`${COLLECTION}/index.json`)).json();
@@ -51,6 +53,7 @@ export class ContentService {
   }
 
   static async addFromCollection(collectionId) {
+    if (!game.user.isGM) return null;
     const existing = this.inWorld(collectionId);
     if (existing) return existing;
     const entry = (await this.collection()).find(e => e.id === collectionId);

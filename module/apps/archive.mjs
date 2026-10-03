@@ -1,3 +1,5 @@
+import { Direction } from "../services/direction.mjs";
+import { MODES } from "../constants.mjs";
 import { TEMPLATES } from "../constants.mjs";
 import { LINK_TYPES, MEMORY_KINDS, TRUTH_STATUS } from "../models.mjs";
 import { Records } from "../services/records.mjs";
@@ -47,7 +49,7 @@ export class ArchiveApp extends SystemApp {
     const actor = this.actor, gm = game.user.isGM, canEdit = Boolean(actor?.isOwner);
     const scenario = StateService.scenario();
     const time = at => at ? new Date(at).toLocaleString(game.i18n.lang, { dateStyle: "short", timeStyle: "short" }) : "";
-    const truths = (actor?.system.truths ?? []).filter(x => gm || !x.hidden).filter(x => this.filter === "all" || x.status === this.filter);
+    const truths = Records.entries(actor, "truths").filter(x => gm || !x.hidden).filter(x => this.filter === "all" || x.status === this.filter);
     return {
       ...context, actor, gm, canEdit, filter: this.filter,
       tab: this.tabGroups.archive ?? "truths",
@@ -57,7 +59,7 @@ export class ArchiveApp extends SystemApp {
         statuses: choices(TRUTH_STATUS, "CdA.Truth.Status", x.status), links: choices(LINK_TYPES, "CdA.Link", x.link.type),
         byLabel: t(`CdA.Truth.By.${x.by}`), trail: x.history.slice(0, -1).map(h => t(`CdA.Truth.Status.${h.status}`)).join(" → ")
       })),
-      memories: (actor?.system.memories ?? []).filter(m => gm || m.known).map(m => ({
+      memories: Records.entries(actor, "memories").filter(m => gm || m.known).map(m => ({
         ...m, date: time(m.createdAt), icon: MEMORY_ICONS[m.kind], kinds: choices(MEMORY_KINDS, "CdA.Memory.Kind", m.kind),
         links: choices(LINK_TYPES, "CdA.Link", m.link.type), kindLabel: t(`CdA.Memory.Kind.${m.kind}`)
       })),
@@ -105,14 +107,16 @@ export class ArchiveApp extends SystemApp {
   }
   static #filter(event, target) { this.filter = target.dataset.filter; this.render(); }
   static #known(event, target) {
-    const memory = this.actor?.system.memories.find(m => m.id === target.dataset.id);
+    const memory = Records.entries(this.actor, "memories").find(m => m.id === target.dataset.id);
     if (memory) Records.editMemory(this.actor, memory.id, { known: !memory.known });
   }
 
   /** El Guardián lanza una pregunta del escenario: la ven todos y queda en los Recuerdos. */
   static async #launch(event, target) {
+    if (!game.user.isGM) return;
     const prompt = StateService.scenario()?.system.memories?.[Number(target.dataset.index)];
     if (!prompt) return;
+    if (StateService.get().mode === MODES.DIRECTED) return Direction.send({ purpose: "free", kind: "memory", title: prompt.title, text: [prompt.prompt, prompt.followUp].filter(Boolean).join("\n") }, StateService.get().narratorId);
     Presenter.broadcast({ type: "memory", memory: { title: prompt.title, prompt: prompt.prompt, followUp: prompt.followUp } });
     await Records.addMemory(this.actor, { title: prompt.title, text: prompt.prompt, kind: prompt.kind, link: prompt.link, known: true });
   }

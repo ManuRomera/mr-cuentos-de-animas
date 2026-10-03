@@ -1,0 +1,7 @@
+<div class="cda-guardian"><header class="cda-guardian-head"><span class="cda-kicker">{{localize "CdA.Directed.Private"}} · {{kind}}</span><strong>{{data.title}}</strong></header>
+<div class="cda-guardian-scroll"><p class="cda-private-text">{{data.text}}</p>{{#if data.image}}<img class="cda-private-image" src="{{data.image}}" alt="{{data.title}}">{{/if}}</div>
+{{#if controls}}<footer class="cda-g-foot">
+<button type="button" data-action="change" {{#unless canChange}}disabled{{/unless}}>{{localize "CdA.Directed.Change"}}</button>
+<button type="button" data-action="publish" {{#unless canPublish}}disabled{{/unless}}>{{localize "CdA.Directed.Reveal"}}</button>
+<button type="button" data-action="finish" {{#unless canFinish}}disabled{{/unless}}>{{localize "CdA.Directed.Finish"}}</button>
+</footer>{{/if}}</div>

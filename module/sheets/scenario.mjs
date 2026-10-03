@@ -1,3 +1,4 @@
+import { Direction } from "../services/direction.mjs";
 import { ASSETS, CARD_KINDS, MODES, SCENARIO_TAGS, TEMPLATES } from "../constants.mjs";
 import { enrich, shareImage } from "../compat.mjs";
 import { MEMORY_KINDS, LINK_TYPES } from "../models.mjs";
@@ -87,6 +88,7 @@ export class ScenarioSheet extends BaseItemSheet {
   }
 
   async _prepareContext(options) {
+    if (!game.user.isGM && StateService.get().mode === MODES.DIRECTED) return {};
     const context = await super._prepareContext(options);
     const item = this.document, s = item.system, gm = game.user.isGM;
     const list = name => (s[name] ?? []).map((entry, i) => ({
@@ -158,29 +160,37 @@ export class ScenarioSheet extends BaseItemSheet {
 
   /** En juego: mostrar a todos una pista del escenario como carta. */
   static #reveal(event, target) {
+    if (!game.user.isGM) return;
     const entry = this.document.system.clues[Number(target.dataset.index)];
     if (!entry) return;
+    if (StateService.get().mode === MODES.DIRECTED) return Direction.send({ purpose: "free", kind: "clue", title: entry.title, text: entry.text, image: entry.image }, StateService.get().narratorId);
     Presenter.broadcast({ type: "clue", clue: { title: entry.title, text: entry.text } });
     StateService.log({ type: "clue", card: entry.title });
   }
   static #handout(event, target) {
+    if (!game.user.isGM) return;
+    if (StateService.get().mode === MODES.DIRECTED) return Direction.send({ purpose: "free", kind: "note", title: target.dataset.title ?? "", text: "", image: target.dataset.src }, StateService.get().narratorId);
     const src = target.dataset.src; if (src) shareImage(src, target.dataset.title ?? "");
   }
   static async #launch(event, target) {
+    if (!game.user.isGM) return;
     const m = this.document.system.memories[Number(target.dataset.index)]; if (!m) return;
+    if (StateService.get().mode === MODES.DIRECTED) return Direction.send({ purpose: "free", kind: "memory", title: m.title, text: [m.prompt, m.followUp].filter(Boolean).join("\n") }, StateService.get().narratorId);
     Presenter.broadcast({ type: "memory", memory: { title: m.title, prompt: m.prompt, followUp: m.followUp } });
     await Records.addMemory(StateService.protagonist(), { title: m.title, text: m.prompt, kind: m.kind, link: m.link });
   }
   static async #truth(event, target) {
+    if (!game.user.isGM) return;
     const input = target.parentElement.querySelector("input");
     const text = input?.value.trim(); if (!text) return;
     input.value = "";
     await Records.addTruth(StateService.protagonist(), { text, by: "guardian" });
   }
   static async #scene(event, target) {
+    if (!game.user.isGM) return;
     const state = StateService.get(), max = this.document.system.scenes.length - 1;
     const n = Math.clamp(state.scene + Number(target.dataset.delta), 0, Math.max(0, max));
-    if (n !== state.scene) { await StateService.patch({ scene: n }); await StateService.log({ type: "scene", text: this.document.system.scenes[n]?.title }); }
+    if (n !== state.scene) { await StateService.patch({ scene: n }); await StateService.log({ type: "scene", text: this.document.system.scenes[n]?.title, hidden: state.mode === MODES.DIRECTED }); }
     this.render();
   }
 }

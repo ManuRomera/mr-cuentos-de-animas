@@ -33,10 +33,12 @@ import { StateService } from "./module/services/state.mjs";
 import { Records } from "./module/services/records.mjs";
 import { RichHelp } from "./module/services/help.mjs";
 import { SoundService } from "./module/services/sound.mjs";
+import { Direction } from "./module/services/direction.mjs";
+import { DeliveryApp } from "./module/apps/delivery.mjs";
 import { Presenter } from "./module/services/presenter.mjs";
 
 const TEMPLATE_FILES = [
-  "apps/table.hbs", "apps/guardian.hbs", "apps/library.hbs", "apps/start.hbs", "apps/diary.hbs", "apps/archive.hbs",
+  "apps/delivery.hbs", "apps/table.hbs", "apps/guardian.hbs", "apps/library.hbs", "apps/start.hbs", "apps/diary.hbs", "apps/archive.hbs",
   "apps/access.hbs", "apps/safety.hbs", "apps/welcome.hbs", "apps/diagnostic.hbs", "apps/import-help.hbs",
   "sheets/protagonist.hbs", "sheets/scenario.hbs", "partials/card.hbs", "partials/slip.hbs", "partials/entries.hbs"
 ].map(p => `${TEMPLATES}/${p}`);
@@ -71,7 +73,7 @@ Hooks.once("init", () => {
 
   bootPhase("apps", () => {
     Object.assign(Apps, {
-      table: TableApp, library: LibraryApp, guardian: GuardianApp, diary: DiaryApp, access: AccessPanel,
+      delivery: DeliveryApp, table: TableApp, library: LibraryApp, guardian: GuardianApp, diary: DiaryApp, access: AccessPanel,
       safety: SafetyPanel, start: StartApp, diagnostic: DiagnosticApp, welcome: WelcomeApp, importHelp: ImportHelpApp,
       truths: { open: (o = {}) => ArchiveApp.open({ ...o, tab: "truths" }) },
       memories: { open: (o = {}) => ArchiveApp.open({ ...o, tab: "memories" }) },
@@ -117,10 +119,11 @@ Hooks.once("ready", async () => {
 
   if (game.user.isGM) {
     await bootPhase("content", () => ContentService.ensureSeed());
-    await bootPhase("decks", () => DeckService.ensureStacks());
+    await bootPhase("decks", async () => { await DeckService.ensureStacks(); await Direction.configure(StateService.get().mode, StateService.scenario()); });
     await bootPhase("migration", migrate);
     await bootPhase("scene", ensureScene);
   }
+  bootPhase("direction", () => Direction.init(GameplayService));
   bootPhase("presenter", () => Presenter.init());
 
   console.info(`${LOG} listo · Foundry ${game.version}`, BOOT.errors.length ? BOOT.errors : "sin errores");
@@ -149,7 +152,10 @@ async function migrate() {
   // v1.0.x guardaba el estado con otras claves; un relato de entonces no puede continuarse.
   const saved = StateService.eventDeck()?.getFlag(SYSTEM_ID, FLAGS.STATE);
   if (saved && ("activeObstacle" in saved || "lastCardUuid" in saved)) await StateService.reset();
-  for (const actor of game.actors.filter(a => a.type === "protagonist")) await Records.ensureIds(actor);
+  for (const actor of game.actors.filter(a => a.type === "protagonist")) { await Records.ensureIds(actor); await Records.secure(actor); }
+  const history = StateService.history();
+  for (const entry of history.filter(e => e.hidden)) await Direction.privateRecord(entry);
+  if (history.some(e => e.hidden)) await StateService.eventDeck()?.setFlag(SYSTEM_ID, FLAGS.HISTORY, history.filter(e => !e.hidden));
   // 1.3: handouts de «La voz que dejaste atrás» en mundos creados antes de tener su arte.
   const voice = game.items.find(i => i.getFlag(SYSTEM_ID, FLAGS.SEED) === "voice");
   const fresh = SCENARIOS.find(s => s.flags[SYSTEM_ID][FLAGS.SEED] === "voice")?.system;

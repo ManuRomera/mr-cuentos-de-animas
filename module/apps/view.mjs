@@ -1,4 +1,5 @@
 import { ASSETS, CARD_KINDS, SYSTEM_ID } from "../constants.mjs";
+import { safeImage } from "../services/direction.mjs";
 import { DeckService } from "../services/decks.mjs";
 
 /** Datos de presentación compartidos por la Mesa, el Guardián y la carta ampliada. */
@@ -42,7 +43,7 @@ export function cardView(card, { scene = null, customBack = "" } = {}) {
     gray: kind === CARD_KINDS.GRAY ? roman(meta.grayIndex) : "",
     img: eventArt(kind, value, classic),
     back: backArt(customBack, classic),
-    scene: scene?.title || scene?.text ? { title: scene.title ?? "", text: scene.text ?? "" } : null,
+    scene: scene?.title || scene?.text ? { title: scene.title ?? "", text: scene.text ?? "", image: safeImage(scene.image) } : null,
     title: card.name
   };
 }
