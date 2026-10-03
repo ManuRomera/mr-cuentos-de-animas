@@ -187,7 +187,12 @@ export class GuardianApp extends SystemApp {
   /** Mostrar a todos la carta actual en grande. */
   static async #show() {
     if (!game.user.isGM) return;
-    if (StateService.get().mode === MODES.DIRECTED) { await Direction.publish(); return; }
+    if (StateService.get().mode === MODES.DIRECTED) {
+      const alreadyPublic = StateService.get().scenePublic;
+      await Direction.publish();
+      if (alreadyPublic) Presenter.broadcast({ type: "card", card: cardView(DeckService.current()) });
+      return;
+    }
     const card = cardView(DeckService.current(), { gm: false });
     if (card) Presenter.broadcast({ type: "card", card });
   }

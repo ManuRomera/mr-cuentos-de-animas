@@ -40,7 +40,7 @@ export class Presenter {
     const newCard = state.currentCardId && state.currentCardId !== before.currentCardId;
     if (newCard) SoundService.flip();
     // Sin la Mesa abierta: la Dama se ve al salir; las demás cartas, cuando ya tienen su escena.
-    const chosen = state.event?.choice && !(before.event?.choice && before.event.cardId === state.event.cardId);
+    const chosen = state.mode === MODES.DIRECTED ? state.scenePublic && !before.scenePublic : state.event?.choice && !(before.event?.choice && before.event.cardId === state.event.cardId);
     const card = DeckService.current();
     if (!tableOpen && card && ((newCard && DeckService.meta(card).kind === CARD_KINDS.GRAY) || chosen)) {
       CardOverlay.show(cardView(card, { customBack: StateService.scenario()?.system.customBack }), { flip: true });
