@@ -190,6 +190,8 @@
   </main>
 
   <footer class="cda-table-foot">
+    {{#if waitingDirector}}<p role="status">{{localize "CdA.Directed.Waiting"}}</p>{{/if}}
+    {{#if hasDelivery}}<button type="button" data-action="private">{{localize "CdA.Directed.Private"}}</button>{{/if}}
     <p class="cda-hook">{{#if scene}}{{scene.text}}{{else if scenario}}{{scenario.hook}}{{else}}{{localize "CdA.Table.FootIdle"}}{{/if}}</p>
     <div class="cda-foot-actions">
       {{#if gm}}{{#unless idle}}<button type="button" data-action="open" data-app="scenario"><i class="fa-solid fa-book-skull" aria-hidden="true"></i>{{localize "CdA.Table.ScenarioSheet"}}</button>{{/unless}}{{/if}}

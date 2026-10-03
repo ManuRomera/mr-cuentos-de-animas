@@ -1,4 +1,5 @@
-import { CARD_KINDS, TEMPLATES } from "../constants.mjs";
+import { Direction } from "../services/direction.mjs";
+import { MODES, CARD_KINDS, TEMPLATES } from "../constants.mjs";
 import { DialogV2 } from "../compat.mjs";
 import { AMBIENTS } from "../services/sound.mjs";
 import { DeckService } from "../services/decks.mjs";
@@ -25,6 +26,11 @@ export class GuardianApp extends SystemApp {
     window: { title: "CdA.App.Guardian", icon: "fa-solid fa-hat-wizard" },
     position: { width: 440, height: 760 },
     actions: {
+      choose: (e, target) => Game.choose({ list: target.dataset.list, index: Number(target.dataset.index) }),
+      custom: (e, target) => Game.choose({ custom: target.closest("fieldset").querySelector("[name=custom]").value }),
+      publish: () => Direction.publish(), finish: () => Direction.publish(true),
+      private: () => openApp("delivery", { messageId: StateService.get().deliveryId }),
+      sendPrivate: GuardianApp.#sendPrivate, forward: GuardianApp.#forward, final: GuardianApp.#final,
       draw: () => Game.draw(), resource: GuardianApp.#resource, gray: GuardianApp.#gray, insert: GuardianApp.#insert,
       discard: GuardianApp.#discard, reshuffle: GuardianApp.#reshuffle, rebuild: GuardianApp.#rebuild, scene: GuardianApp.#scene,
       truth: GuardianApp.#truth, note: GuardianApp.#note, memory: GuardianApp.#memory, epilogue: () => Game.toEpilogue(),
@@ -45,10 +51,20 @@ export class GuardianApp extends SystemApp {
   }
 
   async _prepareContext() {
+    if (!game.user.isGM) return {};
     const state = StateService.get(), scenario = StateService.scenario(), actor = StateService.protagonist();
     const scenes = scenario?.system.scenes ?? [];
     const next = DeckService.remaining()[0];
     return {
+      directed: state.mode === MODES.DIRECTED,
+      choices: state.mode === MODES.DIRECTED && state.event && !state.event.choice ? Game.choices(state) : [],
+      players: Direction.players().map(u => ({ id: u.id, name: u.name, selected: u.id === state.narratorId })),
+      narrator: game.users.get(state.narratorId)?.name ?? t("CdA.Directed.SelectNarrator"),
+      now: t(state.phase === "epilogue" || state.phase === "finished" ? "CdA.Directed.FinalPending" : state.changeRequested ? "CdA.Directed.ChangePending" : state.pendingGray ? "CdA.Directed.Mechanical" : state.event && !state.event.choice ? "CdA.Directed.SelectOption" : state.obstacle && !state.obstacle.outcome ? "CdA.Directed.Mechanical" : !state.narrationDone ? "CdA.Directed.Narrating" : "CdA.Directed.Next"),
+      deliveryNotes: (() => { const d = Direction.payload(); return d?.list ? (scenario?.system[d.list]?.[d.index]?.guardian ?? scenario?.system[d.list]?.[d.index]?.secret ?? "") : ""; })(),
+      delivery: Direction.payload(), deliveryStatus: t(`CdA.Directed.${Direction.status()}`),
+      canFinish: !state.obstacle || Boolean(state.obstacle.outcome),
+      deliveries: Direction.deliveries().map(m => ({ id: m.id, title: Direction.payload(m).title })),
       state, idle: state.phase === "idle",
       phase: t(`CdA.Phase.${state.phase}`),
       scenario: scenario ? { name: scenario.name, epilogues: scenario.system.epilogueTable.map(r => ({ label: r.label || `${r.min}–${r.max}`, text: r.text, current: r === Game.epilogueRow(scenario, actor) })) } : null,
@@ -60,6 +76,7 @@ export class GuardianApp extends SystemApp {
       grayLeft: DeckService.remaining().some(c => DeckService.meta(c).kind === CARD_KINDS.GRAY),
       canDraw: Game.canDraw(state),
       current: cardView(DeckService.current()),
+      handouts: (scenario?.system.handouts ?? []).map((h, i) => ({ i, title: h.title })),
       memories: (scenario?.system.memories ?? []).map((m, i) => ({ i, title: m.title })),
       ambients: [{ value: "", label: t("CdA.Ambient.none"), selected: !state.ambient }, ...AMBIENTS.map(a => ({ value: a, label: t(`CdA.Ambient.${a}`), selected: a === state.ambient }))]
     };
@@ -67,12 +84,38 @@ export class GuardianApp extends SystemApp {
 
   async _onRender(context, options) {
     await super._onRender(context, options);
+    this.element.querySelector("select[name=narrator]")?.addEventListener("change", e => Direction.narrator(e.target.value));
     this.element.querySelector("select[name=ambient]")?.addEventListener("change", async e => {
       await StateService.patch({ ambient: e.target.value });
       SoundService.setAmbient(e.target.value);
     });
   }
 
+  static async #sendPrivate(e, target) {
+    if (!game.user.isGM) return;
+    const root = target.closest("fieldset");
+    const recipient = root.querySelector("[name=recipient]").value;
+    const text = root.querySelector("[name=privateText]").value.trim();
+    const handout = StateService.scenario()?.system.handouts?.[Number(root.querySelector("[name=handout]").value)];
+    if (!text && !handout) return;
+    await Direction.send({ purpose: "free", kind: "note", title: handout?.title || t("CdA.Directed.Private"), text: [text, handout?.text].filter(Boolean).join("\n"), image: handout?.image || "" }, recipient);
+  }
+  static async #forward(e, target) {
+    if (!game.user.isGM) return;
+    const root = target.closest("fieldset"), message = game.messages.get(root.querySelector("[name=delivery]").value), data = Direction.payload(message);
+    if (!data) return;
+    const recipient = root.querySelector("[name=recipient]").value;
+    if (recipient === "all") {
+      if (data.purpose === "scene" && message.id === StateService.get().deliveryId) return Direction.publish();
+      if (data.purpose === "epilogue") return Direction.final("", true);
+      const esc = v => foundry.utils.escapeHTML(String(v ?? ""));
+      await ChatMessage.implementation.create({ content: `<div class="cda-chat-card"><strong>${esc(data.title)}</strong><p>${esc(data.text)}</p>${data.image ? `<img src="${esc(data.image)}" alt="${esc(data.title)}">` : ""}</div>` });
+    } else await Direction.send({ ...data, purpose: "free" }, recipient);
+  }
+  static #final(e, target) {
+    const root = target.closest("fieldset"), recipient = root.querySelector("[name=finalRecipient]").value;
+    return Direction.final(recipient === "all" ? "" : recipient, recipient === "all");
+  }
   static #value(root, name) { const el = root.querySelector(`[name="${name}"]`); const v = el?.value?.trim() ?? ""; if (el) el.value = ""; return v; }
 
   static async #resource(event, target) {
@@ -104,7 +147,7 @@ export class GuardianApp extends SystemApp {
     ui.notifications.info(f("CdA.Guardian.Inserted", { name: data.name }));
   }
   static async #discard() {
-    await StateService.patch({ currentCardId: "", obstacle: null, event: null });
+    await StateService.patch({ currentCardId: "", obstacle: null, event: null, narrationDone: true, deliveryId: "" });
   }
   static async #reshuffle() {
     await DeckService.reshuffleBlocks(game.settings.get("mr-cuentos-de-animas", "grayVariant"));
@@ -122,7 +165,7 @@ export class GuardianApp extends SystemApp {
     const n = Math.clamp(state.scene + Number(target.dataset.delta), 0, Math.max(0, scenes.length - 1));
     if (n === state.scene) return;
     await StateService.patch({ scene: n });
-    await StateService.log({ type: "scene", text: scenes[n]?.title ?? "" });
+    await StateService.log({ type: "scene", text: scenes[n]?.title ?? "", hidden: state.mode === MODES.DIRECTED });
   }
   static async #truth(event, target) {
     const root = target.closest("fieldset");
@@ -137,11 +180,14 @@ export class GuardianApp extends SystemApp {
   static async #memory(event, target) {
     const i = Number(target.closest("fieldset").querySelector("[name=memory]").value);
     const prompt = StateService.scenario()?.system.memories?.[i]; if (!prompt) return;
+    if (StateService.get().mode === MODES.DIRECTED) return Direction.send({ purpose: "free", kind: "memory", title: prompt.title, text: [prompt.prompt, prompt.followUp].filter(Boolean).join("\n") }, StateService.get().narratorId);
     Presenter.broadcast({ type: "memory", memory: { title: prompt.title, prompt: prompt.prompt, followUp: prompt.followUp } });
     await Records.addMemory(StateService.protagonist(), { title: prompt.title, text: prompt.prompt, kind: prompt.kind, link: prompt.link });
   }
   /** Mostrar a todos la carta actual en grande. */
-  static #show() {
+  static async #show() {
+    if (!game.user.isGM) return;
+    if (StateService.get().mode === MODES.DIRECTED) { await Direction.publish(); return; }
     const card = cardView(DeckService.current(), { gm: false });
     if (card) Presenter.broadcast({ type: "card", card });
   }

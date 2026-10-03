@@ -1,4 +1,5 @@
 import { CARD_KINDS, FLAGS, MODES, RULES, SYSTEM_ID } from "../constants.mjs";
+import { Direction } from "./direction.mjs";
 import * as R from "../rules.mjs";
 import { DeckService } from "./decks.mjs";
 import { Records } from "./records.mjs";
@@ -44,7 +45,12 @@ export class GameplayService {
   /* ------------------------------------------ */
 
   static async start({ scenario, actor, mode = MODES.GUARDIAN, spirit, determination }) {
+    if (!game.user.isGM || !scenario || !actor || !Object.values(MODES).includes(mode)) return null;
+    if (scenario.type !== "scenario" || actor.type !== "protagonist" || ((spirit !== undefined || determination !== undefined) && !R.validSplit(spirit, determination))) return null;
     return this.#run(async () => {
+      await Direction.restoreActors();
+      await Direction.configure(mode, scenario);
+      if (mode === MODES.DIRECTED) await Direction.protectActor(actor);
       if (Number.isInteger(spirit) && Number.isInteger(determination)) {
         await actor.update({ "system.spirit": { value: spirit, max: spirit }, "system.determination": { value: determination, max: determination } });
       }
@@ -55,16 +61,19 @@ export class GameplayService {
       await StateService.clearHistory();
       await StateService.reset({
         scenarioUuid: scenario.uuid, protagonistUuid: actor.uuid, mode, phase: "playing",
+        publicScenario: { name: scenario.name, hook: scenario.system.hook, synopsis: mode === MODES.DIRECTED ? (scenario.system.publicSynopsis || foundry.utils.escapeHTML(scenario.system.hook)) : scenario.system.synopsis },
         ambient: scenario.system.sounds?.intro || scenario.system.sounds?.play || "", startedAt: Date.now()
       });
       await StateService.log({ type: "start", text: scenario.name, result: mode, variant, size });
-      await Records.diary(actor, { title: scenario.name, text: plain(scenario.system.synopsis) || scenario.system.hook, kind: "start" });
+      await Records.diary(actor, { title: scenario.name, text: plain(mode === MODES.DIRECTED ? (scenario.system.publicSynopsis || scenario.system.hook) : scenario.system.synopsis) || scenario.system.hook, kind: "start" });
       return { scenario, actor };
     });
   }
 
   static async end() {
+    if (!game.user.isGM) return null;
     return this.#run(async () => {
+      await Direction.restoreActors();
       await StateService.log({ type: "end" });
       await StateService.reset();
     });
@@ -75,13 +84,15 @@ export class GameplayService {
   /* ------------------------------------------ */
 
   static canDraw(state = StateService.get()) {
-    return state.phase === "playing" && !state.pendingGray
+    return (state.mode !== MODES.DIRECTED || state.narrationDone) && state.phase === "playing" && !state.pendingGray
       && !(state.event && !state.event.choice)
       && !(state.obstacle && !state.obstacle.outcome);
   }
 
   static async draw() {
+    if (!game.user.isGM) return Direction.request("draw");
     const state = StateService.get();
+    if (state.mode === MODES.DIRECTED && !state.narrationDone) return null;
     if (state.phase === "idle") return warn("CdA.Game.NoStory");
     if (state.pendingGray) return warn("CdA.Game.PendingGray");
     if (state.event && !state.event.choice) return warn("CdA.Game.PendingChoice");
@@ -92,12 +103,12 @@ export class GameplayService {
       if (!card) { ui.notifications.info(t("CdA.Game.EmptyDeck")); return null; }
       const meta = DeckService.meta(card);
       const actor = StateService.protagonist(), scenario = StateService.scenario();
-      const patch = { currentCardId: card.id, obstacle: null, event: null, turn: state.turn + 1 };
+      const patch = { currentCardId: card.id, obstacle: null, event: null, turn: state.turn + 1, narratorId: Direction.suggest(state), deliveryId: "", narrationDone: state.mode !== MODES.DIRECTED, scenePublic: false, changeUsed: false, changeRequested: false };
 
       if (meta.kind === CARD_KINDS.GRAY) {
         const n = Math.max(state.grayLadies + 1, Number(meta.grayIndex) || 0);
         const tension = scenario?.system.tension?.[n - 1]?.text ?? "";
-        Object.assign(patch, { grayLadies: n, pendingGray: n, tension: [...state.tension, tension] });
+        Object.assign(patch, { narrationDone: true, grayLadies: n, pendingGray: n, tension: [...state.tension, tension] });
         const sounds = scenario?.system.sounds;
         if (sounds?.gray) patch.ambient = sounds.gray;
         await markCard(card, { title: `${t("CdA.Kind.gray")} ${["I", "II", "III"][n - 1]}`, text: tension });
@@ -126,11 +137,12 @@ export class GameplayService {
 
   /** Entradas del escenario para el tipo de carta en curso, marcando las ya usadas. */
   static choices(state = StateService.get()) {
+    if (state.mode === MODES.DIRECTED && !game.user.isGM) return [];
     const scenario = StateService.scenario(), kind = state.event?.kind;
     if (!scenario || !kind) return [];
     const used = state.used ?? {};
     const from = list => (scenario.system[list] ?? []).map((e, index) => ({
-      list, index, title: e.title ?? e.name ?? "", text: e.text ?? e.description ?? "", used: (used[list] ?? []).includes(index)
+      list, index, title: e.title ?? e.name ?? "", text: e.text ?? e.description ?? "", image: e.image ?? "", guardian: game.user.isGM ? (e.guardian ?? e.secret ?? "") : "", used: (used[list] ?? []).includes(index)
     })).filter(e => e.title || e.text);
     return from(this.choiceList(scenario, kind));
   }
@@ -140,6 +152,7 @@ export class GameplayService {
    * Si la carta es un obstáculo, abre su resolución con la dificultad impresa en la carta.
    */
   static async choose({ list = "", index = -1, custom = "" } = {}) {
+    if (!game.user.isGM) return Direction.request("choose", { list, index, custom });
     const state = StateService.get();
     const event = state.event;
     if (!event || event.choice) return null;
@@ -148,7 +161,8 @@ export class GameplayService {
     if (!title) return null;
     return this.#run(async () => {
       const actor = StateService.protagonist();
-      const choice = { list: entry ? list : "", index: entry ? index : -1, title, text: entry?.text ?? "" };
+      const choice = { list: entry ? list : "", index: entry ? index : -1, title, text: entry?.text ?? "", image: entry?.image ?? "" };
+      if (state.mode === MODES.DIRECTED) return Direction.deliverScene(choice);
       const patch = { event: { ...event, choice } };
       if (entry) patch.used = { ...state.used, [list]: [...new Set([...(state.used?.[list] ?? []), index])] };
       if (event.kind === CARD_KINDS.CLUE) patch.clues = [...state.clues, { title, text: choice.text }];
@@ -176,8 +190,10 @@ export class GameplayService {
 
   /** Un paso de la resolución, solo si las reglas lo permiten en este momento. */
   static async #step(option, transition, { needsCard = false } = {}) {
+    if (!game.user.isGM) return Direction.request(option);
     const state = StateService.get();
     const actor = StateService.protagonist();
+    if (state.mode === MODES.DIRECTED && !state.event?.choice) return null;
     if (!state.obstacle) return warn("CdA.Game.NoObstacle");
     if (!actor) return warn("CdA.Game.NoProtagonist");
     if (!this.options(state)[option]) return null;
@@ -219,6 +235,8 @@ export class GameplayService {
 
   /** El precio de una Dama: 1 de Determinación o 1 de Espíritu, a elección. Sin ninguno de los dos, no hay precio. */
   static async payGray(resource) {
+    if (!game.user.isGM) return Direction.request("payGray", { resource });
+    if (!["spirit", "determination", "none"].includes(resource)) return null;
     const state = StateService.get(), actor = StateService.protagonist();
     if (!state.pendingGray) return null;
     const available = r => (actor?.system[r].value ?? 0) > 0;
@@ -238,10 +256,14 @@ export class GameplayService {
   /* ------------------------------------------ */
 
   static epilogueRow(scenario = StateService.scenario(), actor = StateService.protagonist()) {
+    if (StateService.get().mode === MODES.DIRECTED && !game.user.isGM) return null;
     return R.epilogueRow(scenario?.system.epilogueTable ?? [], actor?.system.spirit.value ?? 0);
   }
 
   static async epilogue() {
+    if (!game.user.isGM) return Direction.request("epilogue");
+    if (StateService.get().phase !== "epilogue") return null;
+    if (StateService.get().mode === MODES.DIRECTED) return Direction.final();
     const scenario = StateService.scenario(), actor = StateService.protagonist();
     if (!scenario) return warn("CdA.Game.NoStory");
     return this.#run(async () => {
@@ -255,6 +277,8 @@ export class GameplayService {
   }
 
   static async toEpilogue() {
+    if (!game.user.isGM) return null;
+    if (StateService.get().mode === MODES.DIRECTED && !StateService.get().narrationDone) return null;
     await StateService.patch({ phase: "epilogue", obstacle: null, pendingGray: 0, event: null });
     await StateService.log({ type: "phase", result: "epilogue" });
   }

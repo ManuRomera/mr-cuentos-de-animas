@@ -80,7 +80,7 @@ export function normalizeScenario(raw) {
   const system = {
     author: text(src.author ?? src.autor), duration: text(src.duration) || "60–120 min", players: text(src.players) || "1–4",
     hook, cover: text(src.cover ?? src.img),
-    synopsis, introduction: toHTML(src.introduction), guardianNotes: toHTML(src.guardianNotes ?? src.notes),
+    publicSynopsis: toHTML(src.publicSynopsis), synopsis, introduction: toHTML(src.introduction), guardianNotes: toHTML(src.guardianNotes ?? src.notes),
     tone: words(src.tone), tags: words(src.tags).filter(t => SCENARIO_TAGS.includes(t)),
     modes: modes.length ? modes : ["bonfire", "diary", "guardian"], contentNotes: words(src.contentNotes),
     scenes: arr(src.scenes).map(s => ({ title: text(s?.title), text: text(s?.text), guardian: text(s?.guardian), handout: text(s?.handout) })),

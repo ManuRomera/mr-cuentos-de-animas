@@ -17,6 +17,7 @@
   </nav>
 
   <div class="cda-scenario-scroll">
+    {{#if gm}}<label>{{localize "CdA.Directed.PublicSynopsis"}}<textarea name="system.publicSynopsis" rows="3">{{system.publicSynopsis}}</textarea></label>{{/if}}
     {{!-- EN JUEGO --}}
     {{#if tabs.play}}
     <section class="tab {{tabs.play.cssClass}}" data-group="scenario" data-tab="play">

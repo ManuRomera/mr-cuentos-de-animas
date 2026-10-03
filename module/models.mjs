@@ -83,7 +83,7 @@ export class ScenarioModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       author: str(), duration: str(), players: str("1 + Guardián"), hook: str(), cover: str(),
-      synopsis: html(), introduction: html(), guardianNotes: html(),
+      publicSynopsis: html(), synopsis: html(), introduction: html(), guardianNotes: html(),
       tone: tags([]), tags: tags([]), modes: tags(["guardian"]), contentNotes: tags([]),
       scenes: list({ title: str(), text: str(), guardian: str(), handout: str() }),
       characters: list({ name: str(), description: str(), secret: str(), image: str() }),

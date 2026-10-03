@@ -1,3 +1,4 @@
+import { Records } from "../services/records.mjs";
 import { ASSETS, RULES, TEMPLATES } from "../constants.mjs";
 import { openApp } from "../apps/registry.mjs";
 import { resource } from "../apps/view.mjs";
@@ -29,8 +30,8 @@ export class ProtagonistSheet extends BaseActorSheet {
     const actor = this.document, s = actor.system, gm = game.user.isGM;
     const traits = [...s.traits];
     while (traits.length < 4) traits.push({ label: "", text: "" });
-    const truths = s.truths.filter(x => gm || !x.hidden);
-    const memories = s.memories.filter(m => gm || m.known);
+    const truths = Records.entries(this.document, "truths").filter(x => gm || !x.hidden);
+    const memories = Records.entries(this.document, "memories").filter(m => gm || m.known);
     return {
       ...context, actor, system: s, gm, editable: this.isEditable, assets: ASSETS,
       spirit: resource(actor, "spirit"), determination: resource(actor, "determination"),

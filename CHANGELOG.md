@@ -1,5 +1,28 @@
 # Changelog
 
+## 2.0.0 · 2026-10-03 · candidata pendiente de prueba multicliente
+
+### Dirigido y experiencia de dirección
+- Nuevo modo **Dirigido**, cabina **Ahora**, rotación sugerida y selector manual de narrador.
+- Tarjetas privadas persistentes con título, texto, imagen y tipo de carta; whisper nativo GM + jugador, acuse de apertura y reenvíos, sin depender de MR Telegram.
+- Un cambio de opción por escena; decisiones mecánicas del narrador; revelación anticipada o al finalizar la narración.
+- Texto libre y handouts privados desde la cabina y controles anteriores.
+- Epílogo calculado por Espíritu bajo control GM: leer, enviar a un jugador o revelar a todos.
+- publicSynopsis opcional y compatible con escenarios existentes; introducción y escenas preparadas reservadas en Dirigido.
+
+### Permisos y correcciones
+- Mazos en observador y peticiones verificadas ejecutadas por GM, vinculadas a sesión, turno, fase y entrega.
+- Permisos temporales del protagonista/escenario en Dirigido, con respaldo y restauración.
+- Verdades ocultas, notas, Recuerdos desconocidos e historial privado separados de los documentos públicos mediante registros solo GM.
+- Recursos del precio de Dama limitados a una lista cerrada; publicación y diario deduplicados.
+- ES/EN y plantillas del estilo existente. Los modos normales conservan la información narrativa pública.
+
+### Validación y alcance
+- Nuevas pruebas automatizadas de autoridad, entrega, cambio único, reenvío, revelación y final; comprobaciones de estructura, idiomas y sintaxis.
+- Compatible en manifiesto con Foundry 13/14; **pendiente de prueba visual y multicliente real**, especialmente v14.
+- La privacidad se ajusta a los whispers nativos: no se garantiza cifrado frente a clientes hostiles. Registros y respaldos requieren conservar el chat.
+- Guía y auditoría: [DIRIGIDO](docs/DIRIGIDO.md), [AUDIT-2.0](docs/AUDIT-2.0.md).
+
 ## 1.4.1 · 2026-09-27
 
 ### Correcciones

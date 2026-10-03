@@ -14,10 +14,12 @@ export const LINK_TYPES = Object.freeze(["", "scene", "object", "clue", "charact
 
 export const SCENARIO_TAGS = Object.freeze(["rural", "supernatural", "psychological", "folklore", "mystery", "scifi", "urban"]);
 
-export const MODES = Object.freeze({ GUARDIAN: "guardian", BONFIRE: "bonfire", DIARY: "diary", FREE: "free" });
+export const MODES = Object.freeze({ DIRECTED: "directed", GUARDIAN: "guardian", BONFIRE: "bonfire", DIARY: "diary", FREE: "free" });
 
 /** Estado compartido de la partida. Vive en un flag del Mazo de Ánimas: se sincroniza solo. */
 export const DEFAULT_STATE = Object.freeze({
+  narratorId: "", deliveryId: "", narrationDone: true, scenePublic: false, changeUsed: false, changeRequested: false, epiloguePublic: false, finalDeliveryId: "", publicEpilogue: null,
+  publicScenario: null,
   scenarioUuid: "",
   protagonistUuid: "",
   mode: MODES.GUARDIAN,

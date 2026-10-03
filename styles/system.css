@@ -1003,3 +1003,11 @@
 .mr-cda .cda-identity-grid .cda-rollable > input { padding-right: 1.8em; }
 .mr-cda .cda-identity-grid .cda-rollable > button.cda-dice { position: absolute; right: .15rem; top: 50%; translate: 0 -50%; }
 .mr-cda .cda-identity-grid .cda-rollable > button.cda-dice:hover { transform: none; rotate: -12deg; }
+
+/* Direction cards follow the existing paper and guardian surfaces. */
+.cda-private-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.cda-private-image { max-width: 100%; height: auto; object-fit: contain; }
+.cda-direction-now { padding: 1rem; border: 1px solid currentColor; }
+.cda-direction-now label, .cda-g-section fieldset label { display: block; margin-block: .5rem; }
+.cda-direction-choice { display: flex; flex-direction: column; text-align: start; white-space: normal; width: 100%; height: auto; margin-block: .4rem; }
+.cda-direction-choice span { font-size: .9em; }

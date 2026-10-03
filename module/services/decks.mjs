@@ -26,7 +26,7 @@ export class DeckService {
       if (this.stack(role)) continue;
       await cardsClass().create({
         name: game.i18n.localize(name), type, img: ASSETS.cardBack,
-        ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
+        ownership: { default: CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER },
         flags: { [SYSTEM_ID]: { [FLAGS.ROLE]: role, ...(role === "event" ? { [FLAGS.STATE]: foundry.utils.deepClone(DEFAULT_STATE) } : {}) } }
       });
     }

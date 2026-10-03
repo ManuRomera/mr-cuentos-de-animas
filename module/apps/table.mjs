@@ -1,3 +1,4 @@
+import { Direction } from "../services/direction.mjs";
 import { ASSETS, CARD_KINDS, MODES, RULES, TEMPLATES } from "../constants.mjs";
 import { enrich } from "../compat.mjs";
 import { reducedMotion, reducedEffects } from "../settings.mjs";
@@ -26,6 +27,7 @@ export class TableApp extends SystemApp {
     window: { title: "CdA.App.Table", icon: "fa-solid fa-fire-flame-curved", resizable: true },
     position: { width: 1320, height: 840 },
     actions: {
+      private: () => openApp("delivery"),
       draw: TableApp.#draw, zoom: TableApp.#zoom, zoomClue: TableApp.#zoomClue, choose: TableApp.#choose, custom: TableApp.#custom,
       spend: () => Game.spend(), reveal: () => Game.reveal(), push: () => Game.push(), reroll: () => Game.reroll(), accept: () => Game.accept(),
       payGray: TableApp.#payGray, epilogue: () => Game.epilogue(), open: TableApp.#open, story: TableApp.#story
@@ -47,7 +49,8 @@ export class TableApp extends SystemApp {
   async _prepareContext() {
     const state = StateService.get();
     const actor = StateService.protagonist();
-    const scenario = StateService.scenario();
+    const directed = state.mode === MODES.DIRECTED;
+    const scenario = directed && !game.user.isGM ? null : StateService.scenario();
     const current = DeckService.current();
     const event = state.event;
     const obstacle = state.obstacle;
@@ -57,10 +60,10 @@ export class TableApp extends SystemApp {
     const finishing = ["epilogue", "finished"].includes(state.phase);
     const epilogueRow = finishing ? Game.epilogueRow(scenario, actor) : null;
     const players = game.users.filter(u => u.active && !u.isGM);
-    const narrator = state.mode === MODES.BONFIRE && players.length && state.turn ? players[(state.turn - 1) % players.length] : null;
+    const narrator = directed ? game.users.get(state.narratorId) : state.mode === MODES.BONFIRE && players.length && state.turn ? players[(state.turn - 1) % players.length] : null;
     const classic = classicSkin();
     return {
-      gm: game.user.isGM, state, assets: ASSETS, classic,
+      gm: game.user.isGM, directed, waitingDirector: directed && event && !event.choice && !game.user.isGM, hasDelivery: Direction.deliveries().length > 0, state, assets: ASSETS, classic,
       phase: game.i18n.localize(`CdA.Phase.${state.phase}`),
       mode: game.i18n.localize(`CdA.Mode.${state.mode}`),
       idle: state.phase === "idle",
@@ -68,37 +71,37 @@ export class TableApp extends SystemApp {
       storyOpen: this.sectionOpen("story", true),
       scenario: scenario ? {
         name: scenario.name, hook: scenario.system.hook,
-        synopsis: await enrich(scenario.system.synopsis, scenario),
-        introduction: scenario.system.introduction ? await enrich(scenario.system.introduction, scenario) : ""
-      } : null,
-      scene: scene ? { title: scene.title, text: scene.text } : null,
+        synopsis: await enrich(directed ? (scenario.system.publicSynopsis || foundry.utils.escapeHTML(scenario.system.hook)) : scenario.system.synopsis, scenario),
+        introduction: !directed && scenario.system.introduction ? await enrich(scenario.system.introduction, scenario) : ""
+      } : state.publicScenario,
+      scene: !directed && scene ? { title: scene.title, text: scene.text } : null,
       clues: state.clues.map((c, i) => ({ ...c, i, n: i + 1 })),
       tension: state.tension.map((text, i) => ({ text, roman: roman(i + 1) })).filter(x => x.text),
       actor: actor ? { name: actor.name, img: actor.img, profession: actor.system.profession } : null,
       spirit: resource(actor, "spirit"),
       determination: resource(actor, "determination"),
       grays: [1, 2, 3].map(n => ({ n, roman: roman(n), on: n <= state.grayLadies, img: eventArt(CARD_KINDS.GRAY, n, classic), pending: n === state.pendingGray })),
-      deck: { count: remaining, canDraw: Game.canDraw(state) && remaining > 0, back: backArt(scenario?.system.customBack, classic) },
+      deck: { count: remaining, canDraw: Game.canDraw(state) && remaining > 0 && (!directed || game.user.isGM), back: backArt(scenario?.system.customBack, classic) },
       discard: { count: discard.length, top: cardView(discard.at(-1)) },
       card: cardView(current, { customBack: scenario?.system.customBack }),
-      choosing: event && !event.choice ? {
+      choosing: event && !event.choice && (!directed || game.user.isGM) ? {
         label: game.i18n.localize(`CdA.Kind.${event.kind}`), value: event.value,
         prompt: game.i18n.localize(Game.choiceList(scenario, event.kind) === "incidents" ? "CdA.Choose.ownIncident" : PROMPTS[event.kind] ?? "CdA.Choose.clue"),
         entries: Game.choices(state)
       } : null,
       obstacle: obstacle ? {
-        ...obstacle, options: Game.options(state), total: (obstacle.value ?? 0) + obstacle.preBonus + obstacle.bonus,
+        ...obstacle, options: !directed || game.user.isGM || state.narratorId === game.user.id ? Game.options(state) : {}, total: (obstacle.value ?? 0) + obstacle.preBonus + obstacle.bonus,
         revealed: obstacle.value !== null, grayBonus: obstacle.difficulty - obstacle.base,
         bonus: obstacle.preBonus + obstacle.bonus, success: obstacle.outcome === "success", failure: obstacle.outcome === "failure",
         numberArt: numberArt(obstacle.value, classic), numberBack: numberBackArt(classic),
         pushBonus: RULES.pushBonus, preBonus: RULES.preRevealBonus
       } : null,
-      pendingGray: state.pendingGray ? {
+      pendingGray: state.pendingGray && (!directed || game.user.isGM || state.narratorId === game.user.id) ? {
         roman: roman(state.pendingGray),
         canSpend: (actor?.system.determination.value ?? 0) > 0, canLose: (actor?.system.spirit.value ?? 0) > 0,
         free: !((actor?.system.determination.value ?? 0) > 0 || (actor?.system.spirit.value ?? 0) > 0)
       } : null,
-      epilogue: finishing ? {
+      epilogue: directed && state.epiloguePublic ? { finished: true, ready: false, label: state.publicEpilogue?.title, text: state.publicEpilogue?.text } : finishing && !directed ? {
         ready: state.phase === "epilogue", finished: state.phase === "finished",
         label: epilogueRow?.label ?? "", text: state.phase === "finished" ? epilogueRow?.text ?? "" : ""
       } : null,

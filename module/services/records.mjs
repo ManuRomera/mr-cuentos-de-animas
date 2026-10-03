@@ -1,3 +1,4 @@
+import { Direction } from "./direction.mjs";
 import { SYSTEM_ID } from "../constants.mjs";
 import { StateService } from "./state.mjs";
 
@@ -7,11 +8,49 @@ import { StateService } from "./state.mjs";
  * Lo marcado como oculto solo lo muestra la interfaz al Guardián.
  */
 const uid = () => foundry.utils.randomID();
-const clone = (actor, list) => foundry.utils.deepClone(actor.system[list] ?? []);
+const clone = (actor, list) => foundry.utils.deepClone(Records.entries(actor, list));
 /** Un jugador sin permiso de propietario no puede escribir: el Guardián lo hará por él. */
 const canWrite = actor => actor?.isOwner;
 
 export class Records {
+  static vault(actor) {
+    if (!game.user.isGM || !actor) return null;
+    return game.messages.find(m => m.author?.isGM && m.getFlag(SYSTEM_ID, "vault")?.actorUuid === actor.uuid) ?? null;
+  }
+  static entries(actor, list) {
+    const publicEntries = actor?.system[list] ?? [];
+    if (!game.user.isGM) return publicEntries.filter(e => list === "truths" ? !e.hidden : list === "memories" ? e.known : true);
+    const stored = this.vault(actor)?.getFlag(SYSTEM_ID, "vault") ?? {};
+    const privateEntries = stored[list] ?? [];
+    return [...publicEntries, ...privateEntries].filter((e, i, all) => !e.id || all.findIndex(x => x.id === e.id) === i).map(e => list === "truths" ? { ...e, note: stored.notes?.[e.id] ?? e.note ?? "" } : e);
+  }
+  static async write(actor, list, entries) {
+    if (!canWrite(actor)) return;
+    if (!game.user.isGM) {
+      // Only a GM can change visibility or edit the private record store.
+      const publicEntries = entries.map(e => list === "truths" ? { ...e, hidden: false } : list === "memories" ? { ...e, known: true } : e);
+      return actor.update({ [`system.${list}`]: publicEntries });
+    }
+    if (!["truths", "memories"].includes(list)) return actor.update({ [`system.${list}`]: entries });
+    const isPrivate = e => list === "truths" ? e.hidden : !e.known;
+    let vault = this.vault(actor);
+    if (entries.some(isPrivate) || (list === "truths" && entries.some(e => e.note)) || vault) {
+      const data = { ...(vault?.getFlag(SYSTEM_ID, "vault") ?? { actorUuid: actor.uuid }), [list]: entries.filter(isPrivate), ...(list === "truths" ? { notes: Object.fromEntries(entries.filter(e => e.note).map(e => [e.id, e.note])) } : {}) };
+      if (vault) {
+        if (list === "truths") for (const id of Object.keys(vault.getFlag(SYSTEM_ID, "vault")?.notes ?? {})) if (!(id in data.notes)) data.notes[`-=${id}`] = null;
+        await vault.setFlag(SYSTEM_ID, "vault", data);
+      }
+      else vault = await ChatMessage.implementation.create({ content: `<p>${foundry.utils.escapeHTML(game.i18n.localize("CdA.Directed.Private"))}</p>`, whisper: game.users.filter(u => u.isGM).map(u => u.id), flags: { [SYSTEM_ID]: { vault: data } } });
+    }
+    await actor.update({ [`system.${list}`]: entries.filter(e => !isPrivate(e)).map(e => list === "truths" ? { ...e, note: "" } : e) });
+  }
+  static async secure(actor) {
+    if (!game.user.isGM) return;
+    for (const list of ["truths", "memories"]) {
+      if (actor.system[list]?.some(e => list === "truths" ? (e.hidden || e.note) : !e.known)) await this.write(actor, list, clone(actor, list));
+    }
+  }
+
   /* ------------------------------------------ */
   /*  Diario                                    */
   /* ------------------------------------------ */
@@ -39,18 +78,19 @@ export class Records {
       link: data.link ?? { type: "", label: "" }, hidden: Boolean(data.hidden && game.user.isGM), note: data.note ?? "",
       createdAt: Date.now(), history: [{ status: data.status ?? "established", at: Date.now() }]
     };
-    await actor.update({ "system.truths": [...clone(actor, "truths"), truth] });
+    await this.write(actor, "truths", [...clone(actor, "truths"), truth]);
     await StateService.log({ type: "truth", text: truth.text, result: truth.status, hidden: truth.hidden });
     if (!truth.hidden) await this.diary(actor, { title: game.i18n.localize("CdA.Truth.Established"), text: truth.text, kind: "truth" });
     return truth;
   }
 
   static async setTruthStatus(actor, id, status) {
+    if (!canWrite(actor)) return;
     const truths = clone(actor, "truths");
     const truth = truths.find(t => t.id === id); if (!truth || truth.status === status) return;
     truth.status = status;
     truth.history.push({ status, at: Date.now() });
-    await actor.update({ "system.truths": truths });
+    await this.write(actor, "truths", truths);
     await StateService.log({ type: "truth-status", text: truth.text, result: status, hidden: truth.hidden });
   }
 
@@ -65,10 +105,10 @@ export class Records {
     if (!canWrite(actor)) return null;
     const memory = {
       id: uid(), title: data.title ?? "", text: data.text ?? "", kind: data.kind ?? "memory",
-      known: data.known ?? true, link: data.link ?? { type: "", label: "" }, source: data.source ?? this.#origin(), createdAt: Date.now()
+      known: game.user.isGM ? data.known ?? true : true, link: data.link ?? { type: "", label: "" }, source: data.source ?? this.#origin(), createdAt: Date.now()
     };
-    await actor.update({ "system.memories": [...clone(actor, "memories"), memory] });
-    await StateService.log({ type: "memory", text: memory.title || memory.text, result: memory.kind });
+    await this.write(actor, "memories", [...clone(actor, "memories"), memory]);
+    await StateService.log({ type: "memory", text: memory.title || memory.text, result: memory.kind, hidden: !memory.known });
     return memory;
   }
 
@@ -90,13 +130,14 @@ export class Records {
     if (!canWrite(actor)) return;
     const data = clone(actor, list);
     const entry = data.find(e => e.id === id); if (!entry) return;
+    if (!game.user.isGM && ("hidden" in changes || "known" in changes || "note" in changes)) return;
     foundry.utils.mergeObject(entry, changes);
-    await actor.update({ [`system.${list}`]: data });
+    await this.write(actor, list, data);
   }
 
   static async #remove(actor, list, id) {
     if (!canWrite(actor)) return;
-    await actor.update({ [`system.${list}`]: clone(actor, list).filter(e => e.id !== id) });
+    await this.write(actor, list, clone(actor, list).filter(e => e.id !== id));
   }
 
   /** Entradas de listas antiguas sin id: se les asigna uno la primera vez. */
@@ -107,7 +148,7 @@ export class Records {
       const data = clone(actor, list);
       if (data.every(e => e.id)) continue;
       data.forEach(e => { e.id ||= uid(); });
-      update[`system.${list}`] = data;
+      await this.write(actor, list, data);
     }
     if (!foundry.utils.isEmpty(update)) await actor.update(update);
   }
