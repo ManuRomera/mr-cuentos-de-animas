@@ -10,9 +10,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest"><img alt="Última versión" src="https://img.shields.io/github/v/release/ManuRomera/mr-cuentos-de-animas?label=versi%C3%B3n&color=c49a57"></a>
-  <img alt="Foundry VTT 13 · 14" src="https://img.shields.io/badge/Foundry-13%20%C2%B7%2014-2a1c13">
-  <a href="https://manuromera.github.io/mr-cuentos-de-animas/"><img alt="Página del proyecto" src="https://img.shields.io/badge/p%C3%A1gina-GitHub%20Pages-8a2f3c"></a>
+  <a href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ManuRomera/mr-cuentos-de-animas?include_prereleases&style=for-the-badge&color=a0742f&label=release"></a>
+  <a href="https://foundryvtt.com"><img alt="Foundry VTT V13 – V14" src="https://img.shields.io/badge/Foundry%20VTT-V13%20%E2%80%93%20V14-57d8c8?style=for-the-badge"></a>
+  <a href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/ManuRomera/mr-cuentos-de-animas/total?style=for-the-badge&color=ff7a1f"></a>
+  <img alt="Game system" src="https://img.shields.io/badge/type-game%20system-2b3245?style=for-the-badge">
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-2b3245?style=for-the-badge"></a>
 </p>
 
 > Sistema **no oficial** de *Cuentos de ánimas* (Scott Malthouse · El Refugio de Ryhope). No incluye el texto del libro ni sus doce escenarios; sí las cartas, que la propia edición permite reproducir, y 34 escenarios de distribución libre con su autoría. Detalles en [`NOTICE.md`](NOTICE.md).
