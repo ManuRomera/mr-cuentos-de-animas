@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1 · 2026-10-05
+
+- Añadido el botón «Créditos» en los ajustes del paquete (Manu Romera · Digital RPG Design). No cambia el juego.
+
 ## 2.0.0 · 2026-10-03 · candidata pendiente de prueba multicliente
 
 ### Dirigido y experiencia de dirección
