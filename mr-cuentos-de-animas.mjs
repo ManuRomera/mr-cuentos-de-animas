@@ -183,6 +183,7 @@ Hooks.on("getSceneControlButtons", controls => {
       { name: "cdaProtagonist", title: t("CdA.Controls.Protagonist"), icon: "fa-solid fa-id-card", onChange: () => openApp("protagonist") },
       { name: "cdaLibrary", title: t("CdA.App.Library"), icon: "fa-solid fa-book-open", onChange: () => openApp("library") },
       { name: "cdaDiary", title: t("CdA.App.Diary"), icon: "fa-solid fa-feather-pointed", onChange: () => openApp("diary") },
+      { name: "cdaAccess", title: t("CdA.Access.Title"), icon: "fa-solid fa-universal-access", onChange: () => openApp("access") },
       { name: "cdaSafety", title: t("CdA.App.Safety"), icon: "fa-solid fa-shield-heart", onChange: () => openApp("safety") }
     ];
     if (game.user.isGM) {
