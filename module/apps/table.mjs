@@ -1,7 +1,7 @@
 import { Direction } from "../services/direction.mjs";
 import { ASSETS, CARD_KINDS, MODES, RULES, TEMPLATES } from "../constants.mjs";
 import { enrich } from "../compat.mjs";
-import { reducedMotion, reducedEffects } from "../settings.mjs";
+import { get, reducedMotion, reducedEffects, set } from "../settings.mjs";
 import { DeckService } from "../services/decks.mjs";
 import { GameplayService as Game } from "../services/gameplay.mjs";
 import { StateService } from "../services/state.mjs";
@@ -17,16 +17,19 @@ const PROMPTS = { clue: "CdA.Choose.clue", environment: "CdA.Choose.environment"
  * Mesa de Ánimas: la mesa física vista desde arriba. Nunca se abre sola.
  * Izquierda, los recursos; centro, mazo, carta y escena; derecha, el relato
  * (sinopsis, pistas halladas y tensión) siempre a mano para releer.
+ *
+ * No es una ventana: es una capa sin marco sobre la escena de fondo, entre los controles de
+ * Foundry y la barra lateral. La capa deja pasar el ratón; solo los paneles lo reciben.
+ * Se oculta con el ojo de la cabecera (queda una pastilla para volver), Mayús+M o el control de escena.
  */
 export class TableApp extends SystemApp {
   static MEMORY = "table";
-  static SIZE_LIMITS = { minWidth: 960, minHeight: 620 };
   static DEFAULT_OPTIONS = {
     id: "cda-table",
     classes: ["cda-table-app"],
-    window: { title: "CdA.App.Table", icon: "fa-solid fa-fire-flame-curved", resizable: true },
-    position: { width: 1320, height: 840 },
+    window: { frame: false, positioned: false },
     actions: {
+      hide: () => set("mesaOculta", true), show: () => set("mesaOculta", false),
       private: () => openApp("delivery"),
       draw: TableApp.#draw, zoom: TableApp.#zoom, zoomClue: TableApp.#zoomClue, choose: TableApp.#choose, custom: TableApp.#custom,
       spend: () => Game.spend(), reveal: () => Game.reveal(), push: () => Game.push(), reroll: () => Game.reroll(), accept: () => Game.accept(),
@@ -37,12 +40,24 @@ export class TableApp extends SystemApp {
   static SCROLL_MEMORY = [".cda-story-scroll"];
   static LIVE = true;
 
-  /** Primera apertura: ocupa el hueco entre los controles de escena y la barra lateral, sin taparlas. */
-  static initialPosition({ width, height }) {
-    const w = Math.round(Math.min(1360, Math.max(960, width - 400)));
-    const h = Math.round(Math.min(860, Math.max(620, height - 120)));
-    return { width: w, height: h, left: Math.max(60, Math.round((width - 330 - w) / 2) + 50), top: Math.max(8, Math.round((height - h) / 2) - 20) };
+  /** Pedir la Mesa a propósito (botón, atajo, ficha) la muestra aunque estuviera oculta. */
+  static open(options = {}) {
+    if (get("mesaOculta")) set("mesaOculta", false);
+    return super.open(options);
   }
+
+  /** Mayús+M y el control de escena: si se ve, se oculta; si no, aparece. */
+  static toggle() {
+    const app = this.instance;
+    if (app?.rendered && !get("mesaOculta")) return set("mesaOculta", true);
+    return this.open();
+  }
+
+  /** Al entrar con «abrir la Mesa al entrar»: respeta que esta persona la hubiera ocultado. */
+  static restore() { return this.instance?.rendered ? null : super.open(); }
+
+  #hidden = () => Boolean(get("mesaOculta"));
+  #side = null;
 
   #shown = { card: null, number: null, gray: null };
 
@@ -113,6 +128,15 @@ export class TableApp extends SystemApp {
     await super._onRender(context, options);
     const root = this.element;
     const { state, spirit, determination } = context;
+    this.#applyHidden();
+    this.#watchSidebar();
+    if (!root.querySelector(".cda-pastilla")) {
+      const pill = document.createElement("button");
+      pill.type = "button"; pill.className = "cda-pastilla"; pill.dataset.action = "show";
+      pill.dataset.tooltip = game.i18n.localize("CdA.Table.Show"); pill.setAttribute("aria-label", pill.dataset.tooltip);
+      pill.innerHTML = '<i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>';
+      root.append(pill);
+    }
     root.dataset.gray = state.grayLadies;
     root.dataset.phase = state.phase;
     root.classList.toggle("cda-spirit-low", Boolean(context.actor) && spirit.value <= 1);
@@ -123,10 +147,30 @@ export class TableApp extends SystemApp {
 
     const first = this.#shown.card === null;
     const numberKey = state.obstacle?.value != null ? `${state.obstacle.cardId}:${state.obstacle.value}:${state.obstacle.rerolled}` : "";
-    if (!first && state.currentCardId && state.currentCardId !== this.#shown.card) this.#animateDraw();
-    if (!first && numberKey && numberKey !== this.#shown.number) this.#animateNumber();
-    if (!first && state.grayLadies > (this.#shown.gray ?? 0)) this.#animateGray(state.grayLadies);
+    const visible = !this.#hidden();
+    if (visible && !first && state.currentCardId && state.currentCardId !== this.#shown.card) this.#animateDraw();
+    if (visible && !first && numberKey && numberKey !== this.#shown.number) this.#animateNumber();
+    if (visible && !first && state.grayLadies > (this.#shown.gray ?? 0)) this.#animateGray(state.grayLadies);
     this.#shown = { card: state.currentCardId, number: numberKey, gray: state.grayLadies };
+  }
+
+  applyHidden() { this.#applyHidden(); }
+  #applyHidden() { this.element?.classList.toggle("cda-mesa-oculta", this.#hidden()); }
+
+  /** Deja libre la barra lateral: `--cda-der` es su ancho (abierta o plegada) más un margen. */
+  #watchSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    if (this.#side || !sidebar || !globalThis.ResizeObserver) return;
+    const fit = () => this.element?.style.setProperty("--cda-der", `${Math.round(sidebar.getBoundingClientRect().width) + 14}px`);
+    this.#side = new ResizeObserver(fit);
+    this.#side.observe(sidebar);
+    fit();
+  }
+
+  async close(options) {
+    this.#side?.disconnect();
+    this.#side = null;
+    return super.close(options);
   }
 
   /** La carta sale del mazo, viaja, gira y se asienta. Sin filter ni opacity: aplanarían el 3D. */
@@ -193,3 +237,5 @@ export class TableApp extends SystemApp {
     this.render();
   }
 }
+
+Hooks.on("mrCdaMesa", () => TableApp.instance?.applyHidden());

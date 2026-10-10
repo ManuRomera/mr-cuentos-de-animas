@@ -23,9 +23,10 @@ const entry = read("mr-cuentos-de-animas.mjs");
 test("la Mesa solo se abre al entrar si el usuario lo pidió", () => {
   const settings = read("module/settings.mjs");
   assert.match(settings, /register\(SYSTEM_ID, "openOnStart", \{[^}]*scope: "client"[^}]*default: false/s);
+  assert.doesNotMatch(settings, /"mesaOculta", \{[^}]*default: true/s, "ocultar la Mesa no puede venir activado de serie");
   for (const file of code) assert.doesNotMatch(read(file), /autoOpen/, `${file} usa el ajuste antiguo autoOpen`);
   const ready = entry.slice(entry.indexOf('Hooks.once("ready"'), entry.indexOf("async function ensureScene"));
-  const opens = ready.split("\n").filter(l => /openApp\("table"\)|TableApp\.open/.test(l));
+  const opens = ready.split("\n").filter(l => /openApp\("table"\)|TableApp\.(open|restore)/.test(l));
   assert.equal(opens.length, 1);
   assert.match(opens[0], /openOnStart/);
 });
@@ -54,8 +55,15 @@ test("ninguna ventana nace más grande que 1400×900", () => {
       if (m[1] !== '"auto"') assert.ok(Number(m[1]) <= 1400, `${file}: ancho ${m[1]}`);
       if (m[2] !== '"auto"') assert.ok(Number(m[2]) <= 900, `${file}: alto ${m[2]}`);
     }
-    assert.doesNotMatch(read(file), /frame:\s*false/, `${file}: ventana sin marco (no se podría cerrar)`);
+    // Solo la Mesa va sin marco, y solo porque se oculta con su ojo, la pastilla, Mayús+M y el control de escena.
+    if (file !== "module/apps/table.mjs") assert.doesNotMatch(read(file), /frame:\s*false/, `${file}: ventana sin marco (no se podría cerrar)`);
   }
+  const table = read("module/apps/table.mjs");
+  assert.match(table, /frame: false/);
+  assert.match(table, /hide: \(\) => set\("mesaOculta", true\), show: \(\) => set\("mesaOculta", false\)/);
+  assert.match(table, /cda-pastilla/);
+  assert.match(read("templates/apps/table.hbs"), /data-action="hide"/);
+  assert.match(entry, /TableApp\.toggle\(\)/);
   const welcome = read("module/apps/welcome.mjs").match(/width:\s*(\d+)/);
   assert.ok(Number(welcome[1]) <= 520, "el aviso de bienvenida debe ser pequeño");
 });
@@ -107,8 +115,8 @@ test("sin reglas destructivas sobre la interfaz de Foundry", () => {
   assert.deepEqual(bad, []);
 });
 
-test("solo las capas efímeras ocupan la pantalla entera", () => {
-  const allowed = [".mr-cda.cda-overlay", ".mr-cda.cda-safety-signal", ".cda-help"];
+test("solo las capas efímeras y la Mesa (ocultable) ocupan la pantalla", () => {
+  const allowed = [".mr-cda.cda-overlay", ".mr-cda.cda-safety-signal", ".cda-help", ".mr-cda.cda-table-app"];
   const fixed = allRules.filter(r => /position:\s*fixed/.test(r.body)).map(r => r.selector);
   for (const s of fixed) assert.ok(allowed.some(a => s.startsWith(a)), `position: fixed en ${s}`);
   // y existen sus cierres: botón, Escape y clic fuera
@@ -116,6 +124,12 @@ test("solo las capas efímeras ocupan la pantalla entera", () => {
   assert.match(overlay, /Escape/); assert.match(overlay, /cda-overlay-scrim/); assert.match(overlay, /cda-overlay-close/);
   const safety = read("module/apps/safety.mjs");
   assert.match(safety, /safety-clear/);
+  // la capa de la Mesa deja pasar el ratón y se puede ocultar con la pastilla de vuelta
+  const layer = allRules.find(r => r.selector === ".mr-cda.cda-table-app");
+  assert.match(layer.body, /pointer-events:\s*none/);
+  assert.ok(allRules.some(r => r.selector === ".mr-cda.cda-mesa-oculta .cda-table" && /display:\s*none/.test(r.body)));
+  assert.ok(allRules.some(r => r.selector === ".mr-cda.cda-mesa-oculta .cda-pastilla"));
+  assert.doesNotMatch(layer.body, /transform|backdrop-filter/);
 });
 
 test("las ventanas del sistema tienen tope de tamaño en CSS", () => {

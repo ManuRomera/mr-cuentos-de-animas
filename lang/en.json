@@ -130,7 +130,9 @@
       "Clues": "Clues found",
       "NoClues": "No clues yet.",
       "Tension": "Tension revealed",
-      "NarrateThenDraw": "Narrate the scene. Then draw the next card."
+      "NarrateThenDraw": "Narrate the scene. Then draw the next card.",
+      "Show": "Show the Table",
+      "Hide": "Hide the Table"
     },
     "Game": {
       "NoStory": "No story is running.",
@@ -762,6 +764,85 @@
         "backstory": "short background",
         "traits": "four traits or objects",
         "split": "a valid Spirit/Determination split"
+      }
+    },
+    "Tour": {
+      "OfferTitle": "Want a quick walkthrough?",
+      "OfferBody": "There is a short guided tutorial. You can repeat it any time from Settings, in the MR · Cuentos de Ánimas block.",
+      "Start": "Start the tutorial",
+      "NotNow": "Not now",
+      "Button": "Guided tutorial",
+      "guardian": {
+        "Title": "MR · Cuentos de Ánimas · Running the tale",
+        "Description": "A few minutes through the Table, the deck and the Guardian's tools.",
+        "welcome": {
+          "Title": "A table, a candle and a village that remembers",
+          "Content": "Welcome to <b>Cuentos de Ánimas</b>. You keep the tale: you choose the scenario, narrate each scene and the deck decides what happens.\nThis system handles the cards, Spirit and Determination; the rulebook is still essential.\nUse the buttons below to go forward and back, and leave whenever you like."
+        },
+        "directory": {
+          "Title": "Protagonists and tales",
+          "Content": "Create the <b>protagonist</b> in Actors (or roll one at random) and open the Table from here. Scenarios live in the Library, among the Items."
+        },
+        "table": {
+          "Title": "The Table, over the scene",
+          "Content": "The <b>Table of Souls</b> is not a window: it fills the screen over the background scene and lets the mouse through wherever there is no panel.\nAbove: the tale in progress and shortcuts to diary, truths, memories, Guardian, Library and accessibility."
+        },
+        "deck": {
+          "Title": "The deck",
+          "Content": "Click the deck to <b>draw</b> the next card. It appears large in the centre and you can enlarge it with a click. The discard pile sits next to it.\nIf the tale asks for a choice, the panel on the right lets you pick the scenario entry."
+        },
+        "story": {
+          "Title": "The tale at hand",
+          "Content": "Synopsis, clues found and revealed tension, always visible to reread. The scroll button in the header folds and unfolds this column."
+        },
+        "guardian": {
+          "Title": "The Guardian's booth",
+          "Content": "Open the <b>Guardian's booth</b> from here: prepare scenes, send private cards, pick the mode (Directed, Bonfire, Diary…) and run the epilogue."
+        },
+        "safety": {
+          "Title": "Safety at the table",
+          "Content": "Safety tools are always one click away. Use them at the start and whenever needed: nobody has to justify a pause."
+        },
+        "hide": {
+          "Title": "See the scene without the Table",
+          "Content": "The eye <b>hides the Table</b> and leaves only the scene; a flame pill appears to bring it back. You can also toggle it with <b>Shift+M</b> or the moon scene control."
+        },
+        "settings": {
+          "Title": "Settings and tutorial",
+          "Content": "In Settings you will find the MR · Cuentos de Ánimas block: the Table, accessibility, diagnostics and this tutorial to repeat any time."
+        }
+      },
+      "player": {
+        "Title": "MR · Cuentos de Ánimas · How to play",
+        "Description": "A short walk through your Table, your resources and the deck.",
+        "welcome": {
+          "Title": "Welcome to the table",
+          "Content": "In <b>Cuentos de Ánimas</b> you tell a scary tale together. The Guardian sets the scene and the cards decide how it goes.\nUse the buttons below to go forward and back, and leave whenever you like."
+        },
+        "table": {
+          "Title": "Your Table",
+          "Content": "The Table fills the screen over the scene. Above: the tale in progress, your diary, truths, memories and the Library."
+        },
+        "resources": {
+          "Title": "Spirit and Determination",
+          "Content": "<b>Spirit</b> keeps you whole; you lose it when you fail. <b>Determination</b> is the ember you spend to push. See how many you have left here, with your protagonist below."
+        },
+        "deck": {
+          "Title": "The deck",
+          "Content": "When it is time, the deck is drawn here. Cards appear large in the centre and you can enlarge them with a click."
+        },
+        "story": {
+          "Title": "The tale",
+          "Content": "The synopsis, the clues you have found and the tension the deck has revealed, always in view."
+        },
+        "safety": {
+          "Title": "Safety at the table",
+          "Content": "Safety tools are here, one click away. Use them whenever you need, no explanations required."
+        },
+        "hide": {
+          "Title": "See the scene without the Table",
+          "Content": "The eye <b>hides the Table</b> and leaves only the scene; the flame pill brings it back. Also with <b>Shift+M</b>."
+        }
       }
     }
   },

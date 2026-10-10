@@ -181,3 +181,19 @@ test("cartas clásicas: todas las caras oficiales existen", () => {
     ...[4, 5, 6, 7].flatMap(v => [c.environment(v), c.character(v)]), ...Array.from({ length: 10 }, (_, i) => c.number(i + 1))];
   for (const p of paths) assert.ok(existsSync(join(root, p.replace(`${PATH}/`, ""))), p);
 });
+
+test("tutorial: cada tour referencia pasos y textos que existen en es y en", () => {
+  const lang = Object.fromEntries(["es", "en"].map(l => [l, JSON.parse(read(`lang/${l}.json`))]));
+  const dig = (o, path) => path.split(".").reduce((x, k) => x?.[k], o) ?? o[path];
+  for (const key of ["guardian", "player"]) {
+    const tour = JSON.parse(read(`tours/${key}.json`));
+    assert.equal(tour.restricted === true, key === "guardian");
+    const ids = tour.steps.map(s => s.id);
+    assert.equal(new Set(ids).size, ids.length, `${key}: ids repetidos`);
+    for (const text of [tour.title, tour.description, ...tour.steps.flatMap(s => [s.title, s.content])]) {
+      for (const l of ["es", "en"]) assert.equal(typeof dig(lang[l], text), "string", `${l}: falta ${text}`);
+    }
+    for (const s of tour.steps.filter(s => s.selector)) assert.ok(["UP", "DOWN", "LEFT", "RIGHT"].includes(s.tooltipDirection), `${key}.${s.id}`);
+  }
+  assert.match(read("scripts/build.mjs"), /"tours"/, "la carpeta tours/ debe ir en el zip");
+});

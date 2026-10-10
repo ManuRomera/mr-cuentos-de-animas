@@ -202,7 +202,26 @@
    Mesa de Ánimas
    -------------------------------------------------------------------------- */
 
-.application.mr-cda.cda-table-app .window-content { background: #0a0807; }
+/* La Mesa es una capa sobre la escena, no una ventana: entre los controles de Foundry y la barra lateral.
+   z-index 20: sobre el lienzo, bajo los controles (30) y las ventanas (101). La capa deja pasar el ratón;
+   solo los paneles lo reciben. Nada de `transform` ni `backdrop-filter` en un padre de algo `position: fixed`. */
+.mr-cda.cda-table-app {
+  position: fixed; z-index: 20 !important;
+  top: 58px; left: 118px; right: var(--cda-der, 344px); bottom: 136px;
+  pointer-events: none;
+  container: cda-mesa / inline-size;
+}
+.mr-cda.cda-table-app .cda-table { pointer-events: none; }
+.mr-cda.cda-table-app :is(.cda-table-head, .cda-table-foot, .cda-rail, .cda-deck, .cda-gray-slot, .cda-slot-current > *, .cda-side-slot > *) { pointer-events: auto; }
+.mr-cda.cda-mesa-oculta .cda-table { display: none; }
+.mr-cda .cda-pastilla { display: none; }
+.mr-cda.cda-mesa-oculta .cda-pastilla {
+  display: grid; place-items: center; position: absolute; top: 0; left: 0; width: 44px; height: 44px; padding: 0;
+  pointer-events: auto; border-radius: 50%; color: var(--cda-brass-2); font-size: 1.15em; cursor: pointer;
+  border: 1px solid var(--cda-line-strong); background: radial-gradient(circle at 50% 35%, #2a1c13, #0d0b0a);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .6);
+}
+.mr-cda .cda-pastilla:hover, .mr-cda .cda-pastilla:focus-visible { color: #fff4dd; border-color: var(--cda-brass-2); }
 .mr-cda .cda-table {
   position: relative;
   height: 100%;
@@ -210,10 +229,6 @@
   grid-template-rows: auto minmax(0, 1fr) auto;
   overflow: hidden;
   isolation: isolate;
-  background:
-    radial-gradient(90% 70% at 50% 45%, transparent 35%, rgba(0, 0, 0, .7) 100%),
-    var(--table-art) center / cover no-repeat,
-    #1a120c;
   transition: filter 1.2s ease;
 }
 .mr-cda.cda-spirit-low .cda-table { filter: saturate(.55) brightness(.92); }
@@ -261,11 +276,11 @@
   position: relative; z-index: 3;
   display: flex; align-items: center; gap: 1rem;
   padding: .6rem 1rem;
-  background: linear-gradient(180deg, rgba(10, 8, 6, .82), rgba(10, 8, 6, .55));
-  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(10, 8, 6, .88), rgba(10, 8, 6, .6));
+  border-radius: 10px;
 }
-.mr-cda .cda-table-head { border-bottom: 1px solid var(--cda-line); justify-content: space-between; }
-.mr-cda .cda-table-foot { border-top: 1px solid var(--cda-line); background: linear-gradient(0deg, rgba(10, 8, 6, .85), rgba(10, 8, 6, .55)); }
+.mr-cda .cda-table-head { border: 1px solid var(--cda-line); justify-content: space-between; }
+.mr-cda .cda-table-foot { border: 1px solid var(--cda-line); background: linear-gradient(0deg, rgba(10, 8, 6, .88), rgba(10, 8, 6, .6)); }
 .mr-cda .cda-title-block { display: flex; flex-direction: column; min-width: 0; }
 .mr-cda .cda-title-block h1 { font-size: 1.7em; line-height: 1.1; color: #f4e7cc; text-shadow: 0 2px 12px rgba(0, 0, 0, .8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mr-cda .cda-scene-line { font-size: .9em; color: var(--cda-muted); font-style: italic; display: inline-flex; gap: .4em; align-items: center; }
@@ -974,10 +989,13 @@
    Pantallas estrechas: nada se sale ni obliga a desplazarse en horizontal
    -------------------------------------------------------------------------- */
 
-@media (max-width: 1100px) {
-  .mr-cda .cda-board { grid-template-columns: 110px minmax(0, 1fr) 110px; gap: .6rem; padding: .7rem; }
+@container cda-mesa (max-width: 880px) {
+  .mr-cda .cda-board { grid-template-columns: 96px minmax(0, 1fr) minmax(170px, 26%); gap: .6rem; padding: .7rem; }
   .mr-cda .cda-play-row { grid-template-columns: 90px minmax(0, 1fr) minmax(200px, 34%); gap: .7rem; }
   .mr-cda .cda-table-nav button span { display: none; }
+}
+
+@media (max-width: 1100px) {
   .mr-cda .cda-dossier-body { grid-template-columns: 1fr 1fr; }
   .mr-cda .cda-dossier-records { grid-column: 1 / -1; }
   .mr-cda .cda-mode-grid { grid-template-columns: 1fr 1fr; }

@@ -37,13 +37,13 @@ En Foundry: **Sistemas de juego → Instalar sistema → URL del manifiesto**
 https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest/download/system.json
 ```
 
-Crea un mundo con **MR · Cuentos de Ánimas**. Al entrar como Guardián aparece un aviso pequeño con los accesos. La Mesa **nunca se abre sola**: está en los controles de escena (icono de luna), en los directorios de Actores y Objetos, en Ajustes y con **Mayús + M**.
+Crea un mundo con **MR · Cuentos de Ánimas**. Al entrar como Guardián aparece un aviso pequeño con los accesos. La Mesa **nunca se abre sola** (salvo que lo actives en los ajustes): está en los controles de escena (icono de luna), en los directorios de Actores y Objetos, en Ajustes y con **Mayús + M**, que también la oculta. Un **tutorial guiado** (Guardián y jugadores) se ofrece la primera vez y se repite desde Configuración.
 
 ## Qué hay dentro
 
 | | |
 |---|---|
-| **Mesa de Ánimas** | Mesa física vista desde arriba: mazo, carta actual, descarte, tres huecos para las Damas Grises, piedras de Espíritu y ámbar de Determinación. La carta sale del mazo, viaja, gira y se asienta. |
+| **Mesa de Ánimas** | Capa a pantalla completa sobre la escena de fondo (que cubre toda la pantalla), sin marco de ventana; se oculta con el ojo y vuelve con una pastilla. Mesa física vista desde arriba: mazo, carta actual, descarte, tres huecos para las Damas Grises, piedras de Espíritu y ámbar de Determinación. La carta sale del mazo, viaja, gira y se asienta. |
 | **Cartas** | El mazo del libro sobre documentos *Cards* de Foundry: 4 Pistas, 4 Percances, Obstáculos de Entorno y de Personaje 4‑7 y 3 Damas Grises, en montones de 6, 6 y 4. Dos estilos: **Fotográfico** o **Clásico** (las cartas originales). |
 | **Escenas** | Al revelar una carta se elige la escena en la lista del escenario (o se escribe otra) y queda escrita en una hoja bajo la carta. Las pistas halladas quedan a la vista, fuera del descarte. |
 | **El relato a la vista** | La Sinopsis, las pistas y la tensión revelada quedan en una columna de la Mesa para releerlas en cualquier momento. |

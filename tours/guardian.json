@@ -1,0 +1,70 @@
+{
+  "title": "CdA.Tour.guardian.Title",
+  "description": "CdA.Tour.guardian.Description",
+  "display": true,
+  "canBeResumed": true,
+  "restricted": true,
+  "steps": [
+    {
+      "id": "welcome",
+      "title": "CdA.Tour.guardian.welcome.Title",
+      "content": "CdA.Tour.guardian.welcome.Content"
+    },
+    {
+      "id": "directory",
+      "title": "CdA.Tour.guardian.directory.Title",
+      "content": "CdA.Tour.guardian.directory.Content",
+      "selector": "#actors .cda-directory-actions",
+      "tooltipDirection": "LEFT"
+    },
+    {
+      "id": "table",
+      "title": "CdA.Tour.guardian.table.Title",
+      "content": "CdA.Tour.guardian.table.Content",
+      "selector": ".cda-table-head",
+      "tooltipDirection": "DOWN"
+    },
+    {
+      "id": "deck",
+      "title": "CdA.Tour.guardian.deck.Title",
+      "content": "CdA.Tour.guardian.deck.Content",
+      "selector": ".cda-deck .cda-card-stack",
+      "tooltipDirection": "RIGHT"
+    },
+    {
+      "id": "story",
+      "title": "CdA.Tour.guardian.story.Title",
+      "content": "CdA.Tour.guardian.story.Content",
+      "selector": ".cda-rail-story",
+      "tooltipDirection": "LEFT"
+    },
+    {
+      "id": "guardian",
+      "title": "CdA.Tour.guardian.guardian.Title",
+      "content": "CdA.Tour.guardian.guardian.Content",
+      "selector": ".cda-table-nav .cda-nav-strong",
+      "tooltipDirection": "DOWN"
+    },
+    {
+      "id": "safety",
+      "title": "CdA.Tour.guardian.safety.Title",
+      "content": "CdA.Tour.guardian.safety.Content",
+      "selector": ".cda-nav-safety",
+      "tooltipDirection": "DOWN"
+    },
+    {
+      "id": "hide",
+      "title": "CdA.Tour.guardian.hide.Title",
+      "content": "CdA.Tour.guardian.hide.Content",
+      "selector": ".cda-table-nav [data-action=hide]",
+      "tooltipDirection": "DOWN"
+    },
+    {
+      "id": "settings",
+      "title": "CdA.Tour.guardian.settings.Title",
+      "content": "CdA.Tour.guardian.settings.Content",
+      "selector": ".cda-settings-block",
+      "tooltipDirection": "LEFT"
+    }
+  ]
+}

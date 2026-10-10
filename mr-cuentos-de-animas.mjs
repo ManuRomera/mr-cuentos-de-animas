@@ -36,6 +36,8 @@ import { SoundService } from "./module/services/sound.mjs";
 import { Direction } from "./module/services/direction.mjs";
 import { DeliveryApp } from "./module/apps/delivery.mjs";
 import { Presenter } from "./module/services/presenter.mjs";
+import { registerCover } from "./module/services/cover.mjs";
+import { offerTutorial, registerTutorial, startTutorial } from "./module/tutorial.mjs";
 
 const TEMPLATE_FILES = [
   "apps/delivery.hbs", "apps/table.hbs", "apps/guardian.hbs", "apps/library.hbs", "apps/start.hbs", "apps/diary.hbs", "apps/archive.hbs",
@@ -83,13 +85,13 @@ Hooks.once("init", () => {
     game.keybindings.register(SYSTEM_ID, "openTable", {
       name: "CdA.Keys.Table", hint: "CdA.Keys.TableHint",
       editable: [{ key: "KeyM", modifiers: ["Shift"] }],
-      onDown: () => { openApp("table"); return true; }
+      onDown: () => { TableApp.toggle(); return true; }
     });
   });
 
   bootPhase("api", () => {
     game.mrCuentosDeAnimas = Object.freeze({
-      open: () => openApp("table"), table: () => openApp("table"), library: () => openApp("library"),
+      open: () => openApp("table"), tutorial: key => startTutorial(key), table: () => openApp("table"), library: () => openApp("library"),
       guardian: () => openApp("guardian"), diary: () => openApp("diary"), truths: () => openApp("truths"),
       memories: () => openApp("memories"), access: () => openApp("access"), safety: () => openApp("safety"),
       start: options => openApp("start", options), createProtagonist,
@@ -125,10 +127,13 @@ Hooks.once("ready", async () => {
   }
   bootPhase("direction", () => Direction.init(GameplayService));
   bootPhase("presenter", () => Presenter.init());
+  bootPhase("cover", registerCover);
+  await bootPhase("tutorial", registerTutorial);
 
   console.info(`${LOG} listo · Foundry ${game.version}`, BOOT.errors.length ? BOOT.errors : "sin errores");
   if (game.user.isGM) bootPhase("welcome", () => WelcomeApp.maybeShow());
-  if (game.settings.get(SYSTEM_ID, "openOnStart")) bootPhase("openOnStart", () => openApp("table"));
+  if (game.settings.get(SYSTEM_ID, "openOnStart")) bootPhase("openOnStart", () => TableApp.restore());
+  setTimeout(() => bootPhase("offerTutorial", offerTutorial), 2500);
 });
 
 /**
@@ -174,7 +179,7 @@ Hooks.on("getSceneControlButtons", controls => {
   try {
     const t = k => game.i18n.localize(k);
     const tools = [
-      { name: "cdaTable", title: t("CdA.App.Table"), icon: "fa-solid fa-fire-flame-curved", onChange: () => openApp("table") },
+      { name: "cdaTable", title: t("CdA.App.Table"), icon: "fa-solid fa-fire-flame-curved", onChange: () => TableApp.toggle() },
       { name: "cdaProtagonist", title: t("CdA.Controls.Protagonist"), icon: "fa-solid fa-id-card", onChange: () => openApp("protagonist") },
       { name: "cdaLibrary", title: t("CdA.App.Library"), icon: "fa-solid fa-book-open", onChange: () => openApp("library") },
       { name: "cdaDiary", title: t("CdA.App.Diary"), icon: "fa-solid fa-feather-pointed", onChange: () => openApp("diary") },
@@ -225,11 +230,11 @@ Hooks.on("renderSettings", (app, html) => {
     const block = document.createElement("section");
     block.className = "cda-settings-block";
     block.innerHTML = `<h4 class="divider">MR · Cuentos de Ánimas</h4>`;
-    for (const [label, icon, name] of [["CdA.App.Table", "fa-fire-flame-curved", "table"], ["CdA.Access.Title", "fa-universal-access", "access"], ["CdA.Diagnostic.Title", "fa-stethoscope", "diagnostic"]]) {
+    for (const [label, icon, name] of [["CdA.App.Table", "fa-fire-flame-curved", "table"], ["CdA.Tour.Button", "fa-graduation-cap", "tutorial"], ["CdA.Access.Title", "fa-universal-access", "access"], ["CdA.Diagnostic.Title", "fa-stethoscope", "diagnostic"]]) {
       const b = document.createElement("button");
       b.type = "button";
       b.innerHTML = `<i class="fa-solid ${icon}" aria-hidden="true"></i> ${foundry.utils.escapeHTML(game.i18n.localize(label))}`;
-      b.addEventListener("click", () => openApp(name));
+      b.addEventListener("click", () => name === "tutorial" ? startTutorial() : openApp(name));
       block.append(b);
     }
     (root.querySelector("section.settings, .settings") ?? root.querySelector("section") ?? root).prepend(block);

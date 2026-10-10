@@ -130,7 +130,9 @@
       "Clues": "Pistas halladas",
       "NoClues": "Aún no hay pistas.",
       "Tension": "Tensión revelada",
-      "NarrateThenDraw": "Narra la escena. Después, roba la siguiente carta."
+      "NarrateThenDraw": "Narra la escena. Después, roba la siguiente carta.",
+      "Show": "Mostrar la Mesa",
+      "Hide": "Ocultar la Mesa"
     },
     "Game": {
       "NoStory": "No hay ningún relato en marcha.",
@@ -762,6 +764,85 @@
         "backstory": "breve historial",
         "traits": "cuatro rasgos u objetos",
         "split": "un reparto válido de Espíritu y Determinación"
+      }
+    },
+    "Tour": {
+      "OfferTitle": "¿Te enseño cómo se juega?",
+      "OfferBody": "Hay un tutorial guiado de unos minutos. Puedes repetirlo cuando quieras desde Configuración, en el bloque de MR · Cuentos de Ánimas.",
+      "Start": "Empezar el tutorial",
+      "NotNow": "Ahora no",
+      "Button": "Tutorial guiado",
+      "guardian": {
+        "Title": "MR · Cuentos de Ánimas · Cómo guardar el relato",
+        "Description": "Un paseo de unos minutos por la Mesa, el mazo y las herramientas del Guardián.",
+        "welcome": {
+          "Title": "Una mesa, una vela y un pueblo que no olvida",
+          "Content": "Bienvenido a <b>Cuentos de Ánimas</b>. Tú guardas el relato: eliges el escenario, narras cada escena y el mazo decide lo que pasa.\nEste sistema lleva las cartas, el Espíritu y la Determinación; el libro del juego sigue siendo imprescindible.\nPuedes avanzar y retroceder con los botones de abajo y salir cuando quieras."
+        },
+        "directory": {
+          "Title": "Protagonistas y relatos",
+          "Content": "En los Actores crea al <b>protagonista</b> (o saca uno al azar) y desde aquí abres la Mesa. Los escenarios están en la Biblioteca, entre los Objetos."
+        },
+        "table": {
+          "Title": "La Mesa, sobre la escena",
+          "Content": "La <b>Mesa de Ánimas</b> no es una ventana: ocupa la pantalla sobre la escena de fondo y deja pasar el ratón por donde no hay paneles.\nArriba, el relato en curso y los accesos: diario, verdades, recuerdos, Guardián, Biblioteca y ajustes de accesibilidad."
+        },
+        "deck": {
+          "Title": "El mazo",
+          "Content": "Pulsa el mazo para <b>robar</b> la siguiente carta. La carta se ve grande en el centro y puedes ampliarla con un clic. Al lado, el descarte.\nSi el relato pide una decisión, el panel de la derecha te deja elegir la entrada del escenario."
+        },
+        "story": {
+          "Title": "El relato a mano",
+          "Content": "Sinopsis, pistas halladas y tensión revelada, siempre visibles para releer. El botón del pergamino de la cabecera pliega y despliega esta columna."
+        },
+        "guardian": {
+          "Title": "La cabina del Guardián",
+          "Content": "Desde aquí abres la <b>cabina del Guardián</b>: preparar escenas, enviar tarjetas privadas, elegir el modo (Dirigido, Hoguera, Diario…) y llevar el epílogo."
+        },
+        "safety": {
+          "Title": "Seguridad en la mesa",
+          "Content": "Las herramientas de seguridad están siempre a un clic. Úsalas al empezar y cuando haga falta: nadie tiene que justificar una pausa."
+        },
+        "hide": {
+          "Title": "Ver la escena sin la Mesa",
+          "Content": "El ojo <b>oculta la Mesa</b> y deja solo la escena; aparece una pastilla con la llama para volver. También puedes alternarla con <b>Mayús+M</b> o con el control de escena de la luna."
+        },
+        "settings": {
+          "Title": "Ajustes y tutorial",
+          "Content": "En Configuración tienes el bloque de MR · Cuentos de Ánimas: la Mesa, la accesibilidad, el diagnóstico y este tutorial para repetirlo cuando quieras."
+        }
+      },
+      "player": {
+        "Title": "MR · Cuentos de Ánimas · Cómo jugar",
+        "Description": "Un paseo corto por tu Mesa, tus recursos y el mazo.",
+        "welcome": {
+          "Title": "Bienvenida a la mesa",
+          "Content": "En <b>Cuentos de Ánimas</b> cuentas una historia de miedo entre todos. El Guardián propone la escena y las cartas deciden cómo sale.\nPuedes avanzar y retroceder con los botones de abajo y salir cuando quieras."
+        },
+        "table": {
+          "Title": "Tu Mesa",
+          "Content": "La Mesa ocupa la pantalla sobre la escena. Arriba tienes el relato en curso, tu diario, las verdades, los recuerdos y la Biblioteca."
+        },
+        "resources": {
+          "Title": "Espíritu y Determinación",
+          "Content": "El <b>Espíritu</b> es lo que te mantiene entero; se pierde al fallar. La <b>Determinación</b> es la brasa que gastas para empujar. Aquí ves cuántos te quedan y, debajo, tu protagonista."
+        },
+        "deck": {
+          "Title": "El mazo",
+          "Content": "Cuando toque, el mazo se roba aquí. Las cartas se ven grandes en el centro y puedes ampliarlas con un clic."
+        },
+        "story": {
+          "Title": "El relato",
+          "Content": "La sinopsis, las pistas que ya habéis encontrado y la tensión que ha ido revelando el mazo, siempre a la vista."
+        },
+        "safety": {
+          "Title": "Seguridad en la mesa",
+          "Content": "Las herramientas de seguridad están aquí, a un clic. Úsalas cuando las necesites, sin dar explicaciones."
+        },
+        "hide": {
+          "Title": "Ver la escena sin la Mesa",
+          "Content": "El ojo <b>oculta la Mesa</b> y deja solo la escena; la pastilla con la llama la devuelve. También con <b>Mayús+M</b>."
+        }
       }
     }
   },

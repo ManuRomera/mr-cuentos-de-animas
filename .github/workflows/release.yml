@@ -38,6 +38,8 @@ jobs:
       - run: npm test
       - run: npm run check
       - run: npm run build
+      - name: Comprobar el contenido del ZIP
+        run: unzip -l dist/mr-cuentos-de-animas.zip | grep -q 'tours/guardian.json'
       - name: Crear la release
         uses: softprops/action-gh-release@v2
         with:

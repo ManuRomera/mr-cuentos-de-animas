@@ -1,0 +1,55 @@
+{
+  "title": "CdA.Tour.player.Title",
+  "description": "CdA.Tour.player.Description",
+  "display": true,
+  "canBeResumed": true,
+  "steps": [
+    {
+      "id": "welcome",
+      "title": "CdA.Tour.player.welcome.Title",
+      "content": "CdA.Tour.player.welcome.Content"
+    },
+    {
+      "id": "table",
+      "title": "CdA.Tour.player.table.Title",
+      "content": "CdA.Tour.player.table.Content",
+      "selector": ".cda-table-head",
+      "tooltipDirection": "DOWN"
+    },
+    {
+      "id": "resources",
+      "title": "CdA.Tour.player.resources.Title",
+      "content": "CdA.Tour.player.resources.Content",
+      "selector": ".cda-rail-left",
+      "tooltipDirection": "RIGHT"
+    },
+    {
+      "id": "deck",
+      "title": "CdA.Tour.player.deck.Title",
+      "content": "CdA.Tour.player.deck.Content",
+      "selector": ".cda-deck .cda-card-stack",
+      "tooltipDirection": "RIGHT"
+    },
+    {
+      "id": "story",
+      "title": "CdA.Tour.player.story.Title",
+      "content": "CdA.Tour.player.story.Content",
+      "selector": ".cda-rail-story",
+      "tooltipDirection": "LEFT"
+    },
+    {
+      "id": "safety",
+      "title": "CdA.Tour.player.safety.Title",
+      "content": "CdA.Tour.player.safety.Content",
+      "selector": ".cda-nav-safety",
+      "tooltipDirection": "DOWN"
+    },
+    {
+      "id": "hide",
+      "title": "CdA.Tour.player.hide.Title",
+      "content": "CdA.Tour.player.hide.Content",
+      "selector": ".cda-table-nav [data-action=hide]",
+      "tooltipDirection": "DOWN"
+    }
+  ]
+}

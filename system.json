@@ -2,7 +2,7 @@
   "id": "mr-cuentos-de-animas",
   "title": "MR · Cuentos de Ánimas",
   "description": "Sistema no oficial de Cuentos de Ánimas para Foundry VTT: Mesa de Ánimas, cartas, Espíritu, Determinación, Damas Grises y modo Dirigido con tarjetas privadas y cabina del Director. Incluye escenarios originales y 34 escenarios de distribución libre. No redistribuye el texto ni los doce escenarios del libro básico.",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13.351",

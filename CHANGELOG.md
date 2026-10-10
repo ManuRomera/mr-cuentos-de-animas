@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.0 · 2026-10-10
+
+- **La Mesa a pantalla completa**: ya no es una ventana, sino una capa sobre la escena entre los controles de Foundry y la barra lateral (que se recoloca sola). Deja pasar el ratón por donde no hay paneles. Se oculta con el ojo de la cabecera, **Mayús+M** o el control de escena; una pastilla con la llama la devuelve. Sigue sin abrirse sola salvo el ajuste «Abrir la Mesa al entrar».
+- La escena de la Mesa **cubre toda la pantalla** (sin bandas) al cargarse y al redimensionar.
+- **Tutorial guiado** (tours de Foundry): uno para el Guardián y otro para quien juega, ES/EN. Se ofrece la primera vez y se repite desde Configuración → MR · Cuentos de Ánimas.
+- La carpeta `tours/` va en el paquete; pruebas nuevas de estructura del tutorial y de las reglas de la capa de la Mesa.
+
 ## 2.0.1 · 2026-10-05
 
 - Añadido el botón «Créditos» en los ajustes del paquete (Manu Romera · Digital RPG Design). No cambia el juego.

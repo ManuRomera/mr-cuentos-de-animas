@@ -43,6 +43,9 @@ export function registerSettings() {
   game.settings.register(SYSTEM_ID, "autoDiary", {
     name: "CdA.Settings.AutoDiary", hint: "CdA.Settings.AutoDiaryHint", scope: "world", config: true, type: Boolean, default: true
   });
+  // Mesa a pantalla completa: oculta (solo queda una pastilla para volver) y tutorial ya ofrecido.
+  game.settings.register(SYSTEM_ID, "mesaOculta", { scope: "client", config: false, type: Boolean, default: false, onChange: () => Hooks.callAll("mrCdaMesa") });
+  game.settings.register(SYSTEM_ID, "tutorialOfrecido", { scope: "client", config: false, type: Boolean, default: false });
   world("seedVersion", { type: String, default: "" });
   world("welcomeHidden", { type: Boolean, default: false });
   world("sceneReady", { type: Boolean, default: false });
