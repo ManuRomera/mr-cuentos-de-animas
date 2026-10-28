@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/ManuRomera"><img alt="Manu Romera · Digital RPG Design" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/mr-firma.svg" height="28"></a>
   <a href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ManuRomera/mr-cuentos-de-animas?include_prereleases&style=for-the-badge&color=a0742f&label=release"></a>
   <a href="https://foundryvtt.com"><img alt="Foundry VTT V13 – V14" src="https://img.shields.io/badge/Foundry%20VTT-V13%20%E2%80%93%20V14-57d8c8?style=for-the-badge"></a>
   <a href="https://github.com/ManuRomera/mr-cuentos-de-animas/releases"><img alt="Downloads" src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/badges/descargas/mr-cuentos-de-animas.svg"></a>
